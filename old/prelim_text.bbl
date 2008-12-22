@@ -1,0 +1,53 @@
+\begin{thebibliography}{}
+
+\bibitem[Carpenter et~al., 1999]{CarpenterFearnhead99}
+Carpenter, J., Clifford, P., and Fearnhead, P. (1999).
+\newblock Improved particle filter for nonlinear problems.
+\newblock {\em Radar, Sonar and Navigation, IEE Proceedings-}, 146(1):2--7.
+
+\bibitem[Chen and Liu, 2000]{Chen00}
+Chen, R. and Liu, J. (2000).
+\newblock {Mixture Kalman filters}.
+\newblock {\em Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 62(3):493--508.
+
+\bibitem[Chen, 2003]{Chen03}
+Chen, Z. (2003).
+\newblock {{Bayeian Filtering: From Kalman Filters to Particle Filters, and
+  Beyond}}.
+
+\bibitem[Godsill et~al., 2001]{GodsillWest01}
+Godsill, S., Doucet, A., and West, M. (2001).
+\newblock {Maximum a Posteriori Sequence Estimation Using Monte Carlo Particle
+  Filters}.
+\newblock {\em Annals of the Institute of Statistical Mathematics},
+  53(1):82--96.
+
+\bibitem[GREEN, 1995]{Green95}
+GREEN, P. (1995).
+\newblock {Reversible jump Markov chain Monte Carlo computation and Bayesian
+  model determination}.
+\newblock {\em Biometrika}, 82(4):711--732.
+
+\bibitem[Klaas et~al., 2005]{KlaasFreitas05}
+Klaas, M., Lang, D., and de~Freitas, N. (2005).
+\newblock {Fast maximum a posteriori inference in Monte Carlo state spaces}.
+\newblock {\em Artificial Intelligence and Statistics}.
+
+\bibitem[Ng et~al., 2005]{NgDearden05}
+Ng, B., Pfeffer, A., and Dearden, R. (2005).
+\newblock Continuous time particle filtering.
+
+\bibitem[Pillow and Latham, 2007]{PillowLatham07}
+Pillow, J. and Latham, P. (2007).
+\newblock Neural characterization in partially observed populations of spiking
+  neurons.
+\newblock {\em Neural Information Processing Systems}.
+
+\bibitem[Vogelstein et~al., 2008]{BJ08}
+Vogelstein, J., Watson, B., AM, P., Yuste, R., B, J., and Paninski, L. (2008).
+\newblock Spike inference from calcium imaging using sequential monte carlo
+  methods.
+\newblock {\em Biophysical Journal}.
+
+\end{thebibliography}

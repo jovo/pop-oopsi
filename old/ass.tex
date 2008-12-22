@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+%\usepackage{cite}
+\usepackage{times}
+\usepackage{geometry}
+\usepackage[round,numbers,sort&compress]{natbib}
+\oddsidemargin=0.0in %%this makes the odd side margin go to the default of 1inch
+\evensidemargin=0.0in
+\textwidth=6.5in
+\textheight=9in %%sets the textwidth to 6.5, which leaves 1 for the remaining right margin with 8 1/2X11inch paper
+
+\providecommand{\ve}[1]{\boldsymbol{#1}}
+\providecommand{\norm}[1]{\left \lVert#1 \right  \rVert}
+\providecommand{\deter}[1]{\lvert #1 \rvert}
+\providecommand{\abs}[1]{\lvert #1 \rvert}
+\providecommand{\tran}{\mbox{${}^{\text{T}}$}}
+\providecommand{\transpose}{\mbox{${}^{\text{T}}$}}
+\providecommand{\ve}[1]{\boldsymbol{#1}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\find}{find}
+
+\newcommand{\thetn}{\ve{\theta}}
+\newcommand{\theth}{\widehat{\ve{\theta}}}
+\newcommand{\theto}{\ve{\theta}'}
+\newcommand{\p}{P_{\thetn}}
+\newcommand{\phat}{\widehat{P}_{\thetn}(F_v | \Ca_t)}
+\newcommand{\pT}{P_{\thetn_{Tr}}} %\thetn_T
+\newcommand{\pO}{P_{\thetn_o}} %\thetn_o
+\newcommand{\Q}{Q(\thetn,\theto)}
+\newcommand{\m}{m^{\ast}}
+\newcommand{\q}{q\big(\ve{H}_t^{(i)}\big)}
+\newcommand{\Ca}{[\text{Ca}^{2+}]}
+
+%\usepackage[hypertex]{hyperref}    %for LaTeX
+\usepackage{hyperref}               %for pdfLaTeX
+
+\title{SMC-MC}
+\author{Joshua Vogelstein, some fuckers,  Liam Paninski}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+%
+%\end{abstract}
+%
+
+start by assuming only one neuron
+
+
+\begin{enumerate}
+\item generate N trajectories using a single forward pass of the particle filter (using prior sampler at first)
+\item add the most recently selected path (ie, ``current path''), making us have N+1 trajectories
+\item restrict model to discrete spaces. 
+\item compute q(x), the prob of sampling the trajectory, 'x'.  we can compute this using rabiner's forward-backward approach
+\item sample backward using $Z  P(h_{t+1} | h_t) P(h_t | y_{1:t})$ (ie, product of transition prob and particle weight).  this is O(N+1)
+\item compute M-H prob of acceptance: $r=q(y) p(x) / [q(x) p(y)]$, where $x$ is newly sampled trajectory, $y$ is the current path, $q(\cdot)$ is the probability of sampling (computed using (4)), and $p(x)$ is secretly $p(x)p(D|x)$, ie, the prior prob times the likelihood of the data given the trajectory
+\item sample $p \sim U(0,1)$, if $p< \min(1,r)$, accept new sequence (these steps comprise the E step)
+\item upon convergence, estimate parameters (ie, M step)
+\end{enumerate}
+
+once we have that working, we extend the framework to facilitate multiple neurons.  in this case, the probability of spiking (which we use as a prior to sample in the particle filter), changes from  
+
+\begin{equation}
+\lambda(t) = f(b+ \ve{k}' \ve{x}_t + \sum_{s<t} \ve{\omega} \ve{h}_s)
+\end{equation}
+
+to
+
+\begin{equation}
+\lambda_i(t) = f(b + \ve{k}' \ve{x}_t + \sum_{s<t} \ve{\omega} \ve{h}_s + \sum_{u>t} \ve{\zeta} \ve{g}_u)
+\end{equation}
+
+where $\ve{h}$ corresponds to spike histories from all neurons, and $\ve{g}$ corresponds to spike futures from all neurons other than $i$, a la \cite{PillowLatham07}.
+
+we then iterate all but the last step (ie, the M step) above for neuron $i$, holding the other spike trains fixed, ie, we generate samples from $\p(n_i(t) | n_{\backslash i}(t), \ve{O}_{1:t})$ in the particle filtering step.
+
+as this probably will take a while, we can do a number of things to speed it up
+
+\begin{itemize}
+\item skip generating particles step sometimes
+\item do an increment/decrement thing, where with each E step, we select a trajectory to drop, and replace it with the newly accepted trajectory
+\item use a dual-tree approach (or other N-body style approximation) for some of the stuff up there
+\item update parameters within each E step by using the approach described \cite{NgDearden05}
+\item instead of backward sampling, use Viterbi for PF (as described in \cite{GodsillDoucet01}, or the fast version of that approach (as described in \cite{KlaasFrietas05}
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,153 @@
+% this script simulates Sim.Nc cells, and then infers spikes for each,
+% assuming they are independent.
+%
+% 1) set simulation metadata
+% 2) initialize parameters
+% 3) simulate data
+% 4) plot simulation (ie, truth)
+% 5) SMCMC
+% 6) plot results (ie, spike inference)
+% 
+% Note that:
+% - 
+
+clear; clc
+
+%% 1) set simulation metadata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% metaparameters to simulate data
+Sim.T       = 500;                                  % # of time steps
+Sim.dt      = 1/100;                                % time step size
+Sim.x       = ones(1,Sim.T);                        % stimulus
+Sim.Nc      = 3;                                    % # of cells
+
+% metaparameters necessary to run smc-em code
+Sim.N       = 20;                                   % # of particles
+Sim.Mstep   = 0;                                    % whether to estimate parameters
+Sim.M       = 0;                                    % # of spike history terms per neuron
+Sim.pf      = 1;                                    % if 1, then conditional sampler, if 0, then prior sampler
+Sim.freq    = 1;                                    % # time steps per observation (d in BJ08)
+Sim.T_o     = Sim.T/Sim.freq;                       % # of observable time steps
+Sim.D       = 1;                                    % # of input dimensions (should be 1 + # of neurons)
+Sim.x       = ones(Sim.D,Sim.T);                    % stimulus
+Sim.C_params= 0;                                    % whether to compute suff stats for calcium parameters
+
+%% 2) initialize parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+rate        = 10;                                   % expected spike rate (assuming no spike history terms and Sim.x=1)
+P.k         = log(-log(1-rate*Sim.dt)/Sim.dt);      % linear filter
+P.k         = P.k*ones(Sim.D,1);                    % initialize k to the right number of dimensions
+P.tau_c     = 0.5;                                  % calcium decay time constant (sec)
+P.A         = 20;                                   % jumps size (\mu M)
+P.C_0       = 20;                                   % baseline [Ca++] (\mu M)
+P.C_init    = P.C_0;                                % initial [Ca++] (\mu M)
+P.sigma_c   = 1;                                    % noise on
+P.n         = 1.0;                                  % hill equation exponent
+P.k_d       = 200;                                  % hill coefficient
+P.alpha     = 1;                                    % F_max
+P.beta      = 0;                                    % F_min
+P.gamma     = 4e-6;                                 % scaled variance
+P.zeta      = 4*P.gamma;                            % constant variance
+P.tau_h     = 0.2;                                  % time constant
+P.sigma_h   = 0.01;                                 % stan dev of noise
+P.omega     = [.1 -.3; .1 -1.5];                    % weights
+if Sim.Nc>2
+    omega = zeros(Sim.Nc);
+    omega
+P.omega     = [.1 -.3 0; .1 -1.5 0; 0 0 0];                    % weights
+
+%% 3) simulate data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+S(1).h     = zeros(1,Sim.T);
+S(1).n     = zeros(1,Sim.T);
+S(1).C     = zeros(1,Sim.T);
+S(1).F     = zeros(1,Sim.T);
+for ii=2:Sim.Nc; S(ii)=S(1); end
+
+kx      = P.k'*Sim.x;                                   % external input to neuron
+eps_c   = P.sigma_c*sqrt(Sim.dt)*randn(Sim.Nc,Sim.T);   % generate noise on calcium
+U_sampl = rand(Sim.Nc,Sim.T);                           % generate random number to use for sampling
+eps_h   = repmat(P.sigma_h*sqrt(Sim.dt),Sim.Nc,Sim.T).*randn(Sim.Nc,Sim.T); % generate noise on spike history
+eps_F   = randn(Sim.Nc,Sim.T);                          % generate noise on fluorescence
+p       = zeros(Sim.Nc,Sim.T);                          % prob of spiking for each cell at each tim
+y       = zeros(Sim.Nc,Sim.T);                          % input to each cell at each time
+
+for t=2:Sim.T                                           % update states
+    for i=1:Sim.Nc                                      % loop over presynaptic cells
+        S(i).h(t)   = (1-Sim.dt./P.tau_h).*S(i).h(t-1) + S(i).n(t-1) + eps_h(i,t); % update h terms
+        y(i,t)      = kx(t);                            % initialize input to cell
+        for j=1:Sim.Nc                                  % loop of post-synaptic cells
+            y(i,t)  = y(i,t)+P.omega(i,j)*S(j).h(t);    % generate operand for rate function
+        end
+        p(i,t)      = 1-exp(-exp(y(i,t))*Sim.dt);       % generate prob of spiking
+        S(i).n(t)   = U_sampl(i,t)<p(i,t);              % sample from bernoulli with prob p_t
+        S(i).C(t)   = (1-Sim.dt/P.tau_c)*S(i).C(t-1) +...
+            (Sim.dt/P.tau_c)*P.C_0 + P.A*S(i).n(t) + eps_c(i,t); %update calcium
+        s           = Hill_v1(P,S(i).C(t));             % compute saturated calcium
+        S(i).F(t)   = (P.alpha*s+P.beta)+sqrt(P.gamma*s+P.zeta).*eps_F(i,t); % update fluorescence
+        if S(i).F(t)<=0; S(i).F(t) = eps; end           % keep fluorescence positive
+    end
+end
+
+%% 4) plot simulation results
+col = [1 0 0; 0 0 1; 0 0.5 0];          % define colors for mean
+figure(1), clf
+for i=1:Sim.Nc
+    subplot(311), plot(z1(S(i).F)+1,'Color',col(i,:)); hold on, stem(S(i).n,'Color',col(i,:)), axis('tight'), ylabel('F')
+    subplot(312), stem(S(i).n,'Color',col(i,:)), hold on, plot(y(i,:),'Color',col(i,:)), axis('tight'), ylabel('y')
+    subplot(313), plot(p(i,2:end),'Color',col(i,:)), hold on, axis('tight'), ylabel('p')
+end
+
+%% 5) pop pf
+
+% infer spikes for each neuron
+F = zeros(1,Sim.T);
+for i=1:Sim.Nc,
+    F=S(i).F;
+    [I{i}.S I{i}.M I{i}.P] = POOPSI_main_v1_0(F,P,Sim);
+end
+
+%% 6) plot inference
+
+figure(2), clf, nrows=Sim.Nc;
+for i=1:Sim.Nc
+    subplot(nrows,1,i), hold on,
+    stem(S(i).n,'LineStyle','none','Color','k'),
+    stem(I{i}.M.nbar,'Marker','none','Color',col(1,:))
+    axis('tight'), ylabel(num2str(i))
+end
+
+%% 7) estimate GLM parameters
+
+Sim.M       = 1;
+Sim.n_params= 1;                                    
+Sim.h_params= 1;
+Sim.F_params= 0;
+Sim.StimDim = Sim.Nc;
+Tim         = Sim;
+P.g         = 1-Sim.dt/P.tau_h;
+
+for i=1:Sim.Nc;
+    I{i}.S.h = zeros(Sim.N,Sim.T,Sim.M);            % extize spike history terms
+    h = zeros(Sim.Nc-1,Sim.T);                      % we append this to x to generate input into neuron from other neurons
+    Pre=1:Sim.Nc;                                   % generate list of presynaptic neurons
+    Pre(Pre==i)=[];                                 % remove self                                
+    k=0;                                            % counter of dimension
+    for j=Pre                                       % loop thru all presynaptic neurons
+        k=k+1;                                      % generate input to neuron based on posterior mean spike train from neuron j
+        h(k,:) = filter(1,[1 -(1-Sim.dt/P.tau_h)],I{j}.M.nbar);
+    end
+    Tim.x = [Sim.x; h];                             % append input from other neurons onto external stimulus
+    for m=1:Sim.M                                   % loop thru number of spike history terms per neuron (note that code only works for Sim.M=1)                                   
+        for t=2:Sim.T                               % obtain spike history terms (this is necessary because above we inferred spike trains assuming no spike history terms, even self-coupling)
+            I{i}.S.h(:,t,m)=P.g(m)*I{i}.S.h(:,t-1,m)+I{i}.S.n(:,t-1);
+        end
+    end
+    E = I{i}.P;
+    E.omega = E.omega(i,i);                         % initialize self-coupling term
+    E.k     = E.k*ones(Sim.StimDim,1);              % initialize external stim and cross-coupling terms
+    Enew{i}  = GOOPSI_Mstep_v1_0(Tim,I{i}.S,I{i}.M,E,F);
+end

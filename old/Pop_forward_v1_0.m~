@@ -1,0 +1,92 @@
+function S = Pop_forward_v1_0(Sim,F,P)
+% the function does the forward part of the pop pf
+% here, we are simply doing vanilla particle filtering, ie, sample using
+% the prior.
+%
+% Inputs---
+% Sim:  simulation metadata
+% F:    fluorescence (Nc x T)
+% P:    current parameter estimates
+%
+% Outputs---
+% S:    simulation states
+
+%% allocate memory and initialize stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% extize particle info
+S(1).p  = zeros(Sim.Np,Sim.T);                   % extize rate
+S(1).n  = zeros(Sim.Np,Sim.T);                   % extize spike counts
+S(1).C  = P.C_init*ones(Sim.Np,Sim.T);           % extize calcium
+S(1).h  = zeros(Sim.Np,Sim.T);                  % extize spike history terms
+S(1).eps_c = sqrt(P.sig2_c)*randn(Sim.Np,Sim.T);% generate noise on C
+S(1).eps_h = sqrt(P.sig2_h)*randn(Sim.Np,Sim.T);% generate noise on C
+S(1).U_sampl = rand(Sim.Np,Sim.T);                % random samples
+for i=1:Sim.Nc, S(i)=S(1); end
+
+w_f   = 1/Sim.Nc*ones(Sim.Np,Sim.T);            % extize forward weights
+w_b   = 1/Sim.Nc*ones(Sim.Np,Sim.T);            % extize forward weights
+Neff  = 1/Sim.Nc*ones(1,Sim.T);              % extize N_{eff}
+
+% preprocess stuff for stratified resampling
+ints        = linspace(0,1,Sim.Nc+1);            % generate intervals
+diffs       = ints(2)-ints(1);                  % generate interval size
+U_resamp    = repmat(ints(1:end-1),Sim.T,1)+diffs*rand(Sim.T,Sim.Nc); % resampling matrix
+
+% extize misc stuff
+
+%% do the particle filter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for t=2:Sim.T
+    for i=1:Sim.Nc
+        
+        % generate samples
+        S(i).h(:,t) = P.g*S(i).h(:,t-1)+S(i).n(:,t-1) + S(i).eps_h(:,t);
+        y_t         = P.kx(t);
+        for j=1:Sim.Nc
+            y_t     = y_t + P.omega(i,j)*S(j).h(:,t);
+        end
+        S(i).p(:,t) = 1-exp(-exp(y_t)*Sim.dt);  % update rate for those particles with y_t<0
+        S(i).n(:,t) = S(i).U_sampl(:,t)<S(i).p(:,t);      % sample n
+        S(i).C(:,t) = (1-P.a)*S(i).C(:,t-1)+P.A*S(i).n(:,t)+P.a*P.C_0+S(i).eps_c(:,t);% sample C
+
+        % compute weights for each cell
+        F_mu(i,:)   = P.alpha*Hill_v1(P,S(i).C(:,t))+P.beta;   % compute E[F_t]
+        F_var(i,:)  = P.gamma*Hill_v1(P,S(i).C(:,t))+P.zeta;   % compute V[F_t]
+        ln_w(i,:)   = -0.5*(F(i,t)-F_mu(i,:)).^2./F_var(i,:) - 0.5*log(F_var(i,:));% compute log of weights
+    end
+
+    % compute weights for each particle
+    ln_wsum = sum(ln_w);
+    ln_wsum = ln_wsum+log(w_f(:,t-1)');   % update log(weights)
+    ln_wsum = ln_wsum-max(ln_wsum);                       % subtract the max to avoid rounding errors
+    w       = exp(ln_wsum);                            % exponentiate to get actual weights
+    w_f(:,t)= w/sum(w);                             % normalize to define a legitimate distribution
+
+        % stratified resample
+        Neff(t)  = 1/sum(S.w_f(:,t).^2);    % store N_{eff}
+    
+        % if weights are degenerate or we are doing prior sampling then resample
+        if S.Neff(t) < Sim.Nc/2
+            [foo,ind]   = histc(U_resamp(t,:),[0  cumsum(S.w_f(:,t))']);
+            [ri,ri]     = sort(rand(Sim.Nc,1));      % these 3 lines stratified resample
+            ind         = ind(ri);
+   
+            for i=1:Sim.Nc
+            S(i).p(:,t)   = S.p(ind,t);      % resample probabilities (necessary?)
+            S(i).n(:,t)   = S.n(ind,t);      % resample calcium
+            S(i).C(:,t)   = S.C(ind,t);      % resample calcium
+            S(i).h(:,t)   = S.h(ind,t);% resample all h's
+            end
+            S.w_f(:,t) = 1/Sim.Nc*ones(Sim.Nc,Sim.freq); % reset weights
+        end
+
+    col = [1 0 0; 0 0 1];          % define colors for mean
+    figure(2), clf
+    for i=1:Sim.Nc
+        subplot(411), plot(z1(F(i,1:t))+1,'Color',col(i,:)), axis('tight')
+        subplot(412), bar(mean(S(i).n(:,1:t)),'BarColor',col(i,:)), axis('tight')
+        subplot(413), plot(mean(S(i).p(:,1:t)),'Color',col(i,:)), hold on, axis('tight')
+    end
+    subplot(414), plot(w_f(:,1:t)'), axis('tight')
+
+end %for time loop
