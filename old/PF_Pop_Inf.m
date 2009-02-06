@@ -7,9 +7,7 @@
 % 4) plot simulation (ie, truth)
 % 5) SMCMC
 % 6) plot results (ie, spike inference)
-% 7) estimate connection matrix from calcium
-% 8) estimate connection matrix from spikes
-% 9) plot omega and estimate
+% 7) estimate connection matrix
 % 
 % Remarks:
 % a) if Nc > 2, code automatically sets all coupling terms for neurons j=3,4,... to zero
@@ -29,17 +27,8 @@ clear; clc
 Sim.T       = 500;                                  % # of time steps
 Sim.dt      = 1/100;                                % time step size
 Sim.D       = 1;                                    % # dimensions of external stimulus
-Sim.x       = ones(Sim.D,Sim.T);                    % stimulus
-Sim.Nc      = 4;                                    % # of cells
-
-% metaparameters necessary to run smc-em code
-Sim.N       = 20;                                   % # of particles
-Sim.Mstep   = 0;                                    % whether to estimate parameters
-Sim.M       = 0;                                    % # of spike history terms per neuron
-Sim.pf      = 1;                                    % if 1, then conditional sampler, if 0, then prior sampler
-Sim.freq    = 1;                                    % # time steps per observation (d in BJ08)
-Sim.T_o     = Sim.T/Sim.freq;                       % # of observable time steps
-Sim.C_params= 0;                                    % whether to compute suff stats for calcium parameters
+Sim.x       = ones(Sim.D,Sim.T);                        % stimulus
+Sim.Nc      = 3;                                    % # of cells
 
 %% 2) initialize parameters
 
@@ -55,11 +44,11 @@ P.n         = 1.0;                                  % hill equation exponent
 P.k_d       = 200;                                  % hill coefficient
 P.alpha     = 1;                                    % F_max
 P.beta      = 0;                                    % F_min
-P.gamma     = 4e-5;                                 % scaled variance
+P.gamma     = 4e-6;                                 % scaled variance
 P.zeta      = 4*P.gamma;                            % constant variance
 P.tau_h     = 0.2;                                  % time constant
 P.sigma_h   = 0.01;                                 % stan dev of noise
-P.omega     = [.1 -.3; -.1 -1.0];                    % weights
+P.omega     = [.1 -.3; .1 -1.5];                    % weights
 if Sim.Nc>2
     omega = zeros(Sim.Nc);
     omega(1:2,1:2)=P.omega;
@@ -101,7 +90,7 @@ end
 
 %% 4) plot simulation results
 
-col = [1 0 0; 0 0 1; 0 0.5 0; 1 0.5 0];          % define colors for mean
+col = [1 0 0; 0 0 1; 0 0.5 0];          % define colors for mean
 figure(1), clf
 for i=1:Sim.Nc
     subplot(311), plot(z1(S(i).F)+1,'Color',col(i,:)); hold on, stem(S(i).n,'Color',col(i,:)), axis('tight'), ylabel('F')
@@ -109,122 +98,62 @@ for i=1:Sim.Nc
     subplot(313), plot(p(i,2:end),'Color',col(i,:)), hold on, axis('tight'), ylabel('p')
 end
 
- %% 5) pop pf
-% 
-% % infer spikes for each neuron
-% F = zeros(1,Sim.T);
-% for i=1:Sim.Nc,
-%     F=S(i).F;
-%     [I{i}.S I{i}.M I{i}.P] = GOOPSI_main_v2_0(F,P,Sim);
-% end
-% 
-% %% 6) plot inference
-% 
-% figure(2), clf, nrows=Sim.Nc;
-% for i=1:Sim.Nc
-%     subplot(nrows,1,i), hold on,
-%     stem(S(i).n,'LineStyle','none','Color','k'),
-%     stem(I{i}.M.nbar,'Marker','none','Color',col(1,:))
-% %     axis('tight'), 
-%     ylabel(num2str(i))
-% end
-% 
-% %% 7) estimate GLM parameters
-% 
-% Sim.M       = 1;                                    % # spike history terms per neuron (fixed at one for this version of code)
-% Sim.n_params= 1;                                    % if 1, estimate k
-% Sim.h_params= 1;                                    % if 1, estimate omega (self-coupling)
-% Sim.F_params= 0;                                    % if 1, estimate observation parameters
-% Sim.StimDim = Sim.Nc;                               % set external stim dimesions to # cells
-% Tim         = Sim;                                  % copy Sim structure for input to Mstep function
-% P.g         = 1-Sim.dt/P.tau_h;                     % for brevity
-% 
-% for i=1:Sim.Nc;
-%     I{i}.S.h = zeros(Sim.N,Sim.T,Sim.M);            % extize spike history terms
-%     h = zeros(Sim.Nc-1,Sim.T);                      % we append this to x to generate input into neuron from other neurons
-%     Pre=1:Sim.Nc;                                   % generate list of presynaptic neurons
-%     Pre(Pre==i)=[];                                 % remove self                                
-%     k=0;                                            % counter of dimension
-%     for j=Pre                                       % loop thru all presynaptic neurons
-%         k=k+1;                                      % generate input to neuron based on posterior mean spike train from neuron j
-%         h(k,:) = filter(1,[1 -(1-Sim.dt/P.tau_h)],I{j}.M.nbar);
-%     end
-%     Tim.x = [Sim.x; h];                             % append input from other neurons onto external stimulus
-%     for m=1:Sim.M                                   % loop thru number of spike history terms per neuron (note that code only works for Sim.M=1)                                   
-%         for t=2:Sim.T                               % obtain spike history terms (this is necessary because above we inferred spike trains assuming no spike history terms, even self-coupling)
-%             I{i}.S.h(:,t,m)=P.g(m)*I{i}.S.h(:,t-1,m)+I{i}.S.n(:,t-1);
-%         end
-%     end
-%     if i==1
-%         figure(2),
-%         subplot(nrows,1,1), hold on, plot(S(1).h+1,'k'), plot(I{1}.S.h(1,:,1)+1)
-%         for j=2:Sim.Nc
-%             subplot(nrows,1,j), hold on, plot(S(j).h+1,'k'), plot(Tim.x(j,:)+1)
-%         end
-%     end
-%     
-%     E = I{i}.P;
-%     E.omega = E.omega(i,i);                         % initialize self-coupling term
-%     E.k     = E.k*ones(Sim.StimDim,1);              % initialize external stim and cross-coupling terms
-%     Enew{i}  = GOOPSI_Mstep_v1_0(Tim,I{i}.S,I{i}.M,E,F);
-% end
+%% 5) pop pf
 
-%% 8) estimate connection matrix directly from spikes
+% metaparameters necessary to run smc-em code
+Sim.N       = 20;                                   % # of particles
+Sim.Mstep   = 0;                                    % whether to estimate parameters
+Sim.M       = 0;                                    % # of spike history terms per neuron
+Sim.pf      = 1;                                    % if 1, then conditional sampler, if 0, then prior sampler
+Sim.freq    = 1;                                    % # time steps per observation (d in BJ08)
+Sim.T_o     = Sim.T/Sim.freq;                       % # of observable time steps
+Sim.C_params= 0;                                    % whether to compute suff stats for calcium parameters
 
-% J = I;
+% infer spikes for each neuron
+F = zeros(1,Sim.T);
+for i=1:Sim.Nc,
+    F=S(i).F;
+    [I{i}.S I{i}.M I{i}.P] = GOOPSI_main_v2_0(F,P,Sim);
+end
+
+%% 6) plot inference
+
+figure(2), clf, nrows=Sim.Nc;
+for i=1:Sim.Nc
+    subplot(nrows,1,i), hold on,
+    stem(S(i).n,'LineStyle','none','Color','k'),
+    stem(I{i}.M.nbar,'Marker','none','Color',col(1,:))
+    axis('tight'), ylabel(num2str(i))
+end
+
+%% 7) estimate GLM parameters
+
+Sim.M       = 1;                                    % # spike history terms per neuron (fixed at one for this version of code)
+Sim.n_params= 1;                                    % if 1, estimate k
+Sim.h_params= 1;                                    % if 1, estimate omega (self-coupling)
+Sim.F_params= 0;                                    % if 1, estimate observation parameters
+Sim.StimDim = Sim.Nc;                               % set external stim dimesions to # cells
+Tim         = Sim;                                  % copy Sim structure for input to Mstep function
+P.g         = 1-Sim.dt/P.tau_h;                     % for brevity
+
 for i=1:Sim.Nc;
-    J{i}.S.h = zeros(Sim.N,Sim.T,Sim.M);            % extize spike history terms
+    I{i}.S.h = zeros(Sim.N,Sim.T,Sim.M);            % extize spike history terms
     h = zeros(Sim.Nc-1,Sim.T);                      % we append this to x to generate input into neuron from other neurons
     Pre=1:Sim.Nc;                                   % generate list of presynaptic neurons
     Pre(Pre==i)=[];                                 % remove self                                
     k=0;                                            % counter of dimension
     for j=Pre                                       % loop thru all presynaptic neurons
         k=k+1;                                      % generate input to neuron based on posterior mean spike train from neuron j
-        h(k,:) = filter(1,[1 -(1-Sim.dt/P.tau_h)],S(j).n);
+        h(k,:) = filter(1,[1 -(1-Sim.dt/P.tau_h)],I{j}.M.nbar);
     end
     Tim.x = [Sim.x; h];                             % append input from other neurons onto external stimulus
     for m=1:Sim.M                                   % loop thru number of spike history terms per neuron (note that code only works for Sim.M=1)                                   
         for t=2:Sim.T                               % obtain spike history terms (this is necessary because above we inferred spike trains assuming no spike history terms, even self-coupling)
-            J{i}.S.h(:,t,m)=P.g(m)*J{i}.S.h(:,t-1,m)+S(i).n(:,t-1);
+            I{i}.S.h(:,t,m)=P.g(m)*I{i}.S.h(:,t-1,m)+I{i}.S.n(:,t-1);
         end
     end
-    J{i}.S.w_b=1/Sim.N*ones(Sim.N,Sim.T);
-    
-    E = P;
+    E = I{i}.P;
     E.omega = E.omega(i,i);                         % initialize self-coupling term
-    E.k     = E.k*ones(Sim.Nc,1);              % initialize external stim and cross-coupling terms
-    Enew2{i}  = GOOPSI_Mstep_v1_0(Tim,J{i}.S,J{i}.M,E,F);
+    E.k     = E.k*ones(Sim.StimDim,1);              % initialize external stim and cross-coupling terms
+    Enew{i}  = GOOPSI_Mstep_v1_0(Tim,I{i}.S,I{i}.M,E,F);
 end
-
-
-%% 9) plot omega
-% figure(4), clf,
-% Phat.omega=zeros(Sim.Nc);
-% for i=1:Sim.Nc
-%     Phat.omega(i,i)=Enew{i}.omega;
-%     Pre=1:Sim.Nc;                                   % generate list of presynaptic neurons
-%     Pre(Pre==i)=[];                                 % remove self                                
-%     k=0;                                            % counter of dimension
-%     for j=Pre
-%         k=k+1;                                      % generate input to neuron based on posterior mean spike train from neuron j
-%         Phat.omega(i,j)=Enew{i}.k(k);
-%     end
-% end
-% 
-% Phat2.omega=zeros(Sim.Nc);
-% for i=1:Sim.Nc
-%     Phat2.omega(i,i)=Enew2{i}.omega;
-%     Pre=1:Sim.Nc;                                   % generate list of presynaptic neurons
-%     Pre(Pre==i)=[];                                 % remove self                                
-%     k=0;                                            % counter of dimension
-%     for j=Pre
-%         k=k+1;                                      % generate input to neuron based on posterior mean spike train from neuron j
-%         Phat2.omega(i,j)=Enew2{i}.k(k);
-%     end
-% end
-% 
-% clims(1)=min(min(P.omega(:)),min(Phat.omega(:)));
-% clims(2)=max(max(P.omega(:)),max(Phat.omega(:)));
-% subplot(131), imagesc(P.omega,clims), colormap(gray), %colorbar
-% subplot(132), imagesc(Phat.omega,clims), %colorbar
-% subplot(133), imagesc(Phat2.omega,clims), %colorbar

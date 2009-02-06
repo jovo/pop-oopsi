@@ -12,6 +12,10 @@ function PF_Pop_Inf_v2_5(T,pl)
 % 8) omega inference using particle filter
 % 9) make pretty fig
 %
+% Input:
+%   T:  # of time steps (min of 1000, when plotting)
+%   pl: whether to plot stuff between iterations
+% 
 % Remarks:
 % a) some of the code is general for Sim.M spike history terms per neurons, but not all (eg, time constants)
 % b) inference assumes all correct parameters (except those governing GLM)
