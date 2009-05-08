@@ -43,7 +43,7 @@ Sim.T       = T;                                    % # of time steps
 Sim.dt      = 1/60;                                 % time step size
 Sim.D       = 1;                                    % # dimensions of external stimulus
 Sim.x       = ones(Sim.D,Sim.T);                    % stimulus
-Sim.Nc      = 2;                                    % # of cells
+Sim.Nc      = 10;                                    % # of cells
 
 %% 2) initialize parameters
 
