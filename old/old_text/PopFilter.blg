@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: PopFilter.aux
+The style file: apalike.bst
+Database file #1: /Users/joshyv/Research/misc/biblist.bib
+Warning--empty journal in Chen03
+Warning--empty journal in NgDearden05
+You've used 10 entries,
+            1935 wiz_defined-function locations,
+            541 strings with 5314 characters,
+and the built_in function-call counts, 3621 in all, are:
+= -- 349
+> -- 152
+< -- 5
++ -- 50
+- -- 50
+* -- 310
+:= -- 657
+add.period$ -- 28
+call.type$ -- 10
+change.case$ -- 75
+chr.to.int$ -- 10
+cite$ -- 12
+duplicate$ -- 135
+empty$ -- 245
+format.name$ -- 64
+if$ -- 681
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 10
+newline$ -- 51
+num.names$ -- 30
+pop$ -- 64
+preamble$ -- 1
+purify$ -- 75
+quote$ -- 0
+skip$ -- 106
+stack$ -- 0
+substring$ -- 227
+swap$ -- 8
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 60
+warning$ -- 2
+while$ -- 30
+width$ -- 0
+write$ -- 123
+(There were 2 warnings)

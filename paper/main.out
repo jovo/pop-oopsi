@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [1][-]{section.2}{Model}{}
+\BOOKMARK [2][-]{subsection.2.1}{Single neuron model}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Multiple neuron model}{section.2}
+\BOOKMARK [1][-]{section.3}{Mathematical Background}{}
+\BOOKMARK [2][-]{subsection.3.1}{population dynamics}{section.3}
+\BOOKMARK [1][-]{section.4}{Results}{}
+\BOOKMARK [2][-]{subsection.4.1}{Main Result}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Embedded MCMC improves inference}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{Including a sparse prior}{section.4}
+\BOOKMARK [2][-]{subsection.4.4}{Data}{section.4}
+\BOOKMARK [1][-]{section.5}{Other algorithms}{}
+\BOOKMARK [2][-]{subsection.5.1}{Default algorithm: see BJ08 for details}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Population PF}{section.5}
+\BOOKMARK [2][-]{subsection.5.3}{Gibbsish Population PF}{section.5}
+\BOOKMARK [2][-]{subsection.5.4}{Gibbser Population PF}{section.5}
+\BOOKMARK [2][-]{subsection.5.5}{Metropolis-Gibbs Population PF}{section.5}
+\BOOKMARK [2][-]{subsection.5.6}{Ways we might make stuff better}{section.5}
+\BOOKMARK [2][-]{subsection.5.7}{these are not very good ideas, but i thought they were potentially worth writing down}{section.5}
