@@ -1,16 +1,17 @@
-This is pdfeTeXk, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  8 JUL 2009 13:44
+This is pdfTeX, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.5.30)  8 JUL 2009 17:44
 entering extended mode
- file:line:error style messages enabled.
 **simulation_and_inference3.tex
 (./simulation_and_inference3.tex
-LaTeX2e <2003/12/01>
-Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
-ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
-stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
-h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
-kish, ukrainian, nohyphenation, loaded.
-(/opt/local/share/texmf-dist/tex/latex/revtex4/revtex4.cls
-Document Class: revtex4 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for do
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, basque, bulgarian, coptic, welsh, czech, slovak, german, ngerman, d
+anish, esperanto, spanish, catalan, galician, estonian, finnish, french, greek,
+ monogreek, ancientgreek, croatian, hungarian, interlingua, ibycus, indonesian,
+ icelandic, italian, latin, mongolian, dutch, norsk, polish, portuguese, romani
+an, russian, slovenian, uppersorbian, serbian, swedish, turkish, ukenglish, ukr
+ainian, loaded.
+(/usr/share/texmf/tex/latex/revtex/revtex4.cls
+Document Class: revtex4 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for do
 cumentation)
  Copyright (c) 2001 The American Physical Society.
  mailto:revtex@aps.org
@@ -35,9 +36,9 @@ ltxgrid: portions licensed from W. E. Baxter (web@superscript.com)
 \pagegrid@col=\count82
 Class revtex4 Info: Incorporating package {textcase}  [1998/11/12 v0.06 Text on
 ly upper/lower case changing (DPC)]. on input line 3682.
-(/opt/local/share/texmf-local/tex/latex/html/url.sty
-Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
- names
+(/usr/share/texmf/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
 )
 \c@affil=\count83
 \absbox=\box31
@@ -52,25 +53,25 @@ Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
 \c@figure=\count90
 \c@table=\count91
 
-(/opt/local/share/texmf-dist/tex/latex/natbib/natbib.sty
-Package: natbib 2003/06/06 7.1 (PWD)
+(/usr/share/texmf/tex/latex/natbib/natbib.sty
+Package: natbib 2007/02/05 8.0 (PWD)
 \bibhang=\skip43
 \bibsep=\skip44
-LaTeX Info: Redefining \cite on input line 518.
+LaTeX Info: Redefining \cite on input line 602.
 \c@NAT@ctr=\count92
 )
 \widetext@top=\box32
 \widetext@bot=\box33
 
-(/opt/local/share/texmf-dist/tex/latex/revtex4/revsymb.sty
-Package: revsymb 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documenta
+(/usr/share/texmf/tex/latex/revtex/revsymb.sty
+Package: revsymb 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documenta
 tion)
 LaTeX Info: Redefining \REV@mathfrak on input line 118.
 ))
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2002/01/22 v2.2d
 
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2001/10/25 v2.2f
 \@emptytoks=\toks16
 \symAMSa=\mathgroup4
@@ -80,24 +81,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 LaTeX Info: Redefining \frak on input line 135.
 LaTeX Info: Redefining \Bbb on input line 137.
 ))
-(/opt/local/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-(/opt/local/share/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/opt/local/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen102
 ))
-(/opt/local/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen103
 )
-(/opt/local/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count93
@@ -117,7 +118,7 @@ LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \macc@depth=\count98
 \c@MaxMatrixCols=\count99
-\dotsspace@=\muskip10
+\dotsspace@=\muskip11
 \c@parentequation=\count100
 \dspbrk@lvl=\count101
 \tag@help=\toks18
@@ -141,19 +142,19 @@ LaTeX Info: Redefining \] on input line 2667.
 
 Class revtex4 Warning: No Society specified, using generic APS style.
 
-(/opt/local/share/texmf-dist/tex/latex/revtex4/aps.rtx
-File: aps.rtx 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documentatio
+(/usr/share/texmf/tex/latex/revtex/aps.rtx
+File: aps.rtx 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documentatio
 n)
 )
-(/opt/local/share/texmf-dist/tex/latex/revtex4/10pt.rtx
-File: 10pt.rtx 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documentati
+(/usr/share/texmf/tex/latex/revtex/10pt.rtx
+File: 10pt.rtx 2001/08/02 v4.0 (http://publish.aps.org/revtex4/ for documentati
 on)
 )
-(/opt/local/share/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/share/texmf/tex/latex/algorithms/algorithm.sty
 Package: algorithm 
 
 Document Style `algorithm' - floating environment
-(/opt/local/share/texmf-dist/tex/latex/float/float.sty
+(/usr/share/texmf/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count105
 \float@exts=\toks22
@@ -161,7 +162,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks23
 \@floatcapt=\box37
 )
-(/opt/local/share/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texmf/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
@@ -185,27 +186,26 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip50
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/opt/local/share/texmf-dist/tex/latex/graphics/graphicx.sty
+) (/usr/share/texmf/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks25
 )
-(/opt/local/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/opt/local/share/texmf-dist/tex/latex/graphics/graphics.cfg
-File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+(/usr/lib/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 80.
+Package graphics Info: Driver file: dvips.def on input line 90.
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/pdftex.def
-File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
-\Gread@gobject=\count114
+(/usr/share/texmf/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
@@ -228,235 +228,75 @@ LaTeX Font Info:    ... okay on input line 19.
 Class revtex4 Info: Patching LaTeX tabular. on input line 19.
 Class revtex4 Info: cite was not loaded (OK!) on input line 19.
 Class revtex4 Info: multicol was not loaded (OK!) on input line 19.
-
-(/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
-(/opt/local/share/texmf-dist/tex/context/base/supp-mis.tex
-loading : Context Support Macros / Miscellaneous (2004.10.26)
-\protectiondepth=\count115
-\scratchcounter=\count116
-\scratchtoks=\toks26
-\scratchdimen=\dimen113
-\scratchskip=\skip51
-\scratchmuskip=\muskip11
-\scratchbox=\box38
-\scratchread=\read1
-\scratchwrite=\write3
-\zeropoint=\dimen114
-\onepoint=\dimen115
-\onebasepoint=\dimen116
-\minusone=\count117
-\thousandpoint=\dimen117
-\onerealpoint=\dimen118
-\emptytoks=\toks27
-\nextbox=\box39
-\nextdepth=\dimen119
-\everyline=\toks28
-\!!counta=\count118
-\!!countb=\count119
-\recursecounter=\count120
-)
-loading : Context Support Macros / PDF (2004.03.26)
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen120
-\MPnumerator=\count124
-\everyMPtoPDFconversion=\toks29
-) (./abstract.tex) (./intro.tex
+ (./abstract.tex) (./intro.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-)) (./overview.tex
-[1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./hmm.tex
+)) (./overview.tex [1]) (./hmm.tex
 [2]) (./estimate.tex [3]) (./sampling.tex [4] [5]) (./hmm_params.tex [6])
 (./fisher.tex [7]) (./implementation.tex) (./simulation.tex [8]
-./simulation.tex:47: Missing $ inserted.
-<inserted text> 
-                $
-l.47 ...udegraphics[width=250pt]{../figs/Figure0b_
-                                                  fluor_eg_hlowSNR}
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+File: ../figs/Figure0b_fluor_eg_hlowSNR.eps Graphic file (type eps)
 
-./simulation.tex:47: Extra }, or forgotten $.
-l.47 ...=250pt]{../figs/Figure0b_fluor_eg_hlowSNR}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-<../figs/Figure0b_fluor_eg_hlowSNR.pdf, id=93, 614.295pt x 794.97pt>
-File: ../figs/Figure0b_fluor_eg_hlowSNR.pdf Graphic file (type pdf)
-
-<use ../figs/Figure0b_fluor_eg_hlowSNR.pdf>
-./simulation.tex:49: Missing $ inserted.
-<inserted text> 
-                $
-l.49 \end{minipage}
-                   
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (639.61288pt too wide) in paragraph at lines 47--49
- []\OT1/cmr/m/n/9 includegraphics[width=250pt]../figs/Figure0b$[]\OML/cmm/m/it/
-9 luor[]g[]lowSNR[]$ 
- []
-
-./simulation.tex:49: Missing } inserted.
-<inserted text> 
-                }
-l.49 \end{minipage}
-                   
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-<../figs/Figure0a_fluor_eg_highSNR.pdf, id=94, 614.295pt x 794.97pt>
-File: ../figs/Figure0a_fluor_eg_highSNR.pdf Graphic file (type pdf)
-
-<use ../figs/Figure0a_fluor_eg_highSNR.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 51--52
+<../figs/Figure0b_fluor_eg_hlowSNR.eps>
+Overfull \hbox (191.07281pt too wide) in paragraph at lines 47--48
  [][] 
  []
 
-) (./inference.tex [9] [10 <../figs/Figure0a_fluor_eg_highSNR.pdf>]
-<../figs/Figure1_fluor_mcmc_vs_iid.pdf, id=104, 614.295pt x 794.97pt>
-File: ../figs/Figure1_fluor_mcmc_vs_iid.pdf Graphic file (type pdf)
+File: ../figs/Figure0a_fluor_eg_highSNR.eps Graphic file (type eps)
+<../figs/Figure0a_fluor_eg_highSNR.eps>) (./inference.tex [9] [10]
+File: ../figs/Figure1_fluor_mcmc_vs_iid.eps Graphic file (type eps)
 
-<use ../figs/Figure1_fluor_mcmc_vs_iid.pdf>
-<../figs/Figure2_fluor_base_vs_iid.pdf, id=105, 614.295pt x 794.97pt>
-File: ../figs/Figure2_fluor_base_vs_iid.pdf Graphic file (type pdf)
+<../figs/Figure1_fluor_mcmc_vs_iid.eps>
+File: ../figs/Figure1b_fluor_mcmc_vs_iid.eps Graphic file (type eps)
 
-<use ../figs/Figure2_fluor_base_vs_iid.pdf>
-<../figs/Figure9_fluor_sparse_sol.pdf, id=106, 614.295pt x 794.97pt>
-File: ../figs/Figure9_fluor_sparse_sol.pdf Graphic file (type pdf)
+<../figs/Figure1b_fluor_mcmc_vs_iid.eps>
+File: ../figs/Figure2_fluor_base_vs_iid.eps Graphic file (type eps)
 
-<use ../figs/Figure9_fluor_sparse_sol.pdf>
-<../figs/Figure3_perf_vs_gamma.pdf, id=107, 614.295pt x 794.97pt>
-File: ../figs/Figure3_perf_vs_gamma.pdf Graphic file (type pdf)
+<../figs/Figure2_fluor_base_vs_iid.eps>
+File: ../figs/Figure2b_fluor_base_vs_iid.eps Graphic file (type eps)
 
-<use ../figs/Figure3_perf_vs_gamma.pdf> [11]
-<../figs/Figure5a_hist_glm_vanilla.pdf, id=111, 614.295pt x 794.97pt>
-File: ../figs/Figure5a_hist_glm_vanilla.pdf Graphic file (type pdf)
+<../figs/Figure2b_fluor_base_vs_iid.eps>
+File: ../figs/Figure9_fluor_sparse_sol.eps Graphic file (type eps)
 
-<use ../figs/Figure5a_hist_glm_vanilla.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 73--74
- [][] 
- []
+<../figs/Figure9_fluor_sparse_sol.eps>
+File: ../figs/Figure9b_fluor_sparse_sol.eps Graphic file (type eps)
+ <../figs/Figure9b_fluor_sparse_sol.eps>
+[11]
+File: ../figs/Figure3_perf_vs_gamma.eps Graphic file (type eps)
+ <../figs/Figure3_perf_vs_gamma.eps> [12]
+File: ../figs/Figure5_hist_glm_vanilla.eps Graphic file (type eps)
 
-<../figs/Figure5b_hist_glm_sparse.pdf, id=112, 614.295pt x 794.97pt>
-File: ../figs/Figure5b_hist_glm_sparse.pdf Graphic file (type pdf)
+<../figs/Figure5_hist_glm_vanilla.eps>
+File: ../figs/Figure4_perf_vs_T.eps Graphic file (type eps)
+ <../figs/Figure4_perf_vs_T.eps>
+File: ../figs/Figure6c_perf_vs_N.eps Graphic file (type eps)
 
-<use ../figs/Figure5b_hist_glm_sparse.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 76--77
- [][] 
- []
+<../figs/Figure6c_perf_vs_N.eps>
+File: ../figs/Figure7b_raster_weak.eps Graphic file (type eps)
+ <../figs/Figure7b_raster_weak.eps>
+File: ../figs/Figure7a_raster_strong.eps Graphic file (type eps)
 
-<../figs/Figure4_perf_vs_T.pdf, id=113, 614.295pt x 794.97pt>
-File: ../figs/Figure4_perf_vs_T.pdf Graphic file (type pdf)
+<../figs/Figure7a_raster_strong.eps>
+File: ../figs/Figure8b_fluor_weak_glm.eps Graphic file (type eps)
+ <../figs/Figure8b_fluor_weak_glm.eps>
+File: ../figs/Figure8a_fluor_strong_glm.eps Graphic file (type eps)
 
-<use ../figs/Figure4_perf_vs_T.pdf>
-<../figs/Figure6a_perf_vs_N.pdf, id=114, 614.295pt x 794.97pt>
-File: ../figs/Figure6a_perf_vs_N.pdf Graphic file (type pdf)
-
-<use ../figs/Figure6a_perf_vs_N.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 92--93
- [][] 
- []
-
-<../figs/Figure6b_perf_vs_N_sparse.pdf, id=115, 614.295pt x 794.97pt>
-File: ../figs/Figure6b_perf_vs_N_sparse.pdf Graphic file (type pdf)
-
-<use ../figs/Figure6b_perf_vs_N_sparse.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 95--96
- [][] 
- []
-
-<../figs/Figure7b_raster_weak.pdf, id=116, 614.295pt x 794.97pt>
-File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7b_raster_weak.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 104--105
- [][] 
- []
-
-<../figs/Figure7a_raster_strong.pdf, id=117, 614.295pt x 794.97pt>
-File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7a_raster_strong.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 107--108
- [][] 
- []
-
-<../figs/Figure8b_fluor_weak_glm.pdf, id=118, 614.295pt x 794.97pt>
-File: ../figs/Figure8b_fluor_weak_glm.pdf Graphic file (type pdf)
-
-<use ../figs/Figure8b_fluor_weak_glm.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 117--118
- [][] 
- []
-
-<../figs/Figure8a_fluor_strong_glm.pdf, id=119, 614.295pt x 794.97pt>
-File: ../figs/Figure8a_fluor_strong_glm.pdf Graphic file (type pdf)
-
-<use ../figs/Figure8a_fluor_strong_glm.pdf>
-Overfull \hbox (20.50156pt too wide) in paragraph at lines 120--121
- [][] 
- []
-
-) (./discussion.tex [12 <../figs/Figure1_fluor_mcmc_vs_iid.pdf>] [13 <../figs/F
-igure2_fluor_base_vs_iid.pdf>]) (./simulation_and_inference3.bbl [14 <../figs/F
-igure9_fluor_sparse_sol.pdf>] [15 <../figs/Figure3_perf_vs_gamma.pdf>] [16 <../
-figs/Figure5a_hist_glm_vanilla.pdf> <../figs/Figure5b_hist_glm_sparse.pdf>]
-[17 <../figs/Figure4_perf_vs_T.pdf>] [18 <../figs/Figure6a_perf_vs_N.pdf> <../f
-igs/Figure6b_perf_vs_N_sparse.pdf>]) [19 <../figs/Figure7b_raster_weak.pdf> <..
-/figs/Figure7a_raster_strong.pdf>] [20 <../figs/Figure8b_fluor_weak_glm.pdf> <.
-./figs/Figure8a_fluor_strong_glm.pdf>] (./simulation_and_inference3.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
- ) 
+<../figs/Figure8a_fluor_strong_glm.eps>) (./discussion.tex [13] [14])
+(./simulation_and_inference3.bbl [15] [16] [17]) [18]
+(./simulation_and_inference3.aux) ) 
 Here is how much of TeX's memory you used:
- 4076 strings out of 94500
- 52489 string characters out of 1155413
- 124378 words of memory out of 1000000
- 7159 multiletter control sequences out of 10000+50000
- 11293 words of font info for 43 fonts, out of 500000 for 2000
- 580 hyphenation exceptions out of 1000
- 32i,9n,26p,2149b,338s stack positions out of 1500i,500n,5000p,200000b,5000s
-PDF statistics:
- 205 PDF objects out of 300000
- 0 named destinations out of 131072
- 76 words of extra memory for PDF output out of 65536
-</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/sha
-re/texmf-dist/fonts/type1/public/tt2001/fmex9.pfb></opt/local/share/texmf-dist/
-fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/blues
-ky/cm/cmr6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi5.pfb></
-opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr5.pfb></opt/local/share/te
-xmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/fonts/ty
-pe1/bluesky/cm/cmsy5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cm
-ex10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></opt/l
-ocal/share/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/share/texmf-
-dist/fonts/type1/bluesky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fonts/type1/
-bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi6
-.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/
-share/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/
-fonts/type1/bluesky/cm/cmsy10.pfb></opt/local/share/texmf-dist/fonts/type1/blue
-sky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti10.pfb>
-</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share
-/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></opt/local/share/texmf-dist/fonts
-/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/
-cmbx12.pfb>
-Output written on simulation_and_inference3.pdf (20 pages, 373220 bytes).
+ 3714 strings out of 94087
+ 45993 string characters out of 1167723
+ 116551 words of memory out of 3500000
+ 6918 multiletter control sequences out of 10000+50000
+ 11293 words of font info for 43 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 32i,9n,26p,2149b,340s stack positions out of 5000i,500n,6000p,200000b,5000s
+
+Output written on simulation_and_inference3.dvi (18 pages, 104952 bytes).

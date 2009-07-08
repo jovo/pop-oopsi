@@ -1,17 +1,19 @@
-%\documentclass[twocolumn,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
-%\documentclass[preprint,showpacs,preprintnumbers,amsmath,amssymb]{revtex4}
-\documentclass[amsmath,amssymb]{revtex4}
+%\documentclass[twocolumn, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
+%\documentclass[preprint, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
+\documentclass[amsmath, amssymb]{revtex4}
 %\documentclass{article}
 
 % Some other (several out of many) possibilities
-%\documentclass[preprint,aps]{revtex4}
-%\documentclass[preprint,aps,draft]{revtex4}
+%\documentclass[preprint, aps]{revtex4}
+%\documentclass[preprint, aps, draft]{revtex4}
 %\documentclass[prb]{revtex4}% Physical Review B
 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{graphicx}% Include figure files
 %\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{bm}% bold math
-
+\renewcommand{\i}{\backslash i}
 %\nofiles
 
 \begin{document}
@@ -33,427 +35,67 @@
 %\preprint{APS/123-QED}
 %\pacs{Valid PACS appear here}
 %\keywords{Suggested keywords}
+
 \date{\today}
-\title{Bayesian inference of neural connectivity from simultaneous
-calcium imaging of a complete population of cells}
+
+\title{Bayesian inference of neural connectivity in a population of neurons from 
+calcium imaging data}
+
 \begin{abstract}
-We present Bayesian framework for inferring connectivity in a network
-of coupled neurons, observed simultaneously using calcium imaging.
+\input{abstract.tex}
 \end{abstract}
+
 \maketitle
 
-\section{\label{sec1}Motivation}
-The problem of reconstructing connectivity in neural circuits in the brain has recently
-gained much attention \cite{Hagmann2008,Hagmann2007,Helmstaedter2009,DenkHorstmann04,Briggman2006,Ikegaya2005}.
-In particular, amid growing evidence for the importance of collective effects in the neural networks for information processing in the brain [pop-coding olfaction \& taste], the problem of understanding the pathways in which the information in biological neural networks is exchanged has swiftly become the Neuroscience's spotlight \cite{Averbeck2008,Song2005,Dunn2004,Rabinovich2008,Broome2006,Jones2007}.
-Identifying the patterns of connections between neurons in large neural circuits is a most natural way to provide empirical data about different pathways use for information processing in biological neural networks \cite{Chalasani2007,Gray2005,rswormatlas,White1986}.
+\section{Motivation}
+\label{sec1}
+\input{intro.tex}
 
-In spite of constantly growing interest and increasing amount of effort directed at the problem of comprehensive neural circuit reconstruction, the methods for achieving this goal are still a subject of active development. A number of different approaches had been by now introduced including serial electron microscopy \cite{Briggman2006,Helmstaedter2009}, diffusion tensor imaging \cite{Hagmann2007,Hagmann2008}, or fluorescent tracers (Svoboda, personal communication).
-Among these, only electron microscopy may provide neural circuits reconstructions with sufficient level of resolution to catalogue connections between individual neurons in detail for large groups of neurons \cite{White1986}. However, even supplemented with automated data acquisition \cite{DenkHorstmann04} and image-processing \cite{Mishchenko2009c,Jain2007,Jurrus2006}, electron microscopy will remain an extremely expensive approach, limited by slow imaging and vulnerable to errors in neural tracing and analysis. Recently proposed approach for mapping of anatomical connectivity statistically using ensembles of coarse, low-level measurements with fluorescent synaptic markers randomly or pseudo-randomly expressed in nervous system \cite{Mishchenko2009a,Mishchenko2009} may offer fast and robust alternative for reconstruction of large neural circuits with the level of circuitry details comparable to that of electron microscopy.
+\section{Methods}
+\label{sec:methods}
 
-Alternative and complementary to anatomical reconstructions is the family of approaches inferring network connectivity from observations of neural activity such as EFP recording, fMRI, EEG, or calcium imaging. Functional connectivity may be defined operationally as the statistical effect one neuron's activity has upon another, i.e. two neurons are connected via a non-vanishing functional weights if their spike trains are conditionally dependent given all the other observable variables including the stimulus and the activity of all other neurons in the network. Although details of the relationship between functional connectivity and anatomical neural circuit structure are yet to be fully elaborated, empirical knowledge of functional connectivity is important both for fundamental aspects and applications. Functional connectivity relies on observation of correlations in neural activity and, thus, intimately entangles both circuit's structure as well as the class of stimuli used to probe its. Nonetheless, under certain conditions functional and anatomical connectivity may be directly related, as we show in this paper. More substantially, immediate knowledge of both functional and anatomical structures may be necessary to elucidate the relationship the two in biological neural circuits. Finally, functional connectivity provides direct access to coding and decoding of neural activity for neuro-prosthetics devices and neural interfaces.
+\subsection{Overview}
+\label{sec:methods:introduction}
+\input{overview.tex}
 
-Recently, great advances in the development of calcium indicators, delivery techniques, and microscopy technologies have facilitated imaging of neural activity of large populations of neurons in a wide array of neural substrates \cite{Ikegaya2005,Nagayama2007,Nevian2007}. Calcium imaging provides an ultimate tool for collecting data for estimating functional connectivity since it potentially is capable of overcoming both resolution limits of fMRI and EEG and number of recorded units limit of multi-electrode arrays. With calcium imaging, recordings at the level of individual cells are possible for thousands and tens of thousands of cells, while providing resolution sufficient for reconstructing individual spikes \cite{Ikegaya2005}. Recently, JF and LP has developed a spike-sorting tool for extracting spikes from calcium imaging data using sequential monte carlo methods \cite{Vogelstein2009}. In this paper we subsequently develop Bayesian formalism for inferring neural connectivity in a population of neurons simultaneously observed with calcium imaging. With that, an opportunity emerges for experimental reconstruction of cortical micro-circuitry using the tools of calcium imaging.
+\subsection{Hidden Markov Model for calcium imaging of neural population}
+\label{sec:methods:markov-setup}
+\input{hmm.tex}
 
-\section{\label{sec:methods}Methods}
-\subsection{\label{sec:methods:introduction}Overview}
-\begin{table}[h!b!p!]
-\begin{tabular}{ll}
-Number of imaged neurons         & $N$ \\
-Functional connection weights & $w^{ij}$ \\
-Single neuron spike & $n^i_t$ \\
-Single neuron calcium concentration & $C^i_t$ \\
-Single neuron state & $x^i_t=(n,C)^i_t$ \\
-Fluorescence observation from single neuron & $F^i_t$ \\
-Calcium dynamics model for single neuron & $M^i$ \\
-Matrix of all connection weights & $W=\{w^{ij}\}$ \\
-Spike history from all neurons   & $H=\{x^i\}$ \\
-Fluorescence observations from all neurons & $O=\{F^i\}$ \\
-Calcium dynamics model for all neurons & $M=\{M^i\}$
-\end{tabular}
-\caption{Table of notations used in this paper. Indices $i,j=1\dots N$ everywhere refer to the neurons from the population. Whenever subscript $t$ is dropped for brevity, full range of observations $t=1\dots T$ is implied.
-Set notation $\{*\}$ implies the set of variables for all neurons $1\dots N$. Throughout the paper we use symbols interchangeably to represent the variable definitions and the samples of variable values, drawn from a distribution, as should be made clear by the context.}
-\label{table:notation}
-\end{table}
-Our goal is to the evaluate connectivity in a population of spiking neurons observed with calcium imaging. Calcium imaging is experimental technique for monitoring electrical activity of neural cells via observing the concentration of calcium inside the cells. Calcium concentration in neural cells under normal conditions fluctuates around some background level, however, when the neuron issues an action potential, spikes, influx of calcium ions from outside of the cell causes intracellular calcium concentration to suffer nearly instanteneous jump, thus allowing detection of neural spike by monitoring calcium level with a variety of fluorescent dyes whose brightness depends on calcium concentration (see Figure \ref{fig:egfluor} for example). Monitoring intracellular calcium concentration allows not only to make conclusions about general level of activity of given neural cells, but also to recover entire spike trains of these cell with remarkable precision \cite{Vogelstein2009}. In turn, by simultaneously observing spike trains in a population of neural cells interacting via a set of synapstic connections gives access to determining connectivity among them experimentally. Formally, connectivity is described by a matrix of {\em functional connection weights} $w^{ij}(t-t')$ representing the conditional change in the probability for neuron $i$ to fire at time $t$ given neuron $j$ had fired at some time $t'$ prior. Recovery of such matrix of functional connection weights $W=\{w^{ij}\}$ from the set of fluorescence observations $O=\{F^{i\}$ acquired with calcium imaging is the goal of this work.
+\subsection{Estimating parameters of neural population calcium imaging Hidden Markov Model}
+\label{sec:methods:estimating_parameters}
+\input{estimate.tex}
 
+\subsection{Sampling joint spike-trains using hybdir MCMC and Gibbs algorithm}
+\label{sec:methods:sampling HMM}
+\input{sampling.tex}
 
-\subsection{\label{sec:methods:markov-setup}Neural populations as Hidden Markov Model}
-Generation of observations $F$ from underlying neural population dynamics may be described as a HMM combining neural activity model and the calcium dynamics model. Activity of a population of interacting neurons may be modeled using standard GLM, which is known to capture the statistical properties of the firing patterns of individual neurons well \cite{PILL07,PAN03d,Wu07,Rigat06,OKA05},
-\begin{equation}\label{eqn:glm:definition}
-\begin{array}{l}
-n^i_t\sim \text{Bernoulli}(\lambda^i_t\Delta t) \\
-\lambda^i_t=f(J^i_t)=f(b_0^i+k^i\cdot X^{ext}_t+\sum\limits_{j} \sum\limits_{t'<t} w^{ij}_{t-t'}n^{j}_{t'}).
-\end{array}
-\end{equation}
-Here, the spiking of a neuron is described via a stochastic Bernoulli process, which for small $\Delta t$ obviously si equivalent to nonuniform Poisson spiking. (Note that $0 < \lambda^k_t\Delta t<1$, which, given $\Delta t\rightarrow 0$, we assume to always be the case.) $b_0^i$ and $k^i\cdot X^{ext}_t$ are the baseline and the external stimulus $X^{ext}_t$ terms. In this paper we will be concerned primarily with the case of spontaneously firing population of neurons, so that the external stimulus term is absent. Parameters $w^{ij}$ describe coupling between different neurons. We refer to these as functional connectivity weights. Connectivity weights $w^{ij}$ are in general time dependent.
-The rate-function is assumed to be exponential $f(J)=\exp(J)$ as in \cite{PAN03d}. This choice results in significant computational simplifications when estimating GLM parameters by making MAP problem convex (the rate function is log-concave) - an important advantage for working with large volumes of data.
+\subsection{Estimating parameters of the Hidden Markov Model}
+\label{sec:methods:parameters HMM}
+\input{hmm_params.tex}
 
-If actual neural spikes $n^i_t$ were known, the estimation of GLM parameters here would have reduces to known problem such as in \cite{PILL07}. With calcium imaging, however, we do not directly observe spike trains. Instead, fluorescent signal from the calcium-reporter couples neural activity to fluorescence observations via nonlinear hidden calcium dynamics \cite{Vogelstein2009},
-\begin{equation}\label{eqn:ca:definition}
-\begin{array}{l}
-C^i_t \sim \text{Normal}(C^i_{t-1} + (C^i_b-C^i_{t-1}) \Delta t/\tau^i_c + A^i_c n^i_t,(\sigma^i_c)^2\Delta t), \\
-F^i_t \sim \text{Poiss}( S(C^i_t;\alpha^i_c,\beta^i_c,K^i_c) ).
-\end{array}
-\end{equation}
-Eq. (\ref{eqn:ca:definition}) describes evolution of the calcium concentration $C^i_t$ in the neuron $i$ with time $t$. This concentration is assumed to relax exponentially to the base level $C^k_b$ except when a spike is present, in which case an instant jump in calcium concentration of $A^i_c$ is observed. Normally distributed noise in calcium concentration is assumed. Fluorescence signal $F^i_t$ is described by the count of detected photons, distributed according to Poisson distribution with the mean defined by the calcium concentration via Hill function with exponent one, $S(C)=\alpha^i_c C/(C+K^i_c) + \beta^i_c$ \cite{Yasuda2004}.
+\subsection{Accuracy of the estimates and Fisher information matrix}
+\label{sec:methods:accuracy_Fisher}
+\input{fisher.tex}
 
-The hierarchical model in Eq.(\ref{eqn:glm:definition}) and (\ref{eqn:ca:definition}) is governed by $7N$ calcium dynamics parameters - calcium decay time-constant $\tau_c$, background calcium concentration $C_{b}$, fluctuations in calcium concentration $\sigma_c$, per-spike calcium jump $A_c$, Hill function scaling $\alpha_c$ and offset $\beta_c$, and Hill function parameter $K_d$, which we jointly denote as $M^i=\{\tau^i_c, C^i_{b}, \sigma^i_c, A^i_c, \alpha^i_c, \beta^i_c, K^i_c\}$, plus $m N^2 + N$ weights $w^{ij}_{t'}$ and $b_0^i$, where $m$ is the temporal depth of coupling weights $w^{ij}_{t'}$, which we jointly denote as $W=\{w^{ij}_{t'},b_0^i\}$.
+\subsection{Specific implementation notes}
+\label{sec:methods:specific_implementation}
+\input{implementation.tex}
 
-\subsection{\label{sec:methods:estimating_parameters}Estimating properties of neural populations as Hidden Markov Model}
-Our goal is to estimate model parameters such as $W$ and $M$ from the set of fluorescence observations $O$ using EM. Implementation of EM requires maximization of the conditional expectation value
-$E_{P(H|M,W,O)}\left[\log P(H,O,W',M')\right]$. The expectation that should be computed in our case is
-\begin{equation}\label{eqn:loglik:definition-expl}
-E[\log P|M,W,O]\sim \sum_i E[\log P_{[Ca]}(F^i|H,W,M^i)] + \sum_i E[\log P_{GLM}(n^i|H^{/i},W)].
-\end{equation}
-Here $H^{/i}=(x^1,...,x^{i-1},x^{i+1},...x^N)$, $P_{[Ca]}(F^i|H,M,M^i)$ is the likelihood for observing signal $F^i$ given in \cite{Vogelstein2009},
-and $P_{GLM}$ likelihood is
-\begin{equation}\label{eqn:likelihoodGLM-expl}
-\begin{array}{l}
-E\left[\log P_{GLM}(n^i|H^{/i},W\right]=\sum_t E \left[ n^i_t J^i_t\right] - E\left[(1-n^i_t) \exp(J^i_t) \Delta t \right],\\
-J^i_t=b_0^i+\sum\limits_{j} \sum\limits_{t'<t} w^{ij}(t-t')n^{j}_{t'},
-\end{array}
-\end{equation}
-Note that while the first term in Eq.(\ref{eqn:likelihoodGLM-expl}) is simple and only requires calculation of statistics $E[n^k_t]$ and $E[n^k_t n^{k'}_{t'}]$. The second term is nonlinear and does not reduce to simple sufficient statistics. Thus, in order to evaluate the necessary expectation value we need to obtain a full sample from the joint distribution of all spike trains $P(\{n^i\}|M,W,O)$.
+\section{Results}
+\label{results}
 
-Given Markovian nature of our model Eq.(\ref{eqn:glm:definition}) and (\ref{eqn:ca:definition}), obtaining of such full sample is an instance of a well known problem of drawing a sample from HMM. In particular, for finite state-space HMM forward-backward procedure exists for generating such samples in  $O(T)$ time, where $T$ is the length of the state-sequence \cite{RAB89}. For continuous state-space HMM, different sampling strategies had been suggested in the past relying on finite discretizations of the continuous state-space and approximating the integrals involved in the forward-backward procedure \cite{DFG01,MINKAPHD,Fearnhead2003,koyama08,Andrieu2007,NBR03}. Given large length of neural activity data, computational cost linear in time is an important advantage of HMM sampling techniques.
+%\subsection{Simulating neural activity in a neural population}
+%\label{sec:results:simulations}
+%\input{simulation.tex}
 
-In our case, the state $x_t$ is a direct product of binary $n_t$ and continuous $C_t$ dimensions, and so a continuous state-space sampling algorithm is required. One of the most popular methods for sampling from continuous-state HMM is sequential Monte Carlo algorithm (SMC), also known as particle filter \cite{DFG01}. In SMC, the discretization of the state-space is constructed at different time-points by drawing a sample from the marginal distributions  $P(x_t|O_{1\dots t})$, calculated during the forward pass. Forward-backward procedure integrals then are evaluated using Monte Carlo approach on these samples, also called particle swarms.  The main difficulty of SMC in our problem, however, is extremely high dimensionality of our state-space. For a population of $N$ neuron, the dimensionality of our state space is $2N$. This presents a serious problem for accurately evaluating forward-backward procedure integrals using particle swarms of tractable size. Therefore, high dimensionality makes generating joint spike-history sample a significant challenge.
+\subsection{Inference of the functional connectivity from the simulated calcium imaging data}
+\label{sec:results:inference}
+\input{inference.tex}
 
-To solve this problem we propose to take advantage of the specific structure of our model Eqs.(\ref{eqn:glm:definition}) and (\ref{eqn:ca:definition}), namely that it can be viewed as a set of $N$ coupled HMM models. Therefore, we propose a hybrid algorithm combining SMC sampling strategy for state-sequences of single neurons with Gibbs sampling aimed to enforce joint distribution onto such sequences.
-Namely, Gibbs sampling is a procedure for obtaining a sample from high-dimensional distributions by sampling from low-dimensional conditional distributions $P(x^{i'}_{t'}|\{x^i_t\}^{\i',t'})$ one variable $x^{i'}_{t'}$ at a time \cite{Gelfand1990}.  Gibbs sampling allows to reduce intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems. However, we do not want to apply the original Gibbs sampling in our problem because different $t$ states $x^i_t$ of the same neuron are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain. Instead, we perform Gibbs sampling in blocks of $x^{i'}=\{(n,C)^{i'}_t,t=1\dots T\}$ for one neuron $i'$ at a time, i.e. one Gibbs-step is used to draw a sample for the entire sequence of states of a single neuron. If we consider the full sample $H=(x^1,...,x^N)$ as a set of blocks of state-sequences from different neurons $i=1\dots N$, we suggest to perform Gibbs sampling by consequently sampling such entire blocks $x^i$, one block at a time, $x^i\sim P(x^{i}|H^{/i},M,W,O)$.
-Although each such sampling sub-problem is still high-dimensional, they are tractable because they reduce to sampling from HMM with only 2D state-space. With this hybrid strategy, the problem of $t$-correlations $(n,C)^i_t$ for same neuron $i$ is solved using forward-backward procedure for sampling blocks $x^i$, one neuron at a time, and the problem of large number of neurons $N$ in the joint sample $H$ is solved using Gibbs sampling procedure for such blocks.
-
-Although this hybrid sampling strategy allows to obtain full joint sample for a large number of coupled HMM exactly, it is computationally costly. A substantial simplification may occur if SNR in the fluorescence data is high. In this case, the posterior distribution for neural states is dominated by the fluorescence term $P(x^i|*)\approx P(x^i|F^i)$ and so the full joint distribution of $H$ approximately factorizes $P(H|M,W,O)\approx\prod P(x^i|F^i,M^i)$. If this factorization is sufficiently accurate, the sample of $H$ may be obtained by independently sampling single neuron state-sequences $x^i \sim P(x^i|F^i,M^i)$, one neuron at a time, and then combining such independent samples to form the joint sample $H$.  We refer to joint samples obtained using such factorized posterior distribution density as the independent approximation. Depending on the accuracy of such approximation, it may or may not be acceptable approximation for the estimation of $W$ and $M$. However, as we show below, it is indeed the case that the independent approximation is adequate here for interesting calcium imaging SNR regimes.
-
-\subsection{\label{sec:methods:sampling HMM}Sampling spike-trains from Hidden Markov Model}
-In order to sample single neuron state-sequences from $P(x^i|O,M,W)$ known methods may be used such as SMC  \cite{Vogelstein2009}. In this case, discretization grid $G$ is generated during the particle filter forward pass and then the sample sequence is drawn using finite forward-backward procedure on discretized HMM.
-Such procedure, however, is known to result in biased samples \cite{Andrieu2007,NBR03} since sampled Markov sequences are constrained to be on the pre-generated grid $G$. The samples thus are distributed with the probability density
-\begin{equation}
-x^i \sim P(x^i_1|M,W)\prod\limits_{t=2}^{t=T-1}P(x^i_t|x^i_{t-1};M,W)\prod\limits_{t=1}^{t=T}P(F^i_t|x^i_t;M)/Z(G),
-\end{equation}
-where $Z(G)=\sum\limits_{\{x^i_t\}\in G}P(x^i_1|M,W)\prod\limits_{t=2}^{t=T-1}P(x^i_t|x^i_{t-1};M,W) \prod\limits_{t=1}^{t=T}P(F^i_t|x^i_t;M)$. In particular, probabilities of different sequences differ from true probabilities by the difference in the estimated normalization constant $Z(G)$ from true normalization $Z$.
-
-This bias may be removed by repeating SMC procedure, and embedding SMC samples into a larger importance sampling algorithm, thus correcting for the bias $Z(G)$ by retaining HMM samples with probability $\sim Z(G)$ \cite{Andrieu2007}. In particular, \cite{Andrieu2007} show that as the size of the particle swarm grows, the acceptance ratio of such importance sampling algorithm tend to unity.
-
-A different and somewhat simpler implementation of the same procedure, developed by Neal et al. \cite{NBR03}, is to construct a Markov Chain Monte Carlo (MCMC) with the equilibrium distribution same with $P(x^i|O,M,W)$. Specifically, at each MCMC step the continuous-state HMM is replaced with a discrete HMM defined on a grid of points $G=\prod G_t = \prod_{t=1\dots T}\{x^{i;l}_t, l=1\dots m\}$. I.e., for each time-point $t$, we define a pool of grid-points $\{x^{i;l}_t\}$ consisting of $m$ points $l=1\dots m$. The full grid is then obtained as a direct product of such pools for different $t$. While in SMC the grid is constructed by evolving a swarm of particles, here the points $x^{i;l}_t$ are drawn independently from a-priory given proposal density $\{\rho^i_t(x^i_t)\}$. Markov sequence is then selected over such grid with the probability
-\begin{equation}\label{eqn:nealprob}
-x^i\sim P(x^i_1|M,W)\prod\limits_{t=2}^{t=T-1}P(x^i_t|x^i_{t-1};M,W)\prod\limits_{t=1}^{t=T}
-\frac{P(F^i_t|x^i_t;M)}{\rho^i_t(x^i_t)}.
-\end{equation}
-This may be done directly and efficiently by using forward-backward procedure with modified observation probability distribution ${P(F^i_t|x^i_t;M)}/{\rho^i_t(x^i_t)}$.
-States $x^i_t$ from the selected sample sequence should be used in the grids $G_t$ for the next MCMC step; it can be shown then that the limiting distribution of thus constructed Markov Chain is exactly \cite{NBR03}
-\begin{equation}
-x^i \sim P(x^i_1|M,W)\prod\limits_{t=1}^{t=T-1}P(x^i_t|x^i_{t-1};M,W)\prod\limits_{t=1}^{t=T}P(F^i_t|x^i_t;M).
-\end{equation}
-
-The advantage of Neal's method is that the grids $G$ may be prepared in a computationally simple way, and also that the rejection step of importance sampling procedure is not required - such step is accommodated implicitly in the forward-backward procedure with modified observation probability in Eq.(\ref{eqn:nealprob}).
-Proposal density $\rho^i_t(x^i_t)$ may be chosen arbitrarily as long as its support is sufficiently large. In order to achieve faster convergence, however, we used the marginal densities $P(x^i_t|O,W,M)$ obtained from a run of conventional SMC algorithm. Using accurate marginal densities $P(x^i_t|O,W,M)$ as $\rho^i_t(x^i_t)$ allows the Markov Chain to converge extremely quickly. In order to construct $\rho^i_t(x^i_t)$ from the sample particle swarms obtained in SMC,
-we used kernel density estimation such that $\rho^i_t(x^i_t)=\rho^i_t(n^i_t,C^i_t)=\rho^i_t(n^i_t)\rho^i_t(C^i_t)$, where $\rho^i_t(C^i_t)$ was constructed as a mixture of Gaussians centered on particles from the swarm $C^{i;l}_t$ with variances $\sigma \approx var\left[C^{i;l}_t-C^{i;l'}_t\right]$; $\rho^i_t(n^i_t)$ was taken to be a Bernoulli distribution with the spike probability estimated from the particle swarm at time $t$.
-
-The above procedure allows to obtain spike-train samples from $P(x^i|H^{\i},O,W,M)$ exactly. However, if the temporal structure of the coupling weights $w^{ij}_{t'}$ is known, e.g. if $w^{ij}_{t'}=w^{ij}\exp(-t'/\tau_w)$, direct spike-train samples may be replaced for the purpose of estimating GLM parameters with reduced history variables
-\begin{equation}
-h^j_t=\sum\limits_{t'<t} n^j_{t'}\exp(-(t-t')/\tau_w).
-\end{equation}
-For time-course described by an exponential or a linear combination of exponential, such history variables may be constructed via a Markov process, e.g.
-\begin{equation}\label{eqn:spkhist:definition}
-h^j_{t+1}=(1-\Delta t/\tau_w) h^j_t + n^j_t + \epsilon^j_{t},
-\end{equation}
-where $\epsilon^j_t$ is additional normally distributed internal noise term. In terms of $h^j_t$, GLM likelihood may be written simply as
-\begin{equation}
-E[\log P_{GLM}(x^i|H^{/i},W)]\approx \sum_t \left(\sum\limits_{j} w^{ij} E[n^i_t h^j_t] -
-E[(1-n^i_t) \exp(\sum\limits_j w^{ij}h^j_t)] \Delta t \right),
-\end{equation}
-so that GLM parameters may be estimated from the marginal distributions $P(\{h^j_t\}|O,W,M)$, without obtaining full spike-train samples $H$. This provides for sufficient computational simplification, in particular, by adding $h^i_t$ to the state definition $x^i_t=(n,C,h)^i_t$, such marginal distributions $P(h^i_t)$ and samples may be computed directly using, e.g., SMC method such as in \cite{Vogelstein2009}. As we show below, estimation of GLM parameters using such reduced history variables performs equally well with the full spike train sampling method. Thus, when time-course of the coupling weights $w^{ij}_{t'}$ is known, the approach using marginal distributions of the reduced history variables is extremely advantageous over computing full spike train samples $H$.
-
-\subsection{\label{sec:methods:parameters HMM}Estimating parameters of the Hidden Markov Model}
-In order to find the next EM iteration of HMM parameters, the expectation of the log-likehood  Eq.(\ref{eqn:loglik:definition-expl}) needs to be maximized with respect to $M=\{M^i\}$ and $W=\{w^{ij},b_0^i\}$. For large number of neurons $N$, this is a very large optimization problem with $7N$ parameters in $M$ and $m N^2 + N$ parameters in W. Fortunately, this optimization problem may be solved efficiently. Estimation of parameters $M^i$ may be performed individually for each neuron since calcium dynamics of different neurons are independent from each other and, given $H$, are also decoupled from GLM. Finding parameters $M^i$ thus involves solving $N$ 7D optimization sub-problems described in \cite{Vogelstein2009}. Finding GLM parameters is an optimization problem with $mN^2+N$ variables. By construction, however, GLM log-likelihood $P_{GLM}(H,W)$ is convex and, furthermore, GLM log-likelihoods for different neurons $i$ are independent and may be maximized separately. Finding parameters $w^{ij},b^i_0$ thus involves solving $N$ $mN+1$-dimensional convex optimization sub-problems, which can be done efficiently using standard algorithm such as gradient ascent, conjugate gradient or Newton-Rapson methods.
-
-Simple properties of the solution matrix, that may be identified a-priory, may be extremely helpful in obtaining accurate solutions when the datasets are small or expensive to obtain. In particular, enforcing sparseness of the solution matrix is known to often reduce the amount of data necessary for its accurate estimation dramatically \cite{Candes2005,DE03,Mishchenko2009}. Enforcing sparseness may be done simply by adding exponential prior term to GLM likelihood for each neuron $i$,
-\begin{equation}\label{eqn:likelihoodsparseGLM}
-\log P_{GLM}(x^i|H^{/i},W)=\sum_t \left( n^i_t J^i_t - (1-n^i_t) \exp(J^i_t) \Delta t \right)-\lambda \sum_{ij}|w^{ij}|.
-\end{equation}
-Exponential prior parameter $\lambda\approx 1/E[|w^{ij}|]$ may be estimated from a-priory neuroanatomical or neurophysiological data. Sparse prior does not change the convexity of GLM log-likelihood and, so, such regularized problem may be solved efficiently using methods of convex optimization theory. E.g., by introducing slack variables $s>|w^{ij}|$, this problem may be converted into a nonlinear program which can be solved using interior point methods
-\begin{equation}\label{eqn:conconvexopt}
-\begin{array}{c}
-\min \left[-\sum_t \left( n^i_t J^i_t - (1-n^i_t) \exp(J^i_t) \Delta t \right)+\lambda \sum_{ij}s^{ij}\right], \\
-\text{s.t. }w^{ij}<s^{ij}, -w^{ij}<s^{ij}, \forall i,j.
-\end{array}
-\end{equation}
-We used Matlab's function {\em fconmin} available in optimization toolbox to solve this constrained optimization problem. As we will see below, as in \cite{Mishchenko2009}, sparse prior dramatically decreases the amount of data necessary for accurate estimation of the connectivity matrix.
-
-Another property of the connectivity matrix that may be used to improve solutions is the so called Dale's law. Dale's law is the empirical observation that neurons always make synapses of one kind, i.e. either inhibitory and excitatory. In terms of the connectivity matrix, Dale's law translates into the condition of sign-constancy of the matrix columns. It is easy to enforce by constraining $w^{ij}$ to be either positive or negative for different $j$. The sign assignments should be chosen a-priory. One way to choose sign assignments is by using unconstrained solution, by comparing sum-squares of the positive and the negative entries of the column $w^{ij}$ for fixed $j$. Dale's law may be enforced separately or together with the sparse prior. The nonlinear program in this case becomes
-\begin{equation}
-\begin{array}{c}
-\min \left[-\sum_t \left( n^i_t J^i_t - (1-n^i_t) \exp(J^i_t) \Delta t \right)+\lambda \sum_{ij}s^{ij}\right], \text{ s.t. }\\
-w^{ij}<s^{ij}, -w^{ij}<s^{ij}, \forall i,j \text{ where type of neuron }j\text{ is unknown},\\
-w^{ij}<0, -w^{ij}<s^{ij}, \forall i,j\text{ where }j\text{ is inhibitory neuron},\\
-w^{ij}<s^{ij}, -w^{ij}<0, \forall i,j\text{ where }j\text{ is excitatory neuron}.
-\end{array}
-\end{equation}
-This optimization problem is essentially equivalent to constrained optimization problem Eq.(\ref{eqn:conconvexopt}) and can be solved using the same interior point methods. We used Matlab's function {\em fconmin} available from numerical optimization toolbox to solve this problem. Unlike sparse prior, Dale's prior did not yield substantial improvement in the reconstructed matrix.
-
-\subsection{\label{sec:methods:specific_implementation}Specific implementation notes}
-In specific implementation of the above algorithm we broke the inference problem into three steps.
-[DIAGRAM]
-First, we estimated for each neuron $i$ the model of its calcium dynamics $M^i$ given fluorescence observations $F^i$ and estimated currents $J^i_t=b^i_0+\sum_{j}\sum_{t'<t}w^{ij}_{t-t'}n^{j}_{t'}$ using previous estimate of $w^{ij}_{t'}$, $b^i_0$ and $n^{j}_t$ (at first iteration $w^{ij} \equiv 0$).
-Estimation of the models $M^i$ was performed on a subset of the calcium imaging data with $\sim 10-100$ spikes. Estimation of the models $M^i$ was performed using EM algorithm as described in \cite{Vogelstein2009}. It is advantageous to perform estimation of $M^i$ in a separate EM-subloop since this problem may be solved using smaller amount of data and that satisfactory models $M^i$ may be obtained without updating $W$ or spike-train samples $H$. Since estimation of $W$ requires acquisition of very long spike train samples $H$, estimating $M^i$ first allows one to arrive at substantially better spike-train samples $H$ at lower computational cost.
-
-Second, using thus produced calcium dynamics models $M^i$, we obtained a joint sample of spike-histories $H$ using hybrid MCMC-Gibbs method described above or SMC method of \cite{Vogelstein2009} for independent approximation. Reduced history variables $h^i_t$ were also computed at the same time.
-
-Third, given joint spike-train samples $H=\{x^i\}$, we performed estimation of the connectivity matrix $W$ by solving large convex optimization problem. Steps one through three were repeated until convergence in the connectivity matrix weights $W$ was observed.
-
-Importantly, the above procedure may be straightforwardly parallelized. In particular, estimation of $M^i$ may be done independently for all neurons in parallel. Calculation of the connectivity matrix $W$ also involves solving $N$ optimization sub-problems for different neurons $i=1\dots N$ and, so, may be performed in parallel. In independent approximation, sample $H$ may be obtained fully in parallel; and for hybrid MCMC-Gibbs algorithm obtaining the sample may be parallelized by drawing HMM state-sequences within Gibbs loop for a few neurons at a time, instead of one neuron at a time. High parallelizability of these steps results in significant time savings when analysis of fluorescence data is performed on multi-processor computer or using a super-computing facility.
-
-We performed bulk of the calculations in the following section on a high-performance cluster of Intel Xeon L5430 based computers (2.66 GHz). For 10 minutes of simulated fluorescence data, calculations typically took 10-20 minutes per neuron using independent approximation, with time split approximately equally between calcium model estimation and obtaining spike history sample (5-10 min) and solving GLM problem (5-10 min). HMM-within-Gibbs sampler was substantially slower, up to an hour per neuron per Gibbs pass, with Gibbs sampler being the most computationally expensive part.
-
-Here, the impact of interactions with other neurons is accounted for on the sample of spike trains from neuron $i$ via injected current $J^i_t$, which only accounts for the information about past neural activity in the population - $n^i_t \sim P(n^i_t|\{n^{i'}_{t'}\}_{t'=1\dots t})$. In principle, better samples may be obtained by taking into account spiking of the other neurons at $t'>t$, i.e. sampling from $P(n^i_t|\{n^{i'}_{t'}\}_{t'=1\dots T})$ \cite{PILL07}. Such improved sampling procedure is a subject of our future effort.
-
-
-\section{\label{results}Results}
-\subsection{\label{sec:results:simulations}Simulation inference of neural connectivity for neural population}
-To test the performance for inference of neural connectivity in a neural population, we simulated inference in conditions close to such expected in real experiment.
-Specifically, we simulated a network of stochastically connected neurons, constructed using experimental data that are available about the real cortical neural networks.
-
-We prepared small networks of $N=25, 50$ or 100  neurons, randomly sparsely connected to each other, and firing with the base firing rate of about 5Hz. Each neuron was modeled using GLM as described above Eq.(\ref{eqn:glm:definition}). 
-
-The network was divided into excitatory and inhibitory components and 20\% of neurons were taken to be inhibitory \cite{Braitenberg1998,Urquijo2000}.
-Neurons in each component were either entirely excitatory or inhibitory; i.e., all connections outgoing from each neuron were either all positive (excitatory) or negative (inhibitory). Excitatory neurons were randomly connected to each other and the inhibitory neurons with probability $f_c=0.1$ \cite{Braitenberg1998,Lefort2009}.
-Interneurons were randomly connected among themselves and to excitatory neurons with the same frequency $f_c=0.1$.
-
-The synaptic weight of each connection $v$, as defined by max EPSP amplitude, was generated from exponential distribution with mean $0.5 \mu V$ \cite{Lefort2009}. While synaptic weights are physiologically measured in $\mu V$, in GLM weights should be measured in log-rate units relevant to Eq.(\ref{eqn:glm:definition}) - GLM weights describe the {\em change in the probability of the neuron $i$ to fire given neuron $j$ has fired} (as opposed to physiologically measured weights describing amount of current or change in membrane potential). By utilizing this definition, we convert synaptic weights into GLM weights.In particular, we assume that arriving EPSP corresponds to added probability of neuron spiking in a given time bin  $\Delta P = v_{E}/V_{b}$, where $V_E$ is EPSP magnitude and $V_b$ is the membrane resting potential below threshold, in a sense implying that $V_{b}/v_{E}$ EPSPs are required to trigger neuron over the threshold. This reasoning leads us to the following conversion formula
-\begin{equation}\label{eqn:convert}
-w^{ij}=\ln(-\ln(e^{-r^i\Delta t}-v_{E}/V_{b})/r^i\Delta t),
-\end{equation}
-where $r^i=\exp(b^i_0)$ is the base firing rate of the neuron $i$. For small $\exp(b^i_0)\Delta t$ this can be replaced with
-\begin{equation}\label{eqn:convert-smalldt}
-w^{ij}=\ln\left(1+\frac{v_{E}/V_{b}}{r^i\Delta t}\right).
-\end{equation}
-For IPSP strength we adopt formula Eq.(\ref{eqn:convert-smalldt})
-with the negative sign.
-
-The strength of the inhibitory connection was drawn from the exponential distribution with the mean adjusted to balance excitatory and inhibitory currents, so as to achieve the final firing rate close to the base firing rate $f=g(b_0)$. Practically, the mean strength of inhibitory connections was about 10 times larger than that of the excitatory connections.
-
-To generate spikes, we simulated activity of the network forward in time with time step of 1 ms. We performed simulation both assuming that spikes in all neurons were injected with the same PSP waveform (i.e. all neurons were electrotonically identical) and assuming that PSP time constants of different neurons varied. Injected EPSP/IPSP currents $v_{EPSP/IPSP}(t')$ were modeled as the difference of two exponentials with the rise time of $1ms$ and average decay time of 10 ms for excitatory currents and 20 ms for inhibitory currents. Up to 25\% variation in the decay times could be allowed. For each neuron the current at time $t$ was described as
-\begin{equation}
-J^i_{t, inject} = \sum_{i'\neq i}w^{ij'}\sum_{t'} v_{EPSP/IPSP}^i(t-t') n^{j}_{t'}.
-\end{equation}
-(We neglect conduction delays given that time delay in local cortical circuit  $\sim 1$ ms
-is smaller than the time step in our simulation.) Additionally, each neuron exhibited refractory current with waveform $h_{REFR}$ modeled by exponential with decay time of 10 ms
-\begin{equation}
-J^i_{t,{refr}} = \Omega^i \sum_{t'<t}v_{REFR}^i(t-t') n^{i}_{t'}.
-\end{equation}
-Spikes were generated at each time according to Bernoulli distribution
-$n^k_t=$Bernoulli$[g(J^k_{t,spont}+J^k_{t,refr}+J^k_{t,inject})\Delta t]$.
-
-\begin{table}[h!b!p!]
-\begin{tabular}{ll}
-\hline
-Total neurons & 10-200 \\
-Inhibitory neurons & 20\% \\
-Connections sparseness & 10\% \\
-EPSP profile & 1 ms rise, 10 ms exp falloff \\
-IPSP profile & 1 ms rise, 20 ms exp falloff \\
-Mean EPSP strength & 0.5 $\mu$V \\
-Mean IPSP strength & 2.3 $\mu$V\\
-\hline
-Mean Ca jump per spike & 80 $\mu$M \\
-Mean Ca noise & 28 $\mu$M \\
-Mean Ca background & 24 $\mu$M \\
-Mean Ca decay time & 0.25 s \\
-Mean photon budget & 1-80 Kph/neuron/frame \\
-$K_d$ & 200 $\mu$M \\
-\hline
-\end{tabular}
-\caption{Table of simulation parameters}\label{table:caparm}
-\end{table}
-Given the spikes raster, the fluorescence observations were generated using the calcium dynamics model Eq.(\ref{eqn:ca:definition}). Parameters for the model were chosen according to our experience with few actual cells analyzed using algorithm of \cite{Vogelstein2009}, see Table \ref{table:caparm}. The population of cells was generated with these mean parameters varying by at least 30\% from cell to cell. Fluorescence was then simulated for each cell using its unique set of parameters and sampled at frame-rate of 33Hz or 66Hz.
-\begin{figure}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure0b_fluor_eg_hlowSNR}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure0a_fluor_eg_highSNR}
-\end{minipage}
-\caption{Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left)
-and high SNR regimes (photon budget 40 Kph/neuron/frame, right).}
-\label{fig:egfluor}
-\end{figure}
-
-
-To determine the necessary population observation time, we calculate Fisher information for $P(W|H)$. Assuming for simplicity perfect knowledge of spike-histories (i.e. such that was not corrupted by inference errors from calcium imaging data), we write Fisher information as
-\begin{equation}
-C^{-1}=\frac{\partial (-\ln P)}{\partial w^{ij}\partial w^{i'j'}}
-=-\delta_{ii'}\sum\limits_t\left(
-n^i_tn^{j}_{t-1}n^{j'}_{t-1}\left(-\frac{f'(J^i_t)^2}{f(J^i_t)^2} +
-\frac{g''(J^i_t)}{g(J^i_t)}\right)
--\Delta t (1-n^i_t)n^{j}_{t-1}n^{j'}_{t-1}f''(J^i_t)\right).
-\end{equation}
-For exponential transfer function $g(J)$ and weak coupling between spikes this may be rewritten as
-\begin{equation}\label{eqn:fisher}
-\begin{array}{rl}
-C^{-1}
-&=\delta_{ii'} (T\Delta t) P(n^i_t=0,n^j_{t-1}=1,n^{j'}_{t-1}=1)E[f(J^i_t)|n^i_t=0,n^j_{t-1}=1,n^{j'}_{t-1}=1] \\
-&\sim (T\Delta t)\left[(\Delta T r)\delta_{ii'}\delta_{jj'}+O((\Delta T r)^2)\right] \ln r.
-\end{array}
-\end{equation}
-Here $T\Delta t$ is the observation time,
-$\Delta T$ is "the coincidence time", i.e. the interval of time within which the spike from neuron $A$ affects the spike probability of neuron $B$ (typically, the extent of EPSP/IPSP),
-$r$ is the typical firing rate, and $\ln r \approx E[f(J^i_t)|n^j_{t-1}=1,n^{j'}_{t-1}=1] $.
-For successful determination of connectivity weights, the typical scale of the variance $C$ should be smaller than the typical scale of the weights squared $W^2$, i.e.
-\begin{equation}
-T\Delta t \sim 1/(W^2 \ln r)(\Delta T r).
-\end{equation}
-For typical values of $W^2\approx 0.1$, $r\approx 5Hz$ and $\Delta T\approx 10ms$,
-with this order of magnitude estimate we obtain $T$ on the scale of hundreds of seconds.
-Using these guidelines, we simulated from $300s$ to $3600s$ of observation data.
-
-This theoretical estimate of the necessary amount of fluorescent data is confirmed below in our simulations. Note also that required recording time does not depend on the number of neurons in the imaged network $N$. This, at first, unexpected result is the consequence of the special form of $C^{-1}$ Eq.(\ref{eqn:fisher}). In particular, when $\Delta T f<<1$ is small, this matrix is dominated by the diagonal term $(T\Delta t)(\Delta T f)\ln f$, and so Fisher information matrix is also predominantly diagonal with the pre-factor of $(T\Delta t \Delta T f\ln f)^{-1}$, regardless of the number of neurons and the matrix size.
-
-\subsection{\label{sec:results:inference}Inference of the connectivity from simulated calcium imaging data}
-In order to answer the question how well connectivity in the simulated network can be inferred from
-calcium imaging data, we performed such inference following three different ways and compared them. We performed inference of the connectivity using spike train samples obtained with hybrid MCMC-Gibbs method, independent approximation method, or using true spike trains from the simulation downsampled to the frame rate of fluorescence observations, to establish the "best-possible" baseline for the estimation.
-
-Connectivity matrix was calculated by solving maximum likelihood problem defined by Eq.(\ref{eqn:likelihoodGLM-expl}). Specifically
-\begin{align}
-\label{eqn:likelihoodGLMmoda}&\log P_{GLM}(x^i|H^{/i},W)=\sum_t \left( n^i_t \log J^i_t - (1-n^i_t) \exp(J^i_t) \Delta t \right),\\
-\label{eqn:likelihoodGLMmodb}&J^i_t=b_0^i+\sum\limits_j \sum\limits_{t'<t} w^{ij}(t-t')n^{j}_{t'}=
-b_0^i+\sum\limits_j w^{ij} \sum\limits_{t'<t} \exp(-(t-t')/\tau_w)n^j_{t'}.
-\end{align}
-The sum in Eqs.(\ref{eqn:likelihoodGLMmoda}, \ref{eqn:likelihoodGLMmodb}) was over time-bins $t'$ discretized at the time steps $\Delta t$ corresponding to fluorescence imaging frame rates of either 33Hz (30 ms) or 66Hz (15 ms). The coincident time bin $t=0$ was not used. This resulted in all spike pairs observed within same frame to be removed from the GLM fit. 
-Because time position of spikes inferred from fluorescence data typically has inaccuracy $\sim \Delta t$, temporal order of such closely positioned spike pairs could be confused in the sample, thus, polluting GLM dataset. For example, given two neurons $i$ and $j$, if the number of spikes of neuron $i$ following neuron $j$ within $\Delta t$ was $m_{ij}$ while such in the reverse order was $m_{ji}$, then the difference in $\Delta m = m_{ij}-m_{ji}$ effectively corresponds to the difference in GLM weights $w_{ij}-w_{ji}$. However, if during spike inference the order of such spike pairs was confused with probability $p\approx 1/2$, the observed number of spike pairs $ij$ becomes $m'_{ij}(1-p)+m_{ji}p$ while $m'_{ji}=m_{ji}(1-p)+m_{ij}p$, with the signal to be detected thus dropping to $\Delta m '= (1-2p)\Delta m$ while the variance in the detected counts remains the same. This complicates the inference problem by effectively mixing $w_{ij}$ and $w_{ji}$ and introducing large error in $W$ estimates moving $\hat W$ toward symmetrized version of $W$.
-
-Since each next term in Eq.(\ref{eqn:likelihoodGLMmodb}) is exponentially smaller than the previous one, we found that the best results could be obtained if only the first term in the sum was retained, thus, allowing for better results by reducing the number of unknowns for the same amount of data. Since the connectivity weights $w^{ij}_t$ are time-dependent, to compare inferred connectivity with the true one we defined "scalar" version of the connectivity matrix by characterizing each connection by the peak value of EPSP/IPSP, i.e. the scalar connection weight $w^{ij}_s=sign^{ij}max_{t'} |w^{ij}_{t'}|$ (we drop subscript $s$ whenever it is clear which connection weight we are talking about). 
-If the time-dependence of $w^{ij}(t')$ was assumed to be exponential with a known time constant, the weights were estimated using reduced histories $h^{j}_t=\sum_{t'<t} \exp(-(t-t')/\tau_w)n^{j}_{t'}$, and the scalar connection weight was respectively $w^{ij}_s=w^{ij}_{t'=0}$. 
-
-Because of coarse time discretization $\Delta t\approx 15-30$ ms, relative to EPSP/IPSP time scale $\tau_w = 10-20$ ms, the first term in the sum which could be measured $w^{ij}(\Delta t)\approx w^{ij}\exp(-\Delta t/\tau_w)$ was substantially smaller than $w^{ij}_s$. Time discretization thus results in estimated weights differing from true connectivity matrix by a factor of $\sim \langle \exp(-\Delta t/\tau_w) \rangle$, where average is understood over spike pairs within two consecutive time-bins. In our simulations, we observed that this factor was a constant for same $\Delta t$ and $\tau_w$ and different network sizes $N$. For $\Delta t=15$ ms and $\tau_w\approx 10$ ms this factor was  $\approx 0.45$. Note that in the simulations where $\tau_w$ were allowed to vary, this scaling factor as well as any mismatch in the time-scale in $h^j_t$ with true time-constant of EPSP/IPSP would introduce added scatter in the estimated weights $\hat w^{ij}$. We found such added variance in $\hat w^{ij}$ to be insignificant for simulations where $\tau_w$ was allowed to vary up to 25\%.
-
-This scaling bias theoretically may be removed by performing estimation of spike trains with finely discretized time. However, we were not successful in performing this calculation as the amount of data necessary to overcome variation in $W$ introduced by disordering of closely spaced spike-pairs appeared to be well over $\approx 10$ min of data used for most of the calculations here. Such high-time-resolution sample was also substantially more expensive to produce.
-
-After performing connectivity reconstruction as described using MCMC-Gibbs method and independent approximation, we found that MCMC-Gibbs method did not provide noticeable improvement over the independent approximation for calcium imaging regime where sufficiently accurate fits could be obtained, Figure \ref{fig:iid-base}. I.e., Bernoulli prior derived from the interactions with other neurons was relatively weak compared to the fluorescence likelohood. We therefore conclude that independent approximation is sufficient for the purpose of inferring connectivity from calcium imaging data for experimentally interesting regimes.
-
-Since fluorescence data is generally acquired at low frame-rate, here 66Hz, one of the main limitation on the connectivity inference is the time-resolution of inferred spike trains. In order to determine the limits on reconstruction due to this constraint, we compared inferred weights using fluorescence data and such computed from the true spike trains down-sampled to the frame-rate of 33Hz or 66Hz. This served as a baseline for the "best-possible" performance of the reconstruction algorithm. We observed that for sufficient calcium imaging regimes with interesting SNR, the baseline performance was achieved by inference performed from calcium imaging data, Figure \ref{fig:iid-base}.
-From the same baseline analysis we also found that imaging rates of below 30Hz are generally insufficient for the purpose of inferring connectivity matrix, Figure XXX.
-\begin{figure}
-\includegraphics[width=275px]{Figure1_fluor_mcmc_vs_iid}
-\caption{A scatter plot of inferred connectivity weights vs. real connectivity weights
-using hybrid MCMC-Gibbs sampler and independent approximation, for a network of $N=25$ neurons imaged
-with intermediate amount of noise corresponding to $10$ Kph/neuron/frame (see Figure \ref{fig:ca-noise} below); $r^2=0.48$ for MCMC-Gibbs and
-$r^2=0.47$ for IID. Note that the connectivity weights thus inferred are nearly equal, thus showing that independent approximation is sufficient here for the purposes of estimating the connectivity matrix. Note also constant time-discretization scaling bias in the estimated weights due to missing close spike pairs.}
-\label{fig:mcmc-iid}
-\end{figure}
-\begin{figure}
-\includegraphics[width=275px]{Figure2_fluor_base_vs_iid}
-\caption{A scatter plot of inferred connectivity weights vs. real connectivity weights
-using independent approximation and true spike trains down-sampled to the fluorescence imaging
-frame-rate, for a network of $N=25$ neurons imaged
-with low amount of noise corresponding to $40$ Kph/neuron/frame (see Figure \ref{fig:ca-noise} below); $r^2=0.57$ for IID and $r^2=0.57$ for the baseline. Note that for sufficient SNR, the connectivity weights inferred from fluorescence data are nearly equal to such inferred from low-frame-rate resampled true spike trains, thus showing that independent approximation for reasonable SNR achieves spike-train equivalent to direct low-frequency observation of spike trains for the purpose of estimating the connectivity matrix.}
-\label{fig:iid-base}
-\end{figure}
-\begin{figure}
-\includegraphics[width=275px]{Figure9_fluor_sparse_sol}
-\caption{A scatter plot of inferred connectivity weights vs. real connectivity weights
-using independent approximation and either plain GLM or GLM supplemented with sparse prior,
-for a network of $N=50$ neurons imaged for $T=800$ s
-with low amount of noise corresponding to $40$ Kph/neuron/frame (see Figure \ref{fig:ca-noise} below); $r^2=0.66$ for plain GLM solution and $r^2=0.85$ for sparse prior supplemented GLM solution. Note that use of sparse prior allows to obtain significantly better approximation to the true connectivity matrix, although additional scaling bias is introduced in the estimate.}
-\label{fig:sparse-sol}
-\end{figure}
-
-[ANOTHER FIGURE 30Hz]
-
-We then considered calcium imaging data simulated with different amounts of injected noise, here in particular determined by varying photon budget. As should be expected, when amount of noise is high (photon budget is low), inference from calcium imaging data ends up far below the baseline level, and with increasing SNR the baseline level is recovered. This allows us to determine the minimal SNR level, or photon budget, necessary to successfully perform connectivity estimation from calcium imaging data. Specifically, we observe that photon budget should be above 20-40 Kph/neuron-frame for successful inference, Figure \ref{fig:ca-noise}. 
-\begin{figure}
-\includegraphics[width=275px]{Figure3_perf_vs_gamma}
-\caption{Accuracy of inferred connectivity weights as function of noise amount in
-calcium imaging data, as measured by photon budget per neuron-frame and fluorescence
-signal to noise ratio
-SNR=$\left({E[\Delta F^2 | \text{spk}]}/{E[\Delta F^2|\text{nospk}]}\right)^{1/2}$,
-for networks of $N=25$ and $N=50$ neurons. Note that the photon counts on the order of 20-40 Kph/frame/neuron are required in order to achieve best reconstructions.}
-\label{fig:ca-noise}
-\end{figure}
-
-In all cases we found that accounting for simple prior information about connectivity results in dramatic improvement of the inferred weights. In particular, accommodation of the sparseness prior via L1-regularizing term in the likelihood allows to substantially improve accuracy of the inferred weights. For example, accounting for connectivity sparseness allows to achieve for $T\sim 10$ min the same level of accuracy that would otherwise require recording neural activity for $T\sim 1$ hour. We also explored impact of the prior obtained from Dale's low of neural unipolarity. Improvement in the inferred weights due to Dale's prior was generally much less substantial, only on the order of $10\%$ in the correlation coefficient, and if sparseness of the solution was previously accounted for, accomodating for Dale's law led to no improvement in the result.
-(Figure \ref{fig:sparse-sol} and \ref{fig:data-time}).
-
-Thus we find that connectivity is sucessfully inferred from calcium imgaing data using independent approximation. 10-20 minutes of data is sufficient for quite accurate estimation of the connectivity matrix, see Figure \ref{fig:sparse-sol}, \ref{fig:data-time}) and \ref{fig:distr}.
-Furthermore, "anatomical" connectivity could be reconstructed here despite problems such as common input from groups of correlated neurons, etc. This is owing the particular form of the activity in our neural network, whereas baseline firing of neurons occurred independently allowing GLM explore full range of possible connections and disentangle common inputs. 
-
-In particular, estimation of the functional connectivity weights is fundamentally based on observing the changes in the spike rates conditioned on the state of other neurons firing. Intuitively, such estimation is based on observing changes in the $p(\{n^j\})=\exp(\sum_j w^{ij}n_j)$ for different neural activity configurations ${\bf n}=\{n^j\}$ by comparing $p({\bf n})$ for different displacements $\Delta {\bf n}={\bf n}_1 - {\bf n}_2$, or, equivalently, estimating vector ${\bf w}^i$ by observing a number of products ${\bf w}^i {\bf n}$. Obviously, in order to be able to properly estimate all components of ${\bf w}^i$ the set of available ${\bf n}$ should be rich enough to span all $N$ dimensions of ${\bf n}$. In case of independent firing such condition of "full dimensionality" of the dynamic space is satisfied.
-Should this independence be violated, e.g. due to high correlation between spiking of two neurons, spike trains will not give access to complete anatomical connectivity vector ${\bf w}^i$, and so connection weights from neurons providing correlated input may be "aggregated" into a single weight or arbitrary split into a linear combination, etc.
-
-In particular, to test this effect we performed reconstruction of the connectivity matrix in a hypothetical strongly coupled  neural network, still with unstructured random internal connectivity. Strong coupling here meant that the base rate $\exp(b^i_0)$ was chosen to be low $\approx 1$ Hz, while mean connection strength was chosen strong enough to build up the actual firing rate up to $\approx 4Hz$. Such strongly coupled network showed patterns of firing very different from such in weakly coupled networks above, see Figure \ref{fig:rasters}. In particular, large number of highly correlated, synchronously locked firings of many neurons are evident in this raster plot.
-Likewise, GLM was not able to identify the true connectivity matrix correctly, Figure \ref{fig:strongcouple}, in agreement with above general theoretical conjecture. Of course, this experiment is not a definitive statement on this account, and configurations of strongly coupled neural networks may exist allowing access to anatomical connectivity from functional data despite this example, as long as the full dimensionality of the dynamic space for such networks holds.
-\begin{figure}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure5a_hist_glm_vanilla}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure5b_hist_glm_sparse}
-\end{minipage}
-\caption{Distribution of connectivity weights inferred using calcium imaging, for
-a network of $N=50$ neurons and $T=800 s$. The inferred distributions were rescaled
-to have the same mean with the true distributions, owing the time-discretization scaling bias.
-Left panel is for direct GLM solution,
-and right panel is for sparse GLM solution.
-Blue curves are for inhibitory connections, red curves are for excitatory
-connections and black are for zero connections. Solid lines are original
-distributions and dashed lines are inferred distributions. In direct GLM solution the quality of the inferred weights is certainly sufficient to identify whether different pairs of neurons are connected, or whether given neuron is inhibitory or excitatory with high precision; and such statements may be made from sparse GLM solution almost with certainty.}
-\label{fig:distr}
-\end{figure}
-\begin{figure}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure7b_raster_weak}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure7a_raster_strong}
-\end{minipage}
-\caption{15 s of simulated spike train rasters for a weakly coupled (left)
-and strongly coupled (right) stochastic networks. Note that in weakly coupled neural network spikes are sufficiently uncorrelated to allow access to all different neural connectivity configurations necessary to estimate complete anatomical connectivity vectors ${\bf w}^i$. In strongly coupled case many instances of highly synchronous locked firings of many neurons are evident, thus reducing dimensionality of the observed dynamic space of the neural network, and preventing functional connectivity from faithfully representing anatomical connectivity vectors ${\bf w}^i$.}
-\label{fig:rasters}
-\end{figure}
-\begin{figure}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure8b_fluor_weak_glm}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure8a_fluor_strong_glm}
-\end{minipage}
-\caption{Baseline GLM solution for the connectivity matrix from 10 min of spiking data for weakly coupled network of $N=25$ neurons (left) and strongly coupled network (right). Note that GLM solution for strongly coupled neural network does not provide access to the structure of anatomical connectivity.}
-\label{fig:strongcouple}
-\end{figure}
-
-
-We finally explored the question how much data is required for given level of reconstruction accuracy. First, we considered change in result accuracy as a function of observation time $T$, see Figure \ref{fig:data-time}. For baseline reconstructions with regular GLM solver the observation time necessary to achieve $r^2$=0.5 was $T\sim 10$ minutes, while with GLM solver using sparse prior $r^2>0.6$ was achieved already at $T\sim 5$ minutes of data. As shown by our theoretical analysis in the Methods section, accuracy of the reconstruction given the same amount of data didn't suffer if large neural network was considered, see Figure \ref{fig:data-n}. Good reconstruction could be obtained in all cases with $T\sim 10-30 min$ of data, while the sparse prior have very substantial impact on the quality and the Dale prior did not provide for significant further improvement.
-\begin{figure}
-\includegraphics[width=275px]{Figure4_perf_vs_T}
-\caption{Baseline accuracy of inferred connectivity weights as function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Note that accuracy does not depend on the number of neurons $N$, as shown in the theoretical analysis in the Methods section. Also, about 30 minutes of imaging time are sufficient for rather accurate estimation of the connectivity matrix using direct GLM solution, while the same accuracy of the reconstruction may be achieved with sparse GLM solver already for 300-600 seconds of calcium imaging data.}
-\label{fig:data-time}
-\end{figure}
-\begin{figure}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure6a_perf_vs_N}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=250px]{Figure6b_perf_vs_N_sparse}
-\end{minipage}
-\caption{Baseline accuracy of inferred connectivity weights for
-for networks of different size from $N=10$ to $N=200$ neurons.
-Accuracy does not depend on the number of neurons $N$ as shown in the theoretical analysis in the Methods section. Likewise, in all cases 300-600 seconds of observations are sufficient for estimating connectivity matrix using sparse GLM solver, and about 30 minutes of observations are sufficient using direct GLM solver.}
-\label{fig:data-n}
-\end{figure}
-
-
-\section{\label{discussion  }Discussion}
-Functional connectivity may fail to faithfully represent anatomical circuit structure if false correlations are present between different neurons, induced e.g. by common inputs, or if the dynamics of neural population is entirely concentrated on a low-dimensional subspace of the full configurational space $H$. Note that these two statements are, in a sense, different ways of stating the same condition: if activity of different neurons is tightly correlated, their dynamics is concentrated on a low-dimensional plane; and vice-versa - concentration of dynamics onto a low-dimensional plane will be perceived as correlation in activity of different neurons. (In turn, low dimensionality of the neural dynamics may be caused by different factors, including common input, small subset of command neurons driving the circuit, or even emergent property of a network.) Low dimensionality of the neural dynamics results in that the inference problem Eq.(\ref{eqn:loglik:definition}) becomes underdetermined, i.e. there may exist directions in $W$ along which connectivity is not constrained by activity data (i.e. directions orthogonal to the subspace of all observed neural activity configurations), or is poorly constrained. This, naturally, leads to $W$ being poorly defined along these directions. The necessary condition for good correspondence between functional connectivity weights $W$ and anatomical connectivity, therefore, is {\em full-dimensionality} of the observed neural dynamics. In case of spontaneously firing system of neurons this condition is, in fact, satisfied by many independent neuron-ignitions, thus, fully sampling possible directions in the configurational space $H$. If spontaneously active preparation by itself fails to display sufficient degree of independence between randomly firing neurons (e.g. if low-dimensionality of the activity subspace is the emergent property of studied circuit), such pattern may be induced by randomly activating subsets of neurons via ChR2 or glutamate uncaging.
-
-We also note that the correlations induced by secondary and so on synaptic transmissions (such as when neuron $A$ results in firing of neuron $B$, which in turn results in firing by neuron $C$), are all properly resolved in GLM-fitting process via the so called explaining-away process. In other words, because we do not just identify correlations between neural firings with the functional connectivity weights $w^{kk'}$, but instead statistically fit a model of neural interactions, if found weights between neurons $A$ and $B$, and $B$ and $C$ are sufficient to explain the correlation between $A$ and $C$, the weight connecting $A$ and $C$ will not appear in the model - the correlation between $A$ and $C$ was "explained away" by correlations between $A$ and $B$, and $B$ and $C$. By this, the multi-synaptic firing patterns do not confuse our estimation process.
-
-
+\section{Discussion}
+\label{discussion}
+\input{discussion.tex}
 
 \begin{acknowledgments}
 Thank everyone for their help and support [Bows, Bows, Bows] !!!

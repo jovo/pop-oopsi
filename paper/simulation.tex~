@@ -44,6 +44,7 @@ $K_d$ & 200 $\mu$M \\
 \begin{figure}
 \centering
 \begin{minipage}[c]{0.45\hsize}
+includegraphics[width=\hsize]{../figs/Figure0b_fluor_eg_hlowSNR}
 \includegraphics{../figs/Figure0b_fluor_eg_hlowSNR}
 \end{minipage}
 \begin{minipage}[c]{0.45\hsize}
