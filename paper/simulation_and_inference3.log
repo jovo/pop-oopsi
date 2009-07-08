@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=latex 2009.7.7)  7 JUL 2009 16:58
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2009.4.16)  8 JUL 2009 11:30
 entering extended mode
-**C:/MyDocuments/Current*Projects/Liam*-*MCMC*Fitting*of*Parameters*for*GLIFM*N
-etworks/simulation_and_inference3.tex
-
-("C:/MyDocuments/Current Projects/Liam - MCMC Fitting of Parameters for GLIFM N
-etworks/simulation_and_inference3.tex"
-LaTeX2e <2005/12/01>
-Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
-rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
-(C:\MyPrograms\MiKTeX\tex\latex\revtex4\revtex4.cls
+**simulation_and_inference3.tex
+(./simulation_and_inference3.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+(/opt/local/share/texmf-dist/tex/latex/revtex4/revtex4.cls
 Document Class: revtex4 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for do
 cumentation)
  Copyright (c) 2001 The American Physical Society.
@@ -34,9 +34,9 @@ ltxgrid: portions licensed from W. E. Baxter (web@superscript.com)
 \pagegrid@col=\count82
 Class revtex4 Info: Incorporating package {textcase}  [1998/11/12 v0.06 Text on
 ly upper/lower case changing (DPC)]. on input line 3682.
-(C:\MyPrograms\MiKTeX\tex\latex\ltxmisc\url.sty
-\Urlmuskip=\muskip10
-Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+(/opt/local/share/texmf-local/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
 )
 \c@affil=\count83
 \absbox=\box31
@@ -51,25 +51,25 @@ Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 \c@figure=\count90
 \c@table=\count91
 
-(C:\MyPrograms\MiKTeX\tex\latex\natbib\natbib.sty
-Package: natbib 2009/02/02 8.3 (PWD, AO)
+(/opt/local/share/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2003/06/06 7.1 (PWD)
 \bibhang=\skip43
 \bibsep=\skip44
-LaTeX Info: Redefining \cite on input line 694.
+LaTeX Info: Redefining \cite on input line 518.
 \c@NAT@ctr=\count92
 )
 \widetext@top=\box32
 \widetext@bot=\box33
 
-(C:\MyPrograms\MiKTeX\tex\latex\revtex4\revsymb.sty
+(/opt/local/share/texmf-dist/tex/latex/revtex4/revsymb.sty
 Package: revsymb 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documenta
 tion)
 LaTeX Info: Redefining \REV@mathfrak on input line 118.
 ))
-(C:\MyPrograms\MiKTeX\tex\latex\amsfonts\amssymb.sty
+(/opt/local/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2002/01/22 v2.2d
 
-(C:\MyPrograms\MiKTeX\tex\latex\amsfonts\amsfonts.sty
+(/opt/local/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2001/10/25 v2.2f
 \@emptytoks=\toks16
 \symAMSa=\mathgroup4
@@ -79,24 +79,24 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 LaTeX Info: Redefining \frak on input line 135.
 LaTeX Info: Redefining \Bbb on input line 137.
 ))
-(C:\MyPrograms\MiKTeX\tex\latex\amsmath\amsmath.sty
+(/opt/local/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-(C:\MyPrograms\MiKTeX\tex\latex\amsmath\amstext.sty
+(/opt/local/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(C:\MyPrograms\MiKTeX\tex\latex\amsmath\amsgen.sty
+(/opt/local/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen102
 ))
-(C:\MyPrograms\MiKTeX\tex\latex\amsmath\amsbsy.sty
+(/opt/local/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen103
 )
-(C:\MyPrograms\MiKTeX\tex\latex\amsmath\amsopn.sty
+(/opt/local/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count93
@@ -116,7 +116,7 @@ LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \macc@depth=\count98
 \c@MaxMatrixCols=\count99
-\dotsspace@=\muskip11
+\dotsspace@=\muskip10
 \c@parentequation=\count100
 \dspbrk@lvl=\count101
 \tag@help=\toks18
@@ -140,19 +140,19 @@ LaTeX Info: Redefining \] on input line 2667.
 
 Class revtex4 Warning: No Society specified, using generic APS style.
 
-(C:\MyPrograms\MiKTeX\tex\latex\revtex4\aps.rtx
+(/opt/local/share/texmf-dist/tex/latex/revtex4/aps.rtx
 File: aps.rtx 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documentatio
 n)
 )
-(C:\MyPrograms\MiKTeX\tex\latex\revtex4\10pt.rtx
+(/opt/local/share/texmf-dist/tex/latex/revtex4/10pt.rtx
 File: 10pt.rtx 2001/08/03 v4.0 (http://publish.aps.org/revtex4/ for documentati
 on)
 )
-(C:\MyPrograms\MiKTeX\tex\latex\algorithms\algorithm.sty
+(/opt/local/share/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 
 
 Document Style `algorithm' - floating environment
-(C:\MyPrograms\MiKTeX\tex\latex\float\float.sty
+(/opt/local/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count105
 \float@exts=\toks22
@@ -160,183 +160,193 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks23
 \@floatcapt=\box37
 )
-(C:\MyPrograms\MiKTeX\tex\latex\base\ifthen.sty
+(/opt/local/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
 \c@algorithm=\count106
-)
-(C:\MyPrograms\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+) (./algpseudocode.sty
 Package: algpseudocode 
 
-(C:\MyPrograms\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count107
-\c@ALG@rem=\count108
-\c@ALG@nested=\count109
-\ALG@tlm=\skip48
-\ALG@thistlm=\skip49
-\c@ALG@Lnr=\count110
-\c@ALG@blocknr=\count111
-\c@ALG@storecount=\count112
-\c@ALG@tmpcounter=\count113
-\ALG@tmplength=\skip50
-)
+! LaTeX Error: File `algorithmicx.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (C:\MyPrograms\MiKTeX\tex\latex\graphics\graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+! Undefined control sequence.
+<recently read> \algnewlanguage 
+                                
+l.26 \algnewlanguage
+                    {pseudocode}%
+? 
 
-(C:\MyPrograms\MiKTeX\tex\latex\graphics\keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks25
-)
-(C:\MyPrograms\MiKTeX\tex\latex\graphics\graphics.sty
-Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+! LaTeX Error: Missing \begin{document}.
 
-(C:\MyPrograms\MiKTeX\tex\latex\graphics\trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(C:\MyPrograms\MiKTeX\tex\latex\00miktex\graphics.cfg
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
-)
-Package graphics Info: Driver file: dvips.def on input line 90.
-
-(C:\MyPrograms\MiKTeX\tex\latex\graphics\dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
-\Gin@req@height=\dimen111
-\Gin@req@width=\dimen112
-)
-(simulation_and_inference3.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-Class revtex4 Info: Patching LaTeX tabular. on input line 19.
-Class revtex4 Info: cite was not loaded (OK!) on input line 19.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 19.
-LaTeX Font Info:    Try loading font information for U+msa on input line 53.
-
-(C:\MyPrograms\MiKTeX\tex\latex\amsfonts\umsa.fd
-File: umsa.fd 2002/01/19 v2.2g AMS font definitions
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 53.
-
-(C:\MyPrograms\MiKTeX\tex\latex\amsfonts\umsb.fd
-File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-) [1] [2] [3]
-
-LaTeX Warning: Command \i invalid in math mode on input line 186.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 187.
-
-[4]
-
-LaTeX Warning: Command \i invalid in math mode on input line 220.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 220.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 227.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 227.
-
-[5] [6] [7] [8]
-File: Figure0b_fluor_eg_hlowSNR.eps Graphic file (type eps)
- <Figure0b_fluor_eg_hlowSNR.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 396--397
- [][][] 
- []
-
-File: Figure0a_fluor_eg_highSNR.eps Graphic file (type eps)
-<Figure0a_fluor_eg_highSNR.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 399--400
- [][][] 
- []
-
-[9]
-File: Figure1_fluor_mcmc_vs_iid.eps Graphic file (type eps)
- <Figure1_fluor_mcmc_vs_iid.eps>
-File: Figure2_fluor_base_vs_iid.eps Graphic file (type eps)
- <Figure2_fluor_base_vs_iid.eps>
-File: Figure9_fluor_sparse_sol.eps Graphic file (type eps)
-
-<Figure9_fluor_sparse_sol.eps> [10]
-File: Figure3_perf_vs_gamma.eps Graphic file (type eps)
- <Figure3_perf_vs_gamma.eps> [11] [12]
-File: Figure5a_hist_glm_vanilla.eps Graphic file (type eps)
-
-<Figure5a_hist_glm_vanilla.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 489--490
- [][][] 
- []
-
-File: Figure5b_hist_glm_sparse.eps Graphic file (type eps)
-<Figure5b_hist_glm_sparse.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 492--493
- [][][] 
- []
-
-File: Figure4_perf_vs_T.eps Graphic file (type eps)
-<Figure4_perf_vs_T.eps>
-File: Figure6a_perf_vs_N.eps Graphic file (type eps)
- <Figure6a_perf_vs_N.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 513--514
- [][][] 
- []
-
-File: Figure6b_perf_vs_N_sparse.eps Graphic file (type eps)
-<Figure6b_perf_vs_N_sparse.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 516--517
- [][][] 
- []
-
-File: Figure7b_raster_weak.eps Graphic file (type eps)
-<Figure7b_raster_weak.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 526--527
- [][][] 
- []
-
-File: Figure7a_raster_strong.eps Graphic file (type eps)
-<Figure7a_raster_strong.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 529--530
- [][][] 
- []
-
-File: Figure8b_fluor_weak_glm.eps Graphic file (type eps)
-<Figure8b_fluor_weak_glm.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 538--539
- [][][] 
- []
-
-File: Figure8a_fluor_strong_glm.eps Graphic file (type eps)
-<Figure8a_fluor_strong_glm.eps>
-Overfull \hbox (21.43997pt too wide) in paragraph at lines 541--542
- [][][] 
- []
-
-[13] [14] [15] (simulation_and_inference3.bbl [16]) [17]
-(simulation_and_inference3.aux) ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \algnewlanguage{p
+                      seudocode}%
+? 
+Missing character: There is no p in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+! Undefined control sequence.
+l.27 \alglanguage
+                 {pseudocode}%
+? 
+Missing character: There is no p in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+! Undefined control sequence.
+l.31 \algnewcommand
+                   \algorithmicend{\textbf{end}}
+? 
+! Undefined control sequence.
+l.31 \algnewcommand\algorithmicend
+                                  {\textbf{end}}
+? 
+! Undefined control sequence.
+l.32 \algnewcommand
+                   \algorithmicdo{\textbf{do}}
+? 
+! Undefined control sequence.
+l.32 \algnewcommand\algorithmicdo
+                                 {\textbf{do}}
+? 
+! Undefined control sequence.
+l.33 \algnewcommand
+                   \algorithmicwhile{\textbf{while}}
+? 
+! Undefined control sequence.
+l.33 \algnewcommand\algorithmicwhile
+                                    {\textbf{while}}
+? 
+! Undefined control sequence.
+l.34 \algnewcommand
+                   \algorithmicfor{\textbf{for}}
+? 
+! Undefined control sequence.
+l.34 \algnewcommand\algorithmicfor
+                                  {\textbf{for}}
+? 
+! Undefined control sequence.
+l.35 \algnewcommand
+                   \algorithmicforall{\textbf{for all}}
+? 
+! Undefined control sequence.
+l.35 \algnewcommand\algorithmicforall
+                                     {\textbf{for all}}
+? 
+! Undefined control sequence.
+l.36 \algnewcommand
+                   \algorithmicloop{\textbf{loop}}
+? 
+! Undefined control sequence.
+l.36 \algnewcommand\algorithmicloop
+                                   {\textbf{loop}}
+? 
+! Undefined control sequence.
+l.37 \algnewcommand
+                   \algorithmicrepeat{\textbf{repeat}}
+? 
+! Undefined control sequence.
+l.37 \algnewcommand\algorithmicrepeat
+                                     {\textbf{repeat}}
+? 
+! Undefined control sequence.
+l.38 \algnewcommand
+                   \algorithmicuntil{\textbf{until}}
+? 
+! Undefined control sequence.
+l.38 \algnewcommand\algorithmicuntil
+                                    {\textbf{until}}
+? 
+! Undefined control sequence.
+l.39 \algnewcommand
+                   \algorithmicprocedure{\textbf{procedure}}
+? 
+! Undefined control sequence.
+l.39 \algnewcommand\algorithmicprocedure
+                                        {\textbf{procedure}}
+? 
+! Undefined control sequence.
+l.40 \algnewcommand
+                   \algorithmicfunction{\textbf{function}}
+? 
+! Undefined control sequence.
+l.40 \algnewcommand\algorithmicfunction
+                                       {\textbf{function}}
+? 
+! Undefined control sequence.
+l.41 \algnewcommand
+                   \algorithmicif{\textbf{if}}
+? 
+! Undefined control sequence.
+l.41 \algnewcommand\algorithmicif
+                                 {\textbf{if}}
+? 
+! Undefined control sequence.
+l.42 \algnewcommand
+                   \algorithmicthen{\textbf{then}}
+? 
+! Undefined control sequence.
+l.42 \algnewcommand\algorithmicthen
+                                   {\textbf{then}}
+? 
+! Undefined control sequence.
+l.43 \algnewcommand
+                   \algorithmicelse{\textbf{else}}
+? 
+! Undefined control sequence.
+l.43 \algnewcommand\algorithmicelse
+                                   {\textbf{else}}
+? 
+! Undefined control sequence.
+l.44 \algnewcommand
+                   \algorithmicrequire{\textbf{Require:}}
+? 
+! Undefined control sequence.
+l.44 \algnewcommand\algorithmicrequire
+                                      {\textbf{Require:}}
+? 
+! Undefined control sequence.
+l.45 \algnewcommand
+                   \algorithmicensure{\textbf{Ensure:}}
+? 
+! Undefined control sequence.
+l.45 \algnewcommand\algorithmicensure
+                                     {\textbf{Ensure:}}
+? 
+! Undefined control sequence.
+l.46 \algnewcommand
+                   \algorithmicreturn{\textbf{return}}
+? X
+ 
 Here is how much of TeX's memory you used:
- 3841 strings out of 95305
- 47717 string characters out of 1183326
- 127251 words of memory out of 1500000
- 7008 multiletter control sequences out of 110000
- 11293 words of font info for 43 fonts, out of 3000000 for 5000
- 14 hyphenation exceptions out of 8191
- 32i,9n,26p,1813b,363s stack positions out of 5000i,500n,10000p,200000b,50000s
-
-Output written on simulation_and_inference3.dvi (17 pages, 121488 bytes).
+ 2632 strings out of 94501
+ 31361 string characters out of 1155436
+ 87983 words of memory out of 1000000
+ 5835 multiletter control sequences out of 10000+50000
+ 3948 words of font info for 15 fonts, out of 500000 for 2000
+ 580 hyphenation exceptions out of 1000
+ 32i,1n,26p,221b,69s stack positions out of 1500i,500n,5000p,200000b,5000s
+No pages of output.
