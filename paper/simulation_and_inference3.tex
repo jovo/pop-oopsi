@@ -13,7 +13,7 @@
 \usepackage{graphicx}% Include figure files
 %\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{bm}% bold math
-
+\renewcommand{\i}{\backslash i}
 %\nofiles
 
 \begin{document}
@@ -39,7 +39,7 @@
 \date{\today}
 
 \title{Bayesian inference of neural connectivity in a population of neurons from 
-calcium imaging data.}
+calcium imaging data}
 
 \begin{abstract}
 \input{abstract.tex}
@@ -47,7 +47,8 @@ calcium imaging data.}
 
 \maketitle
 
-\section{\label{sec1}Motivation}
+\section{Motivation}
+\label{sec1}
 \input{intro.tex}
 
 \section{Methods}
@@ -75,7 +76,7 @@ calcium imaging data.}
 
 \subsection{Accuracy of the estimates and Fisher information matrix}
 \label{sec:methods:accuracy_Fisher}
-\input{fisher.com}
+\input{fisher.tex}
 
 \subsection{Specific implementation notes}
 \label{sec:methods:specific_implementation}
@@ -90,6 +91,7 @@ calcium imaging data.}
 
 \subsection{Inference of the functional connectivity from the simulated calcium imaging data}
 \label{sec:results:inference}
+\input{inference.tex}
 
 \section{Discussion}
 \label{discussion}

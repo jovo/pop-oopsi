@@ -1,4 +1,5 @@
-This is BibTeX, Version 0.99cThe top-level auxiliary file: simulation_and_inference3.aux
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
+The top-level auxiliary file: simulation_and_inference3.aux
 The style file: amsplain.bst
 Database file #1: mybib.bib
 Warning--missing pages in Andrieu2007
@@ -10,4 +11,45 @@ Warning--missing pages in NBR03
 Warning--missing pages in PL07
 Warning--missing pages in Vogelstein2009
 Warning--missing pages in Wu07
+You've used 53 entries,
+            2213 wiz_defined-function locations,
+            831 strings with 14072 characters,
+and the built_in function-call counts, 19466 in all, are:
+= -- 1599
+> -- 1347
+< -- 0
++ -- 540
+- -- 478
+* -- 1880
+:= -- 3293
+add.period$ -- 53
+call.type$ -- 53
+change.case$ -- 399
+chr.to.int$ -- 0
+cite$ -- 62
+duplicate$ -- 590
+empty$ -- 1360
+format.name$ -- 478
+if$ -- 3844
+int.to.chr$ -- 0
+int.to.str$ -- 53
+missing$ -- 103
+newline$ -- 169
+num.names$ -- 104
+pop$ -- 482
+preamble$ -- 1
+purify$ -- 346
+quote$ -- 0
+skip$ -- 308
+stack$ -- 0
+substring$ -- 1007
+swap$ -- 66
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 208
+warning$ -- 9
+while$ -- 151
+width$ -- 55
+write$ -- 428
 (There were 9 warnings)
