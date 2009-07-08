@@ -1,0 +1,26 @@
+\begin{table}[h!b!p!]
+\caption{Table of notations. Indices $i, j=1\ldots N$ refer to the neurons in the population. Bold notation is used to represent the vector states over all neurons, e.g. ${\bf X}=\{X_i, i=1\ldots N\}$. Whenever $t$ is dropped for brevity the entire sequence $t=1\ldots T$ is implied, e.g. ${\bf X}=\{{\bf X}(t), t=1\ldots T\}$.}
+\label{table:notation}
+\begin{tabular}{ll}
+Number of neurons         & $N$ \\
+Calcium imaging duration & $T$ \\
+Single neuron spike & $n_i(t)$ \\
+Single neuron calcium concentration & $C_i(t)$ \\
+Single neuron state & $X_i(t)=(n_i(t), C_i(t))$ \\
+Sequence of neural states & $X_i=\{X_i(t), t=1\ldots T\}$ \\
+Fluorescence observation from single neuron & $F_i(t)$ \\
+Sequence of fluorescence observations & $F_i=\{F_i(t), t=1\ldots T\}$ \\
+Set of spike-trains from all neurons   & ${\bf X}=\{X_i\}$ \\
+Set of fluorescence observations from all neurons & ${\bf F}=\{F_i\}$ \\
+Functional connection weights & $w_{ij}(t)$ \\
+Matrix of all connection weights & $W=\{w_{ij}(t)\}$ \\
+Calcium dynamics model for single neuron & $M_i$ \\
+Calcium dynamics model for all neurons & $M=\{M_i\}$
+\end{tabular}
+\end{table}
+
+Our goal is to evaluate connectivity in a population of neurons observed with calcium imaging.  Calcium imaging is experimental technique for monitoring neuron's electrical activity  by observing the concentration of calcium inside the cell.  Calcium concentration under normal conditions fluctuates around some background level. However, when the neuron issues a spike, influx of calcium ions from outside of the cell causes its concentration to spike instantaneously.  Spikes of individual neurons, thus, may be detected remotely by monitoring calcium level inside cells with fluorescent dyes sensitive to calcium concentration (i.e. changing brightness $F$ in proportion to calcium concentration, see Figure \ref{fig:egfluor} for example).
+
+Most of the calcium indicators, however, are very slow with the relaxation time of calcium concentration on the order of 100 ms. Thus, monitoring intracellular calcium concentration has been commonly used in neuroscience to make conclusions about the overall activity state of neural cell, e.g. high activity, medium activity, without reference to individual spikes.  However, under appropriate conditions  calcium imaging allows not only to make conclusions about such general levels of activity, but also to recover entire spike trains of neural cell with remarkable precision \cite{Vogelstein2009}.  Recovering accurate spike trains for a population of neurons interacting via a set of synapstic connections, in turn, gives access to inferring functional connectivity in such populations by directly correlating spike-trains of different neurons.
+
+Formally, functional connectivity may be described as a matrix of functional connection weights $w_{ij}(t-t')$, each representing the conditional change in the probability for neuron $i$ to fire at time $t$ given neuron $j$ had fired at some time $t'$ before given all other available variables.  Recovery of such matrix of functional connection weights $W=\{w_{ij}\}$ from the set of fluorescence observations ${\bf F}=\{F_i\}$, acquired with calcium imaging, is the primary goal of this work.
