@@ -51,7 +51,7 @@ for k=range                           % FOR ALL NEURONS IN RANGE
   J{k}=mean(tmp,2)';  
 
   lik_tot=lik_tot+lik;
-  ivals(k,:)=bk/Sm;                   % write this as start point next iter	 
+  ivals(k,:)=bk;  
   bk=bk'/Sm;                          % scale back the weights
   
   Rate(k) = bk(1);                    % sort stuff into appropriate classes
