@@ -1,7 +1,7 @@
 This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2009.4.16)  9 JUL 2009 19:51
 entering extended mode
-**simulation_and_inference3.tex
-(./simulation_and_inference3.tex
+**paper/simulation_and_inference3.tex
+(./paper/simulation_and_inference3.tex
 LaTeX2e <2003/12/01>
 Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
 ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
@@ -165,141 +165,33 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
 \c@algorithm=\count106
-) (./algpseudocode.sty
-Package: algpseudocode 
-
-(./algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
-
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count107
-\c@ALG@rem=\count108
-\c@ALG@nested=\count109
-\ALG@tlm=\skip48
-\ALG@thistlm=\skip49
-\c@ALG@Lnr=\count110
-\c@ALG@blocknr=\count111
-\c@ALG@storecount=\count112
-\c@ALG@tmpcounter=\count113
-\ALG@tmplength=\skip50
 )
-Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/opt/local/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks25
-)
-(/opt/local/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+! LaTeX Error: File `algpseudocode.sty' not found.
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/opt/local/share/texmf-dist/tex/latex/graphics/graphics.cfg
-File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
-)
-Package graphics Info: Driver file: dvips.def on input line 80.
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
 
-(/opt/local/share/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
-\Gin@req@height=\dimen111
-\Gin@req@width=\dimen112
-)
-(./simulation_and_inference3.aux)
-\openout1 = `simulation_and_inference3.aux'.
+Enter file name: q
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-Class revtex4 Info: Patching LaTeX tabular. on input line 19.
-Class revtex4 Info: cite was not loaded (OK!) on input line 19.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 19.
- (./abstract.tex) (./intro.tex
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+! LaTeX Error: File `q.sty' not found.
 
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2002/01/19 v2.2g AMS font definitions
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
 
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-)) (./overview.tex
-[1]) (./hmm.tex [2]) (./estimate.tex [3]) (./sampling.tex [4] [5])
-(./hmm_params.tex [6]) (./fisher.tex [7]) (./implementation.tex)
-(./simulation.tex [8]
-File: ../figs/Figure0b_fluor_eg_hlowSNR.eps Graphic file (type eps)
- <../figs/Figure0b_fluor_eg_hlowSNR.eps>
-Overfull \hbox (191.07281pt too wide) in paragraph at lines 47--48
- [][] 
- []
+Enter file name: X
 
-File: ../figs/Figure0a_fluor_eg_highSNR.eps Graphic file (type eps)
-<../figs/Figure0a_fluor_eg_highSNR.eps>) (./inference.tex [9] [10]
-File: ../figs/Figure1_fluor_mcmc_vs_iid.eps Graphic file (type eps)
-
-<../figs/Figure1_fluor_mcmc_vs_iid.eps>
-File: ../figs/Figure1b_fluor_mcmc_vs_iid.eps Graphic file (type eps)
-
-<../figs/Figure1b_fluor_mcmc_vs_iid.eps>
-File: ../figs/Figure2_fluor_base_vs_iid.eps Graphic file (type eps)
-
-<../figs/Figure2_fluor_base_vs_iid.eps>
-File: ../figs/Figure2b_fluor_base_vs_iid.eps Graphic file (type eps)
-
-<../figs/Figure2b_fluor_base_vs_iid.eps>
-File: ../figs/Figure9_fluor_sparse_sol.eps Graphic file (type eps)
-
-<../figs/Figure9_fluor_sparse_sol.eps>
-File: ../figs/Figure9b_fluor_sparse_sol.eps Graphic file (type eps)
- <../figs/Figure9b_fluor_sparse_sol.eps>
-[11]
-File: ../figs/Figure3_perf_vs_gamma.eps Graphic file (type eps)
- <../figs/Figure3_perf_vs_gamma.eps> [12]
-File: ../figs/Figure5_hist_glm_vanilla.eps Graphic file (type eps)
-
-<../figs/Figure5_hist_glm_vanilla.eps>
-File: ../figs/Figure4_perf_vs_T.eps Graphic file (type eps)
- <../figs/Figure4_perf_vs_T.eps>
-File: ../figs/Figure6c_perf_vs_N.eps Graphic file (type eps)
-
-<../figs/Figure6c_perf_vs_N.eps>
-File: ../figs/Figure7b_raster_weak.eps Graphic file (type eps)
- <../figs/Figure7b_raster_weak.eps>
-File: ../figs/Figure7a_raster_strong.eps Graphic file (type eps)
-
-<../figs/Figure7a_raster_strong.eps>
-File: ../figs/Figure8b_fluor_weak_glm.eps Graphic file (type eps)
- <../figs/Figure8b_fluor_weak_glm.eps>
-File: ../figs/Figure8a_fluor_strong_glm.eps Graphic file (type eps)
-
-<../figs/Figure8a_fluor_strong_glm.eps>) (./discussion.tex [13] [14])
-(./simulation_and_inference3.bbl [15] [16] [17]) [18]
-(./simulation_and_inference3.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right .
-
-
- ) 
+ )
+(\end occurred when \ifx on line 13 was incomplete)
+(\end occurred when \ifx on line 13 was incomplete)
+(\end occurred when \ifx on line 13 was incomplete) 
 Here is how much of TeX's memory you used:
- 3667 strings out of 94501
- 46062 string characters out of 1155436
- 115238 words of memory out of 1000000
- 6757 multiletter control sequences out of 10000+50000
- 11293 words of font info for 43 fonts, out of 500000 for 2000
+ 2616 strings out of 94501
+ 31127 string characters out of 1155436
+ 87885 words of memory out of 1000000
+ 5821 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,9n,26p,2149b,340s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,0n,26p,227b,30s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on simulation_and_inference3.dvi (18 pages, 105160 bytes).
+No pages of output.

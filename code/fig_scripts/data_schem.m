@@ -1,124 +1,175 @@
 clear, clc, %close all
-path        = '/Users/joshyv/Research/oopsi/meta-oopsi/data/mrsic-flogel/';
-imname      = '(20081126_13_15_31)-_natural_reg1_nat_135umdepth';
-tifname     = [path imname '.tif'];
-fname       = 'data_schem';
-matname     = ['/Users/joshyv/Research/oopsi/pop-oopsi/data/' fname '.mat'];
+datapath = '/Users/joshyv/Research/oopsi/meta-oopsi/data/';
+switch 2
+    case 1
+        Im.path = [datapath 'rafa/tanya/051809/s1m1/'];
+        Im.fname= 's1m1';
+        Im.Fura = 1;
+    case 2
+        Im.path = [datapath 'mrsic-flogel/'];
+        Im.fname= '20081126_13_05_43_orientation_Bruno_reg1_ori1_135umdepth';
+        Im.Fura = 0;
+    case 3
+        Im.path = [datapath 'mrsic-flogel/'];
+        Im.fname= '20081126_13_15_31_natural_reg1_nat_135umdepth';
+        Im.Fura = 0;
+end
 
 % set switches of things to do
 LoadTif     = 0;
-GetROI      = 1;
-GetEphys    = 0;
+GetROI      = 0;
+GetF        = 0;
+
+cd /Users/joshyv/Research/oopsi/pop-oopsi/code/
+Im.tifname     = [Im.path Im.fname '.tif'];
+Im.matname     = ['/Users/joshyv/Research/oopsi/pop-oopsi/data/' Im.fname '.mat'];
+
 
 %% get image data
 
 if LoadTif == 1                                     % get whole movie
-    MovInf  = imfinfo(tifname);                     % get number of frames
-    Im.T  = 100; %numel(MovInf);                  % only alternate frames have functional data
+    MovInf  = imfinfo(Im.tifname);                     % get number of frames
+    Im.T  = numel(MovInf);                  % only alternate frames have functional data
     Im.h  = MovInf(1).Height;
     Im.w  = MovInf(1).Width;
     Im.Np = Im.w*Im.h;
-    Im.fname = fname;
-
-    Im.DataMat = sparse(Im.w*Im.h,Im.T);% initialize mat to store movie
-    for j=1:Im.T
-        X = imread(tifname,j);
-        Im.DataMat(:,j)=(X(:));
+    Nframes  = 1000;
+    
+    DataMat = sparse(Im.w*Im.h,Nframes);% initialize mat to store movie
+    i=1;
+    for t=round(linspace(1,Im.T,Nframes))
+        X = imread(Im.tifname,t);
+        DataMat(:,i)=(X(:));
+        i=i+1;
+        if mod(i,10)==0, display(t), end
     end
-    Im.MeanFrame=mean(Im.DataMat,2);
-    save(matname,'Im')
+    Im.MeanFrame=reshape(mean(DataMat,2),Im.h,Im.w);
+    save(Im.matname,'Im')
 else
-    load(matname)
+    load(Im.matname)
 end
 
 %% select roi
 
 if GetROI == 1
     figure(1); clf,
-    imagesc(reshape(Im.MeanFrame,Im.h,Im.w)')
+
+    Im.seg_frame=z1(Im.MeanFrame);
+    imagesc(Im.seg_frame)
+%     set(gcf,'Position',[[Im.w 1/2.5]*2.5 [Im.w Im.h]*4])
+    
+    
+    % manually determine roi radius
     title('select roi radius, double click when complete')
-    set(gca,'BusyAction','queu','Interruptible','on');
-    ellipse0=imellipse;
-    wait(ellipse0);
+    ellipse0=imellipse; wait(ellipse0);
     vertices0=getVertices(ellipse0);
     xdat=vertices0(:,1);
     ydat=vertices0(:,2);
-    Im.x0 = min(xdat) + .5*(max(xdat)-min(xdat));
-    Im.y0 = min(ydat) + .5*(max(ydat)-min(ydat));
-    a = max(xdat)-Im.x0;
-    b = max(ydat)-Im.y0;
+    x0 = min(xdat) + .5*(max(xdat)-min(xdat));
+    y0 = min(ydat) + .5*(max(ydat)-min(ydat));
+    a = max(xdat)-x0;
+    b = max(ydat)-y0;
     Im.radius0=mean([a b]);
 
-    [pixmatx pixmaty] = meshgrid(1:Im.h,1:Im.w);
-    Im.roi = (((pixmatx-Im.x0).^2 + (pixmaty-Im.y0).^2 )<= Im.radius0^2);
-    Im.roi_edge = edge(uint8(Im.roi));
-    save(matname,'Im')
-else
-    load(matname)
-end
+    % define the null roi
+    [pixmatx pixmaty] = meshgrid(1:Im.w,1:Im.h);
+    inellipse0 = (((pixmatx-x0).^2 + (pixmaty-y0).^2 )<= Im.radius0^2);
 
-%% get spike data
-
-if GetEphys ==1
-    Ep       = paqread(paqname, 'info');
-    Ep       = Ep.ObjInfo;
-    channels= 1:length(Ep.Channel);
-    Data    = paqread(paqname,'Channels',channels);
-    for i=channels
-        Ep.Channel(i).Data = Data(:,i);
-    end
-
-    j=1;
-    for i=channels
-        if Ep.Channel(i).ChannelName(1)=='V'
-            Ep.spt{j}=GetSpikeTimes(Ep.Channel(i).Data,0.5);
-            j=j+1;
-        elseif strcmp(Ep.Channel(i).ChannelName,'CameraSync')
-            CameraSync = Data(:,i);
-        end
-    end
-    Ep.Nc = j-1;
-    dC                  = diff(CameraSync);
-    frame_onset_times   = find(dC>2);
-    fake_frames         = length(frame_onset_times)-Im.T;
-    frame_onset_times(1:fake_frames)=[];
-    Im.dt   = median(diff(frame_onset_times))/Ep.SampleRate;
+    % manually select roi centers
+    i=0;
+    button=0;
+    Im.rois=0*inellipse0;
+    Im.roi_edges=Im.rois;
     
-    Ep.n=zeros(Ep.Nc,Ep.SamplesAcquired);
-    for i=1:Ep.Nc
-        Ep.n(i,Ep.spt{i})=1;
-    end
+    imagesc(Im.seg_frame)
+    title('select roi centers, hit space when complete')
+    while button ~= 32
+        i=i+1;
+        [x y button] = ginput(1);
+        if button == 32, break, end
+        Im.roi{i}.x0        = round(x);
+        Im.roi{i}.y0        = round(y);
+        Im.roi{i}.roi       = (((pixmatx-Im.roi{i}.x0).^2 + (pixmaty-Im.roi{i}.y0).^2 )<= Im.radius0^2);
+        Im.roi{i}.edge      = edge(uint8(Im.roi{i}.roi));
+        [ssub_i ssub_j]     = find(Im.roi{i}.roi);
+        Im.roi{i}.sub       = [ssub_i ssub_j]; %[sub_i-x0+Im.roi{i}.x0, sub_j-y0+Im.roi{i}.y0];
+        Im.roi{i}.ind       = sub2ind([Im.h Im.w],Im.roi{i}.sub(:,1),Im.roi{i}.sub(:,2));
+        Im.roi{i}.Np        = numel(Im.roi{i}.ind);
+        Im.roi{i}.F         = zeros(Im.roi{i}.Np,Im.T);
+        Im.rois             = Im.rois + i*Im.roi{i}.roi;
+        Im.roi_edges        = Im.roi_edges + i*Im.roi{i}.edge;
 
-    Ep.n=zeros(Im.T,Ep.Nc);
-    for i=1:Ep.Nc
-        Ep.n(:,i) = SubSampleSpikeTrain(frame_onset_times,Ep.spt{i});
+        Im.seg_frame(Im.roi{i}.ind)=1;
+        imagesc(Im.seg_frame)
+        axis off
     end
-
-    save(matname,'Ep','-append')
+    Im.Nrois=i-1;
+    save(Im.matname,'Im')
 else
-    load(matname)
+    load(Im.matname)
 end
+
+
+%% get F
+
+if GetF == 1
+    for t=1:Im.T
+        X = imread(Im.tifname,t);
+        for i=1:Im.Nrois
+            Im.roi{i}.F(:,t)=X(Im.roi{i}.ind);
+        end
+        if mod(t,50)==0, display(t), end
+    end
+
+    Im.F = zeros(Im.Nrois,Im.T);
+    for i=1:Im.Nrois
+        Im.F(i,:) = mean(Im.roi{i}.F);
+    end
+    if Im.Fura==1, Im.F=-double(Im.F); else  Im.F=double(Im.F); end
+    Im.F=Im.F-repmat(min(Im.F'),Im.T,1)';
+    Im.F=Im.F./repmat(max(Im.F'),Im.T,1)';
+    Im.F=Im.F*2^16;
+    Im.F=uint16(Im.F);
+
+    figure(3), clf,
+    subplot(121), plot(Im.F')
+    subplot(122), imagesc(Im.F)
+    save(Im.matname,'Im')
+else
+    load(Im.matname)
+end
+
+
 
 %% plot ROI
 % Pl = PlotParams;
 nrows = 2;
-ncols = 3;
+ncols = 2;
 
-roi2=Im.roi';
-roi_edge2=Im.roi_edge';
-
-ROI_im      = Im.MeanFrame+max(Im.MeanFrame)*roi_edge2(:);
-weighted_ROI= Im.MeanFrame.*roi2(:);
+% roi2=Im.roi';
+% roi_edge2=Im.roi_edge';
+%
+% ROI_im      = Im.MeanFrame+max(Im.MeanFrame)*roi_edge2(:);
+% weighted_ROI= Im.MeanFrame.*roi2(:);
 
 figure(2); clf,
 subplot(nrows,ncols,1);
-imagesc(reshape(ROI_im,Im.h,Im.w)')
+imagesc(Im.seg_frame)
 colormap(gray)
 set(gca,'XTickLabel',[],'YTickLabel',[])
+
+subplot(nrows,ncols,2);
+imagesc(Im.F)
+colormap(gray)
+% colorbar
+set(gca,'XTickLabel',[],'YTickLabel',[])
+
+subplot(nrows,ncols,nrows+1:nrows*ncols);
+plot(Im.F(3,:))
 
 % print fig
 wh=[7 5];   %width and height
 set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');
-FigName = 'ass'; %['../code/' fname];
+FigName = ['../figs/' Im.fname];
 print('-depsc',FigName)
 print('-dpdf',FigName)
