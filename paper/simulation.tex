@@ -16,7 +16,7 @@ Inhibitory connections were also drawn from exponential distribution with the ne
 
 The time course of functional connectivity weights $w_{ij}(t)$ was modeled as the difference of two exponentials with the rise time of 1 ms and decay time of 10 ms for excitatory and 20 ms for inhibitory currents \cite{Sayer1990}. Up to 25\% variation in these time constants could be allowed. We neglected conduction delays, given that the time delay below $\sim 1$ ms expected in local cortical circuit was smaller than the time step of our computer simulation.  Additionally to excitatory and inhibitory currents, each neuron was modeled to have refractory current with the time-course described as an exponential with time-constant of 10 ms.
 
-Spike-trains were generated using GLM by simulating network forward in time with the time step of 1 ms.  Given the spike rasters, the fluorescence observations were generated using calcium dynamics model Eq.\eqref{eqn:ca:definition}). Parameters for the model were chosen according to our experience with few actual cells analyzed using algorithm of \cite{Vogelstein2009}, see Table \ref{table:caparm}.  The population of cells was generated with these parameters allowing cell-to-cell variance of at least 30\%.  Fluorescence was obtained for calcium imaging at the frame-rate of 33Hz or 66Hz.  From 300 s to 3600 s of calcium imaging data was simulated.
+Spike-trains were generated using GLM by simulating network forward in time with the time step of 1 ms.  Given the spike rasters, the fluorescence observations were generated using calcium dynamics model Eq.\eqref{eqn:ca:definition}. Parameters for the model were chosen according to our experience with few actual cells analyzed using algorithm of \cite{Vogelstein2009}, see Table \ref{table:caparm}.  The population of cells was generated with these parameters allowing cell-to-cell variance of at least 30\%.  Fluorescence was obtained for calcium imaging at the frame-rate of 33Hz or 66Hz.  From 300 s to 3600 s of calcium imaging data was simulated.
 
 \begin{table}[h!b!p!]
 \caption{Table of simulation parameters.}\label{table:caparm}
@@ -43,11 +43,11 @@ $K_d$ & 200 $\mu$M \\
 
 \begin{figure}
 \centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics{../figs/Figure0b_fluor_eg_hlowSNR}
+\begin{minipage}[c]{0.49\hsize}
+\includegraphics[width=4in]{../figs/Figure0b_fluor_eg_hlowSNR}
 \end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/Figure0a_fluor_eg_highSNR}
+\begin{minipage}[c]{0.49\hsize}
+\includegraphics[width=4in]{../figs/Figure0a_fluor_eg_highSNR}
 \end{minipage}
 \caption{Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left)
 and high SNR regimes (photon budget 40 Kph/neuron/frame, right).}

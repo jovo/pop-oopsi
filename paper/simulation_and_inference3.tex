@@ -41,11 +41,13 @@
 \title{Bayesian inference of neural connectivity in a population of neurons from 
 calcium imaging data}
 
+
 \begin{abstract}
 \input{abstract.tex}
 \end{abstract}
 
 \maketitle
+\tableofcontents
 
 \section{Motivation}
 \label{sec1}
@@ -58,21 +60,27 @@ calcium imaging data}
 \label{sec:methods:introduction}
 \input{overview.tex}
 
-\subsection{Hidden Markov Model for calcium imaging of neural population}
+\subsection{Model} %Hidden Markov Model for calcium imaging of neural population}
 \label{sec:methods:markov-setup}
-\input{hmm.tex}
+\input{model.tex}
+
+\subsection{Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}
+\label{sec:methods:sampling_neuron}
+\input{smc_inference.tex}
 
 \subsection{Estimating parameters of neural population calcium imaging Hidden Markov Model}
 \label{sec:methods:estimating_parameters}
 \input{estimate.tex}
 
-\subsection{Sampling joint spike-trains using hybdir MCMC and Gibbs algorithm}
+\clearpage
+\subsection{Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}
 \label{sec:methods:sampling HMM}
 \input{sampling.tex}
 
-\subsection{Estimating parameters of the Hidden Markov Model}
+\subsection{Estimating the connectivity matrix} %parameters of the Hidden Markov Model}
 \label{sec:methods:parameters HMM}
 \input{hmm_params.tex}
+
 
 \subsection{Accuracy of the estimates and Fisher information matrix}
 \label{sec:methods:accuracy_Fisher}
