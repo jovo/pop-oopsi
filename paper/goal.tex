@@ -1,10 +1,17 @@
-Our goal is to estimate the model parameters, such as $W$ and $M$, given calcium imaging observations ${\bf F}$. A natural approach for such estimation is to obtain MAP estimate of these parameters with
+Given the above model, our goal is to estimate the model parameters, $\bth$, given calcium imaging observations ${\bf F}$. A natural choice is find the \emph{maximum a posteriori} (MAP) estimate:
 
 \begin{equation}\label{eqn:MAP}
-(\bth)^*=\text{argmax } P(\bth|{\bf F}).
+\hbth=\argmax_{\bth} P(\bth| \bF) = \argmax_{\bth} \int P(\bth| \bX, \bF) d\bX
 \end{equation}
 
-while we may be unable to calculate the probability $P(\bth|{\bf F})$, our hierarchical model Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:ca:definition} allows us to calculate $P({\bf F}, {\bf X}, \bth)\sim P({\bf F}, {\bf X}|\bth)$. A natural approach to solving problem (\ref{eqn:MAP}) then is to use the Expectation Maximization algorithm (EM).  EM allows to obtain MAP estimates of HMM parameters by going through a series of iterations $(\bth)^{(l)}$, each time finding a better approximation to the MAP solution by maximizing the conditional expectation values
+\noindent which requires solving an intractable integral. Therefore, instead of directly solving Eq. \eqref{eqn:MAP}, we utilize the Expectation Maximization (EM) framework. EM allows one to obtain MAP estimates of the parameters by recursively updating the expected value of the joint distribution of $(\bX, \bF)$ (E step), and then maximizing the parameters (M step):
+
+\begin{align}
+\textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) = E_{P(\bX | \bF; \bth^{(l+1)})}[ \ln P(\bF, \bX | \bth^{(l)})] = \int P(\bX | \bF; \bth^{(l+1)}) \ln P(\bF, \bX | \bth^{(l)}) d \bX  \\
+\textbf{M step} &\text{: Solve } \bth^{(l)} = \argmax_{\bth} Q(\bth,\bth^{(l)})  
+\end{align}
+
+  each time finding a better approximation to the MAP solution by maximizing the conditional expectation values
 
 \begin{equation}
 (\bth)^{(l+1)}=\text{argmax }E_{P({\bf X}|M^{(l)}, W^{(l)}, {\bf F})}\left[\log P({\bf X}, {\bf F}, \bth)\right].

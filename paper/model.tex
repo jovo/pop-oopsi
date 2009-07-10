@@ -1,47 +1,55 @@
-In this work neural activity of a population of neurons is modeled with the standard generalized linear model (GLM), which is known to capture well the statistical properties of the firing of individual neurons \cite{PILL07, PAN03d, Wu07, Rigat06, OKA05}, 
+We first describe the model that characterizes the statistics of the joint spike trains of all $N$ observable neurons.  Each neuron is modeled as a generalized linear model (GLM), which is known to capture well the statistical properties of the firing of individual neurons \cite{PILL07, PAN03d, Wu07, Rigat06, OKA05}.  More specifically, we say that at time $t$, the probability of neuron $i$ spiking is given by some nonlinear function, $f(\cdot)$, of the input to that neuron at that time, $J_i(t)$.  The input is composed of: (i) some baseline firing rate, $b_i$%, (ii) some external stimulus, $\bf S(t)$, that is linearly filtered by $\bf k_i$
+, and (ii) spike history terms, $h_j(t)$, from each neuron $j$, weighted by $w_{ij}$:
 
 \begin{equation}\label{eqn:glm:definition}
 \begin{array}{l}
-n_i(t)\sim \text{Bernoulli}(\lambda_i(t)\Delta), \\
-\lambda_i(t)=f(J_i(t))=f(b_i+k_i\cdot S(t)+\sum\limits_{j=1}^{j=N} \sum\limits_{t'<t} w_{ij}(t-t')n_{j}(t')).
+n_i(t)\overset{iid}{\sim} \text{Bernoulli}\big(f\big(J_i(t)\big)\big), \qquad %\\
+J_i(t)=b_i+\sum \limits_{j=1}^{N}  w_{ij} h_{j}(t), %\\
+% p_i(t)=f(J_i(t))=f(b_i+k_i\cdot S(t)+\sum_{j=1}^{N}  w_{ij} h_{j}(t)), \\
+%h_j(t) = (1- \Delta/\tau_h) h_j(t-1) +n_j(t) + \epsilon_{h_j}(t).
 \end{array}
 \end{equation}
 
-($ 0 < \lambda_i(t)\Delta<1$)
-Here, the spiking of neurons is described as a stochastic Bernoulli process driven by external stimulus $s(t)$ as well as the activity of other neurons in the population ${\bf n}=\{n_{j}(t)\}$, connected to each other via synapses $w_{ij}$.  $\lambda_i(t)$ is instantaneous firing rate of neuron $i$, $b_i$ and $k_i\cdot S(t)$ are the baseline and the external stimulus terms, respectively, and $\Delta$ is the time step.  In this paper we are concerned with studying spontaneous activity in a population of neurons, thus the external stimulus term $S(t)$ from now on will be dropped.  Parameters $w_{ij}(t)$ describe functional couplings between neurons and correspond to the functional connectivity in GLM.  The rate-function $f(J)$ is exponential, $f(J)=\exp(J)$.  This choice is motivated by significant computational simplifications when estimating GLM parameters, by making MAP estimation problem convex - an important advantage for working with large volumes of data
-in neural activity recordings \cite{PAN03d}.
+\noindent To ensure mathematical tractability, we must impose some constraints on $f(\cdot)$ and the dynamics of $h_j(t)$.  More specifically, $f(\cdot)$ must be convex and log-concave, to ensure that the likelihood of the parameters of this model has a single maximum, facilitating efficient computations \cite{PAN03d}.  In all the below simulations, we let $f(J)=\text{e}^{\text{e}^{-J}\Delta}$, where the inclusion of $\Delta$, the time step size, ensures that the firing rate is independent of the particular time discretization of our model (see \cite{??} for a proof that this $f(\cdot)$ satisfies the above constraints).  Furthermore, as the algorithms we develop below assume Markovian dynamics, we model the spike history terms as:
 
-If actual neural spikes $n_i(t)$ were directly observed, the problem of estimating functional connectivity from a set of observed spike trains would have reduces to a known problem such as in \cite{PILL07}. With calcium imaging, however, we do not directly observe spike trains. Instead, fluorescent signal from the calcium-reporter couples with the neural activity via hidden nonlinear calcium dynamics \cite{Vogelstein2009}, 
-
-\begin{equation}\label{eqn:ca:definition}
-\begin{array}{l}
-C_i(t) = C_i(t-1) + (C^i_b-C_i(t-1)) \Delta/\tau^i_c + A^i_c n_i(t)+\epsilon_c^i(t), \\
-F_i(t) \sim \text{Poiss}( S(C_i(t);\alpha_i, \beta_i) ).
-\end{array}
+\begin{equation}
+h_j(t) = (1- \Delta/\tau_h) h_j(t-1) +n_j(t) + \sigma_h \sqrt{\Delta} \epsilon^h_j(t).
 \end{equation}
 
-Eq. \eqref{eqn:ca:definition} describes evolution of intracellular calcium concentration $C_i(t)$ in the neuron $i$ with time $t$. Under normal conditions, the intracellular concentration is fluctuating around the baseline level of $C^i_b$ with normally distributed noise $\epsilon^i_c(t)$ with variance $(\sigma^i_c)^2\Delta$, first two and the last terms.  The third term describes instantaneous jump in the intracellular calcium concentration $A^i_c$ when the neuron fires a spike.  Calcium imaging signal, $F_i(t)$, is described by the count of photons collected at the detector per neural cell per one imaging frame. It is distributed according to Poisson statistics with the mean given by generalized Hill function $S(C)=\alpha_i C/(C+K_d) + \beta_i$ \cite{Yasuda2004}.
+\noindent where $\tau_h$ is the decay time constant for spike history terms, $\sigma_h$ is the standard deviation of noise, $\sqrt{\Delta}$ ensures that noise statistics are independent of the time discretization, and throughout this paper, $\epsilon_\cdot^\cdot$ is assumed to be an independent standard normal random variable, i.e., $\epsilon_{\cdot}^{\cdot}(t) \overset{iid}{\sim} \text{Normal}(0,1)$.  We assume that $\tau_h$ and $\sigma_h$ are known, and therefore the parameters governing spiking of a population of neurons are $\bth^n=\{\bth^n_i\}_{i=1}^N$, where $\bth^n_i=\{\bw_i, b_i\}$,  $\bw_i=(w_{i1},\ldots, w_{iN})$, and $|\bth^n|=(1+N) N$. 
 
-The hierarchical model Eq. \eqref{eqn:glm:definition} and \eqref{eqn:ca:definition} is governed by $6N$ calcium dynamics parameters - calcium decay time-constant $\tau_c$, background calcium concentration $C_{b}$, fluctuations in calcium concentration $\sigma_c$, per-spike calcium jump $A_c$, photon budget scaling $\alpha_c$ and background $\beta_c$, which we jointly denote as $M_i=\{\tau^i_c, C^i_{b}, \sigma^i_c, A^i_c, \alpha_i, \beta_i\}$, and $m N^2 + N$ functional connectivity weights $w_{ij}(t)$ and $b^0_i$ which we jointly denote as $W=\{w_{ij}(t), b_i\}$, $m$ is the temporal depth of coupling weights $w_{ij}(t)$.
+%where $0 < p_i(t)\Delta<1$.  The spiking of neurons is described as a stochastic Bernoulli process driven by external stimulus $S(t)$ as well as the activity of other neurons in the population ${\bf n}=\{n_{j}(t)\}$, connected to each other via synapses $w_{ij}$.  $p_i(t)$ is instantaneous firing rate of neuron $i$, $b_i$ and $k_i\cdot S(t)$ are the baseline and the external stimulus terms, respectively, and $\Delta$ is the time step.  In this paper, we are concerned with studying spontaneous activity in a population of neurons, thus the external stimulus term $S(t)$ will be dropped hereafter.   The rate-function $f(J)$ is exponential, $f(J)=\exp(J)$.  
 
+The problem of estimating functional connectivity, given a model like the one above, when neural spikes $n_i(t)$ are assumed to be directly observed, has recently received much attention \cite{PILL07}. With calcium imaging, however, we do not directly observe spike trains. Instead, fluorescent signal from the calcium indicators conveys neural activity via hidden nonlinear calcium dynamics \cite{Vogelstein2009}: 
 
-\begin{table}[h!b!p!]
-\caption{Table of notations. Indices $i, j=1\ldots N$ refer to the neurons in the population. Bold notation is used to represent the vector states over all neurons, e.g. ${\bf X}=\{X_i, i=1\ldots N\}$. Whenever $t$ is dropped for brevity the entire sequence $t=1\ldots T$ is implied, e.g. ${\bf X}=\{{\bf X}(t), t=1\ldots T\}$.}
-\label{table:notation}
-\begin{tabular}{ll}
-Number of neurons         & $N$ \\
-Calcium imaging duration & $T$ \\
-Single neuron spike & $n_i(t)$ \\
-Single neuron calcium concentration & $C_i(t)$ \\
-Single neuron state & $X_i(t)=(n_i(t), C_i(t))$ \\
-Sequence of neural states & $X_i=\{X_i(t), t=1\ldots T\}$ \\
-Fluorescence observation from single neuron & $F_i(t)$ \\
-Sequence of fluorescence observations & $F_i=\{F_i(t), t=1\ldots T\}$ \\
-Set of spike trains from all neurons   & ${\bf X}=\{X_i\}$ \\
-Set of fluorescence observations from all neurons & ${\bf F}=\{F_i\}$ \\
-Functional connection weights & $w_{ij}(t)$ \\
-Matrix of all connection weights & $W=\{w_{ij}(t)\}$ \\
-Calcium dynamics model for single neuron & $M_i$ \\
-Calcium dynamics model for all neurons & $M=\{M_i\}$
-\end{tabular}
-\end{table}
+%\begin{equation}
+\begin{align} \label{eqn:ca:definition} %{l}
+C_i(t) &= C_i(t-1) + (C_i^b-C_i(t-1)) \Delta/\tau^c_i + A_i n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\
+F_i(t) &= \alpha_i S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i} \epsilon^F_i(t). \label{eqn:F:definition}
+\end{align}
+% \end{equation}
+
+Eq. \eqref{eqn:ca:definition} describes evolution of intracellular calcium concentration $C_i(t)$ in the neuron $i$ at time $t$. Under normal conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$ with normally distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$.  Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium to jump by $A_i$, and subsequently decay with time constant $\tau^c_i$.  The fluorescence signal corresponding to neuron $i$ at time $t$, $F_i(t)$, corresponds to the count of photons collected at the detector per neuron per imaging frame. It is distributed according to normal statistics with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}.  Because $K_d$ effectively scales the results, and is a property of the indicator, we assume throughout this work that it is known.  Thus, the parameters governing the fluorescence observations are $\bth^F=\{\bth^F_i\}_{i=1}^N$, where $\bth^F_i=\{C^b_i, \tau^c_i, A_i, \sigma^C_i, \alpha_i, \beta_i, \gamma_i, \sigma^F_i\}$, and $|\bth^F|=8N$.  Therefore, the generative model is governed by $\bth=\bth^n \cup \bth^F$, where $|\bth|=(9+N)N$. 
+
+%$8N$ calcium dynamics parameters - calcium decay time-constant $\tau_c$, background calcium concentration $C_{b}$, fluctuations in calcium concentration $\sigma_c$, per-spike calcium jump $A_c$, photon budget scaling $\alpha_c$ and background $\beta_c$, which we jointly denote as $M_i=\{\tau^c_i, C^i_{b}, \sigma^c_i, A_i, \alpha_i, \beta_i\}$, and $m N^2 + N$ functional connectivity weights $w_{ij}(t)$ and $b^0_i$ which we jointly denote as $W=\{w_{ij}(t), b_i\}$, $m$ is the temporal depth of coupling weights $w_{ij}(t)$.
+
+% \begin{table}[h!b!p!]
+% \caption{Table of notations. Bold notation is used to represent the vector states over all neurons, e.g. ${\bf X}=\{X_i, i=1\ldots N\}$. Whenever $t$ is dropped for brevity the entire sequence $t=1\ldots T$ is implied, e.g. ${\bf X}=\{{\bf X}(t), t=1\ldots T\}$.}
+% \label{table:notation}
+% \begin{tabular}{ll}
+% Number of neurons         & $N$ \\
+% Calcium imaging duration & $T$ \\
+% Single neuron spike & $n_i(t)$ \\
+% Single neuron calcium concentration & $C_i(t)$ \\
+% Single neuron state & $X_i(t)=(n_i(t), h_i(t), C_i(t))$ \\
+% Sequence of neural states & $X_i=\{X_i(t), t=1\ldots T\}$ \\
+% Fluorescence observation from single neuron & $F_i(t)$ \\
+% Sequence of fluorescence observations & $F_i=\{F_i(t), t=1\ldots T\}$ \\
+% Set of spike trains from all neurons   & ${\bf X}=\{X_i\}$ \\
+% Set of fluorescence observations from all neurons & ${\bf F}=\{F_i\}$ \\
+% Functional connection weights & $w_{ij}(t)$ \\
+% Matrix of all connection weights & $W=\{w_{ij}(t)\}$ \\
+% Calcium dynamics model for single neuron & $M_i$ \\
+% Calcium dynamics model for all neurons & $M=\{M_i\}$
+% \end{tabular}
+% \end{table}

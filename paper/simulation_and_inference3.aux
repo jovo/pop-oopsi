@@ -59,26 +59,22 @@
 \citation{Rigat06}
 \citation{Wu07}
 \citation{PAN03d}
-\citation{PILL07}
-\citation{Vogelstein2009}
+\citation{??}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Methods}{2}{}}
 \newlabel{sec:methods}{{II}{2}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Overview}{2}{}}
-\newlabel{sec:methods:introduction}{{II\tmspace  +\thinmuskip {.1667em}A}{2}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Model}{2}{}}
-\newlabel{sec:methods:markov-setup}{{II\tmspace  +\thinmuskip {.1667em}B}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Model}{2}{}}
+\newlabel{sec:methods:markov-setup}{{II\tmspace  +\thinmuskip {.1667em}A}{2}{}{}{}}
 \newlabel{eqn:glm:definition}{{1}{2}{}{}{}}
+\citation{PILL07}
+\citation{Vogelstein2009}
 \citation{Yasuda2004}
 \citation{Vogelstein2009}
-\newlabel{eqn:ca:definition}{{2}{3}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of notations. Indices $i, j=1\ldots  N$ refer to the neurons in the population. Bold notation is used to represent the vector states over all neurons, e.g. ${\bf  X}=\{X_i, i=1\ldots  N\}$. Whenever $t$ is dropped for brevity the entire sequence $t=1\ldots  T$ is implied, e.g. ${\bf  X}=\{{\bf  X}(t), t=1\ldots  T\}$.}}{3}{}}
-\newlabel{table:notation}{{I}{3}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}{3}{}}
-\newlabel{sec:methods:sampling_neuron}{{II\tmspace  +\thinmuskip {.1667em}C}{3}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Estimating parameters of neural population calcium imaging Hidden Markov Model}{3}{}}
-\newlabel{sec:methods:estimating_parameters}{{II\tmspace  +\thinmuskip {.1667em}D}{3}{}{}{}}
-\newlabel{eqn:MAP}{{3}{3}{}{}{}}
-\citation{Vogelstein2009}
+\newlabel{eqn:ca:definition}{{3}{3}{}{}{}}
+\newlabel{eqn:F:definition}{{4}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Goal}{3}{}}
+\newlabel{sec:methods:goal}{{II\tmspace  +\thinmuskip {.1667em}B}{3}{}{}{}}
+\newlabel{eqn:MAP}{{5}{3}{}{}{}}
+\newlabel{eqn:loglik:definition-expl}{{9}{3}{}{}{}}
 \citation{RAB89}
 \citation{Andrieu2007}
 \citation{DFG01}
@@ -88,8 +84,10 @@
 \citation{NBR03}
 \citation{DFG01}
 \citation{Gelfand1990}
-\newlabel{eqn:loglik:definition-expl}{{5}{4}{}{}{}}
-\newlabel{eqn:likelihoodGLM-expl}{{6}{4}{}{}{}}
+\citation{Vogelstein2009}
+\newlabel{eqn:likelihoodGLM-expl}{{10}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}{4}{}}
+\newlabel{sec:methods:sampling_neuron}{{II\tmspace  +\thinmuskip {.1667em}C}{4}{}{}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Pseudocode for estimating functional connectivity from calcium imaging data using EM.}}{5}{}}
 \newlabel{eqn:pseudocode}{{1}{5}{}{}{}}
 \citation{Andrieu2007}
@@ -98,23 +96,22 @@
 \citation{Andrieu2007}
 \citation{NBR03}
 \citation{NBR03}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}{6}{}}
-\newlabel{sec:methods:sampling HMM}{{II\tmspace  +\thinmuskip {.1667em}E}{6}{}{}{}}
-\newlabel{eqn:nealprob}{{9}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}{6}{}}
+\newlabel{sec:methods:sampling HMM}{{II\tmspace  +\thinmuskip {.1667em}D}{6}{}{}{}}
+\newlabel{eqn:nealprob}{{13}{6}{}{}{}}
 \citation{Vogelstein2009}
 \citation{Candes2005}
 \citation{DE03}
 \citation{Mishchenko2009}
 \citation{Stevenson2009}
-\newlabel{eqn:spkhist:definition}{{13}{7}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {F}Estimating the connectivity matrix}{7}{}}
-\newlabel{sec:methods:parameters HMM}{{II\tmspace  +\thinmuskip {.1667em}F}{7}{}{}{}}
-\newlabel{eqn:likelihoodsparseGLM}{{14}{8}{}{}{}}
-\newlabel{eqn:conconvexopt}{{15}{8}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{8}{}}
-\newlabel{sec:methods:accuracy_Fisher}{{II\tmspace  +\thinmuskip {.1667em}G}{8}{}{}{}}
-\newlabel{eqn:fisher}{{18}{8}{}{}{}}
+\newlabel{eqn:spkhist:definition}{{17}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Estimating the connectivity matrix}{7}{}}
+\newlabel{sec:methods:parameters HMM}{{II\tmspace  +\thinmuskip {.1667em}E}{7}{}{}{}}
 \citation{PL07}
+\newlabel{eqn:likelihoodsparseGLM}{{18}{8}{}{}{}}
+\newlabel{eqn:conconvexopt}{{19}{8}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}}
+\newlabel{sec:methods:specific_implementation}{{II\tmspace  +\thinmuskip {.1667em}F}{8}{}{}{}}
 \citation{Braitenberg1998}
 \citation{Urquijo2000}
 \citation{Lefort2009}
@@ -125,24 +122,25 @@
 \citation{Lefort2009}
 \citation{Lefort2009}
 \citation{Sayer1990}
-\@writefile{toc}{\contentsline {subsection}{\numberline {H}Specific implementation notes}{9}{}}
-\newlabel{sec:methods:specific_implementation}{{II\tmspace  +\thinmuskip {.1667em}H}{9}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}}
+\newlabel{sec:methods:accuracy_Fisher}{{II\tmspace  +\thinmuskip {.1667em}G}{9}{}{}{}}
+\newlabel{eqn:fisher}{{22}{9}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Results}{9}{}}
 \newlabel{results}{{III}{9}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}}
 \newlabel{sec:results:simulations}{{III\tmspace  +\thinmuskip {.1667em}A}{9}{}{}{}}
 \citation{Sayer1990}
 \citation{Vogelstein2009}
-\newlabel{eqn:convert}{{20}{10}{}{}{}}
-\newlabel{eqn:convert-smalldt}{{21}{10}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Table of simulation parameters.}}{10}{}}
-\newlabel{table:caparm}{{II}{10}{}{}{}}
+\newlabel{eqn:convert}{{24}{10}{}{}{}}
+\newlabel{eqn:convert-smalldt}{{25}{10}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of simulation parameters.}}{10}{}}
+\newlabel{table:caparm}{{I}{10}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left) and high SNR regimes (photon budget 40 Kph/neuron/frame, right).}}{11}{}}
 \newlabel{fig:egfluor}{{1}{11}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}}
 \newlabel{sec:results:inference}{{III\tmspace  +\thinmuskip {.1667em}B}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmoda}{{22}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmodb}{{23}{11}{}{}{}}
+\newlabel{eqn:likelihoodGLMmoda}{{26}{11}{}{}{}}
+\newlabel{eqn:likelihoodGLMmodb}{{27}{11}{}{}{}}
 \citation{Vogelstein2009}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using hybrid MCMC-Gibbs sampler and independent approximation, for a network of $N=25$ neurons imaged with intermediate SNR ($10$ Kph/neuron/frame, see Figure 5{}{}{}\hbox {} below); $r^2=0.48$ for MCMC-Gibbs and $r^2=0.47$ for IID. Note that the connectivity weights thus inferred are nearly equal, thus showing that independent approximation is sufficient here for the purposes of estimating the connectivity matrix. Note also constant time-discretization scaling bias in the estimated weights due to missing proximal spike pairs (left panel). Scaling-bias adjusted weights correspond to true connectivity weights well (right panel).}}{13}{}}
 \newlabel{fig:mcmc-iid}{{2}{13}{}{}{}}

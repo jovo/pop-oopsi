@@ -16,6 +16,12 @@
 \renewcommand{\i}{\backslash i}
 \newcommand{\bth}{\mathbf{\theta}}
 \newcommand{\bw}{\mathbf{w}}
+\newcommand{\T}{^{\ensuremath{\mathsf{T}}}}           % transpose
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\hbth}{\widehat{\bth}}
 
 %\nofiles
 
@@ -59,21 +65,21 @@ calcium imaging data}
 \section{Methods}
 \label{sec:methods}
 
-\subsection{Overview}
-\label{sec:methods:introduction}
+%\subsection{Overview}
+%\label{sec:methods:introduction}
 \input{overview.tex}
 
 \subsection{Model} %Hidden Markov Model for calcium imaging of neural population}
 \label{sec:methods:markov-setup}
 \input{model.tex}
 
+\subsection{Goal} %Hidden Markov Model for calcium imaging of neural population}
+\label{sec:methods:goal}
+\input{goal.tex}
+
 \subsection{Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}
 \label{sec:methods:sampling_neuron}
 \input{smc_inference.tex}
-
-\subsection{Estimating parameters of neural population calcium imaging Hidden Markov Model}
-\label{sec:methods:estimating_parameters}
-\input{estimate.tex}
 
 \clearpage
 \subsection{Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}

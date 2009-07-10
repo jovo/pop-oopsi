@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  10 JUL 2009 12:39
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  10 JUL 2009 17:28
 entering extended mode
 **simulation_and_inference3.tex
 (./simulation_and_inference3.tex
@@ -212,21 +212,21 @@ File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 (./simulation_and_inference3.aux)
 \openout1 = `simulation_and_inference3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-Class revtex4 Info: Patching LaTeX tabular. on input line 22.
-Class revtex4 Info: cite was not loaded (OK!) on input line 22.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+Class revtex4 Info: Patching LaTeX tabular. on input line 28.
+Class revtex4 Info: cite was not loaded (OK!) on input line 28.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 28.
 
 (/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
 (/opt/local/share/texmf-dist/tex/context/base/supp-mis.tex
@@ -272,22 +272,22 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 8.
 (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
-Overfull \hbox (5.00003pt too wide) detected at line 16
+Overfull \hbox (5.00003pt too wide) detected at line 15
  \OT1/cmr/m/n/10 11
  []
 
 
-Overfull \hbox (5.00003pt too wide) detected at line 17
+Overfull \hbox (5.00003pt too wide) detected at line 16
  \OT1/cmr/m/n/10 14
  []
 
 
-Overfull \hbox (5.00003pt too wide) detected at line 18
+Overfull \hbox (5.00003pt too wide) detected at line 17
  \OT1/cmr/m/n/10 15
  []
 
 
-Overfull \hbox (5.00003pt too wide) detected at line 19
+Overfull \hbox (5.00003pt too wide) detected at line 18
  \OT1/cmr/m/n/10 15
  []
 
@@ -296,9 +296,13 @@ Overfull \hbox (5.00003pt too wide) detected at line 19
 \openout4 = `simulation_and_inference3.toc'.
 
  (./intro.tex [1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-]) (./overview.tex) (./model.tex [2]) (./smc_inference.tex) (./estimate.tex
-[3]) [4] [5] (./sampling.tex [6]) (./hmm_params.tex [7]) (./fisher.tex [8])
-(./implementation.tex) (./simulation.tex [9]
+]) (./overview.tex) (./model.tex
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 13.
+
+[2]) (./goal.tex [3]) (./smc_inference.tex) [4] [5] (./sampling.tex [6])
+(./hmm_params.tex [7]) (./implementation.tex) [8] (./fisher.tex)
+(./simulation.tex [9]
 <../figs/Figure0b_fluor_eg_hlowSNR.pdf, id=96, 614.295pt x 794.97pt>
 File: ../figs/Figure0b_fluor_eg_hlowSNR.pdf Graphic file (type pdf)
 
@@ -384,15 +388,18 @@ s/Figure9_fluor_sparse_sol.pdf> <../figs/Figure9b_fluor_sparse_sol.pdf>]
 pdf>] [18 <../figs/Figure4_perf_vs_T.pdf>] [19 <../figs/Figure6c_perf_vs_N.pdf>
 ] [20 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <
 ../figs/Figure8b_fluor_weak_glm.pdf> <../figs/Figure8a_fluor_strong_glm.pdf>])
+
+Package natbib Warning: There were undefined citations.
+
 [21] (./simulation_and_inference3.aux) ) 
 Here is how much of TeX's memory you used:
- 4098 strings out of 94500
- 52974 string characters out of 1155413
- 124271 words of memory out of 1000000
- 7174 multiletter control sequences out of 10000+50000
+ 4105 strings out of 94500
+ 52959 string characters out of 1155413
+ 124351 words of memory out of 1000000
+ 7181 multiletter control sequences out of 10000+50000
  11293 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,9n,26p,2149b,334s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,10n,26p,2149b,334s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
  211 PDF objects out of 300000
  0 named destinations out of 131072
@@ -401,12 +408,12 @@ PDF statistics:
 1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-dist/fonts/type1/public/tt2001/f
 mex9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy6.pfb></opt/lo
 cal/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt/local/share/texmf-di
-st/fonts/type1/bluesky/cm/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type1/bl
-uesky/cm/cmr5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb
-></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi6.pfb></opt/local/shar
-e/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/share/texmf-dist/font
-s/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
-m/cmsy7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt
+st/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/share/texmf-dist/fonts/type1/bl
+uesky/cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pf
+b></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr5.pfb></opt/local/shar
+e/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/font
+s/type1/bluesky/cm/cmsy7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
+m/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt
 /local/share/texmf-dist/fonts/type1/bluesky/cm/cmex10.pfb></opt/local/share/tex
 mf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></opt/local/share/texmf-dist/fonts/ty
 pe1/bluesky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmt
@@ -416,4 +423,4 @@ ist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/type1/b
 luesky/cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.
 pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/sh
 are/texmf-dist/fonts/type1/bluesky/cm/cmbx12.pfb>
-Output written on simulation_and_inference3.pdf (21 pages, 443466 bytes).
+Output written on simulation_and_inference3.pdf (21 pages, 446617 bytes).
