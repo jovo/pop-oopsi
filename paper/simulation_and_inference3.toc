@@ -14,5 +14,5 @@
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}
 \contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}
 \contentsline {section}{\numberline {IV}Discussion}{14}{}
-\contentsline {section}{\numberline {}Acknowledgments}{15}{}
-\contentsline {section}{\numberline {}References}{15}{}
+\contentsline {section}{\numberline {}Acknowledgments}{16}{}
+\contentsline {section}{\numberline {}References}{16}{}
