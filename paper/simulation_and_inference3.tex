@@ -14,6 +14,9 @@
 %\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{bm}% bold math
 \renewcommand{\i}{\backslash i}
+\newcommand{\bth}{\mathbf{\theta}}
+\newcommand{\bw}{\mathbf{w}}
+
 %\nofiles
 
 \begin{document}
@@ -81,14 +84,13 @@ calcium imaging data}
 \label{sec:methods:parameters HMM}
 \input{hmm_params.tex}
 
+\subsection{Specific implementation notes}
+\label{sec:methods:specific_implementation}
+\input{implementation.tex}
 
 \subsection{Accuracy of the estimates and Fisher information matrix}
 \label{sec:methods:accuracy_Fisher}
 \input{fisher.tex}
-
-\subsection{Specific implementation notes}
-\label{sec:methods:specific_implementation}
-\input{implementation.tex}
 
 \section{Results}
 \label{results}
