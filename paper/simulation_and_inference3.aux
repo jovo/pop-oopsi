@@ -100,13 +100,13 @@
 \newlabel{sec:methods:sampling HMM}{{II\tmspace  +\thinmuskip {.1667em}D}{6}{}{}{}}
 \newlabel{eqn:nealprob}{{13}{6}{}{}{}}
 \citation{Vogelstein2009}
+\newlabel{eqn:spkhist:definition}{{17}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Estimating the connectivity matrix}{7}{}}
+\newlabel{sec:methods:parameters HMM}{{II\tmspace  +\thinmuskip {.1667em}E}{7}{}{}{}}
 \citation{Candes2005}
 \citation{DE03}
 \citation{Mishchenko2009}
 \citation{Stevenson2009}
-\newlabel{eqn:spkhist:definition}{{17}{7}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}Estimating the connectivity matrix}{7}{}}
-\newlabel{sec:methods:parameters HMM}{{II\tmspace  +\thinmuskip {.1667em}E}{7}{}{}{}}
 \citation{PL07}
 \newlabel{eqn:likelihoodsparseGLM}{{18}{8}{}{}{}}
 \newlabel{eqn:conconvexopt}{{19}{8}{}{}{}}
@@ -116,31 +116,31 @@
 \citation{Urquijo2000}
 \citation{Lefort2009}
 \citation{Sayer1990}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}}
+\newlabel{sec:methods:accuracy_Fisher}{{II\tmspace  +\thinmuskip {.1667em}G}{9}{}{}{}}
+\newlabel{eqn:fisher}{{22}{9}{}{}{}}
 \citation{Braitenberg1998}
 \citation{Urquijo2000}
 \citation{Braitenberg1998}
 \citation{Lefort2009}
 \citation{Lefort2009}
 \citation{Sayer1990}
-\@writefile{toc}{\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}}
-\newlabel{sec:methods:accuracy_Fisher}{{II\tmspace  +\thinmuskip {.1667em}G}{9}{}{}{}}
-\newlabel{eqn:fisher}{{22}{9}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Results}{9}{}}
-\newlabel{results}{{III}{9}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}}
-\newlabel{sec:results:simulations}{{III\tmspace  +\thinmuskip {.1667em}A}{9}{}{}{}}
 \citation{Sayer1990}
 \citation{Vogelstein2009}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Results}{10}{}}
+\newlabel{results}{{III}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{10}{}}
+\newlabel{sec:results:simulations}{{III\tmspace  +\thinmuskip {.1667em}A}{10}{}{}{}}
 \newlabel{eqn:convert}{{24}{10}{}{}{}}
 \newlabel{eqn:convert-smalldt}{{25}{10}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of simulation parameters.}}{10}{}}
-\newlabel{table:caparm}{{I}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}}
+\newlabel{sec:results:inference}{{III\tmspace  +\thinmuskip {.1667em}B}{10}{}{}{}}
+\newlabel{eqn:likelihoodGLMmoda}{{26}{10}{}{}{}}
+\newlabel{eqn:likelihoodGLMmodb}{{27}{10}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left) and high SNR regimes (photon budget 40 Kph/neuron/frame, right).}}{11}{}}
 \newlabel{fig:egfluor}{{1}{11}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}}
-\newlabel{sec:results:inference}{{III\tmspace  +\thinmuskip {.1667em}B}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmoda}{{26}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmodb}{{27}{11}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of simulation parameters.}}{11}{}}
+\newlabel{table:caparm}{{I}{11}{}{}{}}
 \citation{Vogelstein2009}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using hybrid MCMC-Gibbs sampler and independent approximation, for a network of $N=25$ neurons imaged with intermediate SNR ($10$ Kph/neuron/frame, see Figure 5{}{}{}\hbox {} below); $r^2=0.48$ for MCMC-Gibbs and $r^2=0.47$ for IID. Note that the connectivity weights thus inferred are nearly equal, thus showing that independent approximation is sufficient here for the purposes of estimating the connectivity matrix. Note also constant time-discretization scaling bias in the estimated weights due to missing proximal spike pairs (left panel). Scaling-bias adjusted weights correspond to true connectivity weights well (right panel).}}{12}{}}
 \newlabel{fig:mcmc-iid}{{2}{12}{}{}{}}
@@ -152,24 +152,22 @@
 \newlabel{fig:ca-noise}{{5}{14}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Discussion}{14}{}}
 \newlabel{discussion}{{IV}{14}{}{}{}}
-\bibdata{mybib}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Distribution of connectivity weights inferred using calcium imaging, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for GLM solution, and right panel is for sparse-prior GLM solution. Blue curves are for inhibitory connections, red curves are for excitatory connections and black are for zero connections. Solid lines are original distributions and dashed lines are inferred distributions. In GLM solution the quality of the inferred weights is certainly sufficient to say whether a pairs of neurons is connected, or whether given neuron is inhibitory or excitatory with high reliability; and such statements may be made from sparse-prior GLM solution almost with certainty.}}{15}{}}
 \newlabel{fig:distr}{{6}{15}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Normalized histograms of residual errors in the inferred connectivity weights, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for independent approximation using regular GLM, middle panel is for baseline regular GLM solution, and the right panel is for baseline sparse GLM solution.}}{15}{}}
 \newlabel{fig:residuals}{{7}{15}{}{}{}}
-\bibcite{Andrieu2007}{{1}{}{{}}{{}}}
-\bibcite{Averbeck2008}{{2}{}{{}}{{}}}
-\bibcite{Bohland2009}{{3}{}{{}}{{}}}
+\bibdata{mybib}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Baseline accuracy of connectivity weights inference as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Note that accuracy does not depend on the number of neurons $N$, as shown in the Methods. Also, about 30 minutes of imaging time are sufficient for accurate estimation of the connectivity matrix using GLM solution, while the same accuracy of the reconstruction may be achieved with sparse-prior GLM solver already for 300-600 seconds of calcium imaging.}}{16}{}}
 \newlabel{fig:data-time}{{8}{16}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Baseline accuracy of connectivity weights inference for for networks of different size from $N=10$ to $N=200$ neurons. Accuracy does not depend on the number of neurons $N$ in agreement with theoretical analysis in Methods. 300-600 seconds of calcium imaging data are sufficient for estimating connectivity matrix using sparse-prior GLM solver, and about 30 minutes of observations are sufficient using GLM solver.}}{16}{}}
 \newlabel{fig:data-n}{{9}{16}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {}Acknowledgments}{16}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {}References}{16}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Baseline accuracy of the inferred neuron type (excitatory or inhibitory) as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Better than 95\% accuracy is achieved in identification of neuron type.}}{17}{}}
 \newlabel{fig:data-ie}{{10}{17}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces 15 s of simulated spike trains for a weakly coupled (upper-left) and strongly coupled (upper-right) stochastic networks. Note that in weakly coupled network spikes are sufficiently uncorrelated to allow access to all different neural connectivity configurations necessary to estimate complete anatomical connectivity vectors ${\bf  w}_i$. In strongly coupled case many instances of highly synchronous locked firings are evident, thus reducing dimensionality of the observed dynamic space of the network, and preventing functional connectivity from faithfully representing anatomical connectivity. Accordingly, GLM solution for strongly coupled neural network (lower-right) does not provide access to the structure of anatomical connectivity as opposed to weakly-coupled case (lower-left).}}{17}{}}
 \newlabel{fig:rasters}{{11}{17}{}{}{}}
+\bibcite{Andrieu2007}{{1}{}{{}}{{}}}
+\bibcite{Averbeck2008}{{2}{}{{}}{{}}}
+\bibcite{Bohland2009}{{3}{}{{}}{{}}}
 \bibcite{Braitenberg1998}{{4}{}{{}}{{}}}
 \bibcite{Briggman2006}{{5}{}{{}}{{}}}
 \bibcite{Broome2006}{{6}{}{{}}{{}}}
@@ -196,6 +194,8 @@
 \bibcite{Litke2004}{{27}{}{{}}{{}}}
 \bibcite{Litke2003}{{28}{}{{}}{{}}}
 \bibcite{Meister1994}{{29}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {}Acknowledgments}{18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {}References}{18}{}}
 \bibcite{MINKAPHD}{{30}{}{{}}{{}}}
 \bibcite{Mishchenko2009c}{{31}{}{{}}{{}}}
 \bibcite{Mishchenko2009a}{{32}{}{{}}{{}}}

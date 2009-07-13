@@ -59,7 +59,7 @@ EM algorithm therefore requires solving following problems: sampling individual 
   
   \For{$k=1\ldots N_G$}
     \ForAll{$i=1\ldots N$}
-      \State Sample $n_i \sim P(n_i|{\bf X}_{\i},{\bf F}_i; M_i, W)$
+      \State Sample $n_i \sim P(n_i|{\bf n}_{\i},{\bf F}_i; M_i, W)$
     \EndFor
   \EndFor 
 

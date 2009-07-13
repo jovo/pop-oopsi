@@ -1,7 +1,7 @@
 Connectivity matrix was calculated by solving maximum likelihood problem Eq. \eqref{eqn:likelihoodGLM-expl}. Specifically, 
 
 \begin{align}
-\label{eqn:likelihoodGLMmoda}&E[\log P_{GLM}(n_i|{bf n}_{\i}, W)]=\sum_t \left( n_i(t) \log J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right), \\
+\label{eqn:likelihoodGLMmoda}&E[\log P_{GLM}(n_i|{\bf n}_{\i}, W)]=\sum_t \left( n_i(t) \log J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right), \\
 \label{eqn:likelihoodGLMmodb}&J_i(t)=b_i+\sum\limits_j \sum\limits_{t'<t} w_{ij}(t-t')n_{j}(t')=
 b_i+\sum\limits_j w^{ij}_s \sum\limits_{t'<t} \exp(-(t-t')/\tau_h)n_j(t').
 \end{align}
@@ -103,21 +103,21 @@ distributions and dashed lines are inferred distributions. In GLM solution the q
 \end{figure}
 \begin{figure}
 \centering
-\begin{minipage}[c]{0.90\hsize}
-\includegraphics[width=200pt]{../figs/Figure10a_residuals_iidglm}
+\begin{minipage}[c]{0.30\hsize}
+\includegraphics[width=\hsize]{../figs/Figure10a_residuals_iidglm}
 \end{minipage}
-\begin{minipage}[c]{0.90\hsize}
-\includegraphics[width=200pt]{../figs/Figure10b_residuals_baseglm}
+\begin{minipage}[c]{0.30\hsize}
+\includegraphics[width=\hsize]{../figs/Figure10b_residuals_baseglm}
 \end{minipage}
-\begin{minipage}[c]{0.90\hsize}
-\includegraphics[width=200pt]{../figs/Figure10c_residuals_basespa}
+\begin{minipage}[c]{0.30\hsize}
+\includegraphics[width=\hsize]{../figs/Figure10c_residuals_basespa}
 \end{minipage}
 \caption{Normalized histograms of residual errors in the inferred connectivity weights, for
 a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled
 to have the same mean with the true distributions, owing the time-discretization scaling bias
 discussed in the text.
-Upper panel is for independent approximation using regular GLM, middle panel is
-for baseline regular GLM solution, and the lower panel is for baseline
+Left panel is for independent approximation using regular GLM, middle panel is
+for baseline regular GLM solution, and the right panel is for baseline
 sparse GLM solution.}
 \label{fig:residuals}
 \end{figure}

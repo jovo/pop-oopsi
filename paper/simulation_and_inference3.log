@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.5.30)  10 JUL 2009 18:29
+This is pdfTeX, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.5.30)  13 JUL 2009 16:13
 entering extended mode
 **simulation_and_inference3.tex
 (./simulation_and_inference3.tex
@@ -239,8 +239,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 8.
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
+Overfull \hbox (5.00003pt too wide) detected at line 13
+ \OT1/cmr/m/n/10 10
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 14
+ \OT1/cmr/m/n/10 10
+ []
+
+
 Overfull \hbox (5.00003pt too wide) detected at line 15
- \OT1/cmr/m/n/10 11
+ \OT1/cmr/m/n/10 10
  []
 
 
@@ -250,12 +260,12 @@ Overfull \hbox (5.00003pt too wide) detected at line 16
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 17
- \OT1/cmr/m/n/10 16
+ \OT1/cmr/m/n/10 18
  []
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 18
- \OT1/cmr/m/n/10 16
+ \OT1/cmr/m/n/10 18
  []
 
 )
@@ -266,8 +276,15 @@ Overfull \hbox (5.00003pt too wide) detected at line 18
 
 Package natbib Warning: Citation `??' on page 2 undefined on input line 13.
 
-[2]) (./goal.tex [3]) (./smc_inference.tex) [4] [5] (./sampling.tex [6])
-(./hmm_params.tex [7]) (./implementation.tex) [8] (./fisher.tex)
+[2]) (./goal.tex [3]) (./smc_inference.tex) [4] [5] (./sampling.tex [6]
+Underfull \hbox (badness 1776) in paragraph at lines 45--48
+\OT1/cmr/m/n/10 i.e. the GLM like-li-hood in terms of re-duced his-tory vari-ab
+les fac-tor-izes over time $\OML/cmm/m/it/10 P[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 n[]\OMS/cmsy/m/n/10 j\OT1/cmr/bx/n/10 h\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 W\
+OT1/cmr/m/n/10 ) =
+ []
+
+) (./hmm_params.tex [7]) (./implementation.tex [8]) (./fisher.tex)
 (./simulation.tex [9]
 File: ../figs/Figure0b_fluor_eg_hlowSNR.eps Graphic file (type eps)
  <../figs/Figure0b_fluor_eg_hlowSNR.eps>
@@ -298,9 +315,9 @@ File: ../figs/Figure9_fluor_sparse_sol.eps Graphic file (type eps)
 <../figs/Figure9_fluor_sparse_sol.eps>
 File: ../figs/Figure9b_fluor_sparse_sol.eps Graphic file (type eps)
  <../figs/Figure9b_fluor_sparse_sol.eps>
+[12]
 File: ../figs/Figure3_perf_vs_gamma.eps Graphic file (type eps)
-
-<../figs/Figure3_perf_vs_gamma.eps> [12] [13]
+ <../figs/Figure3_perf_vs_gamma.eps> [13]
 File: ../figs/Figure5_hist_glm_vanilla.eps Graphic file (type eps)
 
 <../figs/Figure5_hist_glm_vanilla.eps>
@@ -330,19 +347,19 @@ File: ../figs/Figure8b_fluor_weak_glm.eps Graphic file (type eps)
 <../figs/Figure8b_fluor_weak_glm.eps>
 File: ../figs/Figure8a_fluor_strong_glm.eps Graphic file (type eps)
  <../figs/Figure8a_fluor_strong_glm.eps>)
-(./discussion.tex [14]) (./simulation_and_inference3.bbl [15] [16] [17]
+(./discussion.tex [14] [15]) (./simulation_and_inference3.bbl [16] [17]
 [18])
 
 Package natbib Warning: There were undefined citations.
 
 [19] (./simulation_and_inference3.aux) ) 
 Here is how much of TeX's memory you used:
- 3752 strings out of 94087
- 46603 string characters out of 1167723
- 117836 words of memory out of 3500000
- 6946 multiletter control sequences out of 10000+50000
+ 3751 strings out of 94087
+ 46592 string characters out of 1167723
+ 118537 words of memory out of 3500000
+ 6945 multiletter control sequences out of 10000+50000
  11293 words of font info for 43 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  32i,10n,26p,2149b,340s stack positions out of 5000i,500n,6000p,200000b,5000s
 
-Output written on simulation_and_inference3.dvi (19 pages, 105936 bytes).
+Output written on simulation_and_inference3.dvi (19 pages, 107592 bytes).

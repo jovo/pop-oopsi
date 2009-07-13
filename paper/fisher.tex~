@@ -1,4 +1,4 @@
-In order to determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P(W|{\bf n})$. Assuming for simplicity perfect knowledge of spike trains (i.e. such not corrupted by inference errors from calcium imaging) and single time-bin coupling $m=1$, i.e. $w_{ij}(t)\neq 0$ only for time-delay $t=1$, we write the Fisher information matrix as
+In order to determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P(W|H)$. Assuming for simplicity perfect knowledge of spike trains (i.e. such not corrupted by inference errors from calcium imaging) and single time-bin coupling $m=1$, i.e. $w_{ij}(t)\neq 0$ only for time-delay $t=1$, we write the Fisher information matrix as
 
 \begin{equation}
 \begin{array}{rl}
