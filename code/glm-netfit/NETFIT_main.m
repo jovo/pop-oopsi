@@ -7,11 +7,13 @@ path(path,'../mcmc-oopsi');    %LINK THIS to MCMC sampler
 if(exist('flgSparse')~=1) flgSparse=0; end
 if(exist('flgDale')~=1) flgDale=0; end
 
-fname=[netsim_name,'-data.mat'];
-%load sim data, if there, or simulate dataset -- one node only
-if(id_proc==1 && exist(fname)~=2) tic; NETFIT_ini; toc; end
-while(exist(fname)~=2) fprintf('waiting...\n'); pause(15); end
-load(fname);
+if(exist('flgData')==1 && flgData==0)
+  fname=[netsim_name,'-data.mat'];
+  %load sim data, if there, or simulate dataset -- one node only
+  if(id_proc==1 && exist(fname)~=2) tic; NETFIT_ini; toc; end
+  while(exist(fname)~=2) fprintf('waiting...\n'); pause(15); end
+  load(fname);
+end
 
 
 %INNER VARIABLES

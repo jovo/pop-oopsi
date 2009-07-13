@@ -4,6 +4,8 @@
 if(exist('setFQ')~=1) setFQ=1; end      % frame skipping
 if(exist('setH')~=1) setH=1; end        % spike-history dimensions
 
+rate=1;
+
 N_spk=100;                              % spikes to use for estimating [Ca] model
 
 Sim=[];
@@ -24,7 +26,7 @@ Sim.MaxIter = 15;                       % max # of EM iterartions
 Sim.Scan    = 1;                        % end-of-frame data?
 
 P=[];
-if Sim.M==1                                         % if there are spike history terms
+if Sim.M>0                                          % if there are spike history terms
     P.omega = -1;                                   % weight
     P.tau_h = 0.01;                                 % time constant
     P.tau_h=Sim.dt/(1-exp(-Sim.dt/P.tau_h));        % correction -- large dt
@@ -33,9 +35,8 @@ end
 
 K=Sim.dt/netSim.dt;                     %sim/inf resampling constant
 for k=nrange{id_proc}
-  rate=5;
-  if(~isempty(M{k})) rate=exp(M{k}.k(1)); end %expected neuron rate
-  rate=max(5,rate);
+  if(~isempty(M{k})) rate1=exp(M{k}.k(1)); else rate1=0; end %expected neuron rate
+  rate=max(rate,rate1);
   T=N_spk/rate;                           % sub-time to use for models estimation
   
   Sim.T       = ceil(T/Sim.dt);           % # of samples
@@ -52,7 +53,9 @@ for k=nrange{id_proc}
   
   %% 2) initialize parameters
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  if(isempty(M{k}))
+  if(isempty(M{k}) && exist('cP')==1)   %load custom initialization
+    P=cP;
+  elseif(isempty(M{k}))
     % initialize particle filter parameters    
     P.rate      = rate;                 % expected rate
     rf          = log(-log(1-P.rate/Sim.T)/Sim.dt);
