@@ -1,6 +1,6 @@
 clear, clc, %close all
 datapath = '/Users/joshyv/Research/oopsi/meta-oopsi/data/';
-dataset = 3;
+dataset = 2;
 switch dataset
     case 1
         Im.path = [datapath 'rafa/tanya/051809/s1m1/'];
@@ -18,7 +18,7 @@ end
 
 % set switches of things to do
 LoadTif     = 0;
-GetROI      = 1;
+GetROI      = 0;
 GetF        = 1;
 
 cd /Users/joshyv/Research/oopsi/pop-oopsi/code/
@@ -124,10 +124,10 @@ if GetF == 1
         Im.F(i,:) = mean(Im.roi{i}.F);
     end
     if Im.Fura==1, Im.F=-double(Im.F); else  Im.F=double(Im.F); end
-    Im.F=Im.F-repmat(min(Im.F'),Im.T,1)';
-    Im.F=Im.F./repmat(max(Im.F'),Im.T,1)';
-    Im.F=Im.F*2^16;
-    Im.F=uint16(Im.F);
+%     Im.F=Im.F-repmat(min(Im.F'),Im.T,1)';
+%     Im.F=Im.F./repmat(max(Im.F'),Im.T,1)';
+%     Im.F=Im.F*2^16;
+%     Im.F=uint16(Im.F);
 
     figure(3), clf,
     subplot(121), plot(Im.F')
@@ -141,13 +141,14 @@ if ~isfield(Im,'F'), load(Im.matname); end
 switch dataset
     case 1
         keyboard
-        Ftemp = double(Im.F);
-        Ftrunc = Ftemp(:,[1:1820 2050:3740 3950:7250 7550:8250 8400:end]);
+        tvec = [1:1820 2050:3740 3950:7250 7550:8250 8400:Im.T];
+        Fttemp = double(Im.F);
+        Ftrunc = Ftemp(:,tvec);
         Fdetrend = detrend(Ftrunc')';
         Ftrends = Fdetrend-Ftrunc;
         mins = min(Ftrends');
         maxs = max(Ftrends');
-        trends = 0*F;
+        trends = 0*Ftrends;
         for k=1:Im.Nrois
             trends(k,:) = linspace(mins(k),maxs(k),Im.T);
         end
@@ -157,14 +158,22 @@ switch dataset
         Ftemp = Ftemp*2^16;
         Ftemp = uint16(Ftemp);
     case 2
-        keyboard
         tvec  = 1000:5000;
-        Ftemp = double(Im.F(:,tvec));
-        Ftemp = detrend(Ftemp);
-        Ftemp = Ftemp-repmat(min(Ftemp'),length(tvec),1)';
-        Ftemp = Ftemp./repmat(max(Ftemp'),length(tvec),1)';
-        Ftemp = Ftemp*2^16;
-        Ftemp = uint16(Ftemp);
+        Ftrunc = double(Im.F(:,tvec));
+        Fdetrend = detrend(Ftrunc');
+        Ftrends = Fdetrend-Ftrunc;
+        mins = min(Ftrends');
+        maxs = max(Ftrends');
+        trends = 0*Ftrends;
+        for k=1:Im.Nrois
+            trends(k,:) = linspace(mins(k),maxs(k),length(tvec));
+        end
+        Ftemp = Ftemp - trends;
+        
+%         Ftemp = Ftemp-repmat(min(Ftemp'),length(tvec),1)';
+%         Ftemp = Ftemp./repmat(max(Ftemp'),length(tvec),1)';
+%         Ftemp = Ftemp*2^16;
+%         Ftemp = uint16(Ftemp);
     case 3
         keyboard
         L       = 2^nextpow2(Im.T);

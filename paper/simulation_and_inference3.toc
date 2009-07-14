@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {II}Methods}{2}{}
 \contentsline {subsection}{\numberline {A}Model}{2}{}
 \contentsline {subsection}{\numberline {B}Goal}{3}{}
-\contentsline {subsection}{\numberline {C}Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}{4}{}
+\contentsline {subsection}{\numberline {C}Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}{5}{}
 \contentsline {subsection}{\numberline {D}Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}{6}{}
 \contentsline {subsection}{\numberline {E}Estimating the connectivity matrix}{7}{}
 \contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
@@ -14,5 +14,5 @@
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{10}{}
 \contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
 \contentsline {section}{\numberline {IV}Discussion}{14}{}
-\contentsline {section}{\numberline {}Acknowledgments}{18}{}
-\contentsline {section}{\numberline {}References}{18}{}
+\contentsline {section}{\numberline {}Acknowledgments}{16}{}
+\contentsline {section}{\numberline {}References}{16}{}

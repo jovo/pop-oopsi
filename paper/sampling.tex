@@ -40,10 +40,10 @@ h_i(t)=\sum\limits_{t'<t} n_i(t')\exp(-(t-t')/\tau_w).
 \end{equation}
 In terms of $h_i(t)$ GLM likelihood may be written as follows, 
 \begin{equation}
-E[\log P_{GLM}(n_i|{\bf h}; W)]\approx \sum_t \left(\sum\limits_{j} w_{ij} E[n_i(t) h_j(t)] -
+E[\ln P_{\bn}(n_i|{\bf h}; W)]\approx \sum_t \left(\sum\limits_{j} w_{ij} E[n_i(t) h_j(t)] -
 E[(1-n_i(t)) \exp\left(\sum\limits_j w_{ij}h_j(t)\right)] \Delta \right). 
 \end{equation}
-i.e. the GLM likelihood in terms of reduced history variables factorizes over time $P_{GLM}(n_i|{\bf h};W)=\prod_t P_{GLM}(n_i(t)|{\bf h}(t);W)$.
+i.e. the GLM likelihood in terms of reduced history variables factorizes over time $P_{\bn}(n_i|{\bf h};W)=\prod_t P_{\bn}(n_i(t)|{\bf h}(t);W)$.
 Then, GLM parameters may be estimated using only the marginal distributions $P({\bf n}(t), {\bf h}(t)|{\bf F};\bth)$ without drawing the full spike train samples ${\bf n}$.
 
 Reduced history variables provide substantial simplification over full MCMC procedure. In particular, when such history variables may be constructed via a Markov process, e.g.

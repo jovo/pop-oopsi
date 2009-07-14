@@ -1,39 +1,34 @@
-Given the above model, our goal is to estimate the model parameters, $\bth$, given calcium imaging observations ${\bf F}$. A natural choice is find the \emph{maximum a posteriori} (MAP) estimate:
+Given the above model, our goal is to estimate the functional connectivity matrix, $\bw=\{\bw_i\}_{i=1}^N$, given calcium imaging observations ${\bf F}$. A natural choice is find the \emph{maximum a posteriori} (MAP) estimate:
 
 \begin{equation}\label{eqn:MAP}
-\hbth=\argmax_{\bth} P(\bth| \bF) = \argmax_{\bth} \int P(\bth| \bX, \bF) d\bX
+\hbw=\argmax_{\bw} P(\bw| \bF) = \argmax_{\bw} \iint P(\bth| \bX, \bF) d\bX d(\bth \backslash \bw)
 \end{equation}
 
-\noindent which requires solving an intractable integral. Therefore, instead of directly solving Eq. \eqref{eqn:MAP}, we utilize the Expectation Maximization (EM) framework. EM allows one to obtain MAP estimates of the parameters by recursively updating the expected value of the joint distribution of $(\bX, \bF)$ (E step), and then maximizing the parameters (M step):
+\noindent where $\bth \backslash \bw$ is the set of parameters excluding the functional connectivity matrix.  Because directly solving Eq. \eqref{eqn:MAP} is intractable, we utilize the Expectation Maximization (EM) framework, in which one recursively updates the expected value of the joint distribution of $(\bX, \bF)$ (E step), and then maximizes all the parameters (M step):
 
-\begin{align}
+\begin{align*}
 \textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) = E_{P(\bX | \bF; \bth^{(l+1)})}[ \ln P(\bF, \bX | \bth^{(l)})] = \int P(\bX | \bF; \bth^{(l+1)}) \ln P(\bF, \bX | \bth^{(l)}) d \bX  \\
-\textbf{M step} &\text{: Solve } \bth^{(l)} = \argmax_{\bth} Q(\bth,\bth^{(l)})  
-\end{align}
+\textbf{M step} &\text{: Solve } \bth^{(l+1)} = \argmax_{\bth} Q(\bth,\bth^{(l)})  
+\end{align*}
 
-  each time finding a better approximation to the MAP solution by maximizing the conditional expectation values
+Because our model is a coupled HMM, $Q$ simplifies:
 
-\begin{equation}
-(\bth)^{(l+1)}=\text{argmax }E_{P({\bf X}|M^{(l)}, W^{(l)}, {\bf F})}\left[\log P({\bf X}, {\bf F}, \bth)\right].
-\end{equation}
-
-The expectation to be computed in our case is
 \begin{equation}\label{eqn:loglik:definition-expl}
-\sum_i E[\log P_{[Ca]}(F_i|{\bf X}, M_i, W)] + \sum_i E[\log P_{GLM}(n_i|{\bf n}_{\i}, W)].
+Q(\bth,\bth^{(l)}) = \sum_{i \in [1,\ldots,N] \\ t \in [1,\ldots, T]} E[\ln P_{\bF}(F_i|{\bf X}; (\bth^F_i)^{(l+1)} )] + \sum_i E[\ln P_{\bn}(n_i|{\bf n}_{\i};  (\bth^n_i)^{(l+1)})].
 \end{equation}
 
-Here ${\bf n}_{\i}=(n_1, ..., n_{i-1}, n_{i+1}, ...n_N)$, $P_{[Ca]}(F_i|{\bf X}, M_i, W)$ is the likelihood of observing signal $F_i$ \cite{Vogelstein2009}, and $P_{GLM}$ likelihood can be calculated from Eq. \eqref{eqn:glm:definition}), 
+Here ${\bf n}_{\i}=(n_1, ..., n_{i-1}, n_{i+1}, ...n_N)$, $P_{\bF}$ is the likelihood of observing signal $F_i$ given the spike trains \cite{Vogelstein2009}, and $P_{\bn}$ likelihood of the joint spike train, which can be calculated from Eq. \eqref{eqn:glm:definition}: 
 
 \begin{equation}\label{eqn:likelihoodGLM-expl}
 \begin{array}{l}
-E\left[\log P_{GLM}(n_i|{\bf n}_{\i}, W\right]=\sum\limits_t E \left[ n_i(t) J_i(t)\right] - E\left[(1-n_i(t)) \exp(J_i(t)) \Delta \right], \\
-J_i(t)=b_i+\sum\limits_{j} \sum\limits_{t'<t} w_{ij}(t-t')n_{j}(t'), 
+E\left[\ln P_{\bn}(n_i|{\bf n}_{\i}; \bth^n_i) \right]=\sum\limits_t E \left[ n_i(t) J_i(t)\right] - E\left[(1-n_i(t)) \text{e}^{J_i(t)} \Delta \right].
+, %\\ J_i(t)=b_i+\sum\limits_{j} \sum\limits_{t'<t} w_{ij}(t-t')n_{j}(t'), 
 \end{array}
 \end{equation}
 
-Note that while the first term in Eq. \eqref{eqn:likelihoodGLM-expl} is simple to compute and only requires $E[n_i(t)]$ and $E[n_i(t) n_{j}(t')]$, the second term does not reduce to simple sufficient statistics. In order to evaluate this expectation value we need to obtain joint sample from the distribution of all spike trains $P({\bf n}|\bth, {\bf F})$.
+Note that while the first term in Eq. \eqref{eqn:likelihoodGLM-expl} is simple to compute and only requires  $E[n_i(t)]$, the second term does not reduce to simple sufficient statistics. In order to evaluate this expectation value we need to obtain joint sample from the distribution of all spike trains $P({\bf n}|\bth, {\bf F})$.
 
-Given Markovian nature of model Eq. \eqref{eqn:glm:definition}) and (\ref{eqn:ca:definition}), obtaining such sample is an instance of a well known problem of sampling from HMM. In particular, for a finite state-space HMM forward-backward procedure is known to provide samples in  $O(T)$ time \cite{RAB89}. For continuous state-space HMM different sampling strategies exist relying on discretizing the continuous state-space and approximating the integrals in forward-backward procedure using Monte Carlo \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.
+Given Markovian nature of model Eq. \eqref{eqn:h:definition} and \eqref{eqn:ca:definition}, obtaining such sample is an instance of a well known problem of sampling from HMM. In particular, for a finite state-space HMM forward-backward procedure is known to provide samples in  $O(T)$ time \cite{RAB89}. For continuous state-space HMM different sampling strategies exist relying on discretizing the continuous state-space and approximating the integrals in forward-backward procedure using Monte Carlo \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.
 
 In our case, the state $X_i(t)$ is a direct product of binary $n_i(t)$ and continuous $C_i(t)$ dimensions, and so a continuous state-space sampling algorithm is required.
 Given large length of neural activity recordings data, $O(T)$ computational cost of HMM sampling algorithms is an important advantage.
@@ -42,28 +37,28 @@ One of the most popular methods for sampling from continuous-state HMM is sequen
 
 To solve this problem, we propose a hybrid SMC-Gibbs sampling strategy taking advantage of the specific structure of the model Eqs. \eqref{eqn:glm:definition} and (\ref{eqn:ca:definition}, namely, that it can be viewed as a set of $N$ coupled HMM models. Gibbs sampling is a procedure for obtaining samples from high-dimensional distribution $P({\bf X})$ by sampling from low-dimensional conditional distributions $P(X_{i}(t)|{\bf X}_{\i, t})$ one variable $X_{i}(t)$ at a time \cite{Gelfand1990}.  Gibbs sampling allows to reduce intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems.  Here, we propose Gibbs sampling in blocks of one neuron sequence $X_{i}$ at a time: if we view the spike train history ${\bf X}=(X_1, ..., X_N)$ as a set of blocks of spike trains from individual neurons $X_i$, we perform Gibbs sampling by consequently sampling such entire blocks $X_i\sim P(X_{i}|{\bf X}_{\i}, \bth, {\bf F})$ one at a time.  Note that such block-sampling strategy is necessary here since different $t$ states in $X_i(t)$ for same neuron $i$ are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain if we Gibbs-sample from $X_i(t)$ for different $t$ and same $i$.  Although each sampling sub-problem in our case is still high-dimensional, it is tractable because it reduces to sampling from HMM with 2D state-space. Thus, joint sample from $2N$-dimensional HMM $P({\bf X}|\bth, {\bf F})$ may be obtained.
 
-Maximization step of EM requires maximizing conditional expectation of $\log P({\bf X}, {\bf F}, \bth)$ given such sample. In our case, such maximization is a very large optimization problem involving $6N$ parameters $M$ and $mN^2+N$ parameters $W$. Fortunately, special structure of Eq. \eqref{eqn:loglik:definition-expl}) allows to simplify optimization problem dramatically by performing optimization with respect to different neurons $i$ independently.
+Maximization step of EM requires maximizing conditional expectation of $\ln P({\bf X}, {\bf F}, \bth)$ given such sample. In our case, such maximization is a very large optimization problem involving $6N$ parameters $M$ and $mN^2+N$ parameters $W$. Fortunately, special structure of Eq. \eqref{eqn:loglik:definition-expl}) allows to simplify optimization problem dramatically by performing optimization with respect to different neurons $i$ independently.
 
 EM algorithm therefore requires solving following problems: sampling individual neuron state-sequences $X_i\sim P(X_{i}|{\bf X}_{\i}, \bth, {\bf F})$ using HMM sampling technique, obtaining joint sample of neuron state-sequences ${\bf X}\sim P({\bf X}|\bth, {\bf F})$ using Gibbs technique, solving for next iteration of parameters $M$ and $W$ by maximizing conditional expectation value of the log-likelihood $P({\bf X}, {\bf F}, \bth)$.
 
 \begin{algorithm}
 \caption{Pseudocode for estimating functional connectivity from calcium imaging data using EM.}\label{eqn:pseudocode}
 \begin{algorithmic}
-\While{$|W^{(l)}-W^{(l-1)}|>\text{threshold}_W$}
+\While{$|{\bth^n}^{(l)}-{\bth^n}^{(l-1)}|>\text{threshold}_W$}
   \ForAll{$i=1\ldots N$}
-    \While{$|M^{(l)}_i-M^{(l-1)}_i|> \text{threshold}_M$}
-      \State Sample $X_i \sim P(X_i|{\bf X}_{\i}, {\bf F}_i; M_i, W)$
-      \State Maximize $M^{(l+1)}=\text{argmax} E\left[\log P_{[Ca]}(X_i, {\bf X}_{\i}; M_i, W, {\bf F}_i)|X_i\right]$
+    \While{$|{\bth^n_i}^{(l)}-{\bth^n_i}^{(l-1)}|> \text{threshold}_M$}
+      \State Sample $X_i \sim P(X_i|{\bf X}_{\i}, {\bf F}_i; \bth_i)$
+      \State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P_{\bF}(X_i, {\bf X}_{\i}; {\bf F}_i) \bth^n_i, \bth^F |X_i\right]$
     \EndWhile
   \EndFor
   
   \For{$k=1\ldots N_G$}
     \ForAll{$i=1\ldots N$}
-      \State Sample $n_i \sim P(n_i|{\bf X}_{\i},{\bf F}_i; M_i, W)$
+      \State Sample $n_i \sim P(n_i|{\bf X}_{\i},{\bf F}_i; \bth_i)$
     \EndFor
   \EndFor 
 
-  \State Maximize $W^{(l+1)}=\text{argmax} E\left[\log P_{GLM}({\bf n}|W)|{\bf n}\right]$  
+  \State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P_{\bn}({\bf n}|{\bth^n_i})|{\bf n}\right]$  
 \EndWhile
 \end{algorithmic}
 \end{algorithm}

@@ -1,7 +1,7 @@
 Connectivity matrix was calculated by solving maximum likelihood problem Eq. \eqref{eqn:likelihoodGLM-expl}. Specifically, 
 
 \begin{align}
-\label{eqn:likelihoodGLMmoda}&E[\log P_{GLM}(n_i|{\bf n}_{\i}; W)]=\sum_t \left( n_i(t) \log J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right), \\
+\label{eqn:likelihoodGLMmoda}&E[\ln P_{\bn}(n_i|{\bf n}_{\i}; W)]=\sum_t \left( n_i(t) \ln J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right), \\
 \label{eqn:likelihoodGLMmodb}&J_i(t)=b_i+\sum\limits_j \sum\limits_{t'<t} w_{ij}(t-t')n_{j}(t')=
 b_i+\sum\limits_j w^{ij}_s \sum\limits_{t'<t} \exp(-(t-t')/\tau_h)n_j(t').
 \end{align}

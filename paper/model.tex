@@ -1,7 +1,7 @@
 We first describe the model that characterizes the statistics of the joint spike trains of all $N$ observable neurons.  Each neuron is modeled as a generalized linear model (GLM), which is known to capture well the statistical properties of the firing of individual neurons \cite{PILL07, PAN03d, Wu07, Rigat06, OKA05}.  More specifically, we say that at time $t$, the probability of neuron $i$ spiking is given by some nonlinear function, $f(\cdot)$, of the input to that neuron at that time, $J_i(t)$.  The input is composed of: (i) some baseline firing rate, $b_i$%, (ii) some external stimulus, $\bf S(t)$, that is linearly filtered by $\bf k_i$
 , and (ii) spike history terms, $h_j(t)$, from each neuron $j$, weighted by $w_{ij}$:
 
-\begin{equation}\label{eqn:glm:definition}
+\begin{equation} \label{eqn:glm:definition}
 \begin{array}{l}
 n_i(t)\overset{iid}{\sim} \text{Bernoulli}\big(f\big(J_i(t)\big)\big), \qquad %\\
 J_i(t)=b_i+\sum \limits_{j=1}^{N}  w_{ij} h_{j}(t), %\\
@@ -12,7 +12,7 @@ J_i(t)=b_i+\sum \limits_{j=1}^{N}  w_{ij} h_{j}(t), %\\
 
 \noindent To ensure mathematical tractability, we must impose some constraints on $f(\cdot)$ and the dynamics of $h_j(t)$.  More specifically, $f(\cdot)$ must be convex and log-concave, to ensure that the likelihood of the parameters of this model has a single maximum, facilitating efficient computations \cite{PAN03d}.  In all the below simulations, we let $f(J)=\text{e}^{\text{e}^{-J}\Delta}$, where the inclusion of $\Delta$, the time step size, ensures that the firing rate is independent of the particular time discretization of our model (see \cite{??} for a proof that this $f(\cdot)$ satisfies the above constraints).  Furthermore, as the algorithms we develop below assume Markovian dynamics, we model the spike history terms as:
 
-\begin{equation}
+\begin{equation} \label{eqn:h:definition}
 h_j(t) = (1- \Delta/\tau_h) h_j(t-1) +n_j(t) + \sigma_h \sqrt{\Delta} \epsilon^h_j(t).
 \end{equation}
 
@@ -29,7 +29,7 @@ F_i(t) &= \alpha_i S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i} 
 \end{align}
 % \end{equation}
 
-Eq. \eqref{eqn:ca:definition} describes evolution of intracellular calcium concentration $C_i(t)$ in the neuron $i$ at time $t$. Under normal conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$ with normally distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$.  Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium to jump by $A_i$, and subsequently decay with time constant $\tau^c_i$.  The fluorescence signal corresponding to neuron $i$ at time $t$, $F_i(t)$, corresponds to the count of photons collected at the detector per neuron per imaging frame. It is distributed according to normal statistics with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}.  Because $K_d$ effectively scales the results, and is a property of the indicator, we assume throughout this work that it is known.  Thus, the parameters governing the fluorescence observations are $\bth^F=\{\bth^F_i\}_{i=1}^N$, where $\bth^F_i=\{C^b_i, \tau^c_i, A_i, \sigma^C_i, \alpha_i, \beta_i, \gamma_i, \sigma^F_i\}$, and $|\bth^F|=8N$.  Therefore, the generative model is governed by $\bth=\bth^n \cup \bth^F$, where $|\bth|=(9+N)N$. 
+Eq. \eqref{eqn:ca:definition} describes evolution of intracellular calcium concentration $C_i(t)$ in the neuron $i$ at time $t$. Under normal conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$ with normally distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$.  Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium to jump by $A_i$, and subsequently decay with time constant $\tau^c_i$.  The fluorescence signal corresponding to neuron $i$ at time $t$, $F_i(t)$, corresponds to the count of photons collected at the detector per neuron per imaging frame. It is distributed according to normal statistics with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}.  Because $K_d$ effectively scales the results, and is a property of the indicator, we assume throughout this work that it is known.  Thus, the parameters governing the fluorescence observations are $\bth^F=\{\bth^F_i\}_{i=1}^N$, where $\bth^F_i=\{C^b_i, \tau^c_i, A_i, \sigma^c_i, \alpha_i, \beta_i, \gamma_i, \sigma^F_i\}$, and $|\bth^F|=8N$.  Therefore, the generative model is governed by $\bth=\bth^n \cup \bth^F$, where $|\bth|=(9+N)N$. Note that collectively Eqs. \eqref{eqn:glm:definition} -- \eqref{eqn:F:definition} defined a coupled hidden Markov model (HMM) \cite{ShumwayStoffer06}.
 
 %$8N$ calcium dynamics parameters - calcium decay time-constant $\tau_c$, background calcium concentration $C_{b}$, fluctuations in calcium concentration $\sigma_c$, per-spike calcium jump $A_c$, photon budget scaling $\alpha_c$ and background $\beta_c$, which we jointly denote as $M_i=\{\tau^c_i, C^i_{b}, \sigma^c_i, A_i, \alpha_i, \beta_i\}$, and $m N^2 + N$ functional connectivity weights $w_{ij}(t)$ and $b^0_i$ which we jointly denote as $W=\{w_{ij}(t), b_i\}$, $m$ is the temporal depth of coupling weights $w_{ij}(t)$.
 
