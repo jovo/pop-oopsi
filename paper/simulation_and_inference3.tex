@@ -22,9 +22,10 @@
 \newcommand{\bF}{{\bf F}}
 \newcommand{\bX}{{\bf X}}
 \newcommand{\bn}{{\bf n}}
+\newcommand{\bh}{\mathbf{h}}
 \newcommand{\hbth}{\widehat{\bth}}
 \newcommand{\hbw}{\widehat{\bw}}
-
+\newcommand{\sumit}{\sum_{\substack{i \in [1,\ldots,N] \\ t \in [1,\ldots, T]}}}
 %\nofiles
 
 \begin{document}
@@ -75,22 +76,25 @@ calcium imaging data}
 \label{sec:methods:markov-setup}
 \input{model.tex}
 
-\subsection{Goal} %Hidden Markov Model for calcium imaging of neural population}
+\subsection{Goal and general strategy} %Hidden Markov Model for calcium imaging of neural population}
 \label{sec:methods:goal}
 \input{goal.tex}
 
-\subsection{Sampling individual neuron spike trains and estimating calcium model parameters $M_i$ using SMC}
-\label{sec:methods:sampling_neuron}
+\subsection{Sampling individual neuron spike trains using SMC}
+\label{sec:methods:smc_inference}
 \input{smc_inference.tex}
 
-\clearpage
-\subsection{Sampling joint spike trains using hybdir MCMC and Gibbs algorithm}
+\subsection{Estimating parameters for individual neurons}
+\label{sec:methods:smc_learning}
+\input{smc_learning.tex}
+
+\subsection{Sampling joint spike trains using hybrid MCMC and Gibbs algorithm}
 \label{sec:methods:sampling HMM}
-\input{sampling.tex}
+\input{joint_sampling.tex}
 
 \subsection{Estimating the connectivity matrix} %parameters of the Hidden Markov Model}
 \label{sec:methods:parameters HMM}
-\input{hmm_params.tex}
+\input{w_learning.tex}
 
 \subsection{Specific implementation notes}
 \label{sec:methods:specific_implementation}
