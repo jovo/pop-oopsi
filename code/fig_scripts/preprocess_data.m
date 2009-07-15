@@ -19,12 +19,17 @@ end
 % set switches of things to do
 LoadTif     = 0;
 GetROI      = 0;
-GetF        = 1;
+GetF        = 0;
+DoExtract   = 0;
+Look        = 0;
+DoPlot      = 0;
 
-cd /Users/joshyv/Research/oopsi/pop-oopsi/code/
-Im.tifname     = [Im.path Im.fname '.tif'];
-Im.matname     = [Im.path Im.fname '.mat'];
-
+cd /Users/joshyv/Research/oopsi/pop-oopsi/
+Im.tifname      = [datapath Im.fname '.tif'];
+Im.rawdata      = ['data/' Im.fname '.mat'];
+Im.procdata     = ['data/' Im.fname '_F.mat'];
+Im.figname1     = ['figs/' Im.fname '1'];
+Im.figname2     = ['figs/' Im.fname '2'];
 
 %% get image data
 
@@ -45,13 +50,13 @@ if LoadTif == 1                                     % get whole movie
         if mod(i,10)==0, display(t), end
     end
     Im.MeanFrame=reshape(mean(DataMat,2),Im.h,Im.w);
-    save(Im.matname,'Im')
+    save(Im.rawdata,'Im')
 end
 
 %% select rois
 
 if GetROI == 1
-    if ~isfield(Im,'MeanFrame'), load(Im.matname); end
+    if ~isfield(Im,'MeanFrame'), load(Im.rawdata); end
     figure(1); clf,
 
     Im.seg_frame=z1(Im.MeanFrame);
@@ -104,13 +109,13 @@ if GetROI == 1
         axis off
     end
     Im.Nrois=i-1;
-    save(Im.matname,'Im')
+    save(Im.rawdata,'Im')
 end
 
 %% get F
 
 if GetF == 1
-    if ~isfield(Im,'Nrois'), load(Im.matname); end
+    if ~isfield(Im,'Nrois'), load(Im.rawdata); end
     for t=1:Im.T
         X = imread(Im.tifname,t);
         for i=1:Im.Nrois
@@ -124,101 +129,133 @@ if GetF == 1
         Im.F(i,:) = mean(Im.roi{i}.F);
     end
     if Im.Fura==1, Im.F=-double(Im.F); else  Im.F=double(Im.F); end
-%     Im.F=Im.F-repmat(min(Im.F'),Im.T,1)';
-%     Im.F=Im.F./repmat(max(Im.F'),Im.T,1)';
-%     Im.F=Im.F*2^16;
-%     Im.F=uint16(Im.F);
+    %     Im.F=Im.F-repmat(min(Im.F'),Im.T,1)';
+    %     Im.F=Im.F./repmat(max(Im.F'),Im.T,1)';
+    %     Im.F=Im.F*2^16;
+    %     Im.F=uint16(Im.F);
 
     figure(3), clf,
     subplot(121), plot(Im.F')
     subplot(122), imagesc(Im.F)
-    save(Im.matname,'Im')
+    save(Im.rawdata,'Im')
 end
 
 %% extract good stuff and detrend
 
-if ~isfield(Im,'F'), load(Im.matname); end
-switch dataset
-    case 1
-        keyboard
-        tvec = [1:1820 2050:3740 3950:7250 7550:8250 8400:Im.T];
-        Fttemp = double(Im.F);
-        Ftrunc = Ftemp(:,tvec);
-        Fdetrend = detrend(Ftrunc')';
-        Ftrends = Fdetrend-Ftrunc;
-        mins = min(Ftrends');
-        maxs = max(Ftrends');
-        trends = 0*Ftrends;
-        for k=1:Im.Nrois
-            trends(k,:) = linspace(mins(k),maxs(k),Im.T);
-        end
-        Ftemp = Ftemp - trends;
-        Ftemp = Ftemp-repmat(min(Ftemp'),Im.T,1)';
-        Ftemp = Ftemp./repmat(max(Ftemp'),Im.T,1)';
-        Ftemp = Ftemp*2^16;
-        Ftemp = uint16(Ftemp);
-    case 2
-        tvec  = 1000:5000;
-        Ftrunc = double(Im.F(:,tvec));
-        Fdetrend = detrend(Ftrunc');
-        Ftrends = Fdetrend-Ftrunc;
-        mins = min(Ftrends');
-        maxs = max(Ftrends');
-        trends = 0*Ftrends;
-        for k=1:Im.Nrois
-            trends(k,:) = linspace(mins(k),maxs(k),length(tvec));
-        end
-        Ftemp = Ftemp - trends;
-        
-%         Ftemp = Ftemp-repmat(min(Ftemp'),length(tvec),1)';
-%         Ftemp = Ftemp./repmat(max(Ftemp'),length(tvec),1)';
-%         Ftemp = Ftemp*2^16;
-%         Ftemp = uint16(Ftemp);
-    case 3
-        keyboard
-        L       = 2^nextpow2(Im.T);
-        F_FFT   = fft(Im.F(i,:),L)/Im.T;
-        F_FFT(1:20) = 0;
-        F_iFFT  = ifft(F_FFT,Im.T);
-        imagesc(F_iFFT);
+if DoExtract == 1
+    if ~isfield(Im,'F'), load(Im.rawdata); end
+    switch dataset
+        case 1
+            keyboard
+            tvec = [1:1820 2050:3740 3950:7250 7550:8250 8400:Im.T];
+            Fttemp = double(Im.F);
+            Ftrunc = Ftemp(:,tvec);
+            Fdetrend = detrend(Ftrunc')';
+            Ftrends = Fdetrend-Ftrunc;
+            mins = min(Ftrends');
+            maxs = max(Ftrends');
+            trends = 0*Ftrends;
+            for k=1:Im.Nrois
+                trends(k,:) = linspace(mins(k),maxs(k),Im.T);
+            end
+            Ftemp = Ftemp - trends;
+            Ftemp = Ftemp-repmat(min(Ftemp'),Im.T,1)';
+            Ftemp = Ftemp./repmat(max(Ftemp'),Im.T,1)';
+            Ftemp = Ftemp*2^16;
+            Ftemp = uint16(Ftemp);
+        case 2
+            tvec  = 1000:5000;
+            Ftrunc = double(Im.F(:,tvec));
+            Fdetrend = detrend(Ftrunc')';
+            Ftrends = Fdetrend-Ftrunc;
+            Ftemp = Fdetrend - repmat(Ftrends(:,1),1,length(tvec));
+        case 3
+            keyboard
+            L       = 2^nextpow2(Im.T);
+            F_FFT   = fft(Im.F(i,:),L)/Im.T;
+            F_FFT(1:20) = 0;
+            F_iFFT  = ifft(F_FFT,Im.T);
+            imagesc(F_iFFT);
+    end
+
+    for k=1:Im.Nrois
+        F{k}=Ftemp(k,:);
+    end
+
+    save(Im.procdata,'F')
 end
 
-for k=1:Im.Nrois
-    F{k}=Ftemp(k,:);
+%% search through and find only neurons that spike
+
+load(Im.rawdata)
+for k=1:length(F)
+    [h Im.roi{k}.p]=chi2gof(F{k});
+    pvals(k)=Im.roi{k}.p;
 end
 
-save(['../data/' Im.fname],'F')
+[sorted_pvals IX] = sort(pvals);
 
+G=F; for k=1:length(F), G{k}=F{IX(k)}; end; F=G;
+save([datapath Im.fname '_F.mat'],'F','sorted_pvals','IX')
+save(Im.procdata,'F','sorted_pvals','IX')
+
+%% look at stuff
+
+if Look == 1
+    figure(2), clf
+    for k=IX
+        subplot(211), cla, hold on,
+        plot((F{k}/10^4),'b'),
+        hold off,
+        axis([0 4001 0 6]),
+
+        subplot(212),
+        hist(F{k},100),
+        title(pvals(k))
+        drawnow
+        keyboard
+        if k==IX(1)
+            print('-dps',Im.figname1)
+        else
+            print('-dps',Im.figname1,'-append')
+        end
+    end
+end
 
 %% plot ROI
-% Pl = PlotParams;
-nrows = 2;
-ncols = 2;
 
-% roi2=Im.roi';
-% roi_edge2=Im.roi_edge';
-%
-% ROI_im      = Im.MeanFrame+max(Im.MeanFrame)*roi_edge2(:);
-% weighted_ROI= Im.MeanFrame.*roi2(:);
 
-figure(2); clf,
-subplot(nrows,ncols,1);
-imagesc(Im.seg_frame)
-colormap(gray)
-set(gca,'XTickLabel',[],'YTickLabel',[])
+if DoPlot == 1
 
-subplot(nrows,ncols,2);
-imagesc(Im.F)
-colormap(gray)
-% colorbar
-set(gca,'XTickLabel',[],'YTickLabel',[])
+    % Pl = PlotParams;
+    nrows = 2;
+    ncols = 2;
 
-subplot(nrows,ncols,nrows+1:nrows*ncols);
-plot(Im.F(3,:))
+    % roi2=Im.roi';
+    % roi_edge2=Im.roi_edge';
+    %
+    % ROI_im      = Im.MeanFrame+max(Im.MeanFrame)*roi_edge2(:);
+    % weighted_ROI= Im.MeanFrame.*roi2(:);
 
-% print fig
-wh=[7 5];   %width and height
-set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');
-FigName = ['../figs/' Im.fname];
-print('-depsc',FigName)
-print('-dpdf',FigName)
+    figure(2); clf,
+    subplot(nrows,ncols,1);
+    imagesc(Im.seg_frame)
+    colormap(gray)
+    set(gca,'XTickLabel',[],'YTickLabel',[])
+
+    subplot(nrows,ncols,2);
+    imagesc(Im.F)
+    colormap(gray)
+    % colorbar
+    set(gca,'XTickLabel',[],'YTickLabel',[])
+
+    subplot(nrows,ncols,nrows+1:nrows*ncols);
+    plot(Im.F(3,:))
+
+    % print fig
+    wh=[7 5];   %width and height
+    set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');
+    print('-depsc',Im.figname2)
+    print('-dpdf',Im.figname2)
+
+end

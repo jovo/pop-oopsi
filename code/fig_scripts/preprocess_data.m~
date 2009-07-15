@@ -19,7 +19,7 @@ end
 % set switches of things to do
 LoadTif     = 0;
 GetROI      = 0;
-GetF        = 1;
+GetF        = 0;
 
 cd /Users/joshyv/Research/oopsi/pop-oopsi/code/
 Im.tifname     = [Im.path Im.fname '.tif'];
@@ -162,18 +162,7 @@ switch dataset
         Ftrunc = double(Im.F(:,tvec));
         Fdetrend = detrend(Ftrunc')';
         Ftrends = Fdetrend-Ftrunc;
-        mins = min(Ftrends');
-        maxs = max(Ftrends');
-        trends = 0*Ftrends;
-        for k=1:Im.Nrois
-            trends(k,:) = linspace(mins(k),maxs(k),length(tvec));
-        end
-        Ftemp = Ftemp - trends;
-        
-%         Ftemp = Ftemp-repmat(min(Ftemp'),length(tvec),1)';
-%         Ftemp = Ftemp./repmat(max(Ftemp'),length(tvec),1)';
-%         Ftemp = Ftemp*2^16;
-%         Ftemp = uint16(Ftemp);
+        Ftemp = Fdetrend - repmat(Ftrends(:,1),1,length(tvec));        
     case 3
         keyboard
         L       = 2^nextpow2(Im.T);
@@ -187,7 +176,41 @@ for k=1:Im.Nrois
     F{k}=Ftemp(k,:);
 end
 
-save(['../data/' Im.fname],'F')
+save([datapath Im.fname '_F.mat'],'F')
+
+%% search through and find only neurons that spike
+
+load([datapath Im.fname '_F.mat'])
+for k=1:length(F)
+    [h Im.roi{k}.p]=chi2gof(F{k});
+    pvals(k)=Im.roi{k}.p;
+end
+
+[sorted_pvals IX] = sort(pvals);
+
+figure(2), clf
+for k=IX
+    subplot(211), cla, hold on,
+    plot((F{k}/10^4),'b'),
+    hold off, 
+    axis([0 4001 0 6]),
+
+    subplot(212),
+    hist(F{k},100),
+    title(pvals(k))
+    drawnow
+    keyboard
+    if k==IX(1)
+        print('-dps',Im.fname)
+    else
+        print('-dps',Im.fname,'-append')
+    end
+end
+
+G=F; for k=1:length(F), G{k}=F{IX(k)}; end; F=G;
+save([datapath Im.fname '_F.mat'],'F')
+save(['../data/' Im.fname '_F.mat'],'F')
+
 
 
 %% plot ROI
