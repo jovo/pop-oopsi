@@ -5,15 +5,14 @@
 \contentsline {section}{\numberline {II}Methods}{2}{}
 \contentsline {subsection}{\numberline {A}Model}{2}{}
 \contentsline {subsection}{\numberline {B}Goal and general strategy}{3}{}
-\contentsline {subsection}{\numberline {C}Sampling individual neuron spike trains using SMC}{4}{}
-\contentsline {subsection}{\numberline {D}Estimating parameters for individual neurons}{4}{}
-\contentsline {subsection}{\numberline {E}Sampling joint spike trains using hybrid MCMC and Gibbs algorithm}{4}{}
-\contentsline {subsection}{\numberline {F}Estimating the connectivity matrix}{6}{}
-\contentsline {subsection}{\numberline {G}Specific implementation notes}{7}{}
-\contentsline {subsection}{\numberline {H}Accuracy of the estimates and Fisher information matrix}{8}{}
-\contentsline {section}{\numberline {III}Results}{8}{}
-\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
-\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
-\contentsline {section}{\numberline {IV}Discussion}{13}{}
-\contentsline {section}{\numberline {}Acknowledgments}{14}{}
-\contentsline {section}{\numberline {}References}{14}{}
+\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{4}{}
+\contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons using a hybrid MCMC and Gibbs algorithm}{5}{}
+\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{7}{}
+\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}
+\contentsline {section}{\numberline {III}Results}{9}{}
+\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}
+\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
+\contentsline {section}{\numberline {IV}Discussion}{14}{}
+\contentsline {section}{\numberline {}Acknowledgments}{17}{}
+\contentsline {section}{\numberline {}References}{17}{}
