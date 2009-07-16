@@ -18,7 +18,7 @@ Q(\bth,\bth^{(l)}) =
 \sumit 
 P[C_i(t) | F_i; \bth_i] \times \ln P[F_i(t)|C_i(t); \bth_i] 
 \\ + P[C_i(t), C_i(t-1) | F_i; \bth_i] \times \ln P[C_i(t)|C_i(t-1), n_i(t); \bth_i] 
-\\ + P[\bh(t) | \bF; \bth^n] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
+\\ + P[\bh(t) | \bF; \bth] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
 \end{multline}
 
 \noindent where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Note that while the first two terms in Eq. \eqref{eqn:loglik:definition-expl} only require marginal posteriors for each neuron, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, whereas the last term requires the joint posterior over all neurons, $P[\bX(t) | \bF; \bth^n]$.  
@@ -33,7 +33,7 @@ Unfortunately, analytic solutions for all these posteriors are intractable, so w
 
 To solve this problem, we propose a hybrid MCMC-Gibbs sampling strategy taking advantage of the specific structure of the model Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition}, namely, that it can be viewed as a set of $N$ coupled HMM models. Gibbs sampling is a procedure for obtaining samples from high-dimensional distribution $P({\bf X}(t) | \bF; \bth)$ by sampling from low-dimensional conditional distributions $P(X_{i}|{\bf X}_{\i}, \bF; \bth)$  \cite{Gelfand1990}.  This sampling procedure reduces intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems.  Here, we propose Gibbs sampling in blocks of one neuron at a time.  
 %
-%spike train, $X_i$, at a time: if we view the spike train history ${\bf h}=(h_1, ..., h_N)$ as a set of blocks of spike trains from individual neurons $h_i$, we perform Gibbs sampling by consequently sampling such entire blocks $h_i\sim P(h_{i}|{\bf h}_{\i}, {\bf F}; \bth^n_i)$ one at a time.  Note that such block-sampling strategy is necessary here since different $t$ states in $X_i(t)$ for same neuron $i$ are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain if we Gibbs-sample from $X_i(t)$ for different $t$ and same $i$.  Although each sampling sub-problem in our case is still high-dimensional, it is tractable because it reduces to sampling from HMM with a three-dimensional state-space. Thus, joint sample from $3N$-dimensional HMM $P({\bf X}|\bth, {\bf F})$ may be obtained.
+%spike train, $X_i$, at a time: if we view the spike train history ${\bf h}=(h_1, ..., h_N)$ as a set of blocks of spike trains from individual neurons $h_i$, we perform Gibbs sampling by consequently sampling such entire blocks $h_i\sim P(h_{i}|{\bf h}_{\i}, {\bf F}; \bth^n_i)$ one at a time.  Note that such block-sampling strategy is necessary here since different $t$ states in $X_i(t)$ for same neuron $i$ are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain if we Gibbs-sample from $X_i(t)$ for different $t$ and same $i$.  Although each sampling subproblem in our case is still high-dimensional, it is tractable because it reduces to sampling from HMM with a three-dimensional state-space. Thus, joint sample from $3N$-dimensional HMM $P({\bf X}|\bth, {\bf F})$ may be obtained.
 
 The maximization step of EM requires maximizing the conditional expectation of $\ln P({\bf X}, {\bf F} | \bth)$ given such samples. Although this is a maximization over $(9+N)N$ parameters, the special structure of Eq. \eqref{eqn:loglik:definition-expl} allows one to simplify this optimization problem dramatically by performing optimization with respect to each neuron independently.  
 
