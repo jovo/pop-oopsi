@@ -5,13 +5,11 @@ As indicated by Eq. \eqref{eqn:loglik:definition-expl}, the sufficient statistic
 If the SNR in the calcium imaging is high,  the fluorescence data of each neuron provides nearly all the information about spike times.  Thus, the joint posterior approximately factorizes into a product of the marginal posteriors for neuron:
 
 \begin{equation} 
-	P({\bf X}|{\bf F};\theta) = \prod_{i=1}^N P(X_i \bX_{\i}, F_i; \bth) \approx\prod_{i=1}^N P(X_i|F_i; \bth_i). \end{equation}
+	P({\bf X}|{\bf F};\theta) = \prod_{i=1}^N P(X_i | \bX_{\i}, F_i; \bth) \approx\prod_{i=1}^N P(X_i|F_i; \bth_i). \end{equation}
 	
-\noindent Such factorization allows one to approximate the joint posterior using the marginal estimates
+\noindent Such factorization allows one to approximate the joint posterior using the marginal estimates much easier, because the sample of spike trains for each neuron is independent on the states of the other neurons given $F_i$. $P(X_i|F_i;\bth_i)$, therefore, may be approximated separately for different neurons using the algorithm described above. The Joint distribution, $P({\bf X}|{\bf F};\theta)$, is simply obtained as the combination of independent marginals. Note, that since by assumption individual samples $X_i\sim P(X_i|F_i;\bth_i)$ do not depend on the states of other neurons, in this case the GLM solution $W$ is obtained after single iteration of the full Algorithm \ref{eqn:pseudocode}, because in the subsequent iterations the sample of spike trains ${\bf X}$ never changes.
 
-to produce the sample ${\bf X}$ much easier, in particular, because the sample of spike trains for each neuron is independent on the states of the other neurons given $F_i$. $P(X_i|F_i;\bth_i)$, therefore, may be obtained separately for different neurons using the algorithm described above. The Joint distribution, $P({\bf X}|{\bf F};\theta)$, is simply obtained as the combination of independent samples $X_i$. Note, that since by assumption individual samples $X_i\sim P(X_i|F_i;\bth_i)$ do not depend on the states of other neurons, in this case the GLM solution $W$ is obtained after single iteration of the full algorithm \ref{eqn:pseudocode}, because in the subsequent iterations the sample of spike trains ${\bf X}$ never changes.
-
-We refer to such procedure for estimating the functional connectivity matrix as independent approximation. Depending on the accuracy of such approximation, it may or may not be acceptable for the estimation of the true functional connectivity matrix $W$. However, as we show below, it is indeed the case that the independent approximation is adequate here for interesting calcium imaging SNR regimes.
+We refer to such procedure for estimating the functional connectivity matrix as independent approximation. Depending on the accuracy of such approximation, it may or may not be acceptable for the estimation of the true functional connectivity matrix $\bw$. However, as we show below, it is indeed the case that the independent approximation is adequate here for calcium imaging with reasonable SNR.
 
 \subsubsection{Weakly coupled assumption for estimating the joint posteriors}
 
