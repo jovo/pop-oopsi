@@ -470,7 +470,7 @@ ylabel('Inferred connection weights')
 title('Figure X: 25% variability in {\bf \tau}')
 legend({'Indep. approx.','Orig. spikes'},'Location','NorthWest')
 
-Figure Y & Z) scaling bias as function of FR & r^2 as function of FR
+% Figure Y & Z) scaling bias as function of FR & r^2 as function of FR
 fr=[15,33,66,100,200,1000];
 dt=1./fr; theor=(1-exp(-dt/0.01))./(dt/0.01);
 r=[]; c=[];
