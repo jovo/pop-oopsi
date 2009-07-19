@@ -226,6 +226,28 @@ plot(gamma/1000,r,'k.-','LineWidth',2,'MarkerSize',16);
 % SNR: 4.8 5.9 6.7 7.5 7.8 8.1 8.4 8.7 dimless
 % ph.: 10  20  30  40  50  60  70  80  Kph/frame/neuron
 
+r=zeros(1,6);
+for k=1:6
+  load(sprintf('noise33-0717-25-%i-result_bf.mat',k))
+  W_GT=result_iid.GT_W;
+  W_iid=result_iid.Weights_glm;
+  c=corrcoef(W_GT(:),W_iid(:));
+  r(k)=c(3)^2;
+end
+hold on
+plot(gamma/1000,r,'k.--','LineWidth',2,'MarkerSize',16);
+
+r=zeros(1,6);
+for k=1:6
+  load(sprintf('noise15-0717-25-%i-result_bf.mat',k))
+  W_GT=result_iid.GT_W;
+  W_iid=result_iid.Weights_glm;
+  c=corrcoef(W_GT(:),W_iid(:));
+  r(k)=c(3)^2;
+end
+hold on
+plot(gamma/1000,r,'k.:','LineWidth',2,'MarkerSize',16);
+
 
 % % This part is doing N=50 neurons, drop in light of the mod above
 % gamma=[1e3,5e3,10e3,20e3,40e3,80e3];
@@ -447,3 +469,27 @@ xlabel('Actual connection weights')
 ylabel('Inferred connection weights')
 title('Figure X: 25% variability in {\bf \tau}')
 legend({'Indep. approx.','Orig. spikes'},'Location','NorthWest')
+
+Figure Y & Z) scaling bias as function of FR & r^2 as function of FR
+fr=[15,33,66,100,200,1000];
+dt=1./fr; theor=(1-exp(-dt/0.01))./(dt/0.01);
+r=[]; c=[];
+for k=fr
+  fname=sprintf('frame-0717-%iFR-result_25_600.mat',k);
+  load(fname);  
+  [r1,b1]=regress(result.Weights_glm(:),full(result.GT_W(:)));
+  r=[r,b1'];
+  r1=corrcoef(result.Weights_glm(:),result.GT_W(:));
+  c=[c,r1(3)^2];
+end
+figure      %scaling bias
+plot([dt*1000,0],[theor,1],'k-','LineWidth',2)
+hold on
+plot(dt*1000,mean(r,1),'ks','MarkerSize',12)
+legend('theor.','actual')
+xlabel('Time discretization, ms'),ylabel('Scaling factor')
+title('Scaling bias as function of Delta vs. theoretical pred.')
+figure      %r^2
+plot(fr,c,'ks-','LineWidth',2,'MarkerSize',12);
+xlabel('Frame rate, Hz'),ylabel('Recovered variance')
+title('Recovered variance as function of frame rate');

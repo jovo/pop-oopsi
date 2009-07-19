@@ -1,5 +1,5 @@
 function run_netscan(N,rndinit)
-%LAUNCH script for netfit package-wrapper NETFIT_main
+%WRAPPER LAUNCH script for netfit package-wrapper NETFIT_main
 %THIS IS NOT MULTIPROC SCRIPT, SEE run_netprobe FOR MULTIPROC
 if(nargin<1) N=10; end%selection of N
 if(nargin<2) rndinit=3711; end%random initialization
@@ -8,11 +8,11 @@ fprintf('In run_netprobe %i\n',N);
 % cd /hmt/sardine/hpc/scratch/stats/users/ym2289/glm-netfit
 
 %%%%%%%%%%  SIMULATION NAME  -- unique to the project
-netsim_name='data/scan-0622';
+netsim_name='data/scan-0630';
 
 %INITIALIZE PARAMETERS
 FR=66;              % imaging frame rate
-FR=33;        
+FR=33;              % or different imaging rate      
 SP=max(0.1,2/N);    % connections sparseness
 
 T_range=[300:300:3600]; % times to check
@@ -48,6 +48,11 @@ Weights_glm = zeros(N,N,Tp);% estimated (cross) coupling terms
 Weights_spa = zeros(N,N,Tp);% estimated (cross) coupling terms, base glm
 Weights_dal = zeros(N,N,Tp);% estimated (cross) coupling terms, base glm
 
+ivals_GT=zeros(N,N+1);
+for k=1:N
+  ivals_GT(k,:)=[log(netSim.rate(2)),full(netSim.weights(k,:))];
+end
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %DOWNSAMPLE SPIKES
@@ -71,18 +76,21 @@ for Ti=T_range
   
   fname=[netsim_name,'temp.mat'];
   ivals=weights_iglm;       %EVALUATE GLM 
+  ivals=ivals_GT;
   NETFIT_GLM_fit      
   weights_iglm=ivals;  
   Weights_glm=Weights;
 
   NETFIT_GLM_lambda         %EVALUATE GLM-SPARSE, BEST lambda
   ivals=weights_ispa;
+  ivals=ivals_GT;  
   NETFIT_GLM_fit
   weights_ispa=ivals;
   Weights_spa=Weights;  
   
   NETFIT_GLM_signs          %EVALUATE GLM-DALE  
   ivals=weights_idal;
+  ivals=ivals_GT;  
   NETFIT_GLM_fit
   weights_idal=ivals;
   Weights_dal=Weights;  

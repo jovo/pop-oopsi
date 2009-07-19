@@ -6,26 +6,34 @@ if(nargin<4) id_proc=1; end% proc-id
 if(nargin<5) N_proc=1; end;% proc ##
 if(nargin<6) rndinit=3711; end% random seed for reproducibility
 
+% cd /hmt/sardine/hpc/scratch/stats/users/ym2289/glm-netfit
 load (fname);       %LOAD DATA
-for k=1:length(F) F{k}=im2double(F{k}); end
+
+%SET SOME PARAMETERS
+netsim_name='data/invivo-0716';
+if(exist('frame') == 1) FR=frame; else FR=15; end          %imaging frame rate
+if(exist('freq')  == 1) setFQ=freq; else setFQ=1; end      %set skip-freq in PF (oversample)
+if(exist('rate')  == 1) rate_b=rate; else rate_b=0.3; end; %mean expected spike rate
+if(exist('lambda')== 1) lambda_b=lambda; else lambda_b=10; end %sparse L1-prior weight
+
+flgSparse   = 1;                                    %compute sparse solution?
+flgDale     = 1;                                    %compute dale solution?
+
 
 fprintf('In run_datafit %s\n',fname);
-% cd /hmt/sardine/hpc/scratch/stats/users/ym2289/glm-netfit
+
 
 %%%%%%%%%%  SIMULATION NAME  -- unique to the project
 N=length(F);        %number of neurons
 T=length(F{1});     %trace length
+for k=1:length(F) F{k}=im2double(F{k}); end
 
-netsim_name='data/s1m1-0713';
-netsim_name=[netsim_name,sprintf('-%i-%i',N,runid)];
-sync_name=[netsim_name,sprintf('-%i-sync',cmode)];
+netsim_name = [netsim_name,sprintf('-%i-%i',N,runid)];
+sync_name   = [netsim_name,sprintf('-%i-sync',cmode)];
 
-%INITIALIZE PARAMETERS
-lambda=20;          %sparse L1-prior weight
+
+%%%%%%%%%%% INITIALIZE PARAMETERS
 flambda=0;          %find best weight based on actual weights?
-
-if(exist('frame_rate')==1) FR=frame_rate; else FR=30; end%imaging frame rate
-if(exist('freq')==1) setFQ=freq; else setFQ=1; end %set skip-freq in PF (oversample)
 
 spkM=1;             %spike-train samples from spk-sampler, for GLM
 tmin=1;             %min coupling time-depth, >1 
@@ -33,22 +41,22 @@ tmax=1;             %max coupling time-depth
 
 Tp=tmax-tmin+1;     %couplings temporal depth
 
+holdTau = 1;        %robust fix prevents runaway tau & k problem by 
+                    %fixing them to initial values
 setH=1;             %h-dimensions in PF
 
-flgSparse=1;        %compute sparse solution?
-flgDale=1;          %compute dale solution?
-
-netSim.K=1;         %some dummies for compatibility with NETFIT_main
+%DUMMIES for compatibility with NETFIT_main
+netSim.K=1;         
 netSim.FR=1/FR;
 netSim.dt=1/FR;
 netSim.weights=zeros(N,N);
 n_GT=cell(N,1);
 
 
-% CUSTOM INITIALS FOR particle filter parameters
-cP.rate     = 0;                    % expected rate
-cP.k        = [cP.rate,zeros(1,0)]';% linear filter
-cP.tau      = 0.5;                  % calcium decay time constant (sec)
+%%%%%%%%%%% CUSTOM INITIALS FOR particle filter parameters
+cP.rate     = rate_b;               % expected rate
+cP.k        = log(cP.rate);         % linear filter
+cP.tau      = 0.2;                  % calcium decay time constant (sec)
 cP.A        = 150;                  % jump size ($\mu$M)
 cP.sig      = 25;                   % standard deviation of noise (\mu M)
 cP.C_0      = 25;                   % baseline [Ca++]
@@ -71,11 +79,6 @@ if setH>0                                        % if there are spike history te
     cP.tau_h=1/FR/(1-exp(-1/FR/cP.tau_h));       % correction -- large dt
     cP.sigma_h = 0.01;                           % stan dev of noise
 end
-
-
-
-flgData=1;          %tell NETFIT_main that this is running with data (no sim)
-
 
 switch(runid)     %RUNID SPECIFIC ADJ
   case 1
@@ -100,4 +103,5 @@ end
 D=ceil(N/N_proc);
 for i=1:N_proc nrange{i}=(1+(i-1)*D):min(N,i*D); end
 
+flgData=1;          %tell NETFIT_main that this is running with data (no sim)
 NETFIT_main         %THIS ACTUALLY DOES THINGS

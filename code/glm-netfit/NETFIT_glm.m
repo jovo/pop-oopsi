@@ -17,9 +17,16 @@ T=size(H,2);                          % # of samples
 
 if(nargin<5) par=[]; end              % initialize params
 if(~isfield(par,'dt')) par.dt=0.01; end
-if(~isfield(par,'lambda')) par.lambda=0; end% L1 sparse prior
-if(~isfield(par,'signs')) par.signs=[]; end % dale prior, row signs
+if(~isfield(par,'lambda')) par.lambda=0; end  % L1 sparse prior
+if(~isfield(par,'signs')) par.signs=[]; end   % dale prior, row signs
 if(~isfield(par,'samples')) par.samples=1; end %number of samples
+if(~isfield(par,'scaleD')) par.scaleD=1; end  % weiths adj scale
+if(~isfield(par,'bbox'))              % solution bounding box
+  lower=[]; upper=[]; 
+else
+  lower=par.bbox(1)/par.scaleD; 
+  upper=par.bbox(2)/par.scaleD;
+end
 if(nargin<3 || isempty(fr)) fr=ones(1,T); end %default frequencies
 if(nargin>=4 && ~isempty(x0)) w=x0; else w=rand(N,1); end% initialize weights
 
@@ -39,8 +46,11 @@ end
 % more regular "min -L(w)+Lambda*sum t_i" s.t. "w_i-t_i<=0, -w_i-t_i<=0"
 cnt=0;
 if(par.lambda==0 && isempty(par.signs~=0))% VANILLA MLE
-  %[bk lik_r]  = fminunc(@fbk,w,options); %this crashed in strong coupling regime
-  [bk lik_r]=fmincon(@fbk,w,[],[],[],[],-repmat(15,size(w)),repmat(15,size(w)),[],options);
+  if(isempty(lower) && isempty(upper)) 
+    [bk lik_r]  = fminunc(@fbk,w,options); %this crashed in strong coupling regime
+  else
+    [bk lik_r]=fmincon(@fbk,w,[],[],[],[],lower,upper,[],options);
+  end
 elseif(par.lambda==0)                 % DALE PRIOR ALONE
   d=zeros(1,N-1);                     % initialize constrained-min problem
   d(find(par.signs<0))=1;             % dale's w<0 sub  w<0
@@ -56,7 +66,7 @@ elseif(par.lambda==0)                 % DALE PRIOR ALONE
   w(find(par.signs>0)+1)=max(0,w(find(par.signs>0)+1));
   w(find(par.signs<0)+1)=min(0,w(find(par.signs<0)+1));
   
-  [bk lik_r]  = fmincon(@fbk,w,A,b,[],[],[],[],[],options);  
+  [bk lik_r]  = fmincon(@fbk,w,A,b,[],[],lower,upper,[],options);  
 else                                  % L1 PRIOR + DALE PRIOR
   d=sparse(diag(ones(1,N-1)));        % initialize constrained-min problem
   d0=d; d0(:,find(par.signs<0))=0;    % dale's w<0 sub  w-t<0 with  w<0
@@ -74,7 +84,7 @@ else                                  % L1 PRIOR + DALE PRIOR
   w(find(par.signs<0)+1)=min(0,w(find(par.signs<0)+1));
   w=[w;abs(w(2:end))+0.1/par.lambda]; 
   
-  [bk lik_r]  = fmincon(@fbk,w,A,b,[],[],[],[],[],options);
+  [bk lik_r]  = fmincon(@fbk,w,A,b,[],[],lower,upper,[],options);
   
   bk=bk(1:N);                         % drop dummy t's
 end

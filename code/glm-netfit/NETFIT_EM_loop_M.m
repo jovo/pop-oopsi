@@ -1,12 +1,12 @@
 %SCRIPT TO PERFORM INNER EM-LOOP FOR ESTIMATION OF 
 %CALCIUM MODELS M ON A SUBSET OF DATA
 
-if(exist('setFQ')~=1) setFQ=1; end      % frame skipping
-if(exist('setH')~=1) setH=1; end        % spike-history dimensions
-
-rate=1;
+if( exist('setFQ') ~=1 ) setFQ=1; end      % frame skipping
+if( exist('setH')  ~=1 ) setH=1; end        % spike-history dimensions
+if( exist('rate_b') == 1 ) rate_b=5; end
 
 N_spk=100;                              % spikes to use for estimating [Ca] model
+rate=rate_b;                            %expected spike rate
 
 Sim=[];
 Sim.N       = 50;                       % # of particles
@@ -23,6 +23,8 @@ Sim.F_params= 1;                        % whether to estimate observation parame
 Sim.G_params= 1;                        % whether to estimate observation parameters {gamma}
 Sim.MaxIter = 15;                       % max # of EM iterartions
 
+if(exist('holdTau') == 1) Sim.holdTau=holdTau; end % hold tau in M-step
+
 Sim.Scan    = 1;                        % end-of-frame data?
 
 P=[];
@@ -35,11 +37,13 @@ end
 
 K=Sim.dt/netSim.dt;                     %sim/inf resampling constant
 for k=nrange{id_proc}
-  if(~isempty(M{k})) rate1=exp(M{k}.k(1)); else rate1=0; end %expected neuron rate
-  rate=max(rate,rate1);
-  T=N_spk/rate;                           % sub-time to use for models estimation
+  rate1=rate;
+  if(exist('cP')) rate1=cP.rate; end    %expected spike rate from init  
+  if(~isempty(M{k})) rate1=exp(M{k}.k(1)); end %expected spike rate from before
+
+  T=N_spk/rate1;                           % sub-time to use for models estimation
   
-  Sim.T       = ceil(T/Sim.dt);           % # of samples
+  Sim.T       = min(length(F{k}),ceil(T/Sim.dt));% # of samples
   Sim.Nsec    = Sim.T*Sim.dt;             % # of actual seconds
   Sim.T_o     = Sim.T;                    % # of observations
   Sim.tvec    = Sim.dt:Sim.dt:Sim.Nsec;   % vector of times
@@ -58,8 +62,7 @@ for k=nrange{id_proc}
   elseif(isempty(M{k}))
     % initialize particle filter parameters    
     P.rate      = rate;                 % expected rate
-    rf          = log(-log(1-P.rate/Sim.T)/Sim.dt);
-    P.k         = [rf,zeros(1,Sim.StimDim-1)]';% linear filter
+    P.k         = log(P.rate);          % linear filter
     P.tau       = 0.5;                  % calcium decay time constant (sec)
     P.A         = 50;                   % jump size ($\mu$M)
     P.sig       = 25;                   % standard deviation of noise (\mu M)
@@ -78,6 +81,7 @@ for k=nrange{id_proc}
     P.lam       = Sim.T/(P.rate*P.A)*Sim.dt;% expected jump size ber time bin
   else                                  % use previous iteration to start off
     P=M{k};
+    if(Sim.n_params == 0) P.k=1; end    %if k is not est, set at  P.k=1 since J is exact 
   end
 
   %% 3) estimate parameters

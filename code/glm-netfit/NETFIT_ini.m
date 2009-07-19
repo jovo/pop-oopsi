@@ -1,48 +1,21 @@
 %SCRIPT TO GENERATE CALCIUM IMAGING DATA FOR 
 %A POPULATION OF COUPLED GLM NEURONS
-% %TEST
-% fprintf('\nnetSim.SIMULATE\n')
-% netsim_name='data/test';
-% id_proc=1;
-% rndinit=3711;
-% T=5;                            %simulation length
-% N=50;                          %neurons to include
-% FR=66;                          %frame-rates
-% SP=0.5;                         %connectivity sparseness
-% 
-% %TEST - 1
-% netSim.rnd=rndinit;             %random seed
-% netSim.N=N;                     %number of cells
-% netSim.SP=0.5;                  %sparseness of connections
-% netSim.scaleE=0.025;            %excitatiry abs scale
-% netSim.scaleI=0.1;              %inhibitory abs scale
-% netSim.balance=0.2;             %fraction of inhibitory neurons
-% netSim.T=60e3;                  %simulation duration, steps
-% netSim.dt=0.01;                 %simulation time-step
-% netSim.FR=0.01;                 %sampling time step
-% netSim.transf=inline('exp(x)','x');   %nonlinearity
-% netSim.invtransf=inline('log(x)','x');%nonlinear inverse
-% 
-% netSim.hepsp=1;
-% netSim.hipsp=1;
-% netSim.hrefr=1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %INITIALIZATION
-short=0;                          %use 1 if adjusting firing rate
+short=0;                            %use 1 if adjusting firing rate
 
-if(exist('N')~=1) N = 50; end       %# of neurons
+if(exist('T')~=1)  T = 600; end     %recording time
+if(exist('N')~=1)  N = 50; end      %# of neurons
 if(exist('SP')~=1) SP = 0.1; end    %sparseness of matrix
 if(exist('FR')~=1) FR = 66; end     %frame rate imaging
-if(exist('T')~=1) T = 600; end      %recording time
-if(exist('G')~=1) G = 4e4; end      %shot-noise multiple
-if(exist('varTau')~=1) varTau = 0; end%variation in synaptic time constants
-if(exist('CM')~=1) CM = 0; end      %coupling strength mode (weak, strong)
+if(exist('G')~=1)  G = 4e4; end     %shot-noise multiple
+if(exist('CM')~=1) CM = 0; end      %weak/strong coupling
 if(exist('rndinit')~=1) rndinit = 3467; end
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-rand('state',rndinit);            %for repeatability
+rand('state',rndinit);           %for repeatability
 randn('state',rndinit);
 
 netSim.rnd=rndinit;              %random seed
@@ -73,23 +46,23 @@ netSim.rate =[0 5 0];           %spontaneous ignition rate, min, mean & STD
 netSim.irate=[0 5 0];           %spontaneous ignition rate for inh neurons, same
 netSim.omega=[0 100 0];         %refraction strength, min, mean & STD
 
-netSim.tauexc=10*[0.5 1 varTau];%excitatory time scale, decay constant
-netSim.tauinh=20*[0.5 1 varTau];%inhibitory time scale, decay constant
-netSim.tauref=10*[0.5 1 varTau];%refractory time scale, decay constant
+netSim.tauexc=10*[0.5 1 0.];  %excitatory time scale, decay constant
+netSim.tauinh=20*[0.5 1 0.];  %inhibitory time scale, decay constant
+netSim.tauref=10*[0.5 1 0.];  %refractory time scale, decay constant
 
 netSim.K=round(netSim.FR/netSim.dt);%sampling/sim time-steps ratio
 
 
-%%ADJUSTMENTS ----
+%%%%%%%%% ADJUSTMENTS ----
 if(N>100) netSim.scaleI=0.2; end%stronger inhibition is necessary for larger N
 if(N>400) netSim.scaleI=0.25; end
 
-if(CM==1)                       %strong coupling regime
+if(CM==1)                       %strong coupling subpopulation
   netSim.SP=0.2;
   netSim.fractCM=0.2;
   netSim.scaleES=15.0;
   netSim.scaleIS=30.0;
-  netSim.rate =[0 1 0]; 
+  netSim.rate =[0 1 0];         %lower base rate
   netSim.irate=[0 1 0]; 
 end
 
@@ -247,26 +220,24 @@ fprintf('Generating calcium...\n');
 normC=zeros(Np,1);
 maxC=65535;                                   %uint16 conv factor
 C=cell(Np,1);                                 %calcium traces
-for k=1:Np
-  A     = netSim.cells(k).A;                  %aliases
-  sigma = netSim.cells(k).sigma;
-  tau   = netSim.cells(k).tau;
-  C_0   = netSim.cells(k).C_0;
-  a     = netSim.dt/tau;
+A     = [netSim.cells.A]';                    %aliases
+sigma = [netSim.cells.sigma]';
+tau   = [netSim.cells.tau]';
+C_0   = [netSim.cells.C_0]';
+a     = netSim.dt./tau;
 
-  Cbuf=C_0;
-  nbuf=false(1,netSim.T); nbuf(n{k})=1;
-  Ctmp=zeros(1,size(C,2));
-  for t=1:netSim.T
-    Cbuf=(1-a)*Cbuf + a*C_0 + A*nbuf(t) + sigma*sqrt(netSim.dt)*randn;
-    Cbuf=max(0,Cbuf);                         %can't get smaller than 0
-    
-    if(mod(t,netSim.K)==0) Ctmp(t/netSim.K)=Cbuf; end%record calcium sample
-  end
+Cbuf=C_0;
+nbuf=false(Np,netSim.T);
+for k=1:Np nbuf(k,n{k})=1; end
+Ctmp=zeros(Np,ceil(netSim.T/netSim.K));
+for t=1:netSim.T
+  Cbuf=(1-a).*Cbuf + a.*C_0 + A.*nbuf(:,t) + sigma.*sqrt(netSim.dt).*randn(Np,1);
+  Cbuf=max(0,Cbuf);                           %can't get smaller than 0
   
-  normC(k)=max(Ctmp);
-  C{k}=uint16(round(Ctmp/normC(k)*maxC));
+  if(mod(t,netSim.K)==0) Ctmp(:,t/netSim.K)=Cbuf; end%record calcium sample
 end
+normC=max(Ctmp,[],2);
+for k=1:Np C{k}=uint16(round(Ctmp(k,:)/normC(k)*maxC)); end
 
 
 %FLUORESCENCE
