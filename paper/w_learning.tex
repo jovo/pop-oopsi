@@ -5,7 +5,7 @@ Finding GLM parameters is an optimization problem with $mN^2+N$ variables. By co
 Simple properties of the connectivity matrix, that may be known a priori, may be extremely helpful in obtaining accurate solutions for smaller datasets. In particular, enforcing sparseness for signal recovered with a series of linear measurements via $L1$-regularizer is known to dramatically reduce the amount of data necessary to accurately reconstruct the signal \cite{Candes2005, DE03, Mishchenko2009}. Although here the estimation problem is not linear, it is interesting what impact analogous prior might have on the reconstruction of the matrix of functional connection weights $W$. Enforcing sparseness may be done by introducing exponential prior to GLM \cite{Stevenson2009}, thus leading to the posterior probability for the spike train
 
 \begin{equation}\label{eqn:likelihoodsparseGLM}
-E[\ln P_{\bn}(n_i|{\bf n}_{\i}, W)P(W)]=\sum_t E\left( n_i(t) J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right)-\lambda \sum_{t'ij}|\w_{ij}(t')|.
+E[\ln P_{\bn}(n_i|{\bf n}_{\i}, W)P[W]]=\sum_t E\left( n_i(t) J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right)-\lambda \sum_{t'ij}|\w_{ij}(t')|.
 \end{equation}
 
 Exponential prior parameter $\lambda\sim 1/\langle|\w_{ij}|\rangle$ may be set from a priori neuroanatomical or neurophysiological data. Sparse prior does not change the convexity of GLM log-likelihood and, so, such regularized problem may be solved efficiently using methods of convex optimization theory. E.g., by introducing slack variables $s_{ij}(t)>|\w_{ij}(t)|$, this problem may be converted to a nonlinear program that can be solved using interior point method

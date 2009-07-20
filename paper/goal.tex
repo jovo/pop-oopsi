@@ -1,13 +1,13 @@
 Given the above model, our goal is to estimate the functional connectivity matrix, $\bw$, given calcium imaging observations ${\bf F}$. A natural choice is find the \emph{maximum a posteriori} (MAP) estimate:
 
 \begin{equation}\label{eqn:MAP}
-\hbw=\argmax_{\bw} P(\bw| \bF) = \argmax_{\bw} \iint P(\bth| \bX, \bF) d\bX d(\bth \backslash \bw)
+\hbw=\argmax_{\bw} P[\bw| \bF] = \argmax_{\bw} \iint P[\bth| \bX, \bF) d\bX d(\bth \backslash \bw]
 \end{equation}
 
 \noindent where $\bth \backslash \bw$ is the set of parameters excluding the functional connectivity matrix.  Because directly solving Eq. \eqref{eqn:MAP} is intractable, we utilize the Expectation Maximization (EM) framework, in which one recursively updates the expected value of the joint distribution of $(\bX, \bF)$ (E step), and then maximizes all the parameters (M step):
 
 \begin{align*}
-\textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) = E_{P(\bX | \bF; \bth^{(l+1)})}[ \ln P(\bF, \bX | \bth^{(l)})] = \int P(\bX | \bF; \bth^{(l+1)}) \ln P(\bF, \bX | \bth^{(l)}) d \bX  \\
+\textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) = E_{P[\bX | \bF; \bth^{(l+1)}]}[ \ln P[\bF, \bX | \bth^{(l)}]] = \int P[\bX | \bF; \bth^{(l+1)}] \ln P[\bF, \bX | \bth^{(l)}] d \bX  \\
 \textbf{M step} &\text{: Solve } \bth^{(l+1)} = \argmax_{\bth} Q(\bth,\bth^{(l)})  
 \end{align*}
 
@@ -21,23 +21,23 @@ P[C_i(t) | F_i; \bth_i] \times \ln P[F_i(t)|C_i(t); \bth_i]
 \\ + P[\bh(t) | \bF; \bth] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
 \end{multline}
 
-\noindent where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Note that while the first two terms in Eq. \eqref{eqn:loglik:definition-expl} only require marginal posteriors for each neuron, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, whereas the last term requires the joint posterior over all neurons, $P[\bX(t) | \bF; \bth^n]$.  
+\noindent where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Note that while the first two terms in Eq. \eqref{eqn:loglik:definition-expl} only require posteriors marginalized over each neuron, and all but nearest time bins, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, whereas the last term requires the joint posterior over all neurons (but marginalized over time), $P[\bX(t) | \bF; \bth^n]$.  
 
-Unfortunately, analytic solutions for all these posteriors are intractable, so we are forced to use approximate methods to estimate them.  To estimate the marginal posteriors, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, we utilize a forward-backward procedure that discretize the integrals by sampling \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.  These sequential Monte Carlo (SMC) algorithms (or, ``particle filters'') operate very efficiently, scaling linearly with time \cite{RAB89}. However, as the dimensionality of the hidden state space increases, importance sampling becomes relatively inefficient.  For a population of about 50 neurons, the dimensionality of our model would be $3N=150$ --- too large for existing SMC methods \cite{??}.  
+Unfortunately, analytic solutions for all these posteriors are intractable, so we are forced to use approximate methods to estimate them.  To estimate $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ --- hereafter called ``marginal posteriors'' ---  we utilize a forward-backward procedure that discretize the integrals by sampling \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.  These sequential Monte Carlo (SMC) algorithms (or, ``particle filters'') operate very efficiently, scaling linearly with time \cite{RAB89}. However, as the dimensionality of the hidden state space increases, importance sampling becomes relatively inefficient.  For a population of about 50 neurons, the dimensionality of our model would be $3N=150$ --- too large for existing SMC methods \cite{??}.  
 
 %The Markovian nature of model facilitates using  obtaining such sample is an instance of a well known problem of sampling from HMM. In particular, for a finite state-space HMM forward-backward procedure is known to provide samples in  $O(T)$ time \cite{RAB89}. For continuous state-space HMM different sampling strategies exist relying on discretizing the continuous state-space and approximating the integrals in forward-backward procedure using Monte Carlo \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.
 %
 %In our case, the state $X_i(t)$ is a direct product of binary $n_i(t)$ and continuous $C_i(t)$ dimensions, and so a continuous state-space sampling algorithm is required. Given large length of neural activity recordings data, $O(T)$ computational cost of HMM sampling algorithms is an important advantage.
 %
-%One of the most popular methods for sampling from continuous-state HMM is sequential Monte Carlo (SMC), also known as particle filter \cite{DFG01}. In SMC, discretization of the state-space is constructed by drawing a sample from marginal distributions  $P({\bf X}(t)|\{{\bf F}(t'), t'=1\ldots t\})$, computed in the forward pass, and the forward-backward integrals are approximated using Monte Carlo on such samples. The main difficulty of SMC in our case is extremely high dimensionality of the state-space --- for a population of $N\sim 50$ neurons, the dimensionality of the state space is $2N\sim 100$. Integrals in forward-backward procedure, therefore, cannot be accurately sampled using particle swarms of tractable size.
+%One of the most popular methods for sampling from continuous-state HMM is sequential Monte Carlo (SMC), also known as particle filter \cite{DFG01}. In SMC, discretization of the state-space is constructed by drawing a sample from marginal distributions  $P[{\bf X}(t)|\{{\bf F}(t'), t'=1\ldots t\}]$, computed in the forward pass, and the forward-backward integrals are approximated using Monte Carlo on such samples. The main difficulty of SMC in our case is extremely high dimensionality of the state-space --- for a population of $N\sim 50$ neurons, the dimensionality of the state space is $2N\sim 100$. Integrals in forward-backward procedure, therefore, cannot be accurately sampled using particle swarms of tractable size.
 
-To solve this problem, we propose a hybrid MCMC-Gibbs sampling strategy taking advantage of the specific structure of the model Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition}, namely, that it can be viewed as a set of $N$ coupled HMM models. Gibbs sampling is a procedure for obtaining samples from high-dimensional distribution $P({\bf X}(t) | \bF; \bth)$ by sampling from low-dimensional conditional distributions $P(X_{i}|{\bf X}_{\i}, \bF; \bth)$  \cite{Gelfand1990}.  This sampling procedure reduces intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems.  Here, we propose Gibbs sampling in blocks of one neuron at a time.  
-%
-%spike train, $X_i$, at a time: if we view the spike train history ${\bf h}=(h_1, ..., h_N)$ as a set of blocks of spike trains from individual neurons $h_i$, we perform Gibbs sampling by consequently sampling such entire blocks $h_i\sim P(h_{i}|{\bf h}_{\i}, {\bf F}; \bth^n_i)$ one at a time.  Note that such block-sampling strategy is necessary here since different $t$ states in $X_i(t)$ for same neuron $i$ are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain if we Gibbs-sample from $X_i(t)$ for different $t$ and same $i$.  Although each sampling subproblem in our case is still high-dimensional, it is tractable because it reduces to sampling from HMM with a three-dimensional state-space. Thus, joint sample from $3N$-dimensional HMM $P({\bf X}|\bth, {\bf F})$ may be obtained.
+To solve this problem, we propose a hybrid Markov Chain Monte Carlo (MCMC) Gibbs sampling strategy taking advantage of the specific structure of the model Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition}, namely, that it can be viewed as a set of $N$ coupled HMM models. Gibbs sampling is a procedure for obtaining samples from high-dimensional distributions $P[{\bf X}]$ by sampling from low-dimensional conditional distributions $P[X_{i}|{\bf X}_{\i}]$  \cite{Gelfand1990}.  This sampling procedure reduces intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems.  Below, we propose to sample in blocks of one spike train at a time, using MCMC to sample entire spike trains.
 
-The maximization step of EM requires maximizing the conditional expectation of $\ln P({\bf X}, {\bf F} | \bth)$ given such samples. Although this is a maximization over $(9+N)N$ parameters, the special structure of Eq. \eqref{eqn:loglik:definition-expl} allows one to simplify this optimization problem dramatically by performing optimization with respect to each neuron independently.  
+%spike train, $X_i$, at a time: if we view the spike train history ${\bf h}=(h_1, ..., h_N)$ as a set of blocks of spike trains from individual neurons $h_i$, we perform Gibbs sampling by consequently sampling such entire blocks $h_i\sim P[h_{i}|{\bf h}_{\i}, {\bf F}; \bth^n_i)$ one at a time.  Note that such block-sampling strategy is necessary here since different $t$ states in $X_i(t)$ for same neuron $i$ are correlated via Markov dynamics, thus leading to slow mixing of Gibbs chain if we Gibbs-sample from $X_i(t]$ for different $t$ and same $i$.  Although each sampling subproblem in our case is still high-dimensional, it is tractable because it reduces to sampling from HMM with a three-dimensional state-space. Thus, joint sample from $3N$-dimensional HMM $P[{\bf X}|\bth, {\bf F}]$ may be obtained.
 
-Our EM algorithm therefore requires solving four problems: (i) estimating marginal posteriors over neurons, $P(X_i(t), X_i(t-1) | F_i; \bth_i)$ using SMC, (ii) updating the parameter estimates by maximizing the conditional expectation of $\ln P(X_i, F_i | \bth_i)$,  (iii) estimating the joint posteriors over all neurons,  $P({\bf X}| \bF; \bth)$ using a Gibbs technique, and (iv) solving for next iteration of parameters $\bth^n$ by maximizing conditional expectation of  $\ln P({\bf X}, {\bf F}| \bth^n)$.  Below, we describe each of these steps in detail. Table \ref{eqn:pseudocode} provides pseudocode for our general approach.  
+The maximization step of EM requires maximizing the conditional expectation of $\ln P[{\bf X}, {\bf F} | \bth]$ given such samples. Although this is a maximization over $(9+N)N$ parameters, the special structure of Eq. \eqref{eqn:loglik:definition-expl} allows one to simplify this optimization problem dramatically by performing optimization with respect to each neuron independently.  
+
+Our EM algorithm therefore requires solving four problems: (i) estimating marginal posteriors over neurons, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ using SMC, (ii) updating the parameter estimates by maximizing the conditional expectation of $\ln P[X_i, F_i | \bth_i]$,  (iii) estimating the joint posteriors over all neurons,  $P[{\bf X}| \bF; \bth]$ using a Gibbs technique, and (iv) solving for next iteration of parameters $\bth^n$ by maximizing conditional expectation of  $\ln P[{\bf X}, {\bf F}| \bth^n]$.  Below, we describe each of these steps in detail. Table \ref{eqn:pseudocode} provides pseudocode for our general approach.  
 
 \begin{algorithm}
 \caption{Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta^n$, $\eta^F$, $N_G$ are somewhat arbitrarily chosen bounds.}
@@ -46,18 +46,18 @@ Our EM algorithm therefore requires solving four problems: (i) estimating margin
 \While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|>\eta^n$}
   \ForAll{$i=1\ldots N$}
     \While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|> \eta^F$}
-      \State Sample $X_i \sim P(X_i|{\bf F}_i; \bth_i)$
-      \State Maximize ${\bth_i}^{(l+1)}=\argmax_{\bth_i} E\left[\ln P(X_i | F_i; \bth_i) \right]$
+      \State Sample $X_i \sim P[X_i|{\bf F}_i; \bth_i]$
+      \State Maximize ${\bth_i}^{(l+1)}=\argmax_{\bth_i} E\left[\ln P[X_i | F_i; \bth_i] \right]$
     \EndWhile
   \EndFor
   
   \For{$k=1\ldots N_G$}
     \ForAll{$i=1\ldots N$}
-      \State Sample $X_i \sim P(X_i|{\bf X}_{\i},{\bf F}_i; \bth^n_i)$
+      \State Sample $X_i \sim P[X_i|{\bf X}_{\i},{\bf F}_i; \bth^n_i]$
     \EndFor
   \EndFor 
 
-  \State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P(\bX | \bF; \bth^n)\right]$  
+  \State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P[\bX | \bF; \bth^n]\right]$  
 \EndWhile
 \end{algorithmic}
 \end{algorithm}

@@ -1,6 +1,6 @@
 clear, clc, %close all
 datapath = '/Users/joshyv/Research/oopsi/meta-oopsi/data/';
-dataset = 2;
+dataset = 1;
 switch dataset
     case 1
         Im.path = [datapath 'rafa/tanya/051809/s1m1/'];
@@ -20,7 +20,7 @@ end
 LoadTif     = 0;
 GetROI      = 0;
 GetF        = 0;
-DoExtract   = 0;
+DoExtract   = 1;
 Look        = 0;
 DoPlot      = 0;
 
@@ -148,7 +148,7 @@ if DoExtract == 1
         case 1
             keyboard
             tvec = [1:1820 2050:3740 3950:7250 7550:8250 8400:Im.T];
-            Fttemp = double(Im.F);
+            Ftemp = double(Im.F);
             Ftrunc = Ftemp(:,tvec);
             Fdetrend = detrend(Ftrunc')';
             Ftrends = Fdetrend-Ftrunc;
@@ -164,11 +164,24 @@ if DoExtract == 1
             Ftemp = Ftemp*2^16;
             Ftemp = uint16(Ftemp);
         case 2
-            tvec  = 1000:5000;
-            Ftrunc = double(Im.F(:,tvec));
-            Fdetrend = detrend(Ftrunc')';
-            Ftrends = Fdetrend-Ftrunc;
-            Ftemp = Fdetrend - repmat(Ftrends(:,1),1,length(tvec));
+            tvec    = 1000:5000;
+            L       = length(tvec);
+            for k=1:length(F)
+                Ftrunc      = double(F{k});
+                Fdetrend    = detrend(Ftrunc')';
+                Ftrends     = Fdetrend-Ftrunc;
+                Fdebleach   = Fdetrend - repmat(Ftrends(:,1),1,length(tvec));
+                NFFT        = 2^nextpow2(L); % Next power of 2 from length of y
+                Y           = fft(Fdebleach,NFFT)/L;
+                Y(1:10)     = 0;
+                Ftemp=ifft(Y,NFFT,'symmetric');
+                Ftemp(L+1:end)=[];
+                h(1)=subplot(211); plot(Ftrunc),
+                h(2)=subplot(212); plot(Ftemp);
+                axis('tight'), linkaxes(h,'x')
+                keyboard
+            end
+
         case 3
             keyboard
             L       = 2^nextpow2(Im.T);
