@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  19 JUL 2009 18:37
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  19 JUL 2009 23:52
 entering extended mode
 **main
 (./main.tex
@@ -314,10 +314,10 @@ Package natbib Warning: Citation `??' on page 4 undefined on input line 26.
 
 ) (./indep.tex [4]) (./joint_sampling.tex [5]
 
-LaTeX Warning: Reference `eq:bws' on page 6 undefined on input line 21.
+LaTeX Warning: Reference `eq:bws' on page 6 undefined on input line 19.
 
 
-LaTeX Warning: Reference `sec:discussion' on page 6 undefined on input line 24.
+LaTeX Warning: Reference `sec:discussion' on page 6 undefined on input line 22.
 
 
 [6]) (./w_learning.tex [7]
@@ -473,4 +473,4 @@ sky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti10.pfb>
 /texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></opt/local/share/texmf-dist/font
 s/type1/bluesky/cm/cmbx9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
 m/cmr9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx12.pfb>
-Output written on main.pdf (22 pages, 476391 bytes).
+Output written on main.pdf (22 pages, 476264 bytes).

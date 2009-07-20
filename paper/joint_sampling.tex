@@ -1,3 +1,12 @@
+Computing the most likely estimates of the functional connectivity matrix, $\bw$, requires maximizing the third term of Eq. \eqref{eqn:loglik:definition-expl}, with respect to $\bw=\{w_{ij}\}$, which can be expanded:
+
+\begin{multline} \label{eqn:bws}
+	E [\ln P[n_i(t) | \bh_i(t)]] = P[n_i(t) | F_i] \ln (1-\exp\{-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta\})
+	\\ +  (1-P[n_i(t) | F_i]) (-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta)].
+\end{multline}
+
+\noindent Clearly, this requires having joint both $n_i(t)$ and $h_j(t)$ for all $i,j$ and $t$.  In other words, we require the 
+
 As indicated by Eq. \eqref{eqn:loglik:definition-expl}, the sufficient statistics for estimating the functional connectivity matrix are the joint posteriors of the spike history terms, $P[\bh(t) | \bF; \bth]$.  However, the algorithm described in Section \ref{sec:methods:indep} merely provides the marginals over each neuron, $P[X_i(t) | F_i; \bth_i]$.  Therefore, in this section, we describe two approaches to infer the joint posteriors: one that makes an independence assumption, and one that is exact.
 
 \subsubsection{Independent assumption for approximating the joint posteriors}
@@ -59,21 +68,26 @@ The advantage of Neal's method is that the grids $G$ are simple to prepare and a
 
 Proposal density $\rho^i_t(X_i(t))$ may be chosen arbitrary as long as it has sufficiently large support.  In order to achieve faster convergence, we use marginal densities $P[X_i(t)|{\bf X}_{\i}, \bf F; \theta]$ computed from the filter and smoother passes of the conventional SMC algorithm. Such accurate $\rho^i_t(X_i(t))$ allows the Markov Chain to converge extremely quickly.  $\rho^i_t(X_i(t))$ were constructed using kernel density estimation such that $\rho^i_t(C_i(t))$ was a mixture of Gaussians centered on particles from the particle swarm $C_i^{(l)}(t)$ with the variances $\approx var\left[C_i^{(l)}(t)-C_i^{(l')}(t) \right]$. $\rho^i_t(n_i(t))$ was taken to be Bernoulli distribution with the spike probability estimated from the particle swarm. Finally, $\rho^i_t(X_i(t)) = \rho^i_t(n_i(t)) \rho^i_t(C_i(t))$.  Such spike train samples for single neurons from the conditional probability distributions $P[X_i|{\bf X}_{\i}, \bf F; \theta]$ may be subsequently used in block-Gibbs sampling procedure to acquire joint sample from $P[{\bf X}| {\bf F}; \theta]$ for a large number of coupled individual neuron HMM exactly and efficiently.  Specifically, we repeat the MCMC procedure to sample blocks of one neuron state-sequence at a time $X_i\sim P[X_{i}|{\bf X}_{\i},{\bf F}; \theta]$ sequentially for all neurons $i=1\ldots N$ for $N_G$ Gibbs cycles.  We accumulate samples at the end of each of $N_G$ cycles.  XXX in practice, we let $N_G$ be ??? XXX
 
-The MCMC-Gibbs procedure for sampling joint spike trains above allows one to obtain samples of ${\bf n}\sim P[{\bf n}|{\bf F}; \bth]$ from a high-dimensional HMM. However, if the temporal structure of the functional connection weights $\w_{ij}(t)$ is known in advance, e.g. if $\w_{ij}(t)=\w_{ij}\exp(-t/\tau_w)$, drawing spike train samples from $P[{\bf X}|{\bf F};\bth]$ may be avoided by introducing reduced history variables 
-\begin{equation}
-h_i(t)=\sum\limits_{t'<t} n_i(t')\exp(-(t-t')/\tau_w).
-\end{equation}
-In terms of $h_i(t)$ GLM likelihood may be written as follows, 
-\begin{equation}
-E[\ln P_{\bn}(n_i|{\bf h}; \bw)]\approx \sum_t \left(\sum\limits_{j} \w_{ij} E[n_i(t) h_j(t)] -
-E[(1-n_i(t)) \exp\left(\sum\limits_j \w_{ij}h_j(t)\right)] \Delta \right). 
-\end{equation}
-i.e. the GLM likelihood in terms of reduced history variables factorizes over time $P_{\bn}(n_i|{\bf h};\bw)=\prod_t P_{\bn}(n_i(t)|{\bf h}(t);\bw)$.
-Then, GLM parameters may be estimated using only the marginal distributions $P[{\bf n}(t), {\bf h}(t)|{\bf F};\bth]$ without drawing the full spike train samples ${\bf n}$.
-
-Reduced history variables provide substantial simplification over full MCMC procedure. In particular, when such history variables may be constructed via a Markov process, e.g.
-\begin{equation}\label{eqn:spkhist:definition}
-h_i(t)=(1-\Delta/\tau_w) h_i(t-1) + n_i(t-1) + \epsilon_i(t), 
-\end{equation}
-($\epsilon_i(t)$ is normally distributed internal noise term with variance $\sigma^2_h$) samples from marginal distributions necessary for E-step may be found using SMC method. In particular, if the time-history of the  functional connection weights may be decomposed into a linear sum of  terms with exponential time-dependence with different decay times, such Markov process construction Eq. \eqref{eqn:spkhist:definition}), obviously, is always possible using reduced history vector $h_i^{(l)}(t)$, each $h_i^{(l)}(t)$ governed by a different time constant $\tau^{(l)}_w$. GLM parameters may be estimated from marginal distributions $P[{\bf n}(t), \{{\bf h}^{(l)}(t)\}|{\bf F};\bth]$.  Such formulation of GLM inference problem is completely equivalent to the above formulation operating with the full spike train samples ${\bf X}$, and may be used fully interchangeably with it. Given better computational cost of computing marginal distributions $P[{\bf n}(t), {\bf h}(t)|{\bf F};\bth]$, in suitable conditions this approach may be extremely advantageous. 
-
+% The MCMC-Gibbs procedure for sampling joint spike trains above allows one to obtain samples of ${\bf n}\sim P[{\bf n}|{\bf F}; \bth]$ from a high-dimensional HMM. However, if the temporal structure of the functional connection weights $\w_{ij}(t)$ is known in advance, e.g. if $\w_{ij}(t)=\w_{ij}\exp(-t/\tau_w)$, drawing spike train samples from $P[{\bf X}|{\bf F};\bth]$ may be avoided by introducing reduced history variables
+%  
+% \begin{equation}
+% h_i(t)=\sum\limits_{t'<t} n_i(t')\exp(-(t-t')/\tau_w).
+% \end{equation}
+% 
+% In terms of $h_i(t)$ GLM likelihood may be written as follows, 
+% 
+% \begin{equation}
+% E[\ln P_{\bn}(n_i|{\bf h}; \bw)]\approx \sum_t \left(\sum\limits_{j} \w_{ij} E[n_i(t) h_j(t)] -
+% E[(1-n_i(t)) \exp\left(\sum\limits_j \w_{ij}h_j(t)\right)] \Delta \right). 
+% \end{equation}
+% 
+% i.e. the GLM likelihood in terms of reduced history variables factorizes over time $P_{\bn}(n_i|{\bf h};\bw)=\prod_t P_{\bn}(n_i(t)|{\bf h}(t);\bw)$.
+% Then, GLM parameters may be estimated using only the marginal distributions $P[{\bf n}(t), {\bf h}(t)|{\bf F};\bth]$ without drawing the full spike train samples ${\bf n}$.
+% 
+% Reduced history variables provide substantial simplification over full MCMC procedure. In particular, when such history variables may be constructed via a Markov process, e.g.
+% 
+% \begin{equation}\label{eqn:spkhist:definition}
+% h_i(t)=(1-\Delta/\tau_w) h_i(t-1) + n_i(t-1) + \epsilon_i(t), 
+% \end{equation}
+% 
+% ($\epsilon_i(t)$ is normally distributed internal noise term with variance $\sigma^2_h$) samples from marginal distributions necessary for E-step may be found using SMC method. In particular, if the time-history of the  functional connection weights may be decomposed into a linear sum of  terms with exponential time-dependence with different decay times, such Markov process construction Eq. \eqref{eqn:spkhist:definition}), obviously, is always possible using reduced history vector $h_i^{(l)}(t)$, each $h_i^{(l)}(t)$ governed by a different time constant $\tau^{(l)}_w$. GLM parameters may be estimated from marginal distributions $P[{\bf n}(t), \{{\bf h}^{(l)}(t)\}|{\bf F};\bth]$.  Such formulation of GLM inference problem is completely equivalent to the above formulation operating with the full spike train samples ${\bf X}$, and may be used fully interchangeably with it. Given better computational cost of computing marginal distributions $P[{\bf n}(t), {\bf h}(t)|{\bf F};\bth]$, in suitable conditions this approach may be extremely advantageous. 
