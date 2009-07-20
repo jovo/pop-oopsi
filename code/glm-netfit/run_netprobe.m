@@ -1,5 +1,5 @@
 function run_netprobe(N,id_proc,N_proc,rndinit)
-%LAUNCH script for netfit package-wrapper NETFIT_main
+% WRAPPER LAUNCH script for netfit package-wrapper NETFIT_main
 if(nargin<1) N=10; end%selection of N
 if(nargin<2) id_proc=1; end %processor to execute
 if(nargin<3) N_proc=1; end  % # of processors to use

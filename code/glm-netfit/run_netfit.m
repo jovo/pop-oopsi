@@ -7,21 +7,16 @@ if(nargin<4) id_proc=1; end
 if(nargin<5) N_proc=1; end;
 if(nargin<6) rndinit=3711; end%random seed
 
-fprintf('In run_netfit %i\n',cmode);
 % cd /hmt/sardine/hpc/scratch/stats/users/ym2289/glm-netfit
+fprintf('In run_netfit %i\n',cmode);
 
 %%%%%%%%%%  SIMULATION NAME  -- unique to the project
-netsim_name='data/fluor-0706';
+netsim_name='data/fluor-0717';
 netsim_name=[netsim_name,sprintf('-%i-%i',N,runid)];
-sync_name=[netsim_name,sprintf('-%i-sync',cmode)];
+sync_name  =[netsim_name,sprintf('-%i-sync',cmode)];
 
 %INITIALIZE PARAMETERS
-% N=10;               %number of neurons
-T=250;              %trace length
-
-lambda=0;           %sparse L1-prior weight
-flambda=0;          %find best weight based on actual weights?
-fdale=0;            %dale prior enacted [0/1]?
+T=600;              %trace length
 
 FR=66;              %imaging frame rate
 SP=max(0.1,2/N);    %connections sparseness
@@ -38,40 +33,45 @@ setFQ=1;            %set skip-freq in PF (oversample)
 flgSparse=1;        %compute sparse solution?
 flgDale=1;          %compute dale solution?
 
-if(N<10)            %ASSIGN TIME
-  T=600;
-elseif(N<=25)           
-  T=600;
-elseif(N<=50)
-  T=600;
-elseif(N<=100)
-  T=600;
-else
-  T=600;
-end
-switch(runid)     %RUNID SPECIFIC ADJ
-  case 1
-    gamma=1e3;
+switch(runid)       %RUNID SPECIFIC ADJ
+  case 1            % different noise amounts
+    G=1e3;
   case 2
-    gamma=5e3;
+    G=5e3;
   case 3
-    gamma=10e3;
+    G=10e3;
   case 4
-    gamma=20e3;
+    G=20e3;
   case 5
-    gamma=40e3;
+    G=40e3;
   case 6
-    gamma=80e3;  
-  case 7
-    FR=33;
-    setFQ=6;
-  case 8
-    varTau=0.25;
-  case 9
+    G=80e3;  
+  case 9            % strong coupling model
     CM=1;
-  case 50
-    N=50;
-    T=600;
+  case 11            % different noise amounts
+    G=1e3; FR=33;
+  case 12
+    G=5e3; FR=33;
+  case 13
+    G=10e3; FR=33;
+  case 14
+    G=20e3; FR=33;
+  case 15
+    G=40e3; FR=33;
+  case 16
+    G=80e3; FR=33;  
+  case 21            % different noise amounts
+    G=1e3; FR=15;
+  case 22
+    G=5e3; FR=15;
+  case 23
+    G=10e3; FR=15;
+  case 24
+    G=20e3; FR=15;
+  case 25
+    G=40e3; FR=15;
+  case 26
+    G=80e3; FR=15;
   otherwise
     N=10;
     T=250;

@@ -5,6 +5,8 @@ par.tmax=tmax;                        % max coupling time-depth
 par.dt=netSim.FR;                     % time-step
 par.samples=spkM;                     % samples in the data
 par.Tp=Tp;                            % coupling temporal depth
+if(exist('bbox')) par.box=bbox; else par.box=[]; end % bounding box for solver
+if(exist('rate_b')==1) par.rate=rate_b; else par.rate=5; end
 if(exist('lambda')==1) par.lambda=lambda; end % L1-regularizer strength
 if(exist('dalepr')==1) par.signs=dalepr; end  % dale prior signs
 

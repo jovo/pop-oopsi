@@ -3,11 +3,13 @@
 path(path,'../glm-oopsi/code');%LINK THIS TO PF-filter
 path(path,'../mcmc-oopsi');    %LINK THIS to MCMC sampler
 
-%additional solvers, sparse & dale        
-if(exist('flgSparse')~=1) flgSparse=0; end
-if(exist('flgDale')~=1) flgDale=0; end
+%additional solvers, sparse & dale 
+if(exist('rate_b')~=1) rate_b=5; end        %expected spike rate
+if(exist('flgSparse')~=1) flgSparse=0; end  %find sparse solution
+if(exist('flgDale')~=1) flgDale=0; end      %find Dale solution
+if(exist('flgData')~=1) flgData=0; end      %default is simulation
 
-if(exist('flgData')==1 && flgData==0)
+if(flgData==0)              % use to simulate dataset
   fname=[netsim_name,'-data.mat'];
   %load sim data, if there, or simulate dataset -- one node only
   if(id_proc==1 && exist(fname)~=2) tic; NETFIT_ini; toc; end
@@ -71,6 +73,7 @@ while(iflg)
                             % outgoing couping weights W, rates R, refr Omega
                             % outgoing coupling currents J  
   ivals=weights_iglm;       
+  bbox=[-10,15];            % bounding box on weigths
   fname=[netsim_name,sprintf('-glm_%s%iproc%i.mat',mode,cnt,id_proc)];
   if(exist(fname)==2) load(fname); else NETFIT_GLM_fit; end  
   
@@ -83,10 +86,12 @@ while(iflg)
   Weights_glm=Weights;
     
             
-  if(flgSparse)
-    lambda=20;              % EVALUATE GLM WITH SPARSE PRIOR
+  if(flgSparse)             % EVALUATE GLM WITH SPARSE PRIOR
+    if(exist('lambda_b')==1) lambda=lambda_b; else lambda=20; end
+
     % NETFIT_GLM_lambda       % find/use best lambda
-    ivals=weights_ispa;
+    % ivals=weights_ispa;     % if commented, use previous solution as init
+    bbox=[];               % bounding box for weights
     fname=[netsim_name,sprintf('-spa_%s%iproc%i.mat',mode,cnt,id_proc)];
     if(exist(fname)==2) load(fname); else NETFIT_GLM_fit; end
     
@@ -102,8 +107,9 @@ while(iflg)
   end
   
   if(flgDale)
-    NETFIT_GLM_signs        % EVALUATE GLM WITH DALE PRIOR
-    ivals=weights_idal;
+    NETFIT_GLM_signs       % EVALUATE GLM WITH DALE PRIOR
+    % ivals=weights_idal;    % if commented, use previous solution as init
+    bbox=[];               % bounding box for weights    
     fname=[netsim_name,sprintf('-dal_%s%iproc%i.mat',mode,cnt,id_proc)];
     if(exist(fname)==2) load(fname); else NETFIT_GLM_fit; end
     
