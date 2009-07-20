@@ -1,4 +1,4 @@
 data/fluor*
 data/probe*
 data/scan*
-data/*
+secret_data/*
