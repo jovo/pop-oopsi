@@ -5,68 +5,74 @@ Computing the most likely estimates of the functional connectivity matrix, $\bw$
 	\\ +  (1-P[n_i(t) | F_i]) (-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta)].
 \end{multline}
 
-\noindent Clearly, this requires having joint both $n_i(t)$ and $h_j(t)$ for all $i,j$ and $t$.  In other words, we require the 
-
-As indicated by Eq. \eqref{eqn:loglik:definition-expl}, the sufficient statistics for estimating the functional connectivity matrix are the joint posteriors of the spike history terms, $P[\bh(t) | \bF; \bth]$.  However, the algorithm described in Section \ref{sec:methods:indep} merely provides the marginals over each neuron, $P[X_i(t) | F_i; \bth_i]$.  Therefore, in this section, we describe two approaches to infer the joint posteriors: one that makes an independence assumption, and one that is exact.
+\noindent This requires having the joint posterior, $P[\bX | \bF; \bth^n]$, over \emph{all} neurons.  However, the algorithm described in Section \ref{sec:methods:indep} merely provides the marginals over each neuron, $P[X_i(t) | F_i; \bth_i]$.  Therefore, in this section, we describe two approaches to infer the joint posteriors: one that makes an independence assumption, and one that is exact.
 
 \subsubsection{Independent assumption for approximating the joint posteriors}
 
-If the SNR in the calcium imaging is high,  the fluorescence data of each neuron provides nearly all the information about spike times.  Thus, the joint posterior approximately factorizes into a product of the marginal posteriors for neuron:
+If the SNR in the calcium imaging is high,  the fluorescence data of each neuron provides nearly all the information about spike times.  Thus, the joint posterior approximately factorizes into a product of the marginal posteriors for each neuron:
 
 \begin{equation} \label{eqn:indep_approx}
 	P[{\bf h}(t)|{\bf F};\theta]  \approx \prod_{i=1}^N P[h_i(t)|F_i; \bth_i]. \end{equation}
 	
-\noindent 
-
-\noindent Such factorization allows us to approximate the joint posterior using the marginal posterior estimates as computed above.  Given this approximate joint posterior, we use these approximately sufficient statistics to estimate the functional connection matrix, $\bw$.  The maximum likelihood estimate, given our model, is closely related to Eq. \eqref{eqn:bw}:
-
-\begin{multline} \label{eqn:bws}
-	E [\ln P[n_i(t) | \bh_i(t)]] = P[n_i(t) | F_i] \ln (1-\exp\{-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta\})
-	\\ +  (1-P[n_i(t) | F_i]) (-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta)],
-\end{multline}
-
-\noindent which requires joint samples of $n_i(t)$ and $h_j(t)$ for all $i$ and $j$.  However, since we made the approximation in Eq. \eqref{eqn:indep_approx}, we lack such samples.  Therefore, for each neuron, we sample spike history particles from our particle swarm, and plug them into Eq. \eqref{eq:bws}.  
-
-
+\noindent 	Given this approximate joint posterior, we use these approximately sufficient statistics to estimate the functional connection matrix, $\bw$.  
+% 
+% Such a factorization allows us to approximate the joint posterior as the product of the marginal posteriors, it does not provide us with joint samples of $n_i(t)$ and $h_j(t)$. 
+% 
+% The maximum likelihood estimate, given our model, is closely related to Eq. \eqref{eqn:bw}:
+% 
+% \begin{multline} \label{eqn:bws}
+% 	E [\ln P[n_i(t) | \bh_i(t)]] = P[n_i(t) | F_i] \ln (1-\exp\{-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta\})
+% 	\\ +  (1-P[n_i(t) | F_i]) (-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta)],
+% \end{multline}
+% 
+% \noindent which requires joint samples of $n_i(t)$ and $h_j(t)$ for all $i$ and $j$.  However, since we made the approximation in Eq. \eqref{eqn:indep_approx}, we lack such samples.  Therefore, for each neuron, we sample spike history particles from our particle swarm, and plug them into Eq. \eqref{eq:bws}.  
+% 
 When this approximation is accurate, we obtain a considerable speed-up in processing, not just because it obviates the need to generate joint samples, but also because we can parallelize the algorithm, inferring the marginals for each neuron on a separate processor.  This will be required for estimating the functional connection matrix online, as will be discussed more in Section \ref{sec:discussion}.
 
-%
 %allows one to approximate the joint posterior much more easily, because the sample of spike trains for each neuron is independent on the states of the other neurons given $F_i$. $P[X_i|F_i;\bth_i]$, therefore, may be approximated separately for different neurons using the algorithm described above. Note, that since by assumption individual samples $X_i\sim P[X_i|F_i;\bth_i]$ do not depend on the states of other neurons, in this case the GLM solution $W$ is obtained after single iteration of the full Algorithm \ref{eqn:pseudocode}, because in the subsequent iterations the sample of spike trains ${\bf X}$ never changes.
 
 We refer to such procedure for estimating the joint posterior as the independent approximation. Depending on the accuracy of such approximation, it may or may not be acceptable for the estimation of the true functional connectivity matrix $\bw$. However, as we show below, it is indeed the case that the independent approximation is adequate here for calcium imaging with reasonable SNR.
 
 \subsubsection{An exact sampling procedure to estimate the joint posteriors}
 
-In order to sample spike train of a neuron from the imaged population, the spike train may be drawn over the set of particle swarms generated in the forward pass of the particle filter above using a variant of finite forward-backward procedure.  Such procedure, however, is known to result in biased samples \cite{Andrieu2007, NBR03}.
-Specifically, such samples are distributed with the probability density
+As mentioned above, the sufficient statistic for computing the maximum likelihood estimate of the functional connection matrix, $\bw$, is the joint posterior, $P[\bX(t) | \bF; \bth^n]$.  Unfortunately, the SMC approach described in Section \ref{sec:indep} does not scale well as the number of hidden states increases.  Therefore, our aim in this section is to develop an algorithm that builds on top of the SMC approach, that yields the sufficient statistics of interest.  A relative naive approach would be to use a vanilla Gibbs sampler to approximate the joint posteriors, of the form:
 
 \begin{align}
-X_i &\sim \frac{1}{Z(G)} P[X_i(t=1)|{\bf X}_{\i}; \bw]\prod\limits_{t=2}^{T}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bw] \prod_{t=1}^{T} P[F_i(t)|X_i(t); \bth_i] \\
-Z(G) &= \sum_{\{X_i(t)\}\in G} P[X_i(t=1)|{\bf X}_{\i}; \bw] \prod_{t=2}^{T-1}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bw] \prod_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
+	X_i(t) \sim P[X_i(t) | \bX_{\i}, X_i(1), \ldots, X_i(t-1), X_i(t+1), \ldots, X_i(T), \bF; \bth^n].
+\end{align} 
+
+\noindent Unfortunately, this approach is likely to mix very poorly, due to the strong temporal dependence between $X_i(t)$ and $X_i(t+1)$, for all $t$.  Instead, we propose to use a block-Gibbs strategy, sampling each spike train as a block:
+
+\begin{align}
+	X_i \sim P[X_i | \bX_{\i}, \bF; \bth^n].
+\end{align} 
+
+\noindent which is likely to mix quickly, given that spike trains are only weakly coupled. The SMC methods described above, however, yield only marginals over time, $P[X_i(t), X_i(t+1) | \bF; \bth]$, and are therefore insufficient.  We could sample the spike train from the set of particle swarms generated above (using a variant of finite forward-backward procedure, related to the Viterbi procedure \cite{RAB89}).  Such procedure, however, is known to result in biased samples \cite{Andrieu2007, NBR03}.  Specifically, such samples are distributed with the probability density
+
+\begin{align}
+X_i &\sim \frac{1}{Z(G)} P[X_i(t=1)| \bw]\prod\limits_{t=2}^{T}P[X_i(t)| X_i(t-1); \bw] \prod_{t=1}^{T} P[F_i(t)|X_i(t); \bth_i] \\
+Z(G) &= \sum_{\{X_i(t)\}\in G} P[X_i(t=1)| \bw] \prod_{t=2}^{T-1}P[X_i(t)|X_i(t-1); \bw] \prod_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
 \end{align}
 
-\noindent where $G=\prod\limits_t G(t)$ is the collection of particle swarm samples $G(t)=\{X_i^{(l)}(t), X_i^{(l)}(t) \sim P[X_i(t)|\{{\bf X}_{\i}(t'),t'=1\ldots t\},\{{\bf F}(t'),t'=1\ldots t\};\theta]$, as constructed during the forward pass of the particle filter.  In particular, such probabilities of different sequences differ from the true probabilities by the difference in the estimated normalization constant $Z(G)$ from the true normalization $Z$.  This bias may be removed by embedding SMC into a larger importance sampling algorithm, correcting for bias $Z(G)$ by retaining SMC samples with probability $\sim Z(G)$ \cite{Andrieu2007}. In particular, Andrieu et al. \cite{Andrieu2007} show that as the size of the particle swarm grows the acceptance ratio of such importance sampling tends to unity.
+\noindent where $G=\prod\limits_t G(t)$ is the collection of particle swarm samples $G(t)=\{X_i^{(l)}(t):  X_i^{(l)}(t) \sim P[X_i(t)|\{{\bf F}_i;\theta_i]$.  In particular, such probabilities of different sequences differ from the true probabilities by the difference in the estimated normalization constant $Z(G)$ from the true normalization $Z$.  This bias may be removed by embedding SMC into a larger importance sampling algorithm, correcting for bias $Z(G)$ by retaining SMC samples with probability $\sim Z(G)$ \cite{Andrieu2007}. In particular, Andrieu et al. \cite{Andrieu2007} show that as the size of the particle swarm grows the acceptance ratio of such importance sampling tends to unity.
 
-A different and somewhat simpler approach, developed by Neal et al. \cite{NBR03}, is to use Markov Chain Monte Carlo method (MCMC) with the Markov chain constructed specifically to have the necessary equilibrium distribution $P[\bX| {\bf F}; \theta]$. The Markov Chain is constructed as follows. First, continuous-state HMM is replaced with a discrete HMM on a grid of points $G=\prod G(t)$, where $G(t) = \{X_i^{(l)}(t), l=1\ldots L\}$, $X_i^{(l)}(t)\sim \rho^i_t(X_i(t))$. I.e., at each time-point $t$ we define a pool of $L$ grid-points $\{X_i^{(l)}(t)\}$ drawn independently from a given proposal density $\rho^i_t(X_i(t))$. The grid $G$ is then constructed as a direct product of such pools.
-
-Second, sequence of states is selected over such grid with the probability
+A different approach, developed by Neal et al. \cite{NBR03}, is to use Markov Chain Monte Carlo method (MCMC) with the Markov chain constructed specifically to have the necessary equilibrium distribution $P[\bX| {\bf F}; \theta]$. The Markov Chain is constructed as follows. First, continuous-state HMM is replaced with a discrete HMM on the grid, $G=\prod G(t)$. At each time-point $t$, we therefore define a pool of $L$ grid-points $\{X_i^{(l)}(t)\}$ drawn independently from a given proposal density $\rho_i^t[X_i(t)]$. The grid $G$ is then constructed as a direct product of such pools.  Second, sequence of states is selected over such grid with the probability
 
 \begin{equation}\label{eqn:nealprob}
-X_i\sim P[X_i(t=1)|{\bf n}_{\i}; \bw]\prod\limits_{t=2}^{T}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bw] \prod\limits_{t=1}^{T}
-\frac{P[F_i(t)|X_i(t); \bth_i)}{\rho^i_t(X_i(t)]}.
+X_i\sim P[X_i(t=1)|{\bf X}_{\i}; \bth_i]\prod\limits_{t=2}^{T}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bth_i] \prod\limits_{t=1}^{T} \frac{P[F_i(t)|X_i(t); \bth_i)}{\rho_i^t[X_i(t)]}.
 \end{equation}
 
-This may be done directly and efficiently using forward-backward procedure with the observation probability modified to $P[F_i(t)|X_i(t), \bth_i]\rightarrow P[F_i(t)|X_i(t), \bth_i)/{\rho^i_t(X_i(t)]}$.
+This may be done directly and efficiently using forward-backward procedure with the observation probability modified to $P[F_i(t)|X_i(t), \bth_i]\rightarrow P[F_i(t)|X_i(t), \bth_i)/{\rho_i^t[X_i(t)]}$.  XXX Y: i'm not sure what you mean here.  XXX
 
 Finally, states from the chosen sequence of states $X_i$ should be included in the pools $G(t)$ for the next MCMC step, $X_i(t)\in G(t)$, and the above two steps should be repeated with the new grid $G$. It is shown in \cite{NBR03} that the limiting distribution of such Markov chain is the correct unbiased distribution
 
 \begin{equation}
-P[X_i(t=1)|{\bf n}_{\i}, \bw]\prod\limits_{t=1}^{T-1}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bw]\prod\limits_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
+X_i \sim P[X_i(t=1)|{\bf X}_{\i}; \bth_i]\prod\limits_{t=1}^{T-1}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bth_i]\prod\limits_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
 \end{equation}
 
-The advantage of Neal's method is that the grids $G$ are simple to prepare and also that no importance sampling rejection step is required - such step is implicitly accommodated in the forward-backward procedure via modified observation probability Eq. \eqref{eqn:nealprob}.
+The advantage of Neal's method (over embedding SMC into an importance sampler) are that (i) the grids $G$ are simple to prepare, and (ii) no importance sampling rejection step is required, as such a  step is implicitly accommodated in the forward-backward procedure via modified observation probability Eq. \eqref{eqn:nealprob}.
 
-Proposal density $\rho^i_t(X_i(t))$ may be chosen arbitrary as long as it has sufficiently large support.  In order to achieve faster convergence, we use marginal densities $P[X_i(t)|{\bf X}_{\i}, \bf F; \theta]$ computed from the filter and smoother passes of the conventional SMC algorithm. Such accurate $\rho^i_t(X_i(t))$ allows the Markov Chain to converge extremely quickly.  $\rho^i_t(X_i(t))$ were constructed using kernel density estimation such that $\rho^i_t(C_i(t))$ was a mixture of Gaussians centered on particles from the particle swarm $C_i^{(l)}(t)$ with the variances $\approx var\left[C_i^{(l)}(t)-C_i^{(l')}(t) \right]$. $\rho^i_t(n_i(t))$ was taken to be Bernoulli distribution with the spike probability estimated from the particle swarm. Finally, $\rho^i_t(X_i(t)) = \rho^i_t(n_i(t)) \rho^i_t(C_i(t))$.  Such spike train samples for single neurons from the conditional probability distributions $P[X_i|{\bf X}_{\i}, \bf F; \theta]$ may be subsequently used in block-Gibbs sampling procedure to acquire joint sample from $P[{\bf X}| {\bf F}; \theta]$ for a large number of coupled individual neuron HMM exactly and efficiently.  Specifically, we repeat the MCMC procedure to sample blocks of one neuron state-sequence at a time $X_i\sim P[X_{i}|{\bf X}_{\i},{\bf F}; \theta]$ sequentially for all neurons $i=1\ldots N$ for $N_G$ Gibbs cycles.  We accumulate samples at the end of each of $N_G$ cycles.  XXX in practice, we let $N_G$ be ??? XXX
+The proposal density, $\rho_i^t[X_i(t)]$, may be chosen arbitrary as long as it has sufficiently large support.  To achieve faster convergence, we use marginal densities $P[X_i(t)|{\bf X}_{\i}, \bf F; \bth_i]$ computed from the conventional SMC algorithm. Such an efficient proposal density allows the Markov Chain to converge extremely quickly.  More specifically, we let $\rho_i^t[X_i(t)] = \rho^i_t[C_i(t)] \rho^i_t[n_i(t)] \rho^i_t[h_i(t)].$  The proposals for calcium, $\rho^i_t[C_i(t)]$, were mixtures of Gaussians centered on particles from the particle swarm $C_i^{(l)}(t)$ with the variances $\approx var\left[C_i^{(l)}(t)-C_i^{(l')}(t) \right]$. $\rho^i_t[n_i(t)]$ was taken to be Bernoulli distribution with the spike probability estimated from the particle swarm. Finally, $\rho_i^t[h_i(t)]$ XXX ? XXX.  Such samples for single neurons from the conditional probability distributions $P[X_i|{\bf X}_{\i}, \bf F; \theta]$ may be subsequently used in block-Gibbs sampling procedure to acquire joint sample from $P[{\bf X}| {\bf F}; \theta]$.  We repeat the MCMC procedure to sample blocks of one neuron state-sequence at a time $X_i\sim P[X_{i}|{\bf X}_{\i},{\bf F}; \bth_i]$, sequentially for all neurons $i=1\ldots N$ for $N_G$ Gibbs cycles (in practice, we typically take $N_G \approx 10$).
 
 % The MCMC-Gibbs procedure for sampling joint spike trains above allows one to obtain samples of ${\bf n}\sim P[{\bf n}|{\bf F}; \bth]$ from a high-dimensional HMM. However, if the temporal structure of the functional connection weights $\w_{ij}(t)$ is known in advance, e.g. if $\w_{ij}(t)=\w_{ij}\exp(-t/\tau_w)$, drawing spike train samples from $P[{\bf X}|{\bf F};\bth]$ may be avoided by introducing reduced history variables
 %  

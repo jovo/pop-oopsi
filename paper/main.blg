@@ -3,6 +3,8 @@ The top-level auxiliary file: main.aux
 The style file: amsplain.bst
 Database file #1: mybib.bib
 Warning--I didn't find a database entry for "??"
+Warning--I didn't find a database entry for "Tsien89"
+Warning--I didn't find a database entry for "redshirt"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in koyama08
@@ -14,7 +16,7 @@ Warning--missing pages in Vogelstein2009
 Warning--missing pages in Wu07
 You've used 54 entries,
             2213 wiz_defined-function locations,
-            836 strings with 14132 characters,
+            839 strings with 14154 characters,
 and the built_in function-call counts, 19712 in all, are:
 = -- 1617
 > -- 1360
@@ -53,4 +55,4 @@ warning$ -- 9
 while$ -- 153
 width$ -- 56
 write$ -- 436
-(There were 10 warnings)
+(There were 12 warnings)
