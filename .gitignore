@@ -1,4 +1,2 @@
-data/fluor*
-data/probe*
-data/scan*
-secret_data/*
+data/real/* 
+data/simulated*
