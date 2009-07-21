@@ -1,7 +1,8 @@
 %\documentclass[twocolumn, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
 %\documentclass[preprint, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
 \documentclass[amsmath, amssymb]{revtex4}
-%\documentclass{article}
+% \documentclass[dvips,aoas,preprint]{imsart}
+% \documentclass{article}
 
 % Some other (several out of many) possibilities
 %\documentclass[preprint, aps]{revtex4}
@@ -11,8 +12,23 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{graphicx}% Include figure files
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+%\usepackage{cite}
+%\usepackage{algorithmic}
+\usepackage{times}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
 %\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{bm}% bold math
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,natbib}
+%\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+% \RequirePackage{hypernat}
+
+%\startlocaldefs
 \renewcommand{\i}{\backslash i}
 \newcommand{\bth}{\mathbf{\theta}}
 \newcommand{\w}{\omega}
@@ -27,7 +43,8 @@
 \newcommand{\hbth}{\widehat{\bth}}
 \newcommand{\hbw}{\widehat{\bw}}
 \newcommand{\sumit}{\sum_{\substack{i \in [1,\ldots,N] \\ t \in [1,\ldots, T]}}}
-%\nofiles
+%\endlocaldefs
+
 
 \begin{document}
 
@@ -117,6 +134,7 @@ calcium imaging data}
 \input{discussion.tex}
 
 \begin{acknowledgments}
+% \section*{Acknowledgements}
 Thank everyone for their help and support [Bows, Bows, Bows] !!!
 \end{acknowledgments}
 

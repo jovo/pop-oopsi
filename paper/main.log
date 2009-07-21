@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  20 JUL 2009 19:05
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  21 JUL 2009 09:39
 entering extended mode
 **main
 (./main.tex
@@ -208,33 +208,71 @@ File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
-) (./main.aux)
+)
+(/opt/local/share/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks26
+\thm@bodyfont=\toks27
+\thm@headfont=\toks28
+\thm@notefont=\toks29
+\thm@headpunct=\toks30
+\thm@preskip=\skip51
+\thm@postskip=\skip52
+\thm@headsep=\skip53
+\dth@everypar=\toks31
+)
+(/opt/local/share/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2004/09/15 PSNFSS-v9.2 (SPQR) 
+)
+(/opt/local/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip54
+\f@ncyO@elh=\skip55
+\f@ncyO@erh=\skip56
+\f@ncyO@olh=\skip57
+\f@ncyO@orh=\skip58
+\f@ncyO@elf=\skip59
+\f@ncyO@erf=\skip60
+\f@ncyO@olf=\skip61
+\f@ncyO@orf=\skip62
+)
+(/opt/local/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2004/02/22 v1.99f Standard LaTeX package
+
+(/opt/local/share/texmf-dist/tex/latex/base/ot1enc.def
+File: ot1enc.def 2004/02/22 v1.99f Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
+)) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-Class revtex4 Info: Patching LaTeX tabular. on input line 32.
-Class revtex4 Info: cite was not loaded (OK!) on input line 32.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 49.
+
+(/opt/local/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+Class revtex4 Info: Patching LaTeX tabular. on input line 49.
+Class revtex4 Info: cite was not loaded (OK!) on input line 49.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 49.
 
 (/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
 (/opt/local/share/texmf-dist/tex/context/base/supp-mis.tex
 loading : Context Support Macros / Miscellaneous (2004.10.26)
 \protectiondepth=\count115
 \scratchcounter=\count116
-\scratchtoks=\toks26
+\scratchtoks=\toks32
 \scratchdimen=\dimen113
-\scratchskip=\skip51
+\scratchskip=\skip63
 \scratchmuskip=\muskip11
 \scratchbox=\box38
 \scratchread=\read1
@@ -245,10 +283,10 @@ loading : Context Support Macros / Miscellaneous (2004.10.26)
 \minusone=\count117
 \thousandpoint=\dimen117
 \onerealpoint=\dimen118
-\emptytoks=\toks27
+\emptytoks=\toks33
 \nextbox=\box39
 \nextdepth=\dimen119
-\everyline=\toks28
+\everyline=\toks34
 \!!counta=\count118
 \!!countb=\count119
 \recursecounter=\count120
@@ -259,25 +297,28 @@ loading : Context Support Macros / PDF (2004.03.26)
 \MPscratchCnt=\count123
 \MPscratchDim=\dimen120
 \MPnumerator=\count124
-\everyMPtoPDFconversion=\toks29
-) (./abstract.tex) (./main.toc
-Overfull \hbox (5.00003pt too wide) detected at line 17
- \OT1/cmr/m/n/10 10
+\everyMPtoPDFconversion=\toks35
+) (./abstract.tex)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 79.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 80.
+ (./main.toc
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+
+Overfull \hbox (5.0pt too wide) detected at line 19
+ \OT1/ptm/m/n/10 13
  []
 
 
-Overfull \hbox (5.00003pt too wide) detected at line 18
- \OT1/cmr/m/n/10 14
+Overfull \hbox (5.0pt too wide) detected at line 20
+ \OT1/ptm/m/n/10 15
  []
 
 
-Overfull \hbox (5.00003pt too wide) detected at line 19
- \OT1/cmr/m/n/10 15
- []
-
-
-Overfull \hbox (5.00003pt too wide) detected at line 20
- \OT1/cmr/m/n/10 15
+Overfull \hbox (5.0pt too wide) detected at line 21
+ \OT1/ptm/m/n/10 15
  []
 
 )
@@ -350,7 +391,12 @@ Package natbib Warning: Citation `??' on page 2 undefined on input line 13.
 
 Package natbib Warning: Citation `??' on page 3 undefined on input line 26.
 
-[3]) (./indep.tex [4]) (./joint_sampling.tex
+[3]) (./indep.tex
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 21.
+ (/opt/local/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+[4]) (./joint_sampling.tex
 
 LaTeX Warning: Reference `sec:indep' on page 5 undefined on input line 38.
 
@@ -359,152 +405,144 @@ LaTeX Warning: Reference `sec:indep' on page 5 undefined on input line 38.
 LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 7 undefined on input 
 line 3.
 
-[7]) (./implementation.tex) (./fisher.tex [8]) (./simulation.tex [9]
-<../figs/Figure0b_fluor_eg_hlowSNR.pdf, id=99, 614.295pt x 794.97pt>
+
+LaTeX Warning: Reference `eqn:' on page 7 undefined on input line 7.
+
+) [7] (./implementation.tex) (./fisher.tex [8]) (./simulation.tex
+<../figs/Figure0b_fluor_eg_hlowSNR.pdf, id=99, 420.57124pt x 315.1775pt>
 File: ../figs/Figure0b_fluor_eg_hlowSNR.pdf Graphic file (type pdf)
 
 <use ../figs/Figure0b_fluor_eg_hlowSNR.pdf>
-Overfull \hbox (39.17719pt too wide) in paragraph at lines 47--48
- [][] 
- []
-
-<../figs/Figure0a_fluor_eg_highSNR.pdf, id=100, 614.295pt x 794.97pt>
+<../figs/Figure0a_fluor_eg_highSNR.pdf, id=100, 420.57124pt x 315.1775pt>
 File: ../figs/Figure0a_fluor_eg_highSNR.pdf Graphic file (type pdf)
 
-<use ../figs/Figure0a_fluor_eg_highSNR.pdf>
-Overfull \hbox (39.17719pt too wide) in paragraph at lines 50--51
- [][] 
- []
+<use ../figs/Figure0a_fluor_eg_highSNR.pdf>) (./inference.tex
 
-) (./inference.tex
+LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 9 undefined on input 
+line 1.
 
-LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 10 undefined on input
- line 1.
-
-[10] [11 <../figs/Figure0b_fluor_eg_hlowSNR.pdf> <../figs/Figure0a_fluor_eg_hig
-hSNR.pdf>]
-<../figs/Figure1_fluor_mcmc_vs_iid.pdf, id=113, 614.295pt x 794.97pt>
+[9] [10 <../figs/Figure0b_fluor_eg_hlowSNR.pdf> <../figs/Figure0a_fluor_eg_high
+SNR.pdf>]
+<../figs/Figure1_fluor_mcmc_vs_iid.pdf, id=115, 420.57124pt x 309.155pt>
 File: ../figs/Figure1_fluor_mcmc_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure1_fluor_mcmc_vs_iid.pdf>
-<../figs/Figure1b_fluor_mcmc_vs_iid.pdf, id=114, 614.295pt x 794.97pt>
+<../figs/Figure1b_fluor_mcmc_vs_iid.pdf, id=116, 420.57124pt x 309.155pt>
 File: ../figs/Figure1b_fluor_mcmc_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure1b_fluor_mcmc_vs_iid.pdf>
-<../figs/Figure2_fluor_base_vs_iid.pdf, id=115, 614.295pt x 794.97pt>
+<../figs/Figure2_fluor_base_vs_iid.pdf, id=117, 420.57124pt x 307.1475pt>
 File: ../figs/Figure2_fluor_base_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure2_fluor_base_vs_iid.pdf>
-<../figs/Figure2b_fluor_base_vs_iid.pdf, id=116, 614.295pt x 794.97pt>
+<../figs/Figure2b_fluor_base_vs_iid.pdf, id=118, 420.57124pt x 310.15875pt>
 File: ../figs/Figure2b_fluor_base_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure2b_fluor_base_vs_iid.pdf>
-<../figs/Figure9_fluor_sparse_sol.pdf, id=117, 614.295pt x 794.97pt>
+<../figs/Figure9_fluor_sparse_sol.pdf, id=119, 420.57124pt x 313.17pt>
 File: ../figs/Figure9_fluor_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/Figure9_fluor_sparse_sol.pdf>
-<../figs/Figure9b_fluor_sparse_sol.pdf, id=118, 614.295pt x 794.97pt>
+<../figs/Figure9b_fluor_sparse_sol.pdf, id=120, 420.57124pt x 313.17pt>
 File: ../figs/Figure9b_fluor_sparse_sol.pdf Graphic file (type pdf)
 
-<use ../figs/Figure9b_fluor_sparse_sol.pdf>
-<../figs/Figure3_perf_vs_gamma.pdf, id=119, 614.295pt x 794.97pt>
+<use ../figs/Figure9b_fluor_sparse_sol.pdf> [11 <../figs/Figure1_fluor_mcmc_vs_
+iid.pdf> <../figs/Figure1b_fluor_mcmc_vs_iid.pdf>]
+<../figs/Figure3_perf_vs_gamma.pdf, id=134, 420.57124pt x 310.15875pt>
 File: ../figs/Figure3_perf_vs_gamma.pdf Graphic file (type pdf)
 
-<use ../figs/Figure3_perf_vs_gamma.pdf> [12 <../figs/Figure1_fluor_mcmc_vs_iid.
-pdf> <../figs/Figure1b_fluor_mcmc_vs_iid.pdf>] [13 <../figs/Figure2_fluor_base_
-vs_iid.pdf> <../figs/Figure2b_fluor_base_vs_iid.pdf>]
-<../figs/Figure5_hist_glm_vanilla.pdf, id=143, 614.295pt x 794.97pt>
+<use ../figs/Figure3_perf_vs_gamma.pdf> [12 <../figs/Figure2_fluor_base_vs_iid.
+pdf> <../figs/Figure2b_fluor_base_vs_iid.pdf> <../figs/Figure9_fluor_sparse_sol
+.pdf> <../figs/Figure9b_fluor_sparse_sol.pdf>]
+<../figs/Figure5_hist_glm_vanilla.pdf, id=158, 420.57124pt x 312.16624pt>
 File: ../figs/Figure5_hist_glm_vanilla.pdf Graphic file (type pdf)
 
 <use ../figs/Figure5_hist_glm_vanilla.pdf>
-<../figs/Figure10a_residuals_iidglm.pdf, id=144, 614.295pt x 794.97pt>
+<../figs/Figure10a_residuals_iidglm.pdf, id=159, 449.68pt x 338.26375pt>
 File: ../figs/Figure10a_residuals_iidglm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10a_residuals_iidglm.pdf>
-<../figs/Figure10b_residuals_baseglm.pdf, id=145, 614.295pt x 794.97pt>
+<../figs/Figure10b_residuals_baseglm.pdf, id=160, 449.68pt x 338.26375pt>
 File: ../figs/Figure10b_residuals_baseglm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10b_residuals_baseglm.pdf>
-<../figs/Figure10c_residuals_basespa.pdf, id=146, 614.295pt x 794.97pt>
+<../figs/Figure10c_residuals_basespa.pdf, id=161, 449.68pt x 337.26pt>
 File: ../figs/Figure10c_residuals_basespa.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10c_residuals_basespa.pdf>
-<../figs/Figure4_perf_vs_T.pdf, id=147, 614.295pt x 794.97pt>
+<../figs/Figure4_perf_vs_T.pdf, id=162, 420.57124pt x 312.16624pt>
 File: ../figs/Figure4_perf_vs_T.pdf Graphic file (type pdf)
 
 <use ../figs/Figure4_perf_vs_T.pdf>
-<../figs/Figure6c_perf_vs_N.pdf, id=148, 614.295pt x 794.97pt>
+<../figs/Figure6c_perf_vs_N.pdf, id=163, 420.57124pt x 310.15875pt>
 File: ../figs/Figure6c_perf_vs_N.pdf Graphic file (type pdf)
 
 <use ../figs/Figure6c_perf_vs_N.pdf>
-<../figs/Figure11_inhexc_errors.pdf, id=149, 614.295pt x 794.97pt>
+<../figs/Figure11_inhexc_errors.pdf, id=164, 449.68pt x 337.26pt>
 File: ../figs/Figure11_inhexc_errors.pdf Graphic file (type pdf)
 
 <use ../figs/Figure11_inhexc_errors.pdf>
-<../figs/Figure7b_raster_weak.pdf, id=150, 614.295pt x 794.97pt>
+<../figs/Figure7b_raster_weak.pdf, id=165, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=151, 614.295pt x 794.97pt>
+<../figs/Figure7a_raster_strong.pdf, id=166, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7a_raster_strong.pdf>
-<../figs/Figure8b_fluor_weak_glm.pdf, id=152, 614.295pt x 794.97pt>
+<../figs/Figure8b_fluor_weak_glm.pdf, id=167, 420.57124pt x 315.1775pt>
 File: ../figs/Figure8b_fluor_weak_glm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure8b_fluor_weak_glm.pdf>
-<../figs/Figure8a_fluor_strong_glm.pdf, id=153, 614.295pt x 794.97pt>
+<../figs/Figure8a_fluor_strong_glm.pdf, id=168, 420.57124pt x 315.1775pt>
 File: ../figs/Figure8a_fluor_strong_glm.pdf Graphic file (type pdf)
 
-<use ../figs/Figure8a_fluor_strong_glm.pdf>
-
-LaTeX Warning: Float too large for page by 7.99408pt on input line 169.
-
-) (./discussion.tex [14 <../figs/Figure9_fluor_sparse_sol.pdf> <../figs/Figure9
-b_fluor_sparse_sol.pdf>]) (./main.bbl [15 <../figs/Figure3_perf_vs_gamma.pdf>]
-[16 <../figs/Figure5_hist_glm_vanilla.pdf> <../figs/Figure10a_residuals_iidglm.
-pdf> <../figs/Figure10b_residuals_baseglm.pdf> <../figs/Figure10c_residuals_bas
-espa.pdf>] [17 <../figs/Figure4_perf_vs_T.pdf>])
+<use ../figs/Figure8a_fluor_strong_glm.pdf>) (./discussion.tex [13 <../figs/Fig
+ure3_perf_vs_gamma.pdf>]) (./main.bbl [14 <../figs/Figure5_hist_glm_vanilla.pdf
+> <../figs/Figure10a_residuals_iidglm.pdf> <../figs/Figure10b_residuals_baseglm
+.pdf> <../figs/Figure10c_residuals_basespa.pdf>] [15 <../figs/Figure4_perf_vs_T
+.pdf> <../figs/Figure6c_perf_vs_N.pdf>] [16 <../figs/Figure11_inhexc_errors.pdf
+> <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <../f
+igs/Figure8b_fluor_weak_glm.pdf> <../figs/Figure8a_fluor_strong_glm.pdf>])
 
 Package natbib Warning: There were undefined citations.
 
-[18 <../figs/Figure6c_perf_vs_N.pdf>] [19 <../figs/Figure11_inhexc_errors.pdf>]
-[20 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <..
-/figs/Figure8b_fluor_weak_glm.pdf> <../figs/Figure8a_fluor_strong_glm.pdf>]
-(./main.aux)
+[17] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4117 strings out of 94500
- 53323 string characters out of 1155413
- 120884 words of memory out of 1000000
- 7188 multiletter control sequences out of 10000+50000
- 11461 words of font info for 44 fonts, out of 500000 for 2000
+ 4616 strings out of 94500
+ 58442 string characters out of 1155413
+ 126759 words of memory out of 1000000
+ 7655 multiletter control sequences out of 10000+50000
+ 27714 words of font info for 64 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,13n,26p,2124b,308s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,13n,43p,2124b,404s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 234 PDF objects out of 300000
+ 243 PDF objects out of 300000
  0 named destinations out of 131072
  101 words of extra memory for PDF output out of 65536
-</opt/local/share/texmf-dist/fonts/type1/public/tt2001/fmex9.pfb></opt/local/
-share/texmf-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-dist/
-fonts/type1/bluesky/cm/cmtt10.pfb></opt/local/share/texmf-dist/fonts/type1/blue
-sky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb><
-/opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi6.pfb></opt/local/share/
-texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/
-type1/bluesky/cm/cmsy9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/
-cmr5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/lo
-cal/share/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/share/texmf-d
-ist/fonts/type1/bluesky/cm/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type1/b
-luesky/cm/cmsy5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmex10.
-pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></opt/local/sh
-are/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fo
-nts/type1/bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesk
-y/cm/cmsy10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti10.pfb>
-</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share
-/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></opt/local/share/texmf-dist/font
-s/type1/bluesky/cm/cmbx9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
-m/cmr9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx12.pfb>
-Output written on main.pdf (20 pages, 462277 bytes).
+</opt/local/share/texmf-dist/fonts/type1/public/tt2001/fmex9.pfb>{/opt/local/
+share/texmf-dist/fonts/enc/dvips/psnfss/8r.enc}</opt/local/share/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb></opt/local/share/texmf-dist/fonts/type1/bluesk
+y/cm/cmbx9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></o
+pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/te
+xmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt/local/share/texmf-dist/fonts/typ
+e1/bluesky/cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmm
+i9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/loca
+l/share/texmf-dist/fonts/type1/bluesky/cm/cmr5.pfb></opt/local/share/texmf-dist
+/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/fonts/type1/blue
+sky/cm/cmsy7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi5.pfb>
+</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/share
+/texmf-dist/fonts/type1/bluesky/cm/cmex10.pfb></opt/local/share/texmf-dist/font
+s/type1/bluesky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm
+/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></opt
+/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb></opt/local/share/tex
+mf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/typ
+e1/bluesky/cm/cmsy10.pfb></opt/local/share/texmf-dist/fonts/type1/urw/times/utm
+r8a.pfb></opt/local/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb></opt/lo
+cal/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/local/share/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb>
+Output written on main.pdf (17 pages, 575714 bytes).
