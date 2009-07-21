@@ -2,19 +2,19 @@
 \contentsline {section}{\numberline {}Contents}{1}{}
 \tocdepth@restore 
 \contentsline {section}{\numberline {I}Motivation}{1}{}
-\contentsline {section}{\numberline {II}Methods}{3}{}
-\contentsline {subsection}{\numberline {A}Model}{3}{}
-\contentsline {subsection}{\numberline {B}Goal and general strategy}{4}{}
-\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{5}{}
-\contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons}{6}{}
-\contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{6}{}
-\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{7}{}
-\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{8}{}
-\contentsline {subsection}{\numberline {F}Specific implementation notes}{9}{}
-\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{10}{}
-\contentsline {section}{\numberline {III}Results}{10}{}
-\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{10}{}
-\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}
-\contentsline {section}{\numberline {IV}Discussion}{15}{}
-\contentsline {section}{\numberline {}Acknowledgments}{18}{}
-\contentsline {section}{\numberline {}References}{18}{}
+\contentsline {section}{\numberline {II}Methods}{2}{}
+\contentsline {subsection}{\numberline {A}Model}{2}{}
+\contentsline {subsection}{\numberline {B}Goal and general strategy}{3}{}
+\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{4}{}
+\contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons}{5}{}
+\contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{5}{}
+\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{6}{}
+\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{7}{}
+\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{8}{}
+\contentsline {section}{\numberline {III}Results}{9}{}
+\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}
+\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
+\contentsline {section}{\numberline {IV}Discussion}{14}{}
+\contentsline {section}{\numberline {}Acknowledgments}{15}{}
+\contentsline {section}{\numberline {}References}{15}{}

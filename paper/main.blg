@@ -8,51 +8,50 @@ Warning--I didn't find a database entry for "redshirt"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in koyama08
-Warning--missing pages in Mishchenko2009a
 Warning--missing pages in Mishchenko2009
 Warning--missing pages in NBR03
 Warning--missing pages in PL07
 Warning--missing pages in Vogelstein2009
 Warning--missing pages in Wu07
-You've used 54 entries,
+You've used 25 entries,
             2213 wiz_defined-function locations,
-            839 strings with 14154 characters,
-and the built_in function-call counts, 19712 in all, are:
-= -- 1617
-> -- 1360
+            663 strings with 8170 characters,
+and the built_in function-call counts, 7963 in all, are:
+= -- 662
+> -- 472
 < -- 0
-+ -- 545
-- -- 482
-* -- 1895
-:= -- 3335
-add.period$ -- 54
-call.type$ -- 54
-change.case$ -- 404
++ -- 189
+- -- 160
+* -- 725
+:= -- 1339
+add.period$ -- 25
+call.type$ -- 25
+change.case$ -- 155
 chr.to.int$ -- 0
-cite$ -- 63
-duplicate$ -- 602
-empty$ -- 1384
-format.name$ -- 482
-if$ -- 3896
+cite$ -- 33
+duplicate$ -- 279
+empty$ -- 616
+format.name$ -- 160
+if$ -- 1586
 int.to.chr$ -- 0
-int.to.str$ -- 54
-missing$ -- 106
-newline$ -- 172
-num.names$ -- 106
-pop$ -- 491
+int.to.str$ -- 25
+missing$ -- 51
+newline$ -- 85
+num.names$ -- 50
+pop$ -- 201
 preamble$ -- 1
-purify$ -- 350
+purify$ -- 130
 quote$ -- 0
-skip$ -- 316
+skip$ -- 146
 stack$ -- 0
-substring$ -- 1012
-swap$ -- 67
+substring$ -- 414
+swap$ -- 33
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 210
-warning$ -- 9
-while$ -- 153
-width$ -- 56
-write$ -- 436
-(There were 12 warnings)
+type$ -- 94
+warning$ -- 8
+while$ -- 69
+width$ -- 27
+write$ -- 203
+(There were 11 warnings)

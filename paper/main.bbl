@@ -11,46 +11,13 @@
 C.~Andrieu, A.~Doucet, and A.~Holenstein, \emph{Particle markov chain monte
   carlo}, Working paper (2007).
 
-\bibitem{Averbeck2008}
-B.~B. Averbeck and M.~Seo, \emph{The statistical neuronanatomy of frontal
-  networks in the macaque}, PLOS Comp. Biol. \textbf{4} (2008), e1000050.
-
-\bibitem{Bohland2009}
-J.~Bohland, C.~Wu, H.~Barbas, B.~Hermant, M.~Bota, H.~Breiter, H.~Cline,
-  J.~Doyle, P.~Freed, R.~Greenspan, S.~Haber, M.~Hawrylycz, D.~Herrera,
-  C.~Hilgetag, Z.~Huang, A.~Jones, E.~Jones, H.~Karten, D.~Kleinfeld,
-  R.~Kotter, H.~Lester, J.~Lin, B.~Mensh, S.~Mikula, J.~Panksepp, J.~Price,
-  J.~Safdieh, C.~Saper, N.~Schiff, J.~Schmahmann, B.~Stillman, K.~Svoboda,
-  L.~Swanson, A.~Toga, D.~Essen, J.~Watson, and P.~Mitra, \emph{A proposal for
-  a coordinated effort for the determination of brainwide neuroanatomical
-  connectivity in model organisms at a mesoscopic scale}, arXiv (2009),
-  0901.4598.
-
 \bibitem{Braitenberg1998}
 V.~Braitenberg and A.~Schuz, \emph{Cortex: statistics and geometry of neuronal
   connectivity.}, Springer, Berlin, 1998.
 
-\bibitem{Briggman2006}
-K.~L. Briggman and W.~Denk, \emph{Towards neural circuit reconstruction with
-  volume electron microscopy techniques.}, Current Opinions in Neurobiology
-  \textbf{16} (2006), 562.
-
-\bibitem{Broome2006}
-B.~M. Broome, V.~Jayaraman, and G.~Laurent, \emph{Encoding and decoding of
-  overlapping odor sequences}, Neuron \textbf{51} (2006), 467--482.
-
 \bibitem{Candes2005}
 E.~J. Candes and J.~Romberg, \emph{Practical signal recovery from random
   projections.}, 2005.
-
-\bibitem{Chalasani2007}
-S.~H. Chalasani, N.~Chronis, M.~Tsunozaki, J.~M. Gray, D.~Ramot, M.~B. Goodman,
-  and C.~I. Bargmann, \emph{Dissecting a circuit for olfactory behaviour in
-  caenorhabditis elegans}, Nature \textbf{450} (2007), 35.
-
-\bibitem{deBono2005}
-M.~de~Bono and Maricq~A. V., \emph{Neuronal substrates of complex behaviors in
-  c. elegans}, Annu. Rev. Neurosci. \textbf{28} (2005), 451--501.
 
 \bibitem{DE03}
 D.~Donoho and M.~Elad, \emph{Optimally sparse representation in general
@@ -61,12 +28,6 @@ D.~Donoho and M.~Elad, \emph{Optimally sparse representation in general
 A.~Doucet, N.~de~Freitas, and Gordon N., \emph{Sequential monte carlo in
   practice}, Springer, 2001.
 
-\bibitem{Dunn2004}
-N.~A. Dunn, S.~R. Lockery, J.~T. Pierce-Shimomura, and J.~S. Conery, \emph{A
-  neural network model of chemotaxis predicts functions of synaptic connections
-  in the nematode caenorhabditis elegans.}, Journal of Computational
-  Neuroscience \textbf{17} (2004), 137--47.
-
 \bibitem{Fearnhead2003}
 P.~Fearnhead and P.~Clifford, \emph{On-line inference for hidden markov models
   with particle filters}, J. R. Statist. Soc. B \textbf{65} (2003), 887--99.
@@ -76,54 +37,10 @@ A.~E. Gelfand and A.~F.~M. Smith, \emph{Sampling-based approaches to
   calculating marginal densities}, Journal of the American Stat. Assoc.
   \textbf{85} (1990), 398--409.
 
-\bibitem{Gobel07b}
-Werner Gobel and Fritjof Helmchen, \emph{In vivo calcium imaging of neural
-  network function}, Physiology \textbf{22} (2007), no.~6, 358--365.
-
 \bibitem{Urquijo2000}
 S.~M. Gomez-Urquijo, C.~Reblet, J.~L. Bueno-Lopez, and I.~Gutierrez-Ibarluzea,
   \emph{Gabaergic neurons in the rabbit visual cortex: percentage, distribution
   and cortical projections}, Brain Res \textbf{862} (2000), 171--9.
-
-\bibitem{Gray2005}
-J.~M. Gray, J.~J. Hill, and C.~I. Bargmann, \emph{A circuit for navigation in
-  caenorhabditis elegans.}, PNAS \textbf{102} (2005), 3184.
-
-\bibitem{Hagmann2008}
-P.~Hagmann, L.~Cammoun, X.~Gigandet, R.~Meuli, C.~Honey, V.~Wedeen, and
-  O.~Sporns, \emph{Mapping the structural core of human cerebral cortex}, PLoS
-  Biology \textbf{6} (2008), no.~7, e159.
-
-\bibitem{Hagmann2007}
-P.~Hagmann, M.~Kurant, X.~Gigandet, P.~Thiran, V.~Wedeen, R.~Meuli, and J.-P.
-  Thiran, \emph{Mapping human whole-brain structural networks with diffusion
-  mri}, PLoS ONE \textbf{2} (2007), no.~7, e597.
-
-\bibitem{Helmstaedter2009}
-M.~Helmstaedter, K.~L. Briggman, and W.~Denk, \emph{3d structural imaging of
-  the brain with photons and electrons.}, Current Opinions in Neurobiology
-  (2009), Epub.
-
-\bibitem{Ikegaya2005}
-Y.~Ikegaya, M.~Le~Bon-Jego, and R.~Yuste, \emph{Large-scale imaging of cortical
-  network activity with calcium indicators.}, Neuroscience Research \textbf{52}
-  (2005), 132--8.
-
-\bibitem{Jain2007}
-V.~Jain, J.~Murray, F.~Roth, S.~Turaga, V.~Zhigulin, K.~Briggman,
-  M.~Helmstaedter, W.~Denk, and H.~Seung, \emph{Supervised learning of image
-  restoration with convolutional networks.}, 2007, pp.~1--8.
-
-\bibitem{Jones2007}
-L.~M. Jones, A.~Fontanini, B.~F. Sadacca, P.~Miller, and D.~B. Katz,
-  \emph{Natural stimuli evoke dynamic sequences of states in cortical
-  ensembles}, Proceedings of the National Academy of SciencesJournal of
-  Neuroscience \textbf{104} (2007), 18772--7.
-
-\bibitem{Jurrus2006}
-E.~Jurrus, T.~Tasdizen, P.~Koshevoy, P.~Fletcher, M.~Hardy, C.~Chien, W.~Denk,
-  and R.~Whitaker, \emph{Axon tracking in serial block-free scanning electron
-  microscopy.}, 2006.
 
 \bibitem{koyama08}
 S.~Koyama and L.~Paninski, \emph{Efficient computation of the maximum a
@@ -136,55 +53,18 @@ S.~Lefort, C.~Tomm, J.-C. Floyd~Sarria, and C.~C.~H. Petersen, \emph{The
   excitatory neuronal network of the c2 barrel column in mouse primary
   somatosensory cortex}, Neuron \textbf{61} (2009), 301--16.
 
-\bibitem{Litke2004}
-A.~Litke, N.~Bezayiff, E.J. Chichilnisky, W.~Cunningham, W.~Dabrowski,
-  A.~Grillo, M.~Grivich, P.~Grybos, P.~Hottowy, S.~Kachiguine, R.~Kalmar,
-  K.~Mathieson, D.~Petrusca, M.~Rahman, and A.~Sher, \emph{What does the eye
-  tell the brain? development of a system for the large scale recording of
-  retinal output activity}, IEEE Trans Nucl Sci (2004), 1434--1440.
-
-\bibitem{Litke2003}
-A.~M. Litke, E.~J. Chichilnisky, W.~Dabrowski, A.~A. Grillo, P.~Grybos,
-  S.~Kachiguine, M.~Rahman, and G.~Taylor, \emph{Large-scale imaging of retinal
-  output activity}, Nucl. Instrum. Methods A \textbf{501} (2003), 298--307.
-
-\bibitem{Meister1994}
-M.~Meister, J.~Pine, and D.~A. Baylor, \emph{Multi-neuronal signals from the
-  retina: acquisition and analysis}, J. Neuroscie. Methods \textbf{51} (1994),
-  95--106.
-
 \bibitem{MINKAPHD}
 T.~Minka, \emph{A family of algorithms for approximate {B}ayesian inference},
   Ph.D. thesis, MIT, 2001.
 
-\bibitem{Mishchenko2009c}
-Y.~Mishchenko, \emph{Automation of 3d reconstruction of neural tissue from
-  large volume of conventional serial section transmission electron
-  micrographs.}, Journal of Neuroscience Methods \textbf{176} (2009), 276--289.
-
-\bibitem{Mishchenko2009a}
-\bysame, \emph{Detecting, quantifying and classifying synapses using light
-  microscopy for reconstruction of neural circuits}, Preprint (2009).
-
 \bibitem{Mishchenko2009}
-\bysame, \emph{Strategies for identifying exact structure of neural circuits
-  with broad light microscopy connectivity probes}, Preprint:
+Y.~Mishchenko, \emph{Strategies for identifying exact structure of neural
+  circuits with broad light microscopy connectivity probes}, Preprint:
   http://precedings.nature.com/documents/2669/version/2 (2009).
-
-\bibitem{Nagayama2007}
-S.~Nagayama, S.~Zheng, W.~Xiong, L.~V. Fletcher, A.~V. Masurkar, D.~J. Davis,
-  V.~A. Pieribone, and W.~R. Chen, \emph{In vivo simultaneous tracing and
-  $ca^{2+}$ imaging of local neuronal circuits.}, Neuron \textbf{53} (2007),
-  789--803.
 
 \bibitem{NBR03}
 R.~Neal, M.~Beal, and S.~Roweis, \emph{Inferring state sequences for non-linear
   systems with embedded hidden {M}arkov models}, NIPS \textbf{16} (2003).
-
-\bibitem{Nevian2007}
-T.~Nevian and F.~Helmchen, \emph{Calcium indicator loading of neurons using
-  single-cell electroporation}, Pflugers Archiv Eur. J. Nerosci.
-  \textbf{454(4)} (2007), 675--88.
 
 \bibitem{OKA05}
 M.~Okatan, M.~Wilson, and E.~Brown, \emph{Analyzing functional connectivity
@@ -210,11 +90,6 @@ L.~Rabiner, \emph{A tutorial on hidden {M}arkov models and selected
   applications in speech recognition}, Proceedings of the IEEE \textbf{77}
   (1989), 257--286.
 
-\bibitem{Rabinovich2008}
-M.~I. Rabinovich, R.~Huerta, P.~Varona, and V.~S. Afraimovich, \emph{Transient
-  cognitive dynamics, metastability, and decision making}, PLoS Computational
-  Biology \textbf{4} (2008), no.~5, e1000072.
-
 \bibitem{Rigat06}
 F.~Rigat, M.~de~Gunst, and J.~van Pelt, \emph{Bayesian modelling and analysis
   of spatio-temporal neuronal networks}, Bayesian Analysis \textbf{1} (2006),
@@ -229,41 +104,16 @@ R.~J. Sayer, M.~J. Friedlander, and S.~J. Redman, \emph{The time course and
 R.~Shumway and D.~Stoffer, \emph{Time series analysis and its applications},
   Springer, 2006.
 
-\bibitem{Song2005}
-S.~Song, P.~J. Sjostrom, M.~Reiql, S.~Nelson, and D.~B. Chklovskii,
-  \emph{Highly nonrandom features of synaptic connectivity in local cortical
-  circuits.}, PLoS Biology \textbf{3} (2005), e68.
-
 \bibitem{Stevenson2009}
 I.~H. Stevenson, J.~M. Rebesco, N.~G. Hatsopoulos, Z.~Haga, L.~E. Miller, and
   K.~P. Kording, \emph{Bayesian inference of functional connectivity and
   network structure from spikes}, IEEE Trans. Neural Systems and Rehab.
   \textbf{17} (2009), 203--13.
 
-\bibitem{Stevenson2008}
-I.~H. Stevenson, J.~M. Rebesco, L.~E. Miller, and K.~P. Kording,
-  \emph{Inferring functional connections between neurons}, Curr. Opin.
-  Neurobiol. \textbf{18} (2008), 582--8.
-
 \bibitem{Vogelstein2009}
 J.~T. Vogelstein, B.~O. Watson, A.~M. Packer, R.~Yuste, B.~Jedynak, and
   L.~Paninski, \emph{Spike inference from calcium imaging using sequential
   monte carlo methods}, Preprint (2009).
-
-\bibitem{DenkHorstmann04}
-W.~W.~Denk and H.~Horstmann, \emph{Serial block-face scanning electron
-  microscopy to reconstruct three-dimensional tissue nanostructure}, PLOS Biol.
-  \textbf{2} (2004), e329.
-
-\bibitem{White1986}
-J.~White, E.~Southgate, J.~N. Thomson, and S.~Brenner, \emph{The structure of
-  the nervous system of the nematode caenorhabditis elegans.}, Philosophical
-  Transactions of Royal Society London. Series B, Biological Sciences
-  \textbf{314} (1986), no.~1165, 1--340.
-
-\bibitem{rswormatlas}
-wormatlas.org, \emph{Wormatlas: a database of behavioral and structural anatomy
-  of caenorhabditis elegans}.
 
 \bibitem{Wu07}
 W.~Wu, J.~Kulkarni, N.~Hatsopoulos, and L.~Paninski, \emph{Neural decoding of
