@@ -3,42 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>indep.tex</string>
+	<string>results_Inference.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>main.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-19T20:30:43Z</date>
+			<date>2009-07-22T15:37:59Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>model.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>goal.tex</string>
-			<key>lastUsed</key>
-			<date>2009-07-19T20:36:57Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>indep.tex</string>
-			<key>lastUsed</key>
-			<date>2009-07-19T20:36:57Z</date>
-			<key>selected</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>joint_sampling.tex</string>
-			<key>lastUsed</key>
-			<date>2009-07-19T20:32:24Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>fisher.tex</string>
+			<string>abstract.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -46,27 +22,49 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>inference.tex</string>
+			<string>methods_wLearning.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>implementation.tex</string>
+			<string>methods_Overview.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>w_learning.tex</string>
+			<string>methods_Model.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>smc_learning.tex</string>
+			<string>methods_JointSampling.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>simulation.tex</string>
+			<string>methods_Indep.tex</string>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>overview.tex</string>
+			<string>methods_Implementation.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>methods_Goal.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>methods_Fisher.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>results_Simulation.tex</string>
+			<key>lastUsed</key>
+			<date>2009-07-22T16:15:29Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>results_Inference.tex</string>
+			<key>lastUsed</key>
+			<date>2009-07-22T16:15:29Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -77,48 +75,6 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>goal.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>733</integer>
-				<key>line</key>
-				<integer>33</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>340</integer>
-			<key>firstVisibleLine</key>
-			<integer>27</integer>
-		</dict>
-		<key>indep.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>joint_sampling.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>339</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>main.tex</key>
 		<dict>
 			<key>caret</key>
@@ -133,17 +89,44 @@
 			<key>firstVisibleLine</key>
 			<integer>76</integer>
 		</dict>
+		<key>results_Inference.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>18</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>results_Simulation.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>17</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>main.tex</string>
-		<string>joint_sampling.tex</string>
-		<string>goal.tex</string>
-		<string>indep.tex</string>
+		<string>results_Simulation.tex</string>
+		<string>results_Inference.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{219, 0}, {915, 878}}</string>
+	<string>{{28, 0}, {915, 878}}</string>
 </dict>
 </plist>

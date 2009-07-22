@@ -1,7 +1,7 @@
 \relax 
 \gdef \tocmax@section{18.00996pt}
 \gdef \tocmax@subsection{14.01999pt}
-\gdef \tocmax@subsubsection{12.84pt}
+\gdef \tocmax@subsubsection{18.4pt}
 \gdef \tocmax@paragraph{5.0pt}
 \gdef \tocmax@appendix{5.0pt}
 \gdef \tocmax@pagenum{5.0pt}
@@ -12,6 +12,12 @@
 \citation{??}
 \citation{??}
 \citation{??}
+\newlabel{FirstPage}{{}{1}{}{}{}}
+\@writefile{toc}{\tocdepth@munge}
+\@writefile{toc}{\contentsline {section}{\numberline {}Contents}{1}{}}
+\@writefile{toc}{\tocdepth@restore}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Motivation}{1}{}}
+\newlabel{intro}{{I}{1}{}{}{}}
 \citation{Tsien89}
 \citation{??}
 \citation{??}
@@ -20,12 +26,6 @@
 \citation{??}
 \citation{??}
 \citation{??}
-\newlabel{FirstPage}{{}{1}{}{}{}}
-\@writefile{toc}{\tocdepth@munge}
-\@writefile{toc}{\contentsline {section}{\numberline {}Contents}{1}{}}
-\@writefile{toc}{\tocdepth@restore}
-\@writefile{toc}{\contentsline {section}{\numberline {I}Motivation}{1}{}}
-\newlabel{intro}{{I}{1}{}{}{}}
 \citation{OKA05}
 \citation{PAN03d}
 \citation{PILL07}
@@ -34,14 +34,14 @@
 \citation{PAN03d}
 \citation{??}
 \citation{PAN03d}
-\citation{PILL07}
-\citation{Vogelstein2009}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Methods}{2}{}}
 \newlabel{sec:methods}{{II}{2}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Model}{2}{}}
 \newlabel{sec:methods:markov-setup}{{II\tmspace  +\thinmuskip {.1667em}A}{2}{}{}{}}
 \newlabel{eqn:glm:definition}{{1}{2}{}{}{}}
 \newlabel{eqn:h:definition}{{2}{2}{}{}{}}
+\citation{PILL07}
+\citation{Vogelstein2009}
 \citation{Yasuda2004}
 \citation{ShumwayStoffer06}
 \citation{Andrieu2007}
@@ -52,25 +52,24 @@
 \citation{NBR03}
 \citation{RAB89}
 \citation{??}
-\citation{Gelfand1990}
 \newlabel{eqn:ca:definition}{{3}{3}{}{}{}}
 \newlabel{eqn:F:definition}{{4}{3}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Goal and general strategy}{3}{}}
 \newlabel{sec:methods:goal}{{II\tmspace  +\thinmuskip {.1667em}B}{3}{}{}{}}
 \newlabel{eqn:MAP}{{5}{3}{}{}{}}
 \newlabel{eqn:loglik:definition-expl}{{6}{3}{}{}{}}
+\citation{Gelfand1990}
 \citation{Vogelstein2009}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{4}{}}
 \newlabel{sec:methods:indep}{{II\tmspace  +\thinmuskip {.1667em}C}{4}{}{}{}}
 \newlabel{eqn:forward}{{7}{4}{}{}{}}
 \newlabel{eqn:backward}{{8}{4}{}{}{}}
-\newlabel{eqn:bw}{{10}{4}{}{}{}}
+\newlabel{eqn:bw}{{10}{5}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons}{5}{}}
 \newlabel{sec:methods:joint}{{II\tmspace  +\thinmuskip {.1667em}D}{5}{}{}{}}
 \newlabel{eqn:bws}{{11}{5}{}{}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{5}{}}
 \newlabel{eqn:indep_approx}{{12}{5}{}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{5}{}}
 \citation{RAB89}
 \citation{Andrieu2007}
 \citation{NBR03}
@@ -78,6 +77,7 @@
 \citation{Andrieu2007}
 \citation{NBR03}
 \citation{NBR03}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{6}{}}
 \newlabel{eqn:nealprob}{{17}{6}{}{}{}}
 \citation{??}
 \citation{Candes2005}
@@ -88,72 +88,88 @@
 \newlabel{sec:methods:parameters HMM}{{II\tmspace  +\thinmuskip {.1667em}E}{7}{}{}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{7}{}}
 \newlabel{eqn:likelihoodsparseGLM}{{20}{7}{}{}{}}
-\newlabel{eqn:conconvexopt}{{21}{7}{}{}{}}
+\newlabel{eqn:conconvexopt}{{21}{8}{}{}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}}
 \newlabel{sec:methods:specific_implementation}{{II\tmspace  +\thinmuskip {.1667em}F}{8}{}{}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta ^n$, $\eta ^F$, $N_G$ are somewhat arbitrarily chosen bounds. XXX do we ever actually do this outer loop more than once? if so, i don't see why it would help, unless the inferred spike trains from the joint samples were a big improvement of the independent samples, which i thought didn't happen XXX}}{8}{}}
-\newlabel{eqn:pseudocode}{{1}{8}{}{}{}}
 \citation{Braitenberg1998}
 \citation{Urquijo2000}
 \citation{Lefort2009}
 \citation{Sayer1990}
-\citation{Braitenberg1998}
-\citation{Urquijo2000}
-\citation{Braitenberg1998}
-\citation{Lefort2009}
-\citation{Lefort2009}
-\citation{Sayer1990}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta ^n$, $\eta ^F$, $N_G$ are somewhat arbitrarily chosen bounds. XXX do we ever actually do this outer loop more than once? if so, i don't see why it would help, unless the inferred spike trains from the joint samples were a big improvement of the independent samples, which i thought didn't happen XXX}}{9}{}}
+\newlabel{eqn:pseudocode}{{1}{9}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}}
 \newlabel{sec:methods:accuracy_Fisher}{{II\tmspace  +\thinmuskip {.1667em}G}{9}{}{}{}}
 \newlabel{eqn:fisher}{{24}{9}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Results}{9}{}}
-\newlabel{sec:results}{{III}{9}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}}
-\newlabel{sec:results:simulations}{{III\tmspace  +\thinmuskip {.1667em}A}{9}{}{}{}}
+\citation{Braitenberg1998}
+\citation{Urquijo2000}
+\citation{Braitenberg1998}
+\citation{Lefort2009}
+\citation{Lefort2009}
+\citation{Sayer1990}
 \citation{Sayer1990}
 \citation{Vogelstein2009}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Results}{10}{}}
+\newlabel{sec:results}{{III}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{10}{}}
+\newlabel{sec:results:simulations}{{III\tmspace  +\thinmuskip {.1667em}A}{10}{}{}{}}
 \newlabel{eqn:convert}{{26}{10}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of simulation parameters.}}{10}{}}
-\newlabel{table:caparm}{{I}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}}
+\newlabel{sec:results:inference}{{III\tmspace  +\thinmuskip {.1667em}B}{10}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Table of simulation parameters.}}{11}{}}
+\newlabel{table:caparm}{{I}{11}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left) and high SNR regimes (photon budget 40 Kph/neuron/frame, right).}}{11}{}}
 \newlabel{fig:egfluor}{{1}{11}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}}
-\newlabel{sec:results:inference}{{III\tmspace  +\thinmuskip {.1667em}B}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmoda}{{27}{11}{}{}{}}
-\newlabel{eqn:likelihoodGLMmodb}{{28}{11}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Main Result}{12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Estimating the functional connectivity matrix. Left: true $\@mathbf {w}$. Right: estimated $\@mathbf {w}$.}}{12}{}}
+\newlabel{fig:w}{{2}{12}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Time discretization bias}{13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces We can estimate $W$, but there is some (explainable) bias. Left: true $\@mathbf {w}$. Right: estimated $\@mathbf {w}$.}}{13}{}}
+\newlabel{fig:bias}{{3}{13}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3}Inferring weights using $F$}{14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using independent approximation and true spike trains down-sampled to the frame-rate, for a network of $N=25$ neurons imaged with high SNR (40 Kph/neuron/frame, see Figure 11{}{}{}\hbox {} below); $r^2=0.57$ for IID and $r^2=0.57$ for the baseline. Note that for sufficient SNR, the connectivity weights inferred from fluorescence data are nearly equal to such inferred from down-sampled true spikes, thus showing that calcium imaging is capable of achieving accuracy of spike extraction equivalent to direct observation of spike trains. Left panel is the original GLM solution with scaling-bias, and right panel is scaling-bias adjusted solution.}}{14}{}}
+\newlabel{fig:iid-base}{{4}{14}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4}SNR limitations of inferring weights using $F$}{15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces $r^2$ as a function of SNR for various FR}}{15}{}}
+\newlabel{fig:snr}{{5}{15}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5}Error indep of $N$}{16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Baseline accuracy of connectivity weights inference for networks of different size from $N=10$ to $N=200$ neurons. Accuracy does not depend on the number of neurons $N$ in agreement with theoretical analysis in Methods. 300-600 seconds of calcium imaging data are sufficient for estimating connectivity matrix using sparse-prior GLM solver, and about 30 minutes of observations are sufficient using GLM solver.}}{16}{}}
+\newlabel{fig:data-n}{{6}{16}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6}Correlations kill estimates}{17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 15 sec of simulated spike trains for a weakly coupled (upper-left) and strongly coupled (upper-right) stochastic networks. Note that in weakly coupled network spikes are sufficiently uncorrelated to allow access to all different neural connectivity configurations necessary to estimate complete anatomical connectivity vectors ${\bf  w}_i$. In strongly coupled case many instances of highly synchronous locked firings are evident, thus reducing dimensionality of the observed dynamic space of the network, and preventing functional connectivity from faithfully representing anatomical connectivity. Accordingly, GLM solution for strongly coupled neural network (lower-right) does not provide access to the structure of anatomical connectivity as opposed to weakly-coupled case (lower-left).}}{17}{}}
+\newlabel{fig:rasters}{{7}{17}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7}Robustness to variability in $\tau _h$}{18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces something like fig 5}}{18}{}}
+\newlabel{fig:mcmc-iid}{{8}{18}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8}Hybrid MCMC-Gibbs outperforms indep approx}{19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using hybrid MCMC-Gibbs sampler and independent approximation, for a network of $N=25$ neurons imaged with intermediate SNR ($10$ Kph/neuron/frame, see Figure 11{}{}{}\hbox {} below); $r^2=0.48$ for MCMC-Gibbs and $r^2=0.47$ for IID. Note that the connectivity weights thus inferred are nearly equal, thus showing that independent approximation is sufficient here for the purposes of estimating the connectivity matrix. Note also constant time-discretization scaling bias in the estimated weights due to missing proximal spike pairs (left panel). Scaling-bias adjusted weights correspond to true connectivity weights well (right panel).}}{19}{}}
+\newlabel{fig:mcmc-iid}{{9}{19}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9}Sparse prior improves estimate}{20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using independent approximation and either GLM or sparse-prior GLM, for a network of $N=50$ neurons imaged for $T=800$ s with high SNR (40 Kph/neuron/frame, see Figure 11{}{}{}\hbox {} below); $r^2=0.66$ for GLM solution and $r^2=0.85$ for sparse-prior GLM solution. Note that use of sparse prior allows to obtain significantly better approximation to the true connectivity matrix, although additional scaling bias is introduced in the estimate. Left panel is the original GLM solution with scaling-bias, and right panel is scaling-bias adjusted solution.}}{20}{}}
+\newlabel{fig:sparse-sol}{{10}{20}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {10}Other}{21}{}}
+\newlabel{eqn:likelihoodGLMmoda}{{27}{21}{}{}{}}
+\newlabel{eqn:likelihoodGLMmodb}{{28}{21}{}{}{}}
 \citation{Vogelstein2009}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using hybrid MCMC-Gibbs sampler and independent approximation, for a network of $N=25$ neurons imaged with intermediate SNR ($10$ Kph/neuron/frame, see Figure 5{}{}{}\hbox {} below); $r^2=0.48$ for MCMC-Gibbs and $r^2=0.47$ for IID. Note that the connectivity weights thus inferred are nearly equal, thus showing that independent approximation is sufficient here for the purposes of estimating the connectivity matrix. Note also constant time-discretization scaling bias in the estimated weights due to missing proximal spike pairs (left panel). Scaling-bias adjusted weights correspond to true connectivity weights well (right panel).}}{12}{}}
-\newlabel{fig:mcmc-iid}{{2}{12}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using independent approximation and true spike trains down-sampled to the frame-rate, for a network of $N=25$ neurons imaged with high SNR (40 Kph/neuron/frame, see Figure 5{}{}{}\hbox {} below); $r^2=0.57$ for IID and $r^2=0.57$ for the baseline. Note that for sufficient SNR, the connectivity weights inferred from fluorescence data are nearly equal to such inferred from down-sampled true spikes, thus showing that calcium imaging is capable of achieving accuracy of spike extraction equivalent to direct observation of spike trains. Left panel is the original GLM solution with scaling-bias, and right panel is scaling-bias adjusted solution.}}{13}{}}
-\newlabel{fig:iid-base}{{3}{13}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A scatter plot of inferred connectivity weights vs. real connectivity weights using independent approximation and either GLM or sparse-prior GLM, for a network of $N=50$ neurons imaged for $T=800$ s with high SNR (40 Kph/neuron/frame, see Figure 5{}{}{}\hbox {} below); $r^2=0.66$ for GLM solution and $r^2=0.85$ for sparse-prior GLM solution. Note that use of sparse prior allows to obtain significantly better approximation to the true connectivity matrix, although additional scaling bias is introduced in the estimate. Left panel is the original GLM solution with scaling-bias, and right panel is scaling-bias adjusted solution.}}{13}{}}
-\newlabel{fig:sparse-sol}{{4}{13}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Accuracy of inferred connectivity weights as function of noise amount in calcium imaging data, as measured by photon budget per neuron-frame and fluorescence signal to noise ratio SNR=$\left ({E[\Delta F^2 | \text  {spk}]}/{E[\Delta F^2|\text  {nospk}]}\right )^{1/2}$, for networks of $N=25$ and $N=50$ neurons. Note that the photon counts on the order of 20-40 Kph/frame/neuron are required in order to achieve best reconstructions.}}{14}{}}
-\newlabel{fig:ca-noise}{{5}{14}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Discussion}{14}{}}
-\newlabel{sec:discussion}{{IV}{14}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Accuracy of inferred connectivity weights as function of noise amount in calcium imaging data, as measured by photon budget per neuron-frame and fluorescence signal to noise ratio SNR=$\left ({E[\Delta F^2 | \text  {spk}]}/{E[\Delta F^2|\text  {nospk}]}\right )^{1/2}$, for networks of $N=25$ and $N=50$ neurons. Note that the photon counts on the order of 20-40 Kph/frame/neuron are required in order to achieve best reconstructions.}}{22}{}}
+\newlabel{fig:ca-noise}{{11}{22}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Distribution of connectivity weights inferred using calcium imaging, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for GLM solution, and right panel is for sparse-prior GLM solution. Blue curves are for inhibitory connections, red curves are for excitatory connections and black are for zero connections. Solid lines are original distributions and dashed lines are inferred distributions. In GLM solution the quality of the inferred weights is certainly sufficient to say whether a pairs of neurons is connected, or whether given neuron is inhibitory or excitatory with high reliability; and such statements may be made from sparse-prior GLM solution almost with certainty.}}{23}{}}
+\newlabel{fig:distr}{{12}{23}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Normalized histograms of residual errors in the inferred connectivity weights, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for independent approximation using regular GLM, middle panel is for baseline regular GLM solution, and the right panel is for baseline sparse GLM solution.}}{23}{}}
+\newlabel{fig:residuals}{{13}{23}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Baseline accuracy of connectivity weights inference as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Note that accuracy does not depend on the number of neurons $N$, as shown in the Methods. Also, about 30 minutes of imaging time are sufficient for accurate estimation of the connectivity matrix using GLM solution, while the same accuracy of the reconstruction may be achieved with sparse-prior GLM solver already for 300-600 seconds of calcium imaging.}}{24}{}}
+\newlabel{fig:data-time}{{14}{24}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Baseline accuracy of the inferred neuron type (excitatory or inhibitory) as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Better than 95\% accuracy is achieved in identification of neuron type.}}{24}{}}
+\newlabel{fig:data-ie}{{15}{24}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Discussion}{24}{}}
+\newlabel{sec:discussion}{{IV}{24}{}{}{}}
 \bibdata{mybib}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Distribution of connectivity weights inferred using calcium imaging, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for GLM solution, and right panel is for sparse-prior GLM solution. Blue curves are for inhibitory connections, red curves are for excitatory connections and black are for zero connections. Solid lines are original distributions and dashed lines are inferred distributions. In GLM solution the quality of the inferred weights is certainly sufficient to say whether a pairs of neurons is connected, or whether given neuron is inhibitory or excitatory with high reliability; and such statements may be made from sparse-prior GLM solution almost with certainty.}}{15}{}}
-\newlabel{fig:distr}{{6}{15}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Normalized histograms of residual errors in the inferred connectivity weights, for a network of $N=50$ neurons and $T=800$ s. The inferred distributions were rescaled to have the same mean with the true distributions, owing the time-discretization scaling bias discussed in the text. Left panel is for independent approximation using regular GLM, middle panel is for baseline regular GLM solution, and the right panel is for baseline sparse GLM solution.}}{15}{}}
-\newlabel{fig:residuals}{{7}{15}{}{}{}}
 \bibcite{Andrieu2007}{{1}{}{{}}{{}}}
 \bibcite{Braitenberg1998}{{2}{}{{}}{{}}}
 \bibcite{Candes2005}{{3}{}{{}}{{}}}
 \bibcite{DE03}{{4}{}{{}}{{}}}
 \bibcite{DFG01}{{5}{}{{}}{{}}}
 \bibcite{Fearnhead2003}{{6}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Baseline accuracy of connectivity weights inference as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Note that accuracy does not depend on the number of neurons $N$, as shown in the Methods. Also, about 30 minutes of imaging time are sufficient for accurate estimation of the connectivity matrix using GLM solution, while the same accuracy of the reconstruction may be achieved with sparse-prior GLM solver already for 300-600 seconds of calcium imaging.}}{16}{}}
-\newlabel{fig:data-time}{{8}{16}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Baseline accuracy of connectivity weights inference for for networks of different size from $N=10$ to $N=200$ neurons. Accuracy does not depend on the number of neurons $N$ in agreement with theoretical analysis in Methods. 300-600 seconds of calcium imaging data are sufficient for estimating connectivity matrix using sparse-prior GLM solver, and about 30 minutes of observations are sufficient using GLM solver.}}{16}{}}
-\newlabel{fig:data-n}{{9}{16}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {}Acknowledgments}{16}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {}References}{16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Baseline accuracy of the inferred neuron type (excitatory or inhibitory) as the function of imaging time. Black lines are for $N=50$ and gray lines are for $N=100$. Better than 95\% accuracy is achieved in identification of neuron type.}}{17}{}}
-\newlabel{fig:data-ie}{{10}{17}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces 15 sec of simulated spike trains for a weakly coupled (upper-left) and strongly coupled (upper-right) stochastic networks. Note that in weakly coupled network spikes are sufficiently uncorrelated to allow access to all different neural connectivity configurations necessary to estimate complete anatomical connectivity vectors ${\bf  w}_i$. In strongly coupled case many instances of highly synchronous locked firings are evident, thus reducing dimensionality of the observed dynamic space of the network, and preventing functional connectivity from faithfully representing anatomical connectivity. Accordingly, GLM solution for strongly coupled neural network (lower-right) does not provide access to the structure of anatomical connectivity as opposed to weakly-coupled case (lower-left).}}{17}{}}
-\newlabel{fig:rasters}{{11}{17}{}{}{}}
 \bibcite{Gelfand1990}{{7}{}{{}}{{}}}
 \bibcite{Urquijo2000}{{8}{}{{}}{{}}}
 \bibcite{koyama08}{{9}{}{{}}{{}}}
@@ -171,9 +187,11 @@
 \bibcite{Stevenson2009}{{21}{}{{}}{{}}}
 \bibcite{Vogelstein2009}{{22}{}{{}}{{}}}
 \bibcite{Wu07}{{23}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {}Acknowledgments}{25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {}References}{25}{}}
 \bibcite{Yasuda2004}{{24}{}{{}}{{}}}
 \global \chardef \firstnote@num24\relax 
 \global\NAT@numberstrue
 \bibstyle{amsplain}
-\newlabel{LastBibItem}{{24}{18}{}{}{}}
-\newlabel{LastPage}{{}{18}}
+\newlabel{LastBibItem}{{24}{26}{}{}{}}
+\newlabel{LastPage}{{}{26}}
