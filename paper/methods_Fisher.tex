@@ -1,4 +1,4 @@
-In order to determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P[W|{\bf n})$. Assuming for simplicity perfect knowledge of spike trains (i.e. such not corrupted by inference errors from calcium imaging) and single time-bin coupling $m=1$, i.e. $\w_{ij}(t]\neq 0$ only for time-delay $t=1$, we write the Fisher information matrix as
+To determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P[\bw| \bX]$. Assuming for simplicity perfect knowledge of spike trains (i.e. such not corrupted by inference errors from calcium imaging) and single time-bin coupling, i.e. $h_{j}(t)\neq 0$ only for time-delay $t=1$, we write the Fisher information matrix as:
 
 \begin{equation}
 \begin{array}{rl}
@@ -10,7 +10,7 @@ n_i(t)n_{j}(t-1)n_{j'}(t-1)\left(-\frac{f'(J_i(t))^2}{f(J_i(t))^2} +
 \end{array}
 \end{equation}
 
-For exponential transfer function $f(J)$ and assuming weak coupling between spikes this may be rewritten as
+\noindent where $f'$ and $f''$ correspond to the first and second derivatives of our linking function (c.f Eq. \eqref{eqn:glm:definition}), and $\delta_{ii'}$ is XXX ? XXX.  When $f(J)=\exp(J)$ XXX Y: we don't use an exponential here.  is it worth modifying this accordingly? XXX, and coupling between spikes is week, this may be rewritten as:
 
 \begin{equation}\label{eqn:fisher}
 \begin{array}{rl}
@@ -20,14 +20,13 @@ C^{-1}
 \end{array}
 \end{equation}
 
-Here $(T\Delta)$ is the total observation time, $ \tau_w$ is ``the coincidence time'' - the typical EPSP/IPSP time-scale over which the spike of one neuron affects the spike probability of the other neuron, and $r \approx E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]$ is the typical firing rate.  For successful determination of the functional connectivity weights $W$, the variance $C$ should be smaller than the typical scale $\langle W^2\rangle$, i.e.
+Here $(T\Delta)$ is the total observation time, $ \tau_w$ is ``the coincidence time'' --- the typical EPSP/IPSP time-scale over which the spike of one neuron affects the spike probability of the other neuron --- and $r \approx E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]$ is the typical firing rate.  For successful determination of the functional connectivity matrix $\bw$, the variance $C$ should be smaller than the typical scale $\langle \bw^2\rangle$, i.e.
 
 \begin{equation}
-(T\Delta) \sim (W^2 r^2  \tau_w)^{-1}.
+(T\Delta) \sim (\bw^2 r^2  \tau_w)^{-1}.
 \end{equation}
 
-For typical values of $W^2\approx 0.1$, $r\approx 5$  Hzand $ \tau_w \approx 10$ ms, 
-with this order of magnitude estimate we obtain $T$ of the order of hundred seconds.
-This theoretical estimate of the necessary amount of fluorescent data is in good agreement with our simulations below.
+For typical values of $\bw^2\approx 0.1$, $r\approx 5$  Hz and $ \tau_w \approx 10$ msec, 
+with this order of magnitude estimate we obtain $T$ of the order of hundred seconds. This theoretical estimate of the necessary amount of fluorescent data is in good agreement with our simulations below.
 
-Note also that necessary recording time does not depend on the number of neurons in the imaged network $N$. This, at first, unexpected result is the direct consequence of the special form of $C^{-1}$ in Eq. \eqref{eqn:fisher}. In particular, when $r \tau_w <<1$, this matrix is dominated by the diagonal term $(T\Delta)(r^2  \tau_w)$, and so the Fisher information matrix is predominantly diagonal with the scale $(r^2 \tau_w T\Delta)^{-1}$, independent of the number of neurons $N$. This theoretical result is also directly confirmed in our simulations below.
+Note also that necessary recording time does not depend on the number of neurons in the imaged network $N$. This unexpected result is the direct consequence of the special form of $C^{-1}$ in Eq. \eqref{eqn:fisher}. In particular, when $r \tau_w <<1$, this matrix is dominated by the diagonal term $(T\Delta)(r^2  \tau_w)$, and so the Fisher information matrix is predominantly diagonal with the scale $(r^2 \tau_w T\Delta)^{-1}$, independent of the number of neurons $N$. This theoretical result is also directly confirmed in our simulations below.
