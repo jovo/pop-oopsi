@@ -1,13 +1,6 @@
-%\documentclass[twocolumn, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
-%\documentclass[preprint, showpacs, preprintnumbers, amsmath, amssymb]{revtex4}
 \documentclass[amsmath, amssymb]{revtex4}
 % \documentclass[dvips,aoas,preprint]{imsart}
 % \documentclass{article}
-
-% Some other (several out of many) possibilities
-%\documentclass[preprint, aps]{revtex4}
-%\documentclass[preprint, aps, draft]{revtex4}
-%\documentclass[prb]{revtex4}% Physical Review B
 
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -15,11 +8,9 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{charter}
 %\usepackage{cite}
 %\usepackage{algorithmic}
-\usepackage{times}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
 
 %\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{bm}% bold math
@@ -31,8 +22,8 @@
 %\startlocaldefs
 \renewcommand{\i}{\backslash i}
 \newcommand{\bth}{\mathbf{\theta}}
-\newcommand{\w}{\omega}
-\newcommand{\bw}{\mathbf{\omega}}
+\newcommand{\w}{w}
+\newcommand{\bw}{\mathbf{\w}}
 \newcommand{\T}{^{\ensuremath{\mathsf{T}}}}           % transpose
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
@@ -80,7 +71,7 @@ calcium imaging data}
 \tableofcontents
 
 \section{Motivation}
-\label{sec1}
+\label{intro}
 \input{intro.tex}
 
 \section{Methods}
@@ -88,46 +79,46 @@ calcium imaging data}
 
 %\subsection{Overview}
 %\label{sec:methods:introduction}
-\input{overview.tex}
+\input{methods_Overview.tex}
 
 \subsection{Model} %Hidden Markov Model for calcium imaging of neural population}
 \label{sec:methods:markov-setup}
-\input{model.tex}
+\input{methods_Model.tex}
 
 \subsection{Goal and general strategy} %Hidden Markov Model for calcium imaging of neural population}
 \label{sec:methods:goal}
-\input{goal.tex}
+\input{methods_Goal.tex}
 
 \subsection{Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}
 \label{sec:methods:indep}
-\input{indep.tex}
+\input{methods_Indep.tex}
 
 \subsection{Estimating joint posteriors over weakly coupled neurons}
-\label{sec:methods:sampling HMM}
-\input{joint_sampling.tex}
+\label{sec:methods:joint}
+\input{methods_JointSampling.tex}
 
 \subsection{Estimating the functional connectivity matrix} %parameters of the Hidden Markov Model}
 \label{sec:methods:parameters HMM}
-\input{w_learning.tex}
+\input{methods_wLearning.tex}
 
 \subsection{Specific implementation notes}
 \label{sec:methods:specific_implementation}
-\input{implementation.tex}
+\input{methods_Implementation.tex}
 
 \subsection{Accuracy of the estimates and Fisher information matrix}
 \label{sec:methods:accuracy_Fisher}
-\input{fisher.tex}
+\input{methods_Fisher.tex}
 
 \section{Results}
 \label{sec:results}
 
 \subsection{Simulating neural activity in a neural population}
 \label{sec:results:simulations}
-\input{simulation.tex}
+\input{results_Simulation.tex}
 
 \subsection{Inference of the functional connectivity from the simulated calcium imaging data}
 \label{sec:results:inference}
-\input{inference.tex}
+\input{results_Inference.tex}
 
 \section{Discussion}
 \label{sec:discussion}

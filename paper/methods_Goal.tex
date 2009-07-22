@@ -18,7 +18,7 @@ Q(\bth,\bth^{(l)}) =
 \sumit 
 P[C_i(t) | F_i; \bth_i] \times \ln P[F_i(t)|C_i(t); \bth_i] 
 \\ + P[C_i(t), C_i(t-1) | F_i; \bth_i] \times \ln P[C_i(t)|C_i(t-1), n_i(t); \bth_i] 
-\\ + P[\bh(t) | \bF; \bth] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
+\\ + P[n_i(t), \bh(t) | \bF; \bth] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
 \end{multline}
 
 \noindent where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Note that while the first two terms in Eq. \eqref{eqn:loglik:definition-expl} only require posteriors marginalized over each neuron, and all but nearest time bins, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, whereas the last term requires the joint posterior over all neurons (but marginalized over time), $P[\bX(t) | \bF; \bth^n]$.  
@@ -37,27 +37,4 @@ To solve this problem, we propose a hybrid Markov Chain Monte Carlo (MCMC) Gibbs
 
 The maximization step of EM requires maximizing the conditional expectation of $\ln P[{\bf X}, {\bf F} | \bth]$ given such samples. Although this is a maximization over $(9+N)N$ parameters, the special structure of Eq. \eqref{eqn:loglik:definition-expl} allows one to simplify this optimization problem dramatically by performing optimization with respect to each neuron independently.  
 
-Our EM algorithm therefore requires solving four problems: (i) estimating marginal posteriors over neurons, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ using SMC, (ii) updating the parameter estimates by maximizing the conditional expectation of $\ln P[X_i, F_i | \bth_i]$,  (iii) estimating the joint posteriors over all neurons,  $P[{\bf X}| \bF; \bth]$ using a Gibbs technique, and (iv) solving for next iteration of parameters $\bth^n$ by maximizing conditional expectation of  $\ln P[{\bf X}, {\bf F}| \bth^n]$.  Below, we describe each of these steps in detail. Table \ref{eqn:pseudocode} provides pseudocode for our general approach.  
-
-\begin{algorithm}
-\caption{Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta^n$, $\eta^F$, $N_G$ are somewhat arbitrarily chosen bounds.}
-\label{eqn:pseudocode}
-\begin{algorithmic}
-\While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|>\eta^n$}
-  \ForAll{$i=1\ldots N$}
-    \While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|> \eta^F$}
-      \State Sample $X_i \sim P[X_i|{\bf F}_i; \bth_i]$
-      \State Maximize ${\bth_i}^{(l+1)}=\argmax_{\bth_i} E\left[\ln P[X_i | F_i; \bth_i] \right]$
-    \EndWhile
-  \EndFor
-  
-  \For{$k=1\ldots N_G$}
-    \ForAll{$i=1\ldots N$}
-      \State Sample $X_i \sim P[X_i|{\bf X}_{\i},{\bf F}_i; \bth^n_i]$
-    \EndFor
-  \EndFor 
-
-  \State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P[\bX | \bF; \bth^n]\right]$  
-\EndWhile
-\end{algorithmic}
-\end{algorithm}
+Our EM algorithm therefore requires solving three problems: (i) estimating marginal posteriors over neurons, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ using SMC, and using them to learn the most likely parameters governing each neuron, $\bth_i$, assuming each neuron is independent,  (iii) estimating the joint posteriors over all neurons,  $P[{\bf X}| \bF; \bth]$, and (iii) solving learning the functional connection matrix, $\bw$, by maximizing conditional expectation of  $\ln P[{\bf X}, {\bf F}| \bth^n]$.  Below, we describe each of these steps in detail. 

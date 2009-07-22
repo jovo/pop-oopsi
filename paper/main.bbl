@@ -76,10 +76,6 @@ L.~Paninski, M.~Fellows, S.~Shoham, N.~Hatsopoulos, and J.~Donoghue,
   \emph{Superlinear population encoding of dynamic hand trajectory in primary
   motor cortex}, J. Neurosci. \textbf{24} (2004), 8551--8561.
 
-\bibitem{PL07}
-J.~Pillow and P.~Latham, \emph{Neural characterization in partially observed
-  populations of spiking neurons}, NIPS (2007).
-
 \bibitem{PILL07}
 J.~Pillow, J.~Shlens, L.~Paninski, A.~Sher, A.~Litke, E.J. Chichilnisky, and
   E.~Simoncelli, \emph{Spatiotemporal correlations and visual signaling in a

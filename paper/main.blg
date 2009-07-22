@@ -10,48 +10,47 @@ Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in koyama08
 Warning--missing pages in Mishchenko2009
 Warning--missing pages in NBR03
-Warning--missing pages in PL07
 Warning--missing pages in Vogelstein2009
 Warning--missing pages in Wu07
-You've used 25 entries,
+You've used 24 entries,
             2213 wiz_defined-function locations,
-            663 strings with 8170 characters,
-and the built_in function-call counts, 7963 in all, are:
-= -- 662
-> -- 472
+            659 strings with 8061 characters,
+and the built_in function-call counts, 7721 in all, are:
+= -- 643
+> -- 459
 < -- 0
-+ -- 189
-- -- 160
-* -- 725
-:= -- 1339
-add.period$ -- 25
-call.type$ -- 25
-change.case$ -- 155
++ -- 184
+- -- 156
+* -- 705
+:= -- 1298
+add.period$ -- 24
+call.type$ -- 24
+change.case$ -- 150
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 279
-empty$ -- 616
-format.name$ -- 160
-if$ -- 1586
+cite$ -- 31
+duplicate$ -- 268
+empty$ -- 596
+format.name$ -- 156
+if$ -- 1538
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 51
-newline$ -- 85
-num.names$ -- 50
-pop$ -- 201
+int.to.str$ -- 24
+missing$ -- 49
+newline$ -- 82
+num.names$ -- 48
+pop$ -- 194
 preamble$ -- 1
-purify$ -- 130
+purify$ -- 126
 quote$ -- 0
-skip$ -- 146
+skip$ -- 139
 stack$ -- 0
-substring$ -- 414
-swap$ -- 33
+substring$ -- 409
+swap$ -- 31
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 94
-warning$ -- 8
-while$ -- 69
-width$ -- 27
-write$ -- 203
-(There were 11 warnings)
+type$ -- 90
+warning$ -- 7
+while$ -- 67
+width$ -- 26
+write$ -- 196
+(There were 10 warnings)

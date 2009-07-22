@@ -1,0 +1,42 @@
+We break the inference problem of estimating the functional connection matrix given only fluorescence data into a few  steps (see Algorithm \ref{eqn:pseudocode}).  
+
+First, we estimate the parameters $\bth_i$ assuming each neuron is independent on a subset of data with $O(10)$ spikes, using the SMC methods described in Section \ref{sec:methods:indep}.  This ``inner loop'' is a set of $N$ EM algorithms, iterating between inferring expected spike trains and estimating parameters. As the number of parameters for each $\bth_i$ scales linearly with the number of neurons (it does not include connection weights $w_{ij}$ for $i\neq j$), these parameters may be estimated using a relatively amount of data. And since estimating $\bth_i$  is performed separately for each neuron, this step may be easily parallelized.
+
+
+
+%Since accurate estimation of $\bw$ requires $O(10^3)$ spikes, pre-estimating $\bth_i$ expedites the data processing pipeline. This step may be performed in parallel for each neuron, but must be completed for all neurons before continuing onto step two.  
+
+Second, given $\bth_i$ for each neuron, we approximate the joint posteriors, $P[X_i(t), \bh(t) | \bF; \bth]$, by sampling using either the independent approximation or the exact hybrid MCMC-Gibbs method, as described in Section \ref{sec:methods:joint}.  Again, this step may be performed in parallel for each neuron, but must be completed before moving onto the final step.
+
+ %In this work we accounted for the impact of interactions with other neurons via injected currents $J_i(t)$, which thus accounted for the information about the past neural activity in the population only - $n_i(t) \sim P[n_i(t)|{\bf n}(t'), {t'=1\ldots t-1}]$. In principle, better samples could be obtained by taking into account spiking of the other neurons at $t'>t$, i.e. sampling from $P[n_i(t)|{\bf n}(t'), {t'=1\ldots T}]$ \cite{PL07}. Such improved sampling procedure is a subject of future effort.  Reduced history variables $\{h_i(t)\}$ were also computed at the time of obtaining spike samples.
+  
+Finally, given the estimated joint posteriors $P[X_i(t), \bh(t) | \bF; \bth]$, we estimate presynaptic connectivity weights, $w_{i \ast}$, for each neuron.  This step, like the steps before, may be performed in parallel for each neuron.  All three steps are iterated until $\bw$ converges. Table \ref{eqn:pseudocode} provides pseudocode for this approach.  
+
+\begin{algorithm}
+\caption{Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta^n$, $\eta^F$, $N_G$ are somewhat arbitrarily chosen bounds.  XXX do we ever actually do this outer loop more than once? if so, i don't see why it would help, unless the inferred spike trains from the joint samples were a big improvement of the independent samples, which i thought didn't happen XXX}
+\label{eqn:pseudocode}
+\begin{algorithmic}
+\While{$|{\bw}^{(l)}-{\bw}^{(l-1)}|>\eta^w$}
+  \ForAll{$i=1\ldots N$}
+    \While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|> \eta^F$}
+      \State Approximate $P[X_i|{\bf F}_i; \bth_i]$ using SMC
+      \State Maximize ${\bth_i}^{(l+1)}=\argmax_{\bth_i} E\left[\ln P[X_i | F_i; \bth_i] \right]$
+    \EndWhile
+  \EndFor
+  
+  % \For{$k=1\ldots N_G$}
+    \ForAll{$i=1\ldots N$}
+      \State Approximate $P[X_i(t), \bh(t) |{\bf F}; \bth]$ using either independent approximation or hybrid MCMC-Gibbs
+    \EndFor
+  % \EndFor 
+
+  \ForAll{$i=1\ldots N$}
+  	\State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P[X_i, \bh | \bF; \bth]\right]$  
+  \EndFor
+
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+
+An important feature of the above algorithm is that the above procedures straightforwardly parallelize. Estimation of models $M_i$ could be done independently for all neurons. Calculation of the functional connectivity matrix $\bw$ also involved solving $N$ optimization subproblems for different neurons that could be done independently. In independent approximation, sample $\{ n_i(t)\}$ could be obtained in parallel for different neurons; while for hybrid MCMC-Gibbs method obtaining the sample could be parallelized by drawing HMM state-sequences within Gibbs loop for a few neurons at a time, instead of single neuron at a time. High parallelizability of these steps resulted in significant time savings when analysis of calcium imaging data was performed on multi-processor computer or using a super-computing facility.  We performed bulk of the calculations on a high-performance cluster of Intel Xeon L5430 based computers (2.66 GHz). For 10 minutes of simulated fluorescence data, calculations typically took 10-20 minutes per neuron using independent approximation, with time split approximately equally between calcium model estimation and obtaining spike-history samples (5-10 min) and solving GLM problem (5-10 min). Hybrid MCMC-Gibbs sampler was substantially slower, up to an hour per neuron per Gibbs pass, with Gibbs sampler being the most computationally expensive part. Parallel computation made calculations for large populations of neurons $N\sim 200-500$ possible.

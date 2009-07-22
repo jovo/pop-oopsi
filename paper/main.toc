@@ -10,12 +10,13 @@
 \contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{5}{}
 \contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{5}{}
 \contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{7}{}
-\contentsline {subsubsection}{\numberline {1}Estimating the functional connectivity when using the independent approximation to estimate the joint posteriors}{7}{}
+\contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{7}{}
+\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{8}{}
 \contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
-\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{8}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}
 \contentsline {section}{\numberline {III}Results}{9}{}
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}
-\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
-\contentsline {section}{\numberline {IV}Discussion}{13}{}
-\contentsline {section}{\numberline {}Acknowledgments}{15}{}
-\contentsline {section}{\numberline {}References}{15}{}
+\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{11}{}
+\contentsline {section}{\numberline {IV}Discussion}{14}{}
+\contentsline {section}{\numberline {}Acknowledgments}{16}{}
+\contentsline {section}{\numberline {}References}{16}{}

@@ -1,0 +1,47 @@
+%In order to perform maximization step of EM, the expectation of the log-likehood  Eq. \eqref{eqn:loglik:definition-expl} needs to be maximized with respect to $\bth^F=\{\bth^F_i\}$ and $\bth^n = \{\bth^n_i\} = (\bw_i, b_i)$. For $N$ neurons this is a very large optimization problem with $6N$ parameters $M$ and $m N^2 + N$ parameters $W$.  Fortunately, this optimization problem admits dramatic simplifications making it tractable for existing computers.  Specifically, estimation of parameters $M_i$ may be performed individually for each neuron since calcium dynamics of different neurons are independent from each other and, given $H$, also decoupled from GLM. Finding parameters $M_i$, thus, only involves solving of $N$ 6D-optimization subproblems (see \cite{Vogelstein2009} for details).
+
+
+%\subsubsection{Naively estimating the functional connectivity}
+
+Computing the maximum likelihood estimates of the functional connectivity matrix, $\bw$, is an optimization problem with $N^2$ variables. By construction, however, log-likelihood is convex in $\bw$, and, log-likelihoods for different neurons, Eq. \eqref{eqn:bws}, are independent and may be maximized separately. Estimating $\bw$ thus involves solving of $N$ separable $N+1$-dimensional convex optimization subproblems (the $+1$ arises because the baseline parameter, $b_i$, is coupled to the weight parameters), which can be done efficiently using standard algorithms such as Newton-Rapson methods.We used standard Matlab's nonlinear optimization function \texttt{fmincon}, provided in optimization toolbox, to solve this problem for up to $N=500$ neurons.  Constraints are important here, because the likelihood flattens as $|\w_{ij}|$ increases, and numerical error (for double precision) starts dominating.  Therefore, we impose the constraint that $|\w_{ij}|<10$ for all $i,j$. While this approach yields the maximum likelihood estimate for the connectivity matrix, simple properties of the connectivity matrix, that may be known a priori, may be extremely helpful in obtaining accurate solutions. For instance, it is commonly believed that connectivity in many neuroanatomical substrates is ``sparse'', meaning that most neurons form synapses with only a small fraction of their neighbors \cite{??}.  Further, Dale's Law, which states that each of a neuron's bouton's release the same neurotransmitter, and therefore, its postsynaptic synapses have the same sign (e.g., positive).  Below, we discuss how to incorporate these priors to improve our inference.
+
+\subsubsection{Imposing a sparse prior on the functional connectivity}
+
+Enforcing sparseness for signal recovered with a series of linear measurements via $L1$-regularizer is known to dramatically reduce the amount of data necessary to accurately reconstruct the signal \cite{Candes2005, DE03, Mishchenko2009}. Although here the estimation problem is not linear, it is interesting what impact analogous prior might have on the reconstruction of the functional connectivity matrix $\bw$. By introducing exponential prior to our GLM model\cite{Stevenson2009}, we can find the maximum a posteriori estimate for the connectivity matrix:
+
+\begin{equation}\label{eqn:likelihoodsparseGLM}
+\hbw_i^{sparse} = \argmax_{\bw_i} E[\ln P[n_i, \bh |{\bf F}; \bth]] P[\bw]]= \argmax_{\bw} E[\ln P[n_i, \bh |{\bf F}; \bth]] - \lambda \sum_{i,j}|\w_{ij}|,
+\end{equation}
+
+\noindent where the exponential prior parameter $\lambda$ may be set from a priori neuroanatomical or neurophysiological data.  By introducing slack variables $s_{ij}(t)>|\w_{ij}(t)|$, this problem may be converted to a nonlinear program that can be solved using the interior point method:
+
+\begin{equation} \label{eqn:conconvexopt}
+% \begin{array}{l}
+	\hbw_i^{sparse} = \argmax_{\substack{\w_{ij}<s_{ij} \forall j \\ -\w_{ij}<s_{ij} \forall j}}   E[\ln P[n_i, \bh |{\bf F}; \bth]] - \lambda \sum_{i,j} s_{ij}
+%\min \left\{-\sum\limits_t E\left[ n_i(t) J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right]+\lambda \sum\limits_{t'j}s_{ij}(t')\right\}
+%, \text{ s.t. } \\ \w_{ij}<s_{ij}, \; -\w_{ij}<s_{ij}\; \forall j.
+% \end{array} 
+\end{equation}
+
+\noindent This sparse prior does not change the convexity of log-likelihood for $\bth^n$, so this regularized problem may still be solved efficiently.  We used Matlab's standard function \text{fconmin}, provided in optimization toolbox, to solve this constrained optimization problem for up to $N=500$ neurons. As we will see below, sparse prior dramatically decreases the amount of data necessary for accurate estimation of the connectivity matrix.
+
+\subsubsection{Imposing Dale's law on the functional connectivity}
+
+As neurons seem to abide by Dale's law, it is natural for us to constraint our estimates of the functional connection matrix accordingly. In terms of the connectivity matrix, Dale's law translates into the condition of sign-constancy of the matrix columns. Dale's law is easy to enforce by constraining $\w_{ij}$ to be either positive or negative for given $j$.  Sign assignments may be chosen by inspecting unconstrained solution $\bw$ and choosing the column $\w_{\ast j}$ to be excitatory if the sum-squares of the positive terms $\w_{ij}$ for given $j$ in the unconstrained solution is greater than that of the negative terms, and inhibitory otherwise.  After that, Dale's law may be enforced by constraining the weights:
+
+
+\begin{align}
+	\hbw_i^{dale} = \argmax_{\substack{\w_{ij}<0 \forall \; j \in \mathcal{I} \\ \w_{ij}>0 \forall \; j \notin \mathcal{I} }}   E[\ln P[n_i, \bh |{\bf F}; \bth]]
+\end{align}
+
+% \begin{equation}
+% \begin{array}{l}
+% \min \left\{-\sum\limits_t E\left[ n_i(t) J_i(t) - (1-n_i(t) \exp(J_i(t)) \Delta \right]+\lambda \sum\limits_{t'j}s_{ij}(t')\right\}, \text{ s.t. }\\
+% \w_{ij}(t')<0, \; -\w_{ij}(t')<s_{ij}(t') \; \forall j, t'\text{ where }j\text{ is inhibitory neuron}, \\
+% \w_{ij}(t')<s_{ij}(t'), \; -\w_{ij}(t')<0 \; \forall j, t'\text{ where }j\text{ is excitatory neuron}. \\
+% \end{array}
+% \end{equation}
+
+\noindent where $\mathcal{I}$ is the set of inhibitory presynaptic neurons.  While this optimization problem is not convex (due to the hard constraints), it may still be approximately solved using the same methods as above.  Imposing both Dale's and the sparse prior on the connectivity weights thus follows straightforwardly.  
+
+%This optimization problem is essentially equivalent to the constrained optimization problem Eq. \eqref{eqn:conconvexopt}, and can be solved using the same methods.  Unlike sparse prior, Dale's prior does not lead to a convex optimization.  did not lead to substantial improvement in the reconstructed connectivity matrix.
