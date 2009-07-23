@@ -1,5 +1,3 @@
-data/real/* 
-data/simulated*
 paper/*.aux
 paper/*.bbl
 paper/*.blg
