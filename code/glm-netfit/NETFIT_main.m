@@ -40,7 +40,7 @@ weights_idal=[];
 Weights_old=repmat(Inf,size(Weights));
 while(iflg)         
   if(~strcmp(mode,'base'))
-                            % PERFORM ESATIMATION OF M-MODELS
+                            % PERFORM ESTIMATION OF M-MODELS
                             % incoming fluorescence traces in C{k}
                             % incoming currents in J{k}
                             % outgoing estimated calcium models M{k}

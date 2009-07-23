@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  22 JUL 2009 12:29
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  23 JUL 2009 01:45
 entering extended mode
 **main
 (./main.tex
@@ -502,24 +502,23 @@ Package natbib Warning: Citation `??' on page 2 undefined on input line 5.
 
 Package natbib Warning: Citation `??' on page 2 undefined on input line 5.
 
-) (./methods_Overview.tex) (./methods_Model.tex
+) (./methods.tex
 
-Package natbib Warning: Citation `??' on page 2 undefined on input line 13.
+Package natbib Warning: Citation `??' on page 2 undefined on input line 20.
 
-[2]) (./methods_Goal.tex
+[2]
 
-Package natbib Warning: Citation `??' on page 3 undefined on input line 26.
+Package natbib Warning: Citation `??' on page 3 undefined on input line 67.
 
-[3]) (./methods_Indep.tex [4]) (./methods_JointSampling.tex
+[3] [4]
 
-LaTeX Warning: Reference `sec:indep' on page 5 undefined on input line 47.
+LaTeX Warning: Reference `sec:indep' on page 5 undefined on input line 136.
 
-[5] [6]) (./methods_wLearning.tex
+[5] [6]
 
-Package natbib Warning: Citation `??' on page 7 undefined on input line 6.
+Package natbib Warning: Citation `??' on page 7 undefined on input line 185.
 
-[7]) (./methods_Implementation.tex) (./methods_Fisher.tex [8])
-(./results_Simulation.tex [9]
+[7] [8]) (./results.tex [9]
 <../figs/Figure0b_fluor_eg_hlowSNR.pdf, id=99, 420.57124pt x 315.1775pt>
 File: ../figs/Figure0b_fluor_eg_hlowSNR.pdf Graphic file (type pdf)
 
@@ -527,9 +526,8 @@ File: ../figs/Figure0b_fluor_eg_hlowSNR.pdf Graphic file (type pdf)
 <../figs/Figure0a_fluor_eg_highSNR.pdf, id=100, 420.57124pt x 315.1775pt>
 File: ../figs/Figure0a_fluor_eg_highSNR.pdf Graphic file (type pdf)
 
-<use ../figs/Figure0a_fluor_eg_highSNR.pdf>) (./results_Inference.tex [10]
-[11 <../figs/Figure0b_fluor_eg_hlowSNR.pdf> <../figs/Figure0a_fluor_eg_highSNR.
-pdf>] [12]
+<use ../figs/Figure0a_fluor_eg_highSNR.pdf> [10] [11 <../figs/Figure0b_fluor_eg
+_hlowSNR.pdf> <../figs/Figure0a_fluor_eg_highSNR.pdf>] [12]
 <../figs/Figure13_scalebiasvsframerate.pdf, id=118, 449.68pt x 338.26375pt>
 File: ../figs/Figure13_scalebiasvsframerate.pdf Graphic file (type pdf)
 
@@ -586,7 +584,7 @@ File: ../figs/Figure9b_fluor_sparse_sol.pdf Graphic file (type pdf)
 ol.pdf> <../figs/Figure9b_fluor_sparse_sol.pdf>]
 
 LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 21 undefined on input
- line 135.
+ line 195.
 
 [21] <../figs/Figure3_perf_vs_gamma.pdf, id=217, 420.57124pt x 310.15875pt>
 File: ../figs/Figure3_perf_vs_gamma.pdf Graphic file (type pdf)
@@ -618,14 +616,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <../figs/Figure11_inhexc_errors.pdf, id=233, 449.68pt x 337.26pt>
 File: ../figs/Figure11_inhexc_errors.pdf Graphic file (type pdf)
 
-<use ../figs/Figure11_inhexc_errors.pdf>
+<use ../figs/Figure11_inhexc_errors.pdf>)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./discussion.tex [23 <../figs/Figure5_hist_glm_vanilla.pdf> <../figs/Figure1
-0a_residuals_iidglm.pdf> <../figs/Figure10b_residuals_baseglm.pdf> <../figs/Fig
-ure10c_residuals_basespa.pdf>] [24 <../figs/Figure4_perf_vs_T.pdf> <../figs/Fig
-ure11_inhexc_errors.pdf>]) (./main.bbl [25])
+(./discussion.tex [23 <../figs/Figure5_hist_glm_vanilla.pdf> <../figs/Figure10a
+_residuals_iidglm.pdf> <../figs/Figure10b_residuals_baseglm.pdf> <../figs/Figur
+e10c_residuals_basespa.pdf>] [24 <../figs/Figure4_perf_vs_T.pdf> <../figs/Figur
+e11_inhexc_errors.pdf>]) (./main.bbl [25])
 
 Package natbib Warning: There were undefined citations.
 
@@ -638,8 +636,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4473 strings out of 94500
- 57310 string characters out of 1155413
+ 4449 strings out of 94500
+ 56783 string characters out of 1155413
  119860 words of memory out of 1000000
  7516 multiletter control sequences out of 10000+50000
  27927 words of font info for 61 fonts, out of 500000 for 2000
@@ -669,4 +667,4 @@ f-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></opt/local/share/texmf-dist/fo
 nts/type1/bluesky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky
 /cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bitstrea/charter/bchr8a
 .pfb></opt/local/share/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb>
-Output written on main.pdf (26 pages, 566052 bytes).
+Output written on main.pdf (26 pages, 566475 bytes).
