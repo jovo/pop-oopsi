@@ -121,7 +121,7 @@ end
     Enew.alpha = ab(1);
     Enew.beta  = ab(2);    
     if(Sim.G_params == true) Enew.gamma = E.gamma*ab(3); end
-    if(Sim.G_params == true) Enew.zeta=E.zeta*ab(3); end    
+    if(Sim.G_params == true) Enew.zeta  = E.zeta*ab(3); end    
     lik = [lik Enew.lik_o];
   end
 
