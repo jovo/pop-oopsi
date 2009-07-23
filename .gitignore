@@ -7,3 +7,4 @@ paper/*.toc
 code/*.m~
 code/glm-netfit/*.m~
 code/mcmc-oops/*.m~
+old/
