@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  23 JUL 2009 01:45
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  24 JUL 2009 09:07
 entering extended mode
 **main
 (./main.tex
@@ -541,43 +541,47 @@ File: ../figs/Figure2_fluor_base_vs_iid.pdf Graphic file (type pdf)
 File: ../figs/Figure2b_fluor_base_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure2b_fluor_base_vs_iid.pdf> [14 <../figs/Figure2_fluor_base_vs
-_iid.pdf> <../figs/Figure2b_fluor_base_vs_iid.pdf>] [15]
-<../figs/Figure6c_perf_vs_N.pdf, id=145, 420.57124pt x 310.15875pt>
+_iid.pdf> <../figs/Figure2b_fluor_base_vs_iid.pdf>]
+<../figs/Figure4_r2vsSNR.pdf, id=142, 420.57124pt x 315.1775pt>
+File: ../figs/Figure4_r2vsSNR.pdf Graphic file (type pdf)
+
+<use ../figs/Figure4_r2vsSNR.pdf> [15 <../figs/Figure4_r2vsSNR.pdf>]
+<../figs/Figure6c_perf_vs_N.pdf, id=155, 420.57124pt x 310.15875pt>
 File: ../figs/Figure6c_perf_vs_N.pdf Graphic file (type pdf)
 
 <use ../figs/Figure6c_perf_vs_N.pdf> [16 <../figs/Figure6c_perf_vs_N.pdf>]
-<../figs/Figure7b_raster_weak.pdf, id=153, 420.57124pt x 315.1775pt>
+<../figs/Figure7b_raster_weak.pdf, id=163, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=154, 420.57124pt x 315.1775pt>
+<../figs/Figure7a_raster_strong.pdf, id=164, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7a_raster_strong.pdf>
-<../figs/Figure8b_fluor_weak_glm.pdf, id=155, 420.57124pt x 315.1775pt>
+<../figs/Figure8b_fluor_weak_glm.pdf, id=165, 420.57124pt x 315.1775pt>
 File: ../figs/Figure8b_fluor_weak_glm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure8b_fluor_weak_glm.pdf>
-<../figs/Figure8a_fluor_strong_glm.pdf, id=156, 420.57124pt x 315.1775pt>
+<../figs/Figure8a_fluor_strong_glm.pdf, id=166, 420.57124pt x 315.1775pt>
 File: ../figs/Figure8a_fluor_strong_glm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure8a_fluor_strong_glm.pdf> [17 <../figs/Figure7b_raster_weak.p
 df> <../figs/Figure7a_raster_strong.pdf> <../figs/Figure8b_fluor_weak_glm.pdf> 
 <../figs/Figure8a_fluor_strong_glm.pdf>] [18]
-<../figs/Figure1_fluor_mcmc_vs_iid.pdf, id=183, 420.57124pt x 309.155pt>
+<../figs/Figure1_fluor_mcmc_vs_iid.pdf, id=193, 420.57124pt x 309.155pt>
 File: ../figs/Figure1_fluor_mcmc_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure1_fluor_mcmc_vs_iid.pdf>
-<../figs/Figure1b_fluor_mcmc_vs_iid.pdf, id=184, 420.57124pt x 309.155pt>
+<../figs/Figure1b_fluor_mcmc_vs_iid.pdf, id=194, 420.57124pt x 309.155pt>
 File: ../figs/Figure1b_fluor_mcmc_vs_iid.pdf Graphic file (type pdf)
 
 <use ../figs/Figure1b_fluor_mcmc_vs_iid.pdf> [19 <../figs/Figure1_fluor_mcmc_vs
 _iid.pdf> <../figs/Figure1b_fluor_mcmc_vs_iid.pdf>]
-<../figs/Figure9_fluor_sparse_sol.pdf, id=199, 420.57124pt x 313.17pt>
+<../figs/Figure9_fluor_sparse_sol.pdf, id=209, 420.57124pt x 313.17pt>
 File: ../figs/Figure9_fluor_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/Figure9_fluor_sparse_sol.pdf>
-<../figs/Figure9b_fluor_sparse_sol.pdf, id=200, 420.57124pt x 313.17pt>
+<../figs/Figure9b_fluor_sparse_sol.pdf, id=210, 420.57124pt x 313.17pt>
 File: ../figs/Figure9b_fluor_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/Figure9b_fluor_sparse_sol.pdf> [20 <../figs/Figure9_fluor_sparse_s
@@ -586,34 +590,34 @@ ol.pdf> <../figs/Figure9b_fluor_sparse_sol.pdf>]
 LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 21 undefined on input
  line 195.
 
-[21] <../figs/Figure3_perf_vs_gamma.pdf, id=217, 420.57124pt x 310.15875pt>
+[21] <../figs/Figure3_perf_vs_gamma.pdf, id=227, 420.57124pt x 310.15875pt>
 File: ../figs/Figure3_perf_vs_gamma.pdf Graphic file (type pdf)
 
 <use ../figs/Figure3_perf_vs_gamma.pdf> [22 <../figs/Figure3_perf_vs_gamma.pdf>
-] <../figs/Figure5_hist_glm_vanilla.pdf, id=228, 420.57124pt x 312.16624pt>
+] <../figs/Figure5_hist_glm_vanilla.pdf, id=238, 420.57124pt x 312.16624pt>
 File: ../figs/Figure5_hist_glm_vanilla.pdf Graphic file (type pdf)
 
 <use ../figs/Figure5_hist_glm_vanilla.pdf>
-<../figs/Figure10a_residuals_iidglm.pdf, id=229, 449.68pt x 338.26375pt>
+<../figs/Figure10a_residuals_iidglm.pdf, id=239, 449.68pt x 338.26375pt>
 File: ../figs/Figure10a_residuals_iidglm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10a_residuals_iidglm.pdf>
-<../figs/Figure10b_residuals_baseglm.pdf, id=230, 449.68pt x 338.26375pt>
+<../figs/Figure10b_residuals_baseglm.pdf, id=240, 449.68pt x 338.26375pt>
 File: ../figs/Figure10b_residuals_baseglm.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10b_residuals_baseglm.pdf>
-<../figs/Figure10c_residuals_basespa.pdf, id=231, 449.68pt x 337.26pt>
+<../figs/Figure10c_residuals_basespa.pdf, id=241, 449.68pt x 337.26pt>
 File: ../figs/Figure10c_residuals_basespa.pdf Graphic file (type pdf)
 
 <use ../figs/Figure10c_residuals_basespa.pdf>
-<../figs/Figure4_perf_vs_T.pdf, id=232, 420.57124pt x 312.16624pt>
+<../figs/Figure4_perf_vs_T.pdf, id=242, 420.57124pt x 312.16624pt>
 File: ../figs/Figure4_perf_vs_T.pdf Graphic file (type pdf)
 
 <use ../figs/Figure4_perf_vs_T.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/Figure11_inhexc_errors.pdf, id=233, 449.68pt x 337.26pt>
+<../figs/Figure11_inhexc_errors.pdf, id=243, 449.68pt x 337.26pt>
 File: ../figs/Figure11_inhexc_errors.pdf Graphic file (type pdf)
 
 <use ../figs/Figure11_inhexc_errors.pdf>)
@@ -636,17 +640,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4449 strings out of 94500
- 56783 string characters out of 1155413
- 119860 words of memory out of 1000000
- 7516 multiletter control sequences out of 10000+50000
+ 4454 strings out of 94500
+ 56929 string characters out of 1155413
+ 119916 words of memory out of 1000000
+ 7520 multiletter control sequences out of 10000+50000
  27927 words of font info for 61 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
  32i,20n,26p,2124b,319s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 274 PDF objects out of 300000
+ 284 PDF objects out of 300000
  0 named destinations out of 131072
- 106 words of extra memory for PDF output out of 65536
+ 111 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/public/tt2001/fmex9.pfb></opt/local/
 share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/f
 onts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesk
@@ -667,4 +671,4 @@ f-dist/fonts/type1/bitstrea/charter/bchri8a.pfb></opt/local/share/texmf-dist/fo
 nts/type1/bluesky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky
 /cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bitstrea/charter/bchr8a
 .pfb></opt/local/share/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb>
-Output written on main.pdf (26 pages, 566475 bytes).
+Output written on main.pdf (26 pages, 579759 bytes).
