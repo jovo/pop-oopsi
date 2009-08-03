@@ -7,50 +7,53 @@ Warning--I didn't find a database entry for "Tsien89"
 Warning--I didn't find a database entry for "redshirt"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
-Warning--missing pages in koyama08
+Warning--missing pages in Escola07
 Warning--missing pages in Mishchenko2009
+Warning--missing pages in Mishchenko2009b
 Warning--missing pages in NBR03
+Warning--missing pages in NG04
+Warning--missing pages in Stevenson08
+Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
-Warning--missing pages in Wu07
-You've used 24 entries,
+You've used 49 entries,
             2213 wiz_defined-function locations,
-            659 strings with 8061 characters,
-and the built_in function-call counts, 7721 in all, are:
-= -- 643
-> -- 459
+            821 strings with 12285 characters,
+and the built_in function-call counts, 16290 in all, are:
+= -- 1410
+> -- 908
 < -- 0
-+ -- 184
-- -- 156
-* -- 705
-:= -- 1298
-add.period$ -- 24
-call.type$ -- 24
-change.case$ -- 150
++ -- 363
+- -- 307
+* -- 1503
+:= -- 2688
+add.period$ -- 49
+call.type$ -- 49
+change.case$ -- 300
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 268
-empty$ -- 596
-format.name$ -- 156
-if$ -- 1538
+cite$ -- 59
+duplicate$ -- 557
+empty$ -- 1283
+format.name$ -- 307
+if$ -- 3273
 int.to.chr$ -- 0
-int.to.str$ -- 24
-missing$ -- 49
-newline$ -- 82
-num.names$ -- 48
-pop$ -- 194
+int.to.str$ -- 49
+missing$ -- 102
+newline$ -- 157
+num.names$ -- 99
+pop$ -- 377
 preamble$ -- 1
-purify$ -- 126
+purify$ -- 251
 quote$ -- 0
-skip$ -- 139
+skip$ -- 291
 stack$ -- 0
-substring$ -- 409
-swap$ -- 31
+substring$ -- 1041
+swap$ -- 67
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 90
-warning$ -- 7
-while$ -- 67
-width$ -- 26
-write$ -- 196
-(There were 10 warnings)
+type$ -- 186
+warning$ -- 10
+while$ -- 156
+width$ -- 51
+write$ -- 396
+(There were 13 warnings)

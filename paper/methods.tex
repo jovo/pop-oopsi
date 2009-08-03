@@ -1,264 +1,551 @@
-Our goal is to estimate the most likely connection matrix from a population of observable neurons, given only their calcium fluorescence observations.  We take a model based approach, meaning that we first describe a parametric generative model that completely characterizes the statistics of the data, and then we derive algorithms to learn the parameters, given the data.  
+\long\def\comment#1{}
 
-We use the following conventions throughout the paper, unless indicated otherwise.  Time is discrete, taking values $t=1,\ldots,T$.  We let $X_i(t)$ indicate the state of neuron $i$ at time $t$, $X_i=\{X_i(t), t=1,\ldots, T\}$, and ${\bf X}= \{X_1, \ldots, X_N\}$.  Conditional probability distributions will be written $P[\bf F | \bf X; \bth]$, where $\bf X$ indicates some random variables, $\bth$ indicates some parameters, and a semicolon separates the two. To indicate that a random variable, $X$, is independently and identically distributed according to some distribution $P$, we have $X \overset{iid}{\sim} P$.
+\comment{ 
+Our goal is to estimate the connection matrix from a population of
+observable neurons, given only their calcium fluorescence
+observations.  We take a model based approach, meaning that we first
+describe a parametric generative model that completely characterizes
+the statistics of the data, and then we derive algorithms to learn the
+parameters, given the data.
 
+We use the following conventions throughout the paper, unless
+indicated otherwise.  Time is discrete, taking values $t=1,\ldots,T$.
+We let $X_i(t)$ indicate the state of neuron $i$ at time $t$,
+$X_i=\{X_i(t), t=1,\ldots, T\}$, and ${\bf X}= \{X_1, \ldots, X_N\}$.
+Conditional probability distributions will be written $P[\bf F | \bf
+X; \bth]$, where $\bf X$ indicates some random variables, $\bth$
+indicates some parameters, and a semicolon separates the two. To
+indicate that a random variable, $X$, is independently and identically
+distributed according to some distribution $P$, we have $X
+\overset{iid}{\sim} P$.
+}
 
 \subsection{Model} 
 \label{sec:methods:markov-setup}
-We first describe the model that characterizes the statistics of the joint spike trains of all $N$ observable neurons.  Each neuron is modeled as a generalized linear model (GLM), which is known to capture well the statistical properties of the firing of individual neurons \cite{PILL07, PAN03d, Wu07, Rigat06, OKA05}.  More specifically, we say that at time $t$, the probability of neuron $i$ spiking is given by some nonlinear function, $f(\cdot)$, of the input to that neuron at that time, $J_i(t)$.  The input is composed of: (i) some baseline firing rate, $b_i$%, (ii) some external stimulus, $\bf S(t)$, that is linearly filtered by $\bf k_i$
-, and (ii) spike history terms, $h_j(t)$, from each neuron $j$, weighted by $\w_{ij}$:
-
+We first describe a parametric generative model that characterizes the
+statistics of the (unobserved) joint spike trains of all $N$
+observable neurons, along with the observed calcium fluorescence data.
+Each neuron is modeled as a generalized linear model (GLM); this class
+of model is known to capture the statistical firing properties of the
+of individual neurons fairly accurately
+\cite{BRIL88,CSK88,BRIL92,PG00,PILL07,PAN03d,PAN04c,Rigat06,TRUC05,NYK06,KP06,Vidne08,Stevenson2009}.
+We denote the $i$-th neuron's activity at time $t$ as $n_i(t)$: in
+continuous time, $n_i(t)$ could be modeled as an unmarked point
+process, but we will take a discrete-time approach here, and so
+$n_i(t)$ will be a binary random variable.  We model the spiking
+probability of neuron $i$ via an instantaneous nonlinear function,
+$f(\cdot)$, of the filtered and summed input to that neuron at that
+time, $J_i(t)$.  The input is composed of: (i) some baseline value,
+$b_i$; (ii) some external stimulus, $S(t)$, that is linearly filtered
+by $k_i$; and (iii) spike history terms, $h_j(t)$, from each neuron
+$j$, weighted by $\w_{ij}$:
 \begin{equation} \label{eqn:glm:definition}
 \begin{array}{l}
-n_i(t)\overset{iid}{\sim} \text{Bernoulli}\big(f\big(J_i(t)\big)\big), \qquad %\\
-J_i(t)=b_i+\sum \limits_{j=1}^{N}  \w_{ij} h_{j}(t), %\\
-% p_i(t)=f(J_i(t))=f(b_i+k_i\cdot S(t)+\sum_{j=1}^{N}  \w_{ij} h_{j}(t)), \\
-%h_j(t) = (1- \Delta/\tau_h) h_j(t-1) +n_j(t) + \epsilon_{h_j}(t).
+n_i(t)\overset{iid}{\sim} \text{Bernoulli}\big(f\big(J_i(t) \big)
+\big), \qquad J_i(t)=b_i+k_i\cdot S(t)+\sum \limits_{j=1}^{N} \w_{ij}
+h_{j}(t).
 \end{array}
 \end{equation}
 
-\noindent To ensure mathematical tractability, we must impose some constraints on $f(\cdot)$ and the dynamics of $h_j(t)$.  More specifically, $f(\cdot)$ must be convex and log-concave, to ensure that the likelihood of the parameters of this model has a single maximum, facilitating efficient computations \cite{PAN03d}.  In all the below simulations, we let $f(J)=\text{e}^{\text{e}^{-J}\Delta}$, where the inclusion of $\Delta$, the time step size, ensures that the firing rate is independent of the particular time discretization of our model (see \cite{??} for a proof that this $f(\cdot)$ satisfies the above constraints).  Furthermore, as the algorithms we develop below assume Markovian dynamics, we model the spike history terms as:
-
-\begin{equation} \label{eqn:h:definition}
-h_j(t) = (1- \Delta/\tau_h) h_j(t-1) +n_j(t) + \sigma_h \sqrt{\Delta} \epsilon^h_j(t).
+To ensure computational tractability, we must impose some reasonable
+constraints on the instantaneous nonlinearity $f(\cdot)$ (which plays
+the role of the inverse of the link function in the standard GLM
+setting) and on the dynamics of the spike-history effects $h_j(t)$.
+More specifically, first, we restrict our attention to functions
+$f(\cdot)$ which ensure the concavity of the spiking loglikelihood in
+this model \cite{PAN04c}, as we will discuss at more length below.  In
+this paper, we use
+\begin{equation}
+  f(J) = P[X>0 | X \sim Poiss(e^J \Delta)] = 1 - \exp[-e^J \Delta]
 \end{equation}
+(where the inclusion of $\Delta$, the time step size, ensures that the
+firing rate scales properly with respect to the time discretization),
+though in our experience the results depend only weakly on the details
+of $f(\cdot)$ within the class of log-concave models
+\cite{LD89,PAN04c}; see \cite{Escola07} for a proof that this
+$f(\cdot)$ satisfies the required concavity constraints.
 
-\noindent where $\tau_h$ is the decay time constant for spike history terms, $\sigma_h$ is the standard deviation of noise, $\sqrt{\Delta}$ ensures that noise statistics are independent of the time discretization, and throughout this paper, $\epsilon_\cdot^\cdot$ is assumed to be an independent standard normal random variable, i.e., $\epsilon_{\cdot}^{\cdot}(t) \overset{iid}{\sim} \text{Normal}(0,1)$.  Note that this model generalizes straightforwardly to allow each neuron to have several spike history terms, each with a unique time constant, together imparting a wide variety of possible post-synaptic effects, including bursting, facilitating, and depressing synapses \cite{PAN03d}.  We assume that $\tau_h$ and $\sigma_h$ are known, and therefore our model spiking parameters $\bth^n=\{\bth^n_i\}_{i=1}^N$, where $\bth^n_i=\{\bw_i,b_i\}$, where $\bw_i=(\w_{i1},\ldots, \w_{iN})$.
+Second, because the algorithms we develop below assume Markovian
+dynamics, we model the spike history terms as:
+\begin{equation} \label{eqn:h:definition}
+h_j(t) = (1- \Delta/\tau_h) h_j(t- \Delta) +n_j(t) + \sigma_h
+\sqrt{\Delta} \epsilon^h_j(t),
+\end{equation}
+where $\tau_h$ is the decay time constant for spike history terms,
+$\sigma_h$ is a standard deviation parameter, $\sqrt{\Delta}$ ensures
+that the statistics of this Markov process have a proper
+Ornstein-Uhlenbeck limit as $\Delta \to 0$, and throughout this paper,
+$\epsilon$ denotes an independent standard normal random variable.
+Note that this model generalizes (via a simple augmentation of the
+state variable $h_j(t)$) to allow each neuron to have several spike
+history terms, each with a unique time constant, which when weighted
+and summed allow us to model a wide variety of possible post-synaptic
+effects, including bursting, facilitating, and depressing synapses;
+see \cite{Vogelstein2009} for further details.  In this paper, for
+simplicity, we assume that $\tau_h$ and $\sigma_h$ are known synaptic
+parameters, and therefore our model spiking parameters $\bth^n$ are
+given by $\{\bth^n_i\}_{i=1}^N$, where $\bth^n_i=\{\bw_i,k_i,b_i\}$,
+with $\bw_i=(\w_{i1},\ldots, \w_{iN})$.
 
-The problem of estimating functional connectivity, given a model like the one above, when neural spikes $n_i(t)$ are assumed to be directly observed, has recently received much attention \cite{PILL07}. With calcium imaging, however, we do not directly observe spike trains. Instead, fluorescent signal from the calcium indicators conveys neural activity via hidden nonlinear calcium dynamics \cite{Vogelstein2009}: 
-
-%\begin{equation}
-\begin{align} \label{eqn:ca:definition} %{l}
-C_i(t) &= C_i(t-1) + (C_i^b-C_i(t-1)) \Delta/\tau^c_i + A_i n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\
-F_i(t) &= \alpha_i S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i} \epsilon^F_i(t). \label{eqn:F:definition}
+The problem of estimating the connectivity parameters $\bw_i$ in this
+type of GLM, given a fully-observed ensemble of neural spike train
+$\{n_i(t)\}$, has recently received a great deal of attention; see the
+references above for a partial list.  In the calcium fluorescent
+imaging setting, however, we do not directly observe spike trains;
+$\{n_i(t)\}$ must be considered a hidden variable here.  Instead, each
+spike in a given neuron leads to a rapid increase in the intracellular
+calcium concentration, which then decays slowly due to various
+cellular buffering and extrusion mechanisms.  We in turn make only
+noisy, indirect, and subsampled observations of this intracellular
+calcium concentration, via fluorescent imaging techniques XXX ADD SOME
+BIOPHYSICAL CITES HERE XXX.  To perform statistical inference in this
+setting, \cite{Vogelstein2009} proposed a simple conditional
+first-order hidden Markov model (HMM) for the intracellular calcium
+concentration $C_i(t)$ in cell $i$ at time $t$, along with the
+observed fluorescence $F_i(t)$:
+\begin{align} \label{eqn:ca:definition}
+C_i(t) &= C_i(t-\Delta) + (C_i^b-C_i(t-\Delta)) \Delta/\tau^c_i + A_i
+n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\ F_i(t) &= \alpha_i
+S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i}
+\epsilon^F_i(t). \label{eqn:F:definition}
 \end{align}
-% \end{equation}
+This model can be interpreted as a simple driven autoregressive
+process: under nonspiking conditions, $C_i(t)$ fluctuates around the
+baseline level of $C_i^b$, driven by normally-distributed noise
+$\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$.
+Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium
+variable $C_i(t)$ to jump by a fixed amount $A_i$, and subsequently
+decay with time constant $\tau^c_i$.  The fluorescence signal $F_i(t)$
+corresponds to the count of photons collected at the detector per
+neuron per imaging frame.  This photon count may be modeled with
+normal statistics, with the mean and variance given by generalized
+Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}.  Because the
+parameter $K_d$ effectively acts as a simple scale factor, and is a
+property of the fluorescent indicator, we assume throughout this work
+that it is known.
 
-Eq. \eqref{eqn:ca:definition} describes evolution of intracellular calcium concentration $C_i(t)$ in the neuron $i$ at time $t$. Under normal conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$ with normally distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$.  Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium to jump by $A_i$, and subsequently decay with time constant $\tau^c_i$.  The fluorescence signal corresponding to neuron $i$ at time $t$, $F_i(t)$, corresponds to the count of photons collected at the detector per neuron per imaging frame. It is distributed according to normal statistics with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}.  Because $K_d$ effectively scales the results, and is a property of the indicator, we assume throughout this work that it is known.  Therefore, each neuron has parameters $\bth_i=\{\w_{ii}, b_i, C^b_i, \tau^c_i, A_i, \sigma^c_i, \alpha_i, \beta_i, \gamma_i, \sigma^F_i\}$ independent of the other neurons.  The $\w_{ii}$'s make up the diagonal of the functional connection matrix, $\bw=\{\bw_i\}_{i=1}^N$, yielding a total of $|\bth|=(9+N)N$ parameters for our model.  Note that collectively Eqs. \eqref{eqn:glm:definition} -- \eqref{eqn:F:definition} defined a coupled hidden Markov model (HMM) \cite{ShumwayStoffer06}.
+To summarize, Eqs. \eqref{eqn:glm:definition} --
+\eqref{eqn:F:definition} define a coupled HMM: the underlying spike
+trains $n_i(t)$ and spike history terms $h_i(t)$ evolve in a Markovian
+manner, driving the intracellular calcium concentrations $C_i(t)$,
+which are themselves Markovian, but evolving at a slower timescale
+$\tau_i^c$.  Finally, we observe only the fluorescence signals
+$\{F_i(t)\}$, which are related in a simple Markovian fashion to the
+calcium variables $C_i(t)$.
 
 
 \subsection{Goal and general strategy}  \label{sec:methods:goal}
 
-Given the above model, our goal is to estimate the functional connectivity matrix, $\bw$, given calcium imaging observations ${\bf F}$. A natural choice is find the \emph{maximum a posteriori} (MAP) estimate:
+Our primary goal is to estimate the connectivity matrix, $\bw$, given
+the observed set of calcium fluorescence signals ${\bf F}$.  We must
+also deal with a number of nuisance parameters: the spiking parameters
+$\{k_i, b_i\}$ and the calcium parameters $\{C^b_i, \tau^c_i, A_i,
+\sigma^c_i, \alpha_i, \beta_i, \gamma_i, \sigma^F_i\}$.  We addressed
+the problem of estimating these latter parameters in earlier work
+\cite{Vogelstein2009}; thus our focus here will be on $\bw$.  A
+Bayesian approach is natural here, since we have a good deal of prior
+information about neural connectivity; see \cite{Rigat06} for a
+related discussion.  However, a fully-Bayesian approach, in which we
+numerically integrate over the very high-dimensional parameter $\theta
+= \{\bw, k_i, b_i, C^b_i, \tau^c_i, A_i, \sigma^c_i, \alpha_i,
+\beta_i, \gamma_i, \sigma^F_i\}$, is not particularly attractive here,
+from a computational point of view.  Thus we take a compromise
+approach and compute \emph{maximum a posteriori} (MAP) estimates for
+the parameters via an expectation-maximization (EM) algorithm in which
+the sufficient statistics are computed by a hybrid blockwise Gibbs
+sampler and sequential Monte Carlo (SMC) method.
 
-\begin{equation}\label{eqn:MAP}
-\hbw=\argmax_{\bw} P[\bw| \bF] = \argmax_{\bw} \iint P[\bth| \bX, \bF) d\bX d(\bth \backslash \bw]
-\end{equation}
-
-\noindent where $\bth \backslash \bw$ is the set of parameters excluding the functional connectivity matrix.  Because directly solving Eq. \eqref{eqn:MAP} is intractable, we utilize the Expectation Maximization (EM) framework, in which one recursively updates the expected value of the joint distribution of $(\bX, \bF)$ (E step), and then maximizes all the parameters (M step):
-
+More specifically, we iterate the steps:
 \begin{align*}
-\textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) = E_{P[\bX | \bF; \bth^{(l+1)}]}[ \ln P[\bF, \bX | \bth^{(l)}]] = \int P[\bX | \bF; \bth^{(l+1)}] \ln P[\bF, \bX | \bth^{(l)}] d \bX  \\
-\textbf{M step} &\text{: Solve } \bth^{(l+1)} = \argmax_{\bth} Q(\bth,\bth^{(l)})  
+\textbf{E step} &\text{: Evaluate } Q(\bth^{(l+1)},\bth^{(l)}) =
+E_{P[\bX | \bF; \bth^{(l+1)}]} \log P \left[ \bF, \bX | \bth^{(l)}
+\right] = \int P[\bX | \bF; \bth^{(l+1)}] \log P[\bF, \bX | \bth^{(l)}]
+d \bX \\ \textbf{M step} &\text{: Solve } \bth^{(l+1)} =
+\argmax_{\bth} \left\{ Q(\bth,\bth^{(l)}) + \log P(\theta) \right\},
 \end{align*}
+where $\bX$ denotes the set of all hidden variables $\{ C_i(t),
+n_i(t), h_i(t) \}_{i \leq N, t \leq T}$ and $P(\theta)$ denotes a
+(possibly improper) prior on the parameter space $\theta$.  According
+to standard EM theory \cite{DLR77,McLachlanKrishnan96}, each iteration
+of these two steps is guaranteed to increase the log-posterior $\log
+P(\bth^{(l+1)} | \bF)$, and will therefore lead to at least a locally
+maximum a posteriori estimator.
 
-Because our model is a coupled HMM, $Q$ simplifies:
+Now our major challenge is to evaluate the auxiliary function
+$Q(\bth^{(l+1)},\bth^{(l)})$ in the E-step.  Because our model is a
+coupled HMM, as discussed in the previous section, $Q$ simplifies
+considerably \cite{RAB89}:
+\begin{eqnarray}
+  Q(\bth,\bth^{(l)}) &=& \sum_{it} P[C_i(t) | \bF; \bth] \times \log
+P[F_i(t)|C_i(t); \alpha_i, \beta_i, \gamma_i, \sigma^F_i] \nonumber \\
+&+& \sum_{it} P[C_i(t), C_i(t-\Delta), n_i(t) | \bF; \bth] \times \log
+P[C_i(t)|C_i(t-\Delta), n_i(t); C^b_i, \tau^c_i, A_i, \sigma^c_i]
+\nonumber \\ &+& \sum_{it} P[n_i(t), \bh(t) | \bF; \bth] \times \log
+P[n_i(t)| \bh(t); b_i, k_i, \bw_i, S(t)],
+\label{eqn:loglik:definition-expl}
+\end{eqnarray}
+where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Thus we need only compute
+low-dimensional marginals of the full posterior distribution $P[\bX(t)
+| \bF; \bth]$; specifically, we need pairwise marginals, of the form
+$P[X_i(t), X_i(t-1) | \bF; \bth]$.  The high dimensionality of the
+hidden variable $\bX$ necessitates the development of specialized
+blockwise Gibbs-SMC sampling methods, as we describe in sections
+\ref{sec:methods:indep} and \ref{sec:methods:joint} below.  Once we
+have obtained these marginals, the M-step breaks up into a number of
+independent optimizations that may be computed in parallel and which
+are therefore relatively straightforward (section
+\ref{sec:methods:parameters HMM}); see section
+\ref{sec:methods:specific_implementation} for a pseudocode summary
+along with some specific implementation details.
 
-\begin{multline}\label{eqn:loglik:definition-expl}
-Q(\bth,\bth^{(l)}) = 
-\sumit 
-P[C_i(t) | F_i; \bth_i] \times \ln P[F_i(t)|C_i(t); \bth_i] 
-\\ + P[C_i(t), C_i(t-1) | F_i; \bth_i] \times \ln P[C_i(t)|C_i(t-1), n_i(t); \bth_i] 
-\\ + P[n_i(t), \bh(t) | \bF; \bth] \times \ln P[n_i(t)| \bh(t); \bth^n_i],
-\end{multline}
-
-\noindent where $\bh(t)=\{h_i(t)\}_{i=1}^N$.  Note that while the first two terms in Eq. \eqref{eqn:loglik:definition-expl} only require posteriors marginalized over each neuron, and all but nearest time bins, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$, whereas the last term requires the joint posterior over all neurons (but marginalized over time), $P[\bX(t) | \bF; \bth^n]$.  
-
-Unfortunately, analytic solutions for all these posteriors are intractable, so we are forced to use approximate methods to estimate them.  To estimate $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ --- hereafter called ``marginal posteriors'' ---  we utilize a forward-backward procedure that discretize the integrals by sampling \cite{DFG01, MINKAPHD, Fearnhead2003, koyama08, Andrieu2007, NBR03}.  These sequential Monte Carlo (SMC) algorithms (or, ``particle filters'') operate very efficiently, scaling linearly with time \cite{RAB89}. However, as the dimensionality of the hidden state space increases, importance sampling becomes relatively inefficient.  For a population of about 50 neurons, the dimensionality of our model would be $3N=150$ --- too large for existing SMC methods \cite{??}.  
-
-To solve this problem, we propose a hybrid Markov Chain Monte Carlo (MCMC) Gibbs sampling strategy taking advantage of the specific structure of the model Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition}, namely, that it can be viewed as a set of $N$ coupled HMM models. Gibbs sampling is a procedure for obtaining samples from high-dimensional distributions $P[{\bf X}]$ by sampling from low-dimensional conditional distributions $P[X_{i}|{\bf X}_{\i}]$  \cite{Gelfand1990}.  This sampling procedure reduces intractable high-dimensional sampling problems to sequences of tractable low-dimensional subproblems.  Below, we propose to sample in blocks of one spike train at a time, using MCMC to sample entire spike trains.
-
-The maximization step of EM requires maximizing the conditional expectation of $\ln P[{\bf X}, {\bf F} | \bth]$ given such samples. Although this is a maximization over $(9+N)N$ parameters, the special structure of Eq. \eqref{eqn:loglik:definition-expl} allows one to simplify this optimization problem dramatically by performing optimization with respect to each neuron independently.  
-
-Our EM algorithm therefore requires solving three problems: (i) estimating marginal posteriors over neurons, $P[X_i(t), X_i(t-1) | F_i; \bth_i]$ using SMC, and using them to learn the most likely parameters governing each neuron, $\bth_i$, assuming each neuron is independent,  (iii) estimating the joint posteriors over all neurons,  $P[{\bf X}| \bF; \bth]$, and (iii) solving learning the functional connection matrix, $\bw$, by maximizing conditional expectation of  $\ln P[{\bf X}, {\bf F}| \bth^n]$.  Below, we describe each of these steps in detail.
-
-
-\subsection{Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}
+\subsection{Initialization of ``internal'' parameters via sequential
+  Monte Carlo methods}
 \label{sec:methods:indep}
 
-As stated above, our goal here is to derive an algorithm to efficient estimate $P[X(t), X(t-1) | F; \bth]$, which we refer to as the marginal posterior over each neuron (but note that it is also marginalized over all but nearest time bins).  As this was discussed at length in \cite{Vogelstein2009}, here we only provide a brief overview.  The standard forward-backward equations provide these posteriors, assuming the below integrals can be evaluated:
-
-% \begin{align}
-% 	P[X(t) | F(1), \ldots, F(t)] &= \frac{1}{Z} P[F(t)| X(t)] \int P[X(t) | X(t-1)] P[X(t-1) | F(1), \ldots, F(t-1)] dX(t-1) \label{eqn:forward} \\
-% 	P[X(t), X(t-1) | F] &= P[X(t) | F] \frac{P[X(t) | X(t-1)] P[X(t-1) | F(1), \ldots, F(t-1)]}{\int P[X(t) | X(t-1)] P[X(t-1) | F(1), \ldots, F(t-1)] dX(t-1)} \label{eqn:backward}
-% \end{align}
+We begin by constructing relatively cheap, approximate preliminary
+estimators for the nuisance parameters $\theta \backslash \bw$ (i.e.,
+all of the parameters except the connectivity matrix $\bw$; that is,
+all of the parameters which are ``internal'' to neuron $i$).  The idea
+is to initialize our estimate $\theta^{(0)}$ by assuming that each
+neuron is observed independently.  Thus we want to compute $P[X_i(t),
+X_i(t-\Delta) | \bF_i; \bth_i]$, and solve the M-step for each
+individual parameter $\theta_i$, with the connection matrix $\bw$ held
+fixed.  This single-neuron case is much simpler, and has been
+discussed at length in \cite{Vogelstein2009}; therefore, we only
+provide a brief overview here.  The standard forward and backward
+recursions provide these posteriors \cite{ShumwayStoffer06}:
 \begin{align}
-	P[X_t | F_{1:t}] &= \frac{1}{Z} P[F_t| X_t] \int P[X_t | X_{t-1}] P[X_{t-1} | F_{1:t-1}] dX_{t-1} \label{eqn:forward} \\
-	P[X_t, X_{t-1} | F] &= P[X_t | F] \frac{P[X_t | X_{t-1}] P[X_{t-1} | F(1), \ldots, F_{t-1}]}{\int P[X_t | X_{t-1}] P[X_{t-1} | F_{1:t-1}] dX_{t-1}} \label{eqn:backward}
+  P[X_i(t) | F_i(0:t)] &\propto P[F_i(t)| X_i(t)] \int P[X_i(t)
+| X_i(t-\Delta)] P[X_i(t-\Delta) | F_i(0:t-\Delta)] dX_i(t-\Delta)
+\label{eqn:forward} \\ P[X_i(t), X_i(t-\Delta) | F_i] &= P[X_i(t) | F_i]
+\frac{P[X_i(t) | X_i(t-\Delta)] P[X_i(t-\Delta) |
+F_i(0:t-\Delta)]}{\int P[X_i(t) | X_i(t-\Delta)] P[X_i(t-\Delta) |
+F_i(0:t-\Delta)] dX_i(t-\Delta)},
+\label{eqn:backward}
 \end{align}
+where we have dropped the conditioning on the parameters $\theta$ for
+brevity's sake.  Because these integrals cannot be analytically
+evaluated for our model, we approximate them using SMC (``marginal
+particle filtering'') methods \cite{DGA00,DFG01,GDW04}; see
+\cite{Vogelstein2009} for details on the proposal density and
+resampling methods used here.  The output of these SMC techniques
+comprise an array of particle positions $\{X_i^{(l)}(t)\}$, where $l$
+indexes the particle number, and a discrete approximation to the
+marginals $P[X_i(t), X_i(t-\Delta) | F_i]$, 
+\begin{equation}
+  P[X_i(t), X_i(t-\Delta) | F_i] \approx \sum_{j,l}
+  r_i^{(j,l)}(t,t-\Delta) \delta \left[ X_i(t) - X_i^{(l)}(t) \right]
+  \times \delta \left[ X_i(t-\Delta) - X_i^{(j)}(t-\Delta) \right],
+  \label{eq:particle-fb}
+\end{equation}
+where $r_i^{(j,l)}(t,t-\Delta)$ denotes the weight attached to the
+particle pair with positions $\left( X_i^{(l)}(t), X_i^{(j)}(t-\Delta)
+\right)$.
 
+As discussed above, the sufficient statistics for estimating the
+parameters for each neuron, $\bth_i$, are exactly these marginal
+posteriors.  As shown in Eq. \eqref{eqn:loglik:definition-expl}, the
+M-step decouples into three independent subproblems.  The first term
+depends on only $\{\alpha_i, \beta_i, \gamma_i, \sigma_i\}$; since
+$\log P[F_i(t)|C_i(t); \theta_i]$ is quadratic (by our Gaussian
+assumption on the fluorescent observation noise), we can estimate
+these parameters by solving a weighted regression problem
+(specifically, we use a coordinate-optimization approach: we solve a
+quadratic problem for $\{\alpha_i, \beta_i\}$ while holding
+$\{\gamma_i, \sigma_i\}$ fixed, then estimate $\{\gamma_i,\sigma_i\}$
+by the usual residual error formulas while holding $\{\alpha_i,
+\beta_i\}$ fixed).  Similarly, the second term requires us to optimize
+over $\{\tau_i^c, A_i, C_i^b\}$ using a quadratic solver, and then we
+use the residuals to estimate $\sigma_i^c$.  Note that all the
+parameters mentioned so far are constrained to be non-negative, but
+may be solved efficiently using standard quadratic program solvers.
+Finally, the last term, assuming neurons are independent, may be
+expanded:
+\begin{equation} 
+  E [\log P[n_i(t), \bh_i(t) | \bF; \bth]] = P[n_i(t), h_i(t) | F_i]
+\log f (J_i(t)] + (1-P[n_i(t), h_i(t) | F_i]) \log [1- f(J_i(t))];
+\label{eqn:bw}
+\end{equation}
+since $J_i(t)$ is a linear function of $(b_i,k_i,\bw_i)$, and the
+right-hand side of (\ref{eqn:bw}) is concave in $J_i(t)$, we see that
+the third term in \eqref{eqn:loglik:definition-expl} is a sum of terms
+which are concave in $(b_i,k_i,\bw_i)$, and may therefore be solved
+efficiently using any convex optimization method, e.g.\ Newton-Raphson
+or conjugate gradient ascent.
 
-\noindent where we have dropped the subscript $i$, replaced $(t)$ with $_t$, introduced notation that $X_{1:t}=(X(1),\ldots, X(t))$, and dropped the conditioning on the parameters for brevity sake.  Because the integral in Eq. \eqref{eqn:forward} cannot be analytically evaluated for our model, we approximate it with a sum using a sequential Monte Carlo (SMC) framework.  More specifically, we sample  from $x_t \sim P[X_t | X_{t-1}, F_{1:t}]$, and call each sample a ``particle''.  Given an entire particle swarm, we can compute the relative likelihood (or ``weight'') of each particle:
-
-\begin{align}
-	P[x_t | F_{1:t}] = \frac{1}{Z}\frac{P[F_t | x_t] P[x_t | x_{t-1}] P[x_{t-1} | F(1), \ldots, F_{t-1}]} {P[x_t | x_{t-1}, F_{1:t}]}
-\end{align}
-
-\noindent where $Z$ is a normalizing constant ensuring that $\sum P[x_t | F_{1:t}]=1$.  Given these weights, we resample to reduce the variance of the particles.  Recursing these three steps (sample, compute weights, resample) for $t=1, \ldots, T$ completes the approximation to Eq. \eqref{eqn:forward}.  We can now plug these approximations into Eq. \eqref{eqn:backward}, to recursively obtain particle approximations to marginal posteriors over neurons, $P[X_t, X_{t-1} | F]$.  Trivially, we can sum over $X_t$ to get marginal posteriors of $X_{t-1}$.
-
-The sufficient statistics for estimating the parameters for each neuron, $\bth_i$, are these very marginal posteriors.  As shown in Eq. \eqref{eqn:loglik:definition-expl}, this maximization problem decouples into separate subproblems.  Specifically, the first term depends on only $\{\alpha_i, \beta_i, \gamma_i, \sigma_i\}$, which we can estimate by recursively solving a quadratic problem for $\{\alpha_i, \beta_i\}$ while holding $\{\gamma_i, \sigma_i\}$ fixed, and then holding $\{\alpha_i, \beta_i\}$ fixed, while estimating $\{\gamma_i,\sigma_i\}$.  Considering only the second term, we can estimate $\{\tau_i^c, A_i, C_i^b\}$ again using a quadratic solver, and use the residuals to estimate $\sigma_i^c$.  Note that all the parameters mentioned so far are constrained to be non-negative, but may be solved very efficiently using Matlab's \texttt{quadprog}, providing the appropriate constraints (and the gradients and Hessians, if desirable).  Finally, the last term, assuming neurons are independent,  may be expanded:
-
-\begin{multline} \label{eqn:bw}
-	E [\ln P[n_i(t), \bh_i(t) | \bF; \bth]] = P[n_i(t), h_i(t) | F_i] \ln (1-\exp\{-\exp\{b_i + \w_{ii} h_i(t)\}\Delta\})
-	\\ +  (1-P[n_i(t), h_i(t) | F_i]) (-\exp\{b_i + \w_{ii} h_i(t)\}\Delta)] 
-\end{multline}
-
-\noindent which is concave in $\{b_i, \w_{ii}\}$, and may therefore be solved efficiently using any gradient ascent solver. In practice, we've found that imposing constraints on $\{b_i, \w_{ii}\}$ improves both the robustness and efficiency of estimating these parameters.  Our rational is that the double exponential is such a strong nonlinearity, that as the absolute value of these parameters approaches $\approx 10$, the likelihood becomes effectively flat.  We therefore restrict these parameters to be within $[-5,15]$, using Matlab's \texttt{fmincon}.
-
-Our procedure therefore is to initialize the parameters for each neuron using some default values that we've found to be effective in practice, and then recursively (i) estimate the marginal posteriors (E step), and (ii) maximize the parameters (M step), using the above described approach.  We iterate these two steps until the change in parameters does not exceed some minimum threshold, $\eta^n$.  We can then use the marginal posteriors from the last iteration to seed our Gibbs sampling procedure described below, to obtain an estimate of $P[\bh(t) | \bF]$.
+Our procedure therefore is to initialize the parameters for each
+neuron using some default values that we have found to be effective in
+practice, and then recursively (i) estimate the marginal posteriors (E
+step), and (ii) maximize the parameters (M step), using the above
+described approach.  We iterate these two steps until the change in
+parameters does not exceed some minimum threshold.  We can then use
+the marginal posteriors from the last iteration to seed the blockwise
+Gibbs sampling procedure described below, to obtain a rough estimate
+of $P[\bh(t) | \bF]$.
 
 \subsection{Estimating joint posteriors over weakly coupled neurons}
 \label{sec:methods:joint}
 
-Computing the most likely estimates of the functional connectivity matrix, $\bw$, requires maximizing the third term of Eq. \eqref{eqn:loglik:definition-expl}, with respect to $\bw=\{w_{ij}\}$, which can be expanded:
+Now we turn to the key problem: computing $P(\bh(t),n_i(t) |
+F,\theta)$, which encapsulates the sufficient statistics for
+estimating the connectivity matrix $\bw$ (recall equation
+(\ref{eqn:loglik:definition-expl})).  The SMC methods described in the
+preceding section only provide the marginals over each neuron,
+$P[X_i(t) | F_i; \bth_i]$; these methods may in principle be extended
+to obtain the desired full posterior $P[\bX(t) | \bF; \bth]$, but
+since the SMC algorithm is fundamentally a sequential importance
+sampling method, these techniques scale poorly as the dimensionality
+of the hidden state $\bX(t)$ increases \cite{BickelBengtsson08}.  Thus
+we need a different approach.
 
-\begin{multline} \label{eqn:bws}
-	E [\ln P[n_i(t), \bh(t) | \bF; \bth]] = P[n_i(t), \bh(t) | F_i; \bth] \ln (1-\exp\{-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta\})
-	\\ +  (1-P[n_i(t), \bh(t) | F_i; \bth]) (-\exp\{b_i + \sum_j \w_{ij} h_j(t)\}\Delta)].
-\end{multline}
+One very simple idea is to use a Gibbs sampler: sample sequentially
+from
+\begin{align}
+X_i(t) \sim P[X_i(t) | \bX_{\i}, X_i(0), \ldots, X_i(t-\Delta),
+ X_i(t+\Delta), \ldots, X_i(T), \bF; \bth],
+\end{align} 
+looping in some order over all cells $i$ and all time bins $t$.
+Unfortunately, this approach is likely to mix very poorly, due to the
+strong temporal dependence between $X_i(t)$ and $X_i(t+\Delta)$.
+Instead, we propose to use a blockwise Gibbs strategy, sampling each
+spike train as a block:
+\begin{align}
+	X_i \sim P[X_i | \bX_{\i}, \bF; \bth];
+\end{align} 
+if we can draw these blockwise samples $X_i = \{X_i(t)\}$ efficiently
+for a large subset of timebins $t$ simultaneously, then we would
+expect the resulting Markov chain to mix much more quickly than the
+naive element-wise Gibbs chain, since by assumption the hidden
+variables $X_i,X_j$ are weakly dependent for different cells $i \neq
+j$, and Gibbs is most efficient for weakly-dependent variables.
 
-\noindent This requires having the joint posterior, $P[\bX | \bF; \bth]$, over \emph{all} neurons.  However, the algorithm described in Section \ref{sec:methods:indep} merely provides the marginals over each neuron, $P[X_i(t) | F_i; \bth_i]$.  Therefore, in this section, we describe two approaches to infer the joint posteriors: one that makes an independence assumption, and one that is exact.
+So, how can we efficiently sample from $P[X_i | \bX_{\i}, \bF; \bth]$?
+One attractive approach is to try to repurpose the SMC methods
+described above, which are quite effective for drawing approximate
+samples from $P[X_i | \bX_{\i}, \bF_i; \bth]$ for one neuron $i$ at a
+time.  Recall that sampling from an HMM is in principle easy by the
+``propagate forward, sample backward'' method: we first compute the
+forward probabilities $P[X_i(t) | \bX_{\i}(0:t), \bF(0:t); \bth]$
+recursively for timesteps $0$ up to $T$, then sample backwards from
+$P[X_i(t) | \bX_{\i}(0:T), \bF(0:T), X_i(t+\Delta); \bth]$.  This
+approach is powerful because each sample requires just linear time to
+compute (i.e., $O(T/\Delta)$ time, where $T/\Delta$ is the number of
+desired time steps).  Unfortunately, in this case we can only compute
+the forward probabilities approximately (with the SMC forward
+recursion (\ref{eqn:forward})), and so therefore this attractive
+forward-backward approach only provides approximate samples from
+$P[X_i | \bX_{\i}, \bF; \bth]$, not the exact samples required to
+establish the validity of the Gibbs method.
 
-\subsubsection{Independent assumption for approximating the joint posteriors}
+Of course, in principle we should be able to use the
+Metropolis-Hastings (M-H) algorithm to correct these approximate
+samples.  The problem is that the M-H acceptance ratio in this setting
+involves a high-dimensional integral over the set of paths that the
+particle filter might possibly trace out, and is therefore difficult
+to compute directly.  \cite{Andrieu2007} discuss this problem at more
+length, along with some proposed solutions.  However, a slightly
+simpler approach was introduced by \cite{NBR03}.  Their idea is to
+exploit the $O(T/\Delta)$ forward-backward sampling method by
+embedding a discrete Markov chain within the continuous state space
+$\mathcal{X}_t$; the state space of this discrete embedded chain is
+sampled randomly according to some distribution $\rho_t$ with support
+on $\mathcal{X}_t$.  It turns out that an appropriate acceptance
+probability (defined in terms of the original state space model
+transition and observation probabilities, along with the auxiliary
+sampling distributions $\rho_t$) may be computed quite tractably,
+guaranteeing that the samples produced by this algorithm form a Markov
+chain with the desired equilibrium density.  See \cite{NBR03} for
+details.
 
-If the SNR in the calcium imaging is high,  the fluorescence data of each neuron provides nearly all the information about spike times.  Thus, the joint posterior approximately factorizes into a product of the marginal posteriors for each neuron:
+We can apply this embedded-chain method quite directly here to sample
+from $P[X_i | \bX_{\i}, \bF; \bth]$.  The one remaining question is
+how to choose the auxiliary densities $\rho_t$.  We would like to
+choose these densities to be close to the desired marginal densities
+$P[X_i(t) | \bX_{\i}, \bF; \bth]$, and conveniently, we have already
+computed a good (discrete) approximation to these densities, using the
+SMC methods described in the last section.  The algorithm described in
+\cite{NBR03} requires that $\rho_t$ be continuous densities, so we
+simply convolve our discrete SMC-based approximation (specifically,
+the marginal of (\ref{eq:particle-fb})) with an appropriate normal
+density to arrive at a very tractable mixture-of-Gaussians
+representation for $\rho_t$.
 
+Thus, to summarize, our procedure for sampling from the desired joint
+state distributions $P(\bh(t),n_i(t) | F,\theta)$ has a
+Metropolis-within-blockwise-Gibbs flavor, where the internal
+Metropolis step is replaced by the $O(T/\Delta)$ embedded-chain method
+introduced by \cite{NBR03}, and the auxiliary densities $\rho_t$
+necessary for implementing the embedded-chain sampler are obtained
+using the SMC methods from \cite{Vogelstein2009}.
+
+\subsubsection{A cheaper high-SNR approximation of the joint posteriors}
+\label{sec:cheaper-high-snr}
+
+If the SNR in the calcium imaging is sufficiently high, then by
+definition the observed fluorescence data $F_i$ will provide enough
+information to exactly determine the underlying hidden variables
+$X_i$.  Thus, in this case the joint posterior approximately
+factorizes into a product of marginals for each neuron $i$:
 \begin{equation} \label{eqn:indep_approx}
-	P[{\bf X}(t)|{\bf F};\theta]  \approx \prod_{i=1}^N P[X_i(t)|F_i; \bth_i] = P[n_i(t)| h_i(t), F_i; \bth_i] \prod_{j=1}^N P[h_j(t)|F_j; \bth_j]. 
+  P[{\bf X}|{\bf F};\theta] \approx \prod_{i=1}^N P[X_i|F_i; \bth].
 \end{equation}
-	
-\noindent Fortunately, we have already estimated all the above marginals using the SMC methods described above. Therefore, we sample spike trains and spike histories for each neuron (with replacement) from our particle swarm, $G(t)$, where $G(t)=\{X_i^{(l)}(t):  X_i^{(l)}(t) \sim P[X_i(t)|\{{\bf F}_i;\theta_i]$,  and then let our estimate of $P[n_i(t), \bh(t) | \bF; \bth]$ be the product of marginals for each sample.
+We can take advantage of this representation because we have already
+estimated all the above marginals using the SMC methods described in
+section \ref{sec:methods:indep}.  In particular, we can obtain the
+sufficient statistics $P(\bh(t),n_i(t) | \bF,\theta)$ by forming a
+product over the marginals $P(X_i(t) | \bF_i,\theta)$ obtained from
+(\ref{eq:particle-fb}).  This approximation entails a very significant
+gain in efficiency for two reasons: first, it obviates the need to
+generate joint samples via the expensive blockwise-Gibbs approach
+described above; and second, because we can very easily parallelize
+the SMC step, inferring the marginals $P[X_i(t) | \bF_i; \bth_i]$ and
+estimating parameters $\bth_i$ for each neuron on a separate
+processor.  We will discuss the empirical accuracy of this
+approximation in more depth in the Results section.
 
-We refer to such procedure for estimating the joint posterior as the independent approximation. Depending on the accuracy of such approximation, it may or may not be acceptable for the estimation of the true functional connectivity matrix $\bw$. However, as we show below, it is indeed the case that the independent approximation is adequate here for calcium imaging with reasonable SNR.  In such scenarios, we obtain a considerable speed-up in processing, not just because it obviates the need to generate joint samples, but also because we can parallelize the algorithm, inferring the marginals $P[X_i(t) | \bF_i; \bth_i]$ and estimating parameters $\bth_i$ for each neuron on a separate processor.  This will be required for estimating the functional connection matrix online, as will be discussed more in Section \ref{sec:discussion}.
-
-\subsubsection{An exact sampling procedure to estimate the joint posteriors}
-
-As mentioned above, the sufficient statistic for computing the maximum likelihood estimate of the functional connection matrix, $\bw$, is the joint posterior, $P[\bX(t) | \bF; \bth^n]$.  Unfortunately, the SMC approach described in Section \ref{sec:indep} does not scale well as the number of hidden states increases.  Therefore, our aim in this section is to develop an algorithm that builds on top of the SMC approach, that yields the sufficient statistics of interest.  A relative naive approach would be to use a vanilla Gibbs sampler to approximate the joint posteriors, of the form:
-
-\begin{align}
-	X_i(t) \sim P[X_i(t) | \bX_{\i}, X_i(1), \ldots, X_i(t-1), X_i(t+1), \ldots, X_i(T), \bF; \bth^n].
-\end{align} 
-
-\noindent Unfortunately, this approach is likely to mix very poorly, due to the strong temporal dependence between $X_i(t)$ and $X_i(t+1)$, for all $t$.  Instead, we propose to use a block-Gibbs strategy, sampling each spike train as a block:
-
-\begin{align}
-	X_i \sim P[X_i | \bX_{\i}, \bF; \bth^n].
-\end{align} 
-
-\noindent which is likely to mix quickly, given that spike trains are only weakly coupled. The SMC methods described above, however, yield only marginals over time, $P[X_i(t), X_i(t+1) | \bF; \bth]$, and are therefore insufficient.  We could sample the spike train from the set of particle swarms generated above (using a variant of finite forward-backward procedure, related to the Viterbi procedure \cite{RAB89}).  Such procedure, however, is known to result in biased samples \cite{Andrieu2007, NBR03}.  Specifically, such samples are distributed with the probability density
-
-\begin{align}
-X_i &\sim \frac{1}{Z(G)} P[X_i(t=1)| \bw]\prod\limits_{t=2}^{T}P[X_i(t)| X_i(t-1); \bw] \prod_{t=1}^{T} P[F_i(t)|X_i(t); \bth_i] \\
-Z(G) &= \sum_{\{X_i(t)\}\in G} P[X_i(t=1)| \bw] \prod_{t=2}^{T-1}P[X_i(t)|X_i(t-1); \bw] \prod_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
-\end{align}
-
-\noindent where $G=\prod\limits_t G(t)$ is the collection of particle swarm samples $G(t)=\{X_i^{(l)}(t):  X_i^{(l)}(t) \sim P[X_i(t)|\{{\bf F}_i;\theta_i]$.  In particular, such probabilities of different sequences differ from the true probabilities by the difference in the estimated normalization constant $Z(G)$ from the true normalization $Z$.  This bias may be removed by embedding SMC into a larger importance sampling algorithm, correcting for bias $Z(G)$ by retaining SMC samples with probability $\sim Z(G)$ \cite{Andrieu2007}. In particular, Andrieu et al. \cite{Andrieu2007} show that as the size of the particle swarm grows the acceptance ratio of such importance sampling tends to unity.
-
-A different approach, developed by Neal et al. \cite{NBR03}, is to use Markov Chain Monte Carlo method (MCMC) with the Markov chain constructed specifically to have the necessary equilibrium distribution $P[\bX| {\bf F}; \theta]$. The Markov Chain is constructed as follows. First, continuous-state HMM is replaced with a discrete HMM on the grid, $G=\prod G(t)$. At each time-point $t$, we therefore define a pool of $L$ grid-points $\{X_i^{(l)}(t)\}$ drawn independently from a given proposal density $\rho_i^t[X_i(t)]$. The grid $G$ is then constructed as a direct product of such pools.  Second, sequence of states is selected over such grid with the probability
-
-\begin{equation}\label{eqn:nealprob}
-X_i\sim P[X_i(t=1)|{\bf X}_{\i}; \bth_i]\prod\limits_{t=2}^{T}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bth_i] \prod\limits_{t=1}^{T} \frac{P[F_i(t)|X_i(t); \bth_i)}{\rho_i^t[X_i(t)]}.
-\end{equation}
-
-This may be done directly and efficiently using forward-backward procedure with the observation probability modified to $P[F_i(t)|X_i(t), \bth_i]\rightarrow P[F_i(t)|X_i(t), \bth_i)/{\rho_i^t[X_i(t)]}$.  XXX Y: i'm not sure what you mean here.  XXX
-
-Finally, states from the chosen sequence of states $X_i$ should be included in the pools $G(t)$ for the next MCMC step, $X_i(t)\in G(t)$, and the above two steps should be repeated with the new grid $G$. It is shown in \cite{NBR03} that the limiting distribution of such Markov chain is the correct unbiased distribution
-
-\begin{equation}
-X_i \sim P[X_i(t=1)|{\bf X}_{\i}; \bth_i]\prod\limits_{t=1}^{T-1}P[X_i(t)|X_i(t-1), {\bf X}_{\i}; \bth_i]\prod\limits_{t=1}^{T}P[F_i(t)|X_i(t); \bth_i].
-\end{equation}
-
-The advantage of Neal's method (over embedding SMC into an importance sampler) are that (i) the grids $G$ are simple to prepare, and (ii) no importance sampling rejection step is required, as such a  step is implicitly accommodated in the forward-backward procedure via modified observation probability Eq. \eqref{eqn:nealprob}.
-
-The proposal density, $\rho_i^t[X_i(t)]$, may be chosen arbitrary as long as it has sufficiently large support.  To achieve faster convergence, we use marginal densities $P[X_i(t)|{\bf X}_{\i}, \bf F; \bth_i]$ computed from the conventional SMC algorithm. Such an efficient proposal density allows the Markov Chain to converge extremely quickly.  More specifically, we let $\rho_i^t[X_i(t)] = \rho^i_t[C_i(t)] \rho^i_t[n_i(t)] \rho^i_t[h_i(t)].$  The proposals for calcium, $\rho^i_t[C_i(t)]$, were mixtures of Gaussians centered on particles from the particle swarm $C_i^{(l)}(t)$ with the variances $\approx var\left[C_i^{(l)}(t)-C_i^{(l')}(t) \right]$. $\rho^i_t[n_i(t)]$ was taken to be Bernoulli distribution with the spike probability estimated from the particle swarm. Finally, $\rho_i^t[h_i(t)]$ XXX ? XXX.  Such samples for single neurons from the conditional probability distributions $P[X_i|{\bf X}_{\i}, \bf F; \theta]$ may be subsequently used in block-Gibbs sampling procedure to acquire joint sample from $P[{\bf X}| {\bf F}; \theta]$.  We repeat the MCMC procedure to sample blocks of one neuron state-sequence at a time $X_i\sim P[X_{i}|{\bf X}_{\i},{\bf F}; \bth_i]$, sequentially for all neurons $i=1\ldots N$ for $N_G$ Gibbs cycles (in practice, we typically take $N_G \approx 10$).  
-
-Importantly, this hybrid MCMC-Gibbs procedure is sufficiently general to deal with arbitrary spike history terms.  More specifically, although we only require $P[\bX(t) | \bF; \bth]$ (i.e., the joint posterior marginalized over time), we obtain $P[\bX | \bF; \bth]$, the full joint posterior.  Thus, for the above model, upon obtaining the full joint posterior, we marginalize over time.  We could, however, have let the probability of a spike from a given neuron be governed by:
-
-\begin{align}
-n_i(t) \sim f(b_i+\sum_{j=1}^{N}\sum_{t'<t} w_{ij}(t')).
-\end{align}
-
-\noindent Note that this is a generalization with respect to Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition} in two ways.  First, we no longer impose Markovian dynamics on the spike histories.  Second, the shape of the PSP due to a presynaptic spike is \emph{synapse} specific, whereas in the above model we assumed that the PSP shape was identical for all synapses sharing a common presynaptic neuron (i.e., spike history terms were indexed only by $j$, not also $i$).  
 
 \subsection{Estimating the functional connectivity matrix} \label{sec:methods:parameters HMM}
 
-Computing the maximum likelihood estimates of the functional connectivity matrix, $\bw$, is an optimization problem with $N^2$ variables. By construction, however, log-likelihood is convex in $\bw$, and, log-likelihoods for different neurons, Eq. \eqref{eqn:bws}, are independent and may be maximized separately. Estimating $\bw$ thus involves solving of $N$ separable $N+1$-dimensional convex optimization subproblems (the $+1$ arises because the baseline parameter, $b_i$, is coupled to the weight parameters), which can be done efficiently using standard algorithms such as Newton-Rapson methods.We used standard Matlab's nonlinear optimization function \texttt{fmincon}, provided in optimization toolbox, to solve this problem for up to $N=500$ neurons.  Constraints are important here, because the likelihood flattens as $|\w_{ij}|$ increases, and numerical error (for double precision) starts dominating.  Therefore, we impose the constraint that $|\w_{ij}|<10$ for all $i,j$. While this approach yields the maximum likelihood estimate for the connectivity matrix, simple properties of the connectivity matrix, that may be known a priori, may be extremely helpful in obtaining accurate solutions. For instance, it is commonly believed that connectivity in many neuroanatomical substrates is ``sparse'', meaning that most neurons form synapses with only a small fraction of their neighbors \cite{??}.  Further, Dale's Law, which states that each of a neuron's bouton's release the same neurotransmitter, and therefore, its postsynaptic synapses have the same sign (e.g., positive).  Below, we discuss how to incorporate these priors to improve our inference.
+Computing the M-step for the connectivity matrix, $\bw$, is an
+optimization problem with on the order of $N^2$ variables.  By
+construction, however, the auxiliary function
+(\ref{eqn:loglik:definition-expl}) is concave in $\bw$, and decomposes
+into $N$ terms which may be optimized independently using standard
+ascent methods.  To improve our estimates, we will incorporate two
+sources of strong \emph{a priori} information via our prior $P(\bw)$:
+first, prior anatomical studies have established that connectivity in
+many neuroanatomical substrates is ``sparse,'' i.e., most neurons form
+synapses with only a fraction of their neighbors
+\cite{Buhl94,Thompson88,Reyes98,Feldmeyer99,Gupta00,FeldmeyerSakmann00,PetersenSakmann00,Binzegger04,Song2005,Mishchenko2009b},
+implying that many elements of the connectivity matrix $\bw$ are zero;
+see also \cite{PAN04c,Rigat06,PILL07,Stevenson08} for further
+discussion.  Second, ``Dale's law'' states that each of a neuron's
+postsynaptic connections in adult cortex (and many other brain areas)
+must all be of the same sign (either excitatory or inhibitory).  Both
+of these priors are easy to incorporate in the M-step optimization, as
+we discuss below.
+
 
 \subsubsection{Imposing a sparse prior on the functional connectivity}
 
-Enforcing sparseness for signal recovered with a series of linear measurements via $L1$-regularizer is known to dramatically reduce the amount of data necessary to accurately reconstruct the signal \cite{Candes2005, DE03, Mishchenko2009}. Although here the estimation problem is not linear, it is interesting what impact analogous prior might have on the reconstruction of the functional connectivity matrix $\bw$. By introducing exponential prior to our GLM model\cite{Stevenson2009}, we can find the maximum a posteriori estimate for the connectivity matrix:
-
-\begin{equation}\label{eqn:likelihoodsparseGLM}
-\hbw_i^{sparse} = \argmax_{\bw_i} E[\ln P[n_i, \bh |{\bf F}; \bth]] P[\bw]]= \argmax_{\bw} E[\ln P[n_i, \bh |{\bf F}; \bth]] - \lambda \sum_{i,j}|\w_{ij}|,
-\end{equation}
-
-\noindent where the exponential prior parameter $\lambda$ may be set from a priori neuroanatomical or neurophysiological data.  By introducing slack variables $s_{ij}(t)>|\w_{ij}(t)|$, this problem may be converted to a nonlinear program that can be solved using the interior point method:
-
-\begin{equation} \label{eqn:conconvexopt}
-% \begin{array}{l}
-	\hbw_i^{sparse} = \argmax_{\substack{\w_{ij}<s_{ij} \forall j \\ -\w_{ij}<s_{ij} \forall j}}   E[\ln P[n_i, \bh |{\bf F}; \bth]] - \lambda \sum_{i,j} s_{ij}
-%\min \left\{-\sum\limits_t E\left[ n_i(t) J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right]+\lambda \sum\limits_{t'j}s_{ij}(t')\right\}
-%, \text{ s.t. } \\ \w_{ij}<s_{ij}, \; -\w_{ij}<s_{ij}\; \forall j.
-% \end{array} 
-\end{equation}
-
-\noindent This sparse prior does not change the convexity of log-likelihood for $\bth^n$, so this regularized problem may still be solved efficiently.  We used Matlab's standard function \text{fconmin}, provided in optimization toolbox, to solve this constrained optimization problem for up to $N=500$ neurons. As we will see below, sparse prior dramatically decreases the amount of data necessary for accurate estimation of the connectivity matrix.
+Enforcing sparseness for signal recovered with a series of linear
+measurements via $L1$-regularizer is known to dramatically reduce the
+amount of data necessary to accurately reconstruct the signal
+\cite{Tibs96,TIP01,DE03,NG04,Candes2005,Mishchenko2009}.  We
+incorporate a prior of the form $\log p(\bw) = const. - \lambda
+\sum_{i,j} |\w_{ij}|$, and additionally enforce the constraints
+$|\w_{ij}|<m$, for a suitable constant $m$ (since both excitatory and
+inhibitory cortical connections are known to be bounded in size).
+Since the penalty $\log p(\bw)$ is concave, and the constraints
+$|\w_{ij}|<m$ are convex, we may still solve the resulting
+optimization problem in the M-step using standard convex optimization
+methods \cite{CONV04}.  In addition, the problem retains its separable
+structure: the full optimization may be broken up into $N$ smaller
+problems that may be solved independently.
 
 \subsubsection{Imposing Dale's law on the functional connectivity}
 
-As neurons seem to abide by Dale's law, it is natural for us to constraint our estimates of the functional connection matrix accordingly. In terms of the connectivity matrix, Dale's law translates into the condition of sign-constancy of the matrix columns. Dale's law is easy to enforce by constraining $\w_{ij}$ to be either positive or negative for given $j$.  Sign assignments may be chosen by inspecting unconstrained solution $\bw$ and choosing the column $\w_{\ast j}$ to be excitatory if the sum-squares of the positive terms $\w_{ij}$ for given $j$ in the unconstrained solution is greater than that of the negative terms, and inhibitory otherwise.  After that, Dale's law may be enforced by constraining the weights:
+Enforcing Dale's law requires us to solve a non-convex, non-separable
+problem: we need to optimize the concave function $Q(\bth,\bth^{(l)})
++ \log P(\theta)$ under the non-convex, non-separable constraint that
+all of the columns of the matrix $\bw$ are of a fixed sign (either
+nonpositive or nonnegative).  It is difficult to solve this problem
+exactly, but we have found that simple greedy methods are quite
+efficient in finding good (possibly approximate) solutions.  We begin
+with our original sparse solution, obtained as discussed in the
+previous subsection without enforcing Dale's law.  Then we assign each
+neuron as either excitatory or inhibitory, based on the weights we
+have inferred in the previous step: i.e., neurons $i$ whose inferred
+postsynaptic connections $w_{ij}$ are largely positive are tentatively
+labeled excitatory, and neurons with largely inhibitory inferred
+postsynapic connections are labeled inhibitory.  Neurons which are
+highly ambiguous may be unassigned in the early iterations, to avoid
+making mistakes from which it might be difficult to recover.  Given
+the assignments $a_i$ ($a_i =1$ for putative excitatory cells, $-1$
+for inhibitory, and $0$ for neurons which have not yet been assigned)
+we solve the convex, separable problem
+\begin{equation}
+\argmax_{\substack{a_i \w_{ij} \geq 0 ~ \forall i,j}} Q(\bth,\bth^{(l)}) +
+\log P(\theta),
+\end{equation}
+which may be handled using the standard convex methods discussed
+above.  Given the new estimated connectivities $\bw$, we can re-assign
+the labels $a_i$, or even flip some randomly to check for local
+optima.  We have found this simple approach to be fairly effective in
+practice.
 
-
-\begin{align}
-	\hbw_i^{dale} = \argmax_{\substack{\w_{ij}<0 \forall \; j \in \mathcal{I} \\ \w_{ij}>0 \forall \; j \notin \mathcal{I} }}   E[\ln P[n_i, \bh |{\bf F}; \bth]]
-\end{align}
-
-% \begin{equation}
-% \begin{array}{l}
-% \min \left\{-\sum\limits_t E\left[ n_i(t) J_i(t) - (1-n_i(t) \exp(J_i(t)) \Delta \right]+\lambda \sum\limits_{t'j}s_{ij}(t')\right\}, \text{ s.t. }\\
-% \w_{ij}(t')<0, \; -\w_{ij}(t')<s_{ij}(t') \; \forall j, t'\text{ where }j\text{ is inhibitory neuron}, \\
-% \w_{ij}(t')<s_{ij}(t'), \; -\w_{ij}(t')<0 \; \forall j, t'\text{ where }j\text{ is excitatory neuron}. \\
-% \end{array}
-% \end{equation}
-
-\noindent where $\mathcal{I}$ is the set of inhibitory presynaptic neurons.  While this optimization problem is not convex (due to the hard constraints), it may still be approximately solved using the same methods as above.  Imposing both Dale's and the sparse prior on the connectivity weights thus follows straightforwardly.  
 
 \subsection{Specific implementation notes} \label{sec:methods:specific_implementation}
 
-
-We break the inference problem of estimating the functional connection matrix given only fluorescence data into a few  steps (see Algorithm \ref{eqn:pseudocode}).  First, we estimate the parameters $\bth_i$ assuming each neuron is independent on a subset of data with $O(10)$ spikes, using the SMC methods described in Section \ref{sec:methods:indep}.  This ``inner loop'' is a set of $N$ EM algorithms, iterating between inferring expected spike trains and estimating parameters. As the number of parameters for each $\bth_i$ scales linearly with the number of neurons (it does not include connection weights $w_{ij}$ for $i\neq j$), these parameters may be estimated using a relatively amount of data.  Second, given $\bth_i$ for each neuron, we approximate the joint posteriors, $P[X_i(t), \bh(t) | \bF; \bth]$, by sampling using either the independent approximation or the exact hybrid MCMC-Gibbs method, as described in Section \ref{sec:methods:joint}.  Finally, given the estimated joint posteriors $P[X_i(t), \bh(t) | \bF; \bth]$, we estimate presynaptic connectivity weights, $w_{i \ast}$, for each neuron.  All three steps are iterated until $\bw$ converges. Table \ref{eqn:pseudocode} provides pseudocode for this approach.  
+Pseudocode summarizing our approach is given in Algorithm
+\ref{eqn:pseudocode}.  As discussed in section
+\ref{sec:methods:indep}, the ``internal'' parameters $\theta
+\backslash \bw$ may be initialized effectively using the methods
+described in \cite{Vogelstein2009}; then the full parameter $\theta$
+is estimated via EM, where we use the
+embedded-chain-within-blockwise-Gibbs approach discussed in section
+\ref{sec:methods:joint} (or the cheaper conditionally-independent
+approximation described in section \ref{sec:cheaper-high-snr}) to
+obtain the sufficient statistics in the E step and the separable
+convex optimization methods discussed in section
+\ref{sec:methods:parameters HMM} for the M step.
 
 \begin{algorithm}
-\caption{Pseudocode for estimating functional connectivity from calcium imaging data using EM. Note that $\eta^n$, $\eta^F$, $N_G$ are somewhat arbitrarily chosen bounds.  XXX do we ever actually do this outer loop more than once? if so, i don't see why it would help, unless the inferred spike trains from the joint samples were a big improvement of the independent samples, which i thought didn't happen XXX}
+\caption{Pseudocode for estimating functional connectivity from
+calcium imaging data using EM; $\eta^n$, $\eta^F$, $N_G$ are
+user-defined convergence tolerance parameters.   XXX CAN WE INDENT
+THE BELOW PROPERLY?  WOULD MAKE IT MORE LEGIBLE XXX}
 \label{eqn:pseudocode}
 \begin{algorithmic}
 \While{$|{\bw}^{(l)}-{\bw}^{(l-1)}|>\eta^w$}
   \ForAll{$i=1\ldots N$}
     \While{$|{\bth_i}^{(l)}-{\bth_i}^{(l-1)}|> \eta^F$}
-      \State Approximate $P[X_i|{\bf F}_i; \bth_i]$ using SMC
-      \State Maximize ${\bth_i}^{(l+1)}=\argmax_{\bth_i} E\left[\ln P[X_i | F_i; \bth_i] \right]$
+      \State Approximate $P[X_i(t)|F_i; \bth]$ using SMC (section
+  \ref{sec:methods:indep})
+      \State Perform the M-step for the ``internal'' parameters
+  $\theta \backslash \bw$ (section \ref{sec:methods:indep}) 
     \EndWhile
   \EndFor
-  
-  % \For{$k=1\ldots N_G$}
-    \ForAll{$i=1\ldots N$}
-      \State Approximate $P[X_i(t), \bh(t) |{\bf F}; \bth]$ using either independent approximation or hybrid MCMC-Gibbs
+      \ForAll{$i=1\ldots N$}
+      \State Approximate $P[n_i(t), \bh(t) |{\bf F}; \bth]$ using
+  either the blockwise Gibbs method or the high-SNR
+  conditionally-independent approximation (section \ref{sec:methods:joint})
     \EndFor
-  % \EndFor 
-
   \ForAll{$i=1\ldots N$}
-  	\State Maximize ${\bth^n_i}^{(l+1)}=\argmax_{\bth^n_i} E\left[\ln P[X_i, \bh | \bF; \bth]\right]$  
+  	\State Perform the M-step using separable convex optimization
+  methods (section \ref{sec:methods:parameters HMM})  
   \EndFor
-
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
 
-An important feature of the above algorithm is that the above procedures straightforwardly parallelize. Estimation of  $\bth_i$ could be done independently for all neurons. Calculation of the functional connectivity matrix $\bw$ also involved solving $N$ optimization subproblems for different neurons that could be done independently. In the independent approximation, the posterior $P[X_i(t) | \bF; \bth_i]$ could be obtained in parallel for different neurons.  The hybrid MCMC-Gibbs method for estimating the posteriors could also be parallelized by drawing HMM state-sequences within Gibbs loop for a few neurons at a time, instead of single neuron at a time. XXX Y: i don't really know what you mean here. XXX High parallelizability of these steps results in a significant time savings when analysis of calcium imaging data was performed on multi-processor computer or a cluster.  We performed bulk of the calculations on a high-performance cluster of Intel Xeon L5430 based computers (2.66 GHz). For 10 minutes of simulated fluorescence data, imaged at $30$ Hz, calculations typically took 10-20 minutes per neuron using independent approximation, with time split approximately equally between (i) estimating $\bth_i$,  (ii) approximating the posteriors using the independent sampler, and (iii) estimating the functional connectivity matrix, $\bw$. The hybrid MCMC-Gibbs sampler was substantially slower, up to an hour per neuron per Gibbs pass, with Gibbs sampler being the most computationally expensive part. Parallel computation made calculations for large populations of neurons $N\approx 200-500$ possible.
+As emphasized above, the parallel nature of these EM steps is
+essential for making these computations tractable.  We performed the
+bulk of our analysis on a high-performance cluster of Intel Xeon L5430
+based computers (2.66 GHz). For 10 minutes of simulated fluorescence
+data, imaged at $30$ Hz, calculations typically took 10-20 minutes per
+neuron using the conditionally-independent approximation, with time
+split approximately equally between (i) estimating the internal
+parameters $\theta \backslash \bw$, (ii) approximating the posteriors
+using the independent SMC method, and (iii) estimating the functional
+connectivity matrix, $\bw$.  The hybrid MCMC-Gibbs sampler was
+substantially slower, up to an hour per neuron per Gibbs pass, with
+the Gibbs sampler dominating the computation time.  XXX IS THIS RIGHT?
+ONE HOUR PER NEURON?  WHY IS EACH GIBBS SWEEP SO SLOW RELATIVE TO A
+PARTICLE FILTER SWEEP? XXX
+
 
 \subsection{Accuracy of the estimates and Fisher information matrix} \label{sec:methods:accuracy_Fisher}
 
-To determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P[\bw| \bX]$. Assuming for simplicity perfect knowledge of spike trains (i.e. such not corrupted by inference errors from calcium imaging) and single time-bin coupling, i.e. $h_{j}(t)\neq 0$ only for time-delay $t=1$, we write the Fisher information matrix as:
+XXX THIS SHOULD PROBABLY BE REDUCED A BIT AND MOVED TO THE RESULTS;
+BETTER TO EXPLAIN THE RESULTS AFTER WE ACTUALLY SHOW THEM XXX
+
+To determine the necessary amount of data for accurate estimation of
+the functional connectivity matrix, we calculate Fisher information
+for $P[\bw| \bX]$. Assuming for simplicity perfect knowledge of spike
+trains (i.e. such not corrupted by inference errors from calcium
+imaging) and single time-bin coupling, i.e. $h_{j}(t)\neq 0$ only for
+time-delay $t=1$, we write the Fisher information matrix as:
 
 \begin{equation}
 \begin{array}{rl}
@@ -270,7 +557,7 @@ n_i(t)n_{j}(t-1)n_{j'}(t-1)\left(-\frac{f'(J_i(t))^2}{f(J_i(t))^2} +
 \end{array}
 \end{equation}
 
-\noindent where $f'$ and $f''$ correspond to the first and second derivatives of our linking function (c.f Eq. \eqref{eqn:glm:definition}), and $\delta_{ii'}$ is XXX ? XXX.  When $f(J)=\exp(J)$ XXX Y: we don't use an exponential here.  is it worth modifying this accordingly? XXX, and coupling between spikes is week, this may be rewritten as:
+ where $f'$ and $f''$ correspond to the first and second derivatives of our linking function (c.f Eq. \eqref{eqn:glm:definition}), and $\delta_{ii'}$ is XXX ? XXX.  When $f(J)=\exp(J)$ XXX Y: we don't use an exponential here.  is it worth modifying this accordingly? XXX, and coupling between spikes is week, this may be rewritten as:
 
 \begin{equation}\label{eqn:fisher}
 \begin{array}{rl}

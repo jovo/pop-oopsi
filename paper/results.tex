@@ -43,18 +43,29 @@ $K_d$ & 200 $\mu$M \\
 \end{tabular}
 \end{table}
 
-\begin{figure}
+
+
+
+
+\begin{figure}[h]
 \centering
-\begin{minipage}[c]{0.49\hsize}
-\includegraphics[width=\hsize]{../figs/Figure0b_fluor_eg_hlowSNR}
-\end{minipage}
-\begin{minipage}[c]{0.49\hsize}
-\includegraphics[width=\hsize]{../figs/Figure0a_fluor_eg_highSNR}
-\end{minipage}
-\caption{Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left)
-and high SNR regimes (photon budget 40 Kph/neuron/frame, right). XXX J will modify to have real data. XXX}
-\label{fig:egfluor}
+\includegraphics[width=\hsize]{../figs/data_example}
+\caption{A schematic depicting our data analysis pipeline.  The left panel shows the mean image from an in vivo experiment, with regions-of-interest indicated by white circles, as determined by a custom algorithm (see Methods for details).  By averaging the pixel intensity of all the pixels within a region of interest, we obtain a one-dimensional fluorescence trace for each neuron.  The middle panel shows two such examples, the top showing a trace with relatively high signal-to-noise ratio (SNR), and the bottom showing a trace with a relatively low SNR.  We use these signals to sample likely spike trains (below each trace), and use such joint spike trains to estimate the functional connectivity matrix, as shown in the left panel.}
+\label{fig:data_example}
 \end{figure}
+
+% \begin{figure}
+% \centering
+% \begin{minipage}[c]{0.49\hsize}
+% \includegraphics[width=\hsize]{../figs/Figure0b_fluor_eg_hlowSNR}
+% \end{minipage}
+% \begin{minipage}[c]{0.49\hsize}
+% \includegraphics[width=\hsize]{../figs/Figure0a_fluor_eg_highSNR}
+% \end{minipage}
+% \caption{Examples of calcium and fluorescence traces for low (photon budget 5 Kph/neuron/frame, left)
+% and high SNR regimes (photon budget 40 Kph/neuron/frame, right). XXX J will modify to have real data. XXX}
+% \label{fig:egfluor}
+% \end{figure}
 
 \subsection{Inference of the functional connectivity from the simulated calcium imaging data} \label{sec:results:inference}
 

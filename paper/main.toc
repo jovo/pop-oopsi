@@ -5,28 +5,29 @@
 \contentsline {section}{\numberline {II}Methods}{2}{}
 \contentsline {subsection}{\numberline {A}Model}{2}{}
 \contentsline {subsection}{\numberline {B}Goal and general strategy}{3}{}
-\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{4}{}
+\contentsline {subsection}{\numberline {C}Initialization of ``internal'' parameters via sequential Monte Carlo methods}{4}{}
 \contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons}{5}{}
-\contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{5}{}
-\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{6}{}
-\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{7}{}
-\contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{7}{}
-\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{8}{}
-\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
-\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}
-\contentsline {section}{\numberline {III}Results}{10}{}
-\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{10}{}
-\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
-\contentsline {subsubsection}{\numberline {1}Main Result}{12}{}
-\contentsline {subsubsection}{\numberline {2}Time discretization bias}{13}{}
-\contentsline {subsubsection}{\numberline {3}Inferring weights using $F$}{14}{}
-\contentsline {subsubsection}{\numberline {4}SNR limitations of inferring weights using $F$}{15}{}
-\contentsline {subsubsection}{\numberline {5}Error indep of $N$}{16}{}
-\contentsline {subsubsection}{\numberline {6}Correlations kill estimates}{17}{}
-\contentsline {subsubsection}{\numberline {7}Robustness to variability in $\tau _h$}{18}{}
-\contentsline {subsubsection}{\numberline {8}Hybrid MCMC-Gibbs outperforms indep approx}{19}{}
-\contentsline {subsubsection}{\numberline {9}Sparse prior improves estimate}{20}{}
-\contentsline {subsubsection}{\numberline {10}Other}{21}{}
-\contentsline {section}{\numberline {IV}Discussion}{24}{}
-\contentsline {section}{\numberline {}Acknowledgments}{25}{}
-\contentsline {section}{\numberline {}References}{25}{}
+\contentsline {subsubsection}{\numberline {1}A cheaper high-SNR approximation of the joint posteriors}{6}{}
+\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{6}{}
+\contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{6}{}
+\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{6}{}
+\contentsline {subsection}{\numberline {F}Specific implementation notes}{7}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{7}{}
+\contentsline {section}{\numberline {III}Results}{8}{}
+\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
+\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
+\contentsline {subsubsection}{\numberline {1}Main Result}{11}{}
+\contentsline {subsubsection}{\numberline {2}Time discretization bias}{12}{}
+\contentsline {subsubsection}{\numberline {3}Inferring weights using $F$}{13}{}
+\contentsline {subsubsection}{\numberline {4}SNR limitations of inferring weights using $F$}{14}{}
+\contentsline {subsubsection}{\numberline {5}Error indep of $N$}{15}{}
+\contentsline {subsubsection}{\numberline {6}Correlations kill estimates}{16}{}
+\contentsline {subsubsection}{\numberline {7}Robustness to variability in $\tau _h$}{17}{}
+\contentsline {subsubsection}{\numberline {8}Hybrid MCMC-Gibbs outperforms indep approx}{18}{}
+\contentsline {subsubsection}{\numberline {9}Sparse prior improves estimate}{19}{}
+\contentsline {subsubsection}{\numberline {10}Other}{20}{}
+\contentsline {section}{\numberline {IV}Discussion}{23}{}
+\contentsline {paragraph}{\numberline {a}j's outline of discussion}{23}{}
+\contentsline {paragraph}{\numberline {b}y's mini-discussion}{23}{}
+\contentsline {section}{\numberline {}Acknowledgments}{24}{}
+\contentsline {section}{\numberline {}References}{24}{}
