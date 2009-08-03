@@ -16,8 +16,8 @@
 \contentsline {section}{\numberline {III}Results}{8}{}
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
 \contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
-\contentsline {section}{\numberline {IV}Discussion}{12}{}
-\contentsline {paragraph}{\numberline {a}j's outline of discussion}{12}{}
-\contentsline {paragraph}{\numberline {b}y's mini-discussion}{12}{}
-\contentsline {section}{\numberline {}Acknowledgments}{13}{}
-\contentsline {section}{\numberline {}References}{13}{}
+\contentsline {section}{\numberline {IV}Discussion}{16}{}
+\contentsline {paragraph}{\numberline {a}j's outline of discussion}{16}{}
+\contentsline {paragraph}{\numberline {b}y's mini-discussion}{16}{}
+\contentsline {section}{\numberline {}Acknowledgments}{17}{}
+\contentsline {section}{\numberline {}References}{17}{}

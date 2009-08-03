@@ -1,5 +1,5 @@
-% clear, clc
-% load('~/Research/oopsi/meta-oopsi/data/tom/20081126_13_05_43_orientation_Bruno_reg1_ori1_135umdepth.mat')
+clear, clc
+load('~/Research/oopsi/meta-oopsi/data/tom/20081126_13_05_43_orientation_Bruno_reg1_ori1_135umdepth.mat')
 %%
 nrows=2;
 ncols=3;
@@ -15,6 +15,7 @@ roi_edges(roi_edges>1)=1;
 seg_frame = MeanFrame+roi_edges;
 subplot(nrows,ncols,[1 4])
 subimage(seg_frame)
+set(gca,'XTick',[0 30 60 90 120])
 colormap(gray)
 title('Mean Frame','FontSize',fs)
 

@@ -56,9 +56,7 @@ n_GT=cell(N,1);
 %%%%%%%%%%% CUSTOM INITIALS FOR particle filter parameters
 cP.rate     = rate_b;               % expected rate
 cP.k        = log(cP.rate);         % linear filter
-cP.tau      = 0.2;                  % calcium decay time constant (sec)
 cP.A        = 150;                  % jump size ($\mu$M)
-cP.sig      = 25;                   % standard deviation of noise (\mu M)
 cP.C_0      = 25;                   % baseline [Ca++]
 cP.n        = 1;                    % hill equation exponent
 cP.k_d      = 100^cP.n;              % hill coefficient
@@ -68,10 +66,13 @@ cP.gamma    = 1e-4;                 % scaled variance
 cP.zeta     = 4*cP.gamma;            % constant variance
 
 cP.C_init   = cP.C_0;                % initial [Ca++]
-cP.tau_c    = cP.tau;
-cP.sigma_c  = cP.sig;
+cP.tau_c    = 0.2;
+cP.sigma_c  = 25;
 cP.a        = 1/FR/cP.tau_c;
-cP.lam      = T/(cP.rate*cP.A)/FR;% expected jump size ber time bin
+
+% cP.tau      = cP.tau_c;                  % calcium decay time constant (sec)
+% cP.sig      = 25;                   % standard deviation of noise (\mu M)
+% cP.lam      = T/(cP.rate*cP.A)/FR;% expected jump size ber time bin
 
 if setH>0                                        % if there are spike history terms
     cP.omega = -1;                               % weight
