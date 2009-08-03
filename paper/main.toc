@@ -16,18 +16,8 @@
 \contentsline {section}{\numberline {III}Results}{8}{}
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
 \contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
-\contentsline {subsubsection}{\numberline {1}Main Result}{11}{}
-\contentsline {subsubsection}{\numberline {2}Time discretization bias}{12}{}
-\contentsline {subsubsection}{\numberline {3}Inferring weights using $F$}{13}{}
-\contentsline {subsubsection}{\numberline {4}SNR limitations of inferring weights using $F$}{14}{}
-\contentsline {subsubsection}{\numberline {5}Error indep of $N$}{15}{}
-\contentsline {subsubsection}{\numberline {6}Correlations kill estimates}{16}{}
-\contentsline {subsubsection}{\numberline {7}Robustness to variability in $\tau _h$}{17}{}
-\contentsline {subsubsection}{\numberline {8}Hybrid MCMC-Gibbs outperforms indep approx}{18}{}
-\contentsline {subsubsection}{\numberline {9}Sparse prior improves estimate}{19}{}
-\contentsline {subsubsection}{\numberline {10}Other}{20}{}
-\contentsline {section}{\numberline {IV}Discussion}{23}{}
-\contentsline {paragraph}{\numberline {a}j's outline of discussion}{23}{}
-\contentsline {paragraph}{\numberline {b}y's mini-discussion}{23}{}
-\contentsline {section}{\numberline {}Acknowledgments}{24}{}
-\contentsline {section}{\numberline {}References}{24}{}
+\contentsline {section}{\numberline {IV}Discussion}{12}{}
+\contentsline {paragraph}{\numberline {a}j's outline of discussion}{12}{}
+\contentsline {paragraph}{\numberline {b}y's mini-discussion}{12}{}
+\contentsline {section}{\numberline {}Acknowledgments}{13}{}
+\contentsline {section}{\numberline {}References}{13}{}
