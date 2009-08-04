@@ -25261,18 +25261,6 @@
   author = {Wahba, G.}
 }
 
-@BOOK{WainwrightJordan08,
-  title = {{Graphical Models, Exponential Families, and Variational Inference.}},
-  year = {2008},
-  author = {Wainwright, M.J. and Jordan, M.I.},
-  volume = {1},
-  number = {1-2},
-  pages = {1-305},
-  journal = {Foundations and Trends in Machine Learning},
-  owner = {joshyv},
-  timestamp = {2009.08.04}
-}
-
 @ARTICLE{WallaceHasan08,
   author = {Wallace, D.J. and zum Alten Borgloh, S.M. and Astori, S. and Yang,
 	Y. and Bausen, M. and K{\\"u}gler, S. and Palmer, A.E. and Tsien,

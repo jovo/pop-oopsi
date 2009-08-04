@@ -2,29 +2,26 @@ This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
 The style file: amsplain.bst
 Database file #1: mybib.bib
-Repeated entry---line 35311 of file mybib.bib
+Repeated entry---line 6935 of file mybib.bib
  : @article{Feldmeyer99
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 35320 of file mybib.bib
+Repeated entry---line 6957 of file mybib.bib
  : @article{FeldmeyerSakmann00
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 35328 of file mybib.bib
+Repeated entry---line 9157 of file mybib.bib
  : @article{Gupta00
  :                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 35355 of file mybib.bib
+Repeated entry---line 18432 of file mybib.bib
  : @article{PetersenSakmann00
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 51691 of file mybib.bib
+Repeated entry---line 22006 of file mybib.bib
  : @book{ShumwayStoffer06
  :                       ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "??"
-Warning--I didn't find a database entry for "BraitenbergShutz91"
-Warning--I didn't find a database entry for "redshirt"
 Warning--I didn't find a database entry for "VogPan09"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
@@ -36,45 +33,48 @@ Warning--missing pages in NG04
 Warning--missing pages in Stevenson08
 Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
-You've used 50 entries,
+Warning--can't use both volume and number if series info is missing
+in BibTeX entry type `book'
+Warning--missing publisher in WainwrightJordan08
+You've used 67 entries,
             2213 wiz_defined-function locations,
-            829 strings with 12414 characters,
-and the built_in function-call counts, 16566 in all, are:
-= -- 1435
-> -- 915
-< -- 0
-+ -- 366
-- -- 309
-* -- 1527
-:= -- 2732
-add.period$ -- 50
-call.type$ -- 50
-change.case$ -- 304
+            937 strings with 15417 characters,
+and the built_in function-call counts, 22638 in all, are:
+= -- 1950
+> -- 1304
+< -- 1
++ -- 519
+- -- 445
+* -- 2109
+:= -- 3754
+add.period$ -- 67
+call.type$ -- 67
+change.case$ -- 422
 chr.to.int$ -- 0
-cite$ -- 60
-duplicate$ -- 568
-empty$ -- 1311
-format.name$ -- 309
-if$ -- 3332
+cite$ -- 78
+duplicate$ -- 760
+empty$ -- 1757
+format.name$ -- 445
+if$ -- 4538
 int.to.chr$ -- 0
-int.to.str$ -- 50
-missing$ -- 104
-newline$ -- 160
-num.names$ -- 101
-pop$ -- 382
+int.to.str$ -- 67
+missing$ -- 141
+newline$ -- 211
+num.names$ -- 135
+pop$ -- 522
 preamble$ -- 1
-purify$ -- 254
+purify$ -- 355
 quote$ -- 0
-skip$ -- 296
+skip$ -- 392
 stack$ -- 0
-substring$ -- 1067
-swap$ -- 68
-text.length$ -- 0
+substring$ -- 1417
+swap$ -- 87
+text.length$ -- 1
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 190
-warning$ -- 10
-while$ -- 159
-width$ -- 52
-write$ -- 404
+top$ -- 1
+type$ -- 251
+warning$ -- 12
+while$ -- 212
+width$ -- 69
+write$ -- 548
 (There were 5 error messages)

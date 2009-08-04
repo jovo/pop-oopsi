@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  4 AUG 2009 10:43
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  4 AUG 2009 12:46
 entering extended mode
 **main
 (./main.tex
@@ -220,23 +220,7 @@ Package: amsthm 2004/08/06 v2.20
 \thm@postskip=\skip52
 \thm@headsep=\skip53
 \dth@everypar=\toks31
-)
-(/opt/local/share/texmf-dist/tex/latex/psnfss/charter.sty
-Package: charter 2004/09/15 PSNFSS-v9.2 (P.Dyballa) 
-)
-(/opt/local/share/texmf-dist/tex/latex/tools/afterpage.sty
-Package: afterpage 1995/10/27 v1.08 After-Page Package (DPC)
-\AP@output=\toks32
-\AP@partial=\box38
-\AP@footins=\box39
-)
-(/opt/local/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2004/02/22 v1.99f Standard LaTeX package
-
-(/opt/local/share/texmf-dist/tex/latex/base/ot1enc.def
-File: ot1enc.def 2004/02/22 v1.99f Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
-)) (./main.aux
+) (./main.aux
 
 LaTeX Warning: Label `fig:egfluor' multiply defined.
 
@@ -246,36 +230,31 @@ LaTeX Warning: Label `fig:vartau' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+bch on input line 41.
- (/opt/local/share/texmf-dist/tex/latex/psnfss/ot1bch.fd
-File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
-)
-Class revtex4 Info: Patching LaTeX tabular. on input line 41.
-Class revtex4 Info: cite was not loaded (OK!) on input line 41.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 41.
-
-(/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+Class revtex4 Info: Patching LaTeX tabular. on input line 43.
+Class revtex4 Info: cite was not loaded (OK!) on input line 43.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 43.
+ (/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
 (/opt/local/share/texmf-dist/tex/context/base/supp-mis.tex
 loading : Context Support Macros / Miscellaneous (2004.10.26)
 \protectiondepth=\count115
 \scratchcounter=\count116
-\scratchtoks=\toks33
+\scratchtoks=\toks32
 \scratchdimen=\dimen113
 \scratchskip=\skip54
 \scratchmuskip=\muskip11
-\scratchbox=\box40
+\scratchbox=\box38
 \scratchread=\read1
 \scratchwrite=\write3
 \zeropoint=\dimen114
@@ -284,10 +263,10 @@ loading : Context Support Macros / Miscellaneous (2004.10.26)
 \minusone=\count117
 \thousandpoint=\dimen117
 \onerealpoint=\dimen118
-\emptytoks=\toks34
-\nextbox=\box41
+\emptytoks=\toks33
+\nextbox=\box39
 \nextdepth=\dimen119
-\everyline=\toks35
+\everyline=\toks34
 \!!counta=\count118
 \!!countb=\count119
 \recursecounter=\count120
@@ -298,95 +277,29 @@ loading : Context Support Macros / PDF (2004.03.26)
 \MPscratchCnt=\count123
 \MPscratchDim=\dimen120
 \MPnumerator=\count124
-\everyMPtoPDFconversion=\toks36
-) (./abstract.tex) (./main.toc
-Overfull \hbox (0.56pt too wide) detected at line 4
- \OT1/bch/m/n/10 1
+\everyMPtoPDFconversion=\toks35
+) (./abstract.tex)
+
+Class revtex4 Warning: Assuming \noaffiliation for us.
+
+(./main.toc
+Overfull \hbox (5.00003pt too wide) detected at line 18
+ \OT1/cmr/m/n/10 10
  []
 
 
-Overfull \hbox (0.56pt too wide) detected at line 5
- \OT1/bch/m/n/10 2
+Overfull \hbox (5.00003pt too wide) detected at line 19
+ \OT1/cmr/m/n/10 15
  []
 
 
-Overfull \hbox (0.56pt too wide) detected at line 6
- \OT1/bch/m/n/10 2
+Overfull \hbox (5.00003pt too wide) detected at line 21
+ \OT1/cmr/m/n/10 16
  []
 
 
-Overfull \hbox (0.56pt too wide) detected at line 7
- \OT1/bch/m/n/10 3
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 8
- \OT1/bch/m/n/10 4
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 9
- \OT1/bch/m/n/10 5
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 10
- \OT1/bch/m/n/10 6
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 11
- \OT1/bch/m/n/10 6
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 12
- \OT1/bch/m/n/10 6
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 13
- \OT1/bch/m/n/10 7
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 14
- \OT1/bch/m/n/10 7
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 15
- \OT1/bch/m/n/10 8
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 16
- \OT1/bch/m/n/10 8
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 17
- \OT1/bch/m/n/10 8
- []
-
-
-Overfull \hbox (0.56pt too wide) detected at line 18
- \OT1/bch/m/n/10 9
- []
-
-
-Overfull \hbox (6.12pt too wide) detected at line 19
- \OT1/bch/m/n/10 15
- []
-
-
-Overfull \hbox (6.12pt too wide) detected at line 21
- \OT1/bch/m/n/10 16
- []
-
-
-Overfull \hbox (6.12pt too wide) detected at line 22
- \OT1/bch/m/n/10 16
+Overfull \hbox (5.00003pt too wide) detected at line 22
+ \OT1/cmr/m/n/10 16
  []
 
 )
@@ -394,68 +307,20 @@ Overfull \hbox (6.12pt too wide) detected at line 22
 \openout4 = `main.toc'.
 
  (./intro.tex
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 1.
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
-(/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+ (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
-)
+) [1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-Package natbib Warning: Citation `BraitenbergShutz91' on page 1 undefined on in
-put line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `redshirt' on page 1 undefined on input line 5
+Package natbib Warning: Citation `VogPan09' on page 2 undefined on input line 5
 .
 
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-[1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package natbib Warning: Citation `VogPan09' on page 2 undefined on input line 7
-.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-
-Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
-
-) (./methods.tex <../figs/fr_vs_J.pdf, id=26, 433.62pt x 266.9975pt>
+) (./methods.tex <../figs/fr_vs_J.pdf, id=32, 433.62pt x 266.9975pt>
 File: ../figs/fr_vs_J.pdf Graphic file (type pdf)
 
 <use ../figs/fr_vs_J.pdf>
@@ -474,18 +339,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 9 undefined on input 
 line 69.
 
-[9] <../figs/FigureA3_scatter_three.pdf, id=107, 420.57124pt x 315.1775pt>
+[9] [10 <../figs/data_example.pdf>]
+<../figs/FigureA3_scatter_three.pdf, id=124, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_scatter_three.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_scatter_three.pdf>
-<../figs/FigureA3_scatter_three_corrected.pdf, id=108, 420.57124pt x 315.1775pt
+<../figs/FigureA3_scatter_three_corrected.pdf, id=125, 420.57124pt x 315.1775pt
 >
 File: ../figs/FigureA3_scatter_three_corrected.pdf Graphic file (type pdf)
  <use ../figs/FigureA3_scatter_three_corrected.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 <../figs/data_example.pdf>]
 <../figs/FigureA4_scale_bias.pdf, id=126, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
 
@@ -537,22 +399,23 @@ File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/Figure7b_raster_weak.pdf, id=147, 420.57124pt x 315.1775pt>
+[12 <../figs/FigureA4_scale_bias.pdf>]
+<../figs/Figure7b_raster_weak.pdf, id=154, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=148, 420.57124pt x 315.1775pt>
+<../figs/Figure7a_raster_strong.pdf, id=155, 420.57124pt x 315.1775pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=149, 420.57124pt x 315.1775pt>
+<../figs/FigureA8_weak_corr.pdf, id=156, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=150, 420.57124pt x 315.1775pt>
+<../figs/FigureA8_strong_corr.pdf, id=157, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
 
-<use ../figs/FigureA8_strong_corr.pdf> [12 <../figs/FigureA4_scale_bias.pdf>]
+<use ../figs/FigureA8_strong_corr.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -571,21 +434,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) [14 <../figs/Figure5a_hist_glm_vanilla.pdf> <../figs/Figure5b_hist_glm_sparse
 .pdf> <../figs/FigureA6_recvar_SNR.pdf>] (./discussion.tex
-LaTeX Font Info:    Try loading font information for OMS+bch on input line 4.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
 
-(/opt/local/share/texmf-dist/tex/latex/psnfss/omsbch.fd
-File: omsbch.fd 
+(/opt/local/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10> not available
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 ) (./main.bbl [15 <../figs/FigureA7_recvar_NT.pdf>] [16 <../figs/Figure7b_raste
 r_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <../figs/FigureA8_weak_corr.pd
 f> <../figs/FigureA8_strong_corr.pdf>] [17 <../figs/FigureA10_regular_sol.pdf> 
-<../figs/FigureA10_sparse_sol.pdf>])
+<../figs/FigureA10_sparse_sol.pdf>] [18])
 
 Package natbib Warning: There were undefined citations.
 
-[18] (./main.aux)
+[19] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -594,34 +457,33 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4471 strings out of 94500
- 56335 string characters out of 1155413
- 124395 words of memory out of 1000000
- 7540 multiletter control sequences out of 10000+50000
- 26028 words of font info for 58 fonts, out of 500000 for 2000
+ 4202 strings out of 94500
+ 53800 string characters out of 1155413
+ 121862 words of memory out of 1000000
+ 7293 multiletter control sequences out of 10000+50000
+ 11293 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,10n,26p,2624b,317s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,10n,26p,2671b,370s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 240 PDF objects out of 300000
+ 244 PDF objects out of 300000
  0 named destinations out of 131072
  91 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/sha
-re/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/font
-s/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
-m/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi6.pfb></opt
-/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt/local/share/texmf
--dist/fonts/type1/bluesky/cm/cmbx9.pfb></opt/local/share/texmf-dist/fonts/type1
-/bluesky/cm/cmsy9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi5
-.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr5.pfb></opt/local/s
-hare/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/share/texmf-dist/f
-onts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesk
-y/cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmex10.pfb>
-</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></opt/local/share
-/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></opt/local/share/texmf-dist/font
-s/type1/bluesky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm
-/cmr10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb>{/opt
-/local/share/texmf-dist/fonts/enc/dvips/psnfss/8r.enc}</opt/local/share/texmf-d
-ist/fonts/type1/bitstrea/charter/bchri8a.pfb></opt/local/share/texmf-dist/fonts
-/type1/bitstrea/charter/bchr8a.pfb></opt/local/share/texmf-dist/fonts/type1/bit
-strea/charter/bchb8a.pfb>
-Output written on main.pdf (18 pages, 661764 bytes).
+re/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fon
+ts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
+cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt
+/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/share/texm
+f-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-dist/fonts/type
+1/bluesky/cm/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr5
+.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/
+share/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/
+fonts/type1/bluesky/cm/cmex10.pfb></opt/local/share/texmf-dist/fonts/type1/blue
+sky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb
+></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></opt/local/share
+/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/font
+s/type1/bluesky/cm/cmti10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
+cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></o
+pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/tex
+mf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/typ
+e1/bluesky/cm/cmbx12.pfb>
+Output written on main.pdf (19 pages, 687128 bytes).
