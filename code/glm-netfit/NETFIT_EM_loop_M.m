@@ -16,12 +16,12 @@ Sim.M       = setH;                     % number of spike history dimensions
 Sim.pf      = 1;                        % use conditional sampler (not prior) when possible
 
 Sim.Mstep   = 1;                        % do M-step
-Sim.C_params= 1;                        % whether to estimate calcium parameters {tau,A,C_0,sig}
+Sim.C_params= 0;                        % whether to estimate calcium parameters {tau,A,C_0,sig}
 Sim.n_params= 1;                        % whether to estimate rate governing parameters {b,k}
 Sim.h_params= 1;                        % whether to estimate spike history parameters {h}
 Sim.F_params= 1;                        % whether to estimate observation parameters {alpha,beta}
 Sim.G_params= 1;                        % whether to estimate observation parameters {gamma}
-Sim.MaxIter = 15;                       % max # of EM iterartions
+Sim.MaxIter = 9;                        % max # of EM iterartions
 
 if(exist('holdTau') == 1) Sim.holdTau=holdTau; end % hold tau in M-step
 
@@ -101,7 +101,7 @@ for k=nrange{id_proc}
     warning on
 end
 
-save(fname,'M');
+% save(['../', fname],'M');
 
 %clean the mess
 clear N_spk rate T rf P Sim I

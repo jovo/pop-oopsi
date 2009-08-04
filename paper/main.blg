@@ -4,7 +4,9 @@ The style file: amsplain.bst
 Database file #1: mybib.bib
 Warning--I didn't find a database entry for "??"
 Warning--I didn't find a database entry for "Tsien89"
+Warning--I didn't find a database entry for "BraitenbergShutz91"
 Warning--I didn't find a database entry for "redshirt"
+Warning--I didn't find a database entry for "VogPan09"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in Escola07
@@ -17,7 +19,7 @@ Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
 You've used 49 entries,
             2213 wiz_defined-function locations,
-            821 strings with 12285 characters,
+            825 strings with 12337 characters,
 and the built_in function-call counts, 16290 in all, are:
 = -- 1410
 > -- 908
@@ -56,4 +58,4 @@ warning$ -- 10
 while$ -- 156
 width$ -- 51
 write$ -- 396
-(There were 13 warnings)
+(There were 15 warnings)

@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  3 AUG 2009 14:33
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  4 AUG 2009 03:38
 entering extended mode
 **main
 (./main.tex
@@ -236,7 +236,14 @@ Package: fontenc 2004/02/22 v1.99f Standard LaTeX package
 (/opt/local/share/texmf-dist/tex/latex/base/ot1enc.def
 File: ot1enc.def 2004/02/22 v1.99f Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding OT1 on input line 43.
-)) (./main.aux)
+)) (./main.aux
+
+LaTeX Warning: Label `fig:egfluor' multiply defined.
+
+
+LaTeX Warning: Label `fig:vartau' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -252,8 +259,7 @@ LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Try loading font information for OT1+bch on input line 41.
-
-(/opt/local/share/texmf-dist/tex/latex/psnfss/ot1bch.fd
+ (/opt/local/share/texmf-dist/tex/latex/psnfss/ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
 )
 Class revtex4 Info: Patching LaTeX tabular. on input line 41.
@@ -340,7 +346,7 @@ Overfull \hbox (0.56pt too wide) detected at line 12
 
 
 Overfull \hbox (0.56pt too wide) detected at line 13
- \OT1/bch/m/n/10 6
+ \OT1/bch/m/n/10 7
  []
 
 
@@ -350,7 +356,7 @@ Overfull \hbox (0.56pt too wide) detected at line 14
 
 
 Overfull \hbox (0.56pt too wide) detected at line 15
- \OT1/bch/m/n/10 7
+ \OT1/bch/m/n/10 8
  []
 
 
@@ -370,17 +376,17 @@ Overfull \hbox (0.56pt too wide) detected at line 18
 
 
 Overfull \hbox (6.12pt too wide) detected at line 19
+ \OT1/bch/m/n/10 15
+ []
+
+
+Overfull \hbox (6.12pt too wide) detected at line 21
  \OT1/bch/m/n/10 16
  []
 
 
 Overfull \hbox (6.12pt too wide) detected at line 22
- \OT1/bch/m/n/10 17
- []
-
-
-Overfull \hbox (6.12pt too wide) detected at line 23
- \OT1/bch/m/n/10 17
+ \OT1/bch/m/n/10 16
  []
 
 )
@@ -389,38 +395,7 @@ Overfull \hbox (6.12pt too wide) detected at line 23
 
  (./intro.tex
 
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 3.
-
-
-Package natbib Warning: Citation `Tsien89' on page 1 undefined on input line 5.
-
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
-
-
-Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
+Package natbib Warning: Citation `??' on page 1 undefined on input line 1.
 
 LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -431,6 +406,23 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
+
+Package natbib Warning: Citation `Tsien89' on page 1 undefined on input line 5.
+
+
+
+Package natbib Warning: Citation `BraitenbergShutz91' on page 1 undefined on in
+put line 5.
+
+
+Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
+
+
+Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
+
+
+Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
+
 
 Package natbib Warning: Citation `redshirt' on page 1 undefined on input line 5
 .
@@ -444,9 +436,38 @@ Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
 
 Package natbib Warning: Citation `??' on page 1 undefined on input line 5.
 
-[1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-(./methods.tex [2] [3] [4] [5] [6] [7]) (./results.tex [8]
-<../figs/data_example.pdf, id=93, 419.5675pt x 271.0125pt>
+[1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `VogPan09' on page 2 undefined on input line 7
+.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+
+Package natbib Warning: Citation `??' on page 2 undefined on input line 7.
+
+) (./methods.tex <../figs/fr_vs_J.pdf, id=26, 436.63126pt x 266.9975pt>
+File: ../figs/fr_vs_J.pdf Graphic file (type pdf)
+
+<use ../figs/fr_vs_J.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2] [3 <../figs/fr_vs_J.pdf>] [4] [5] [6] [7]) (./results.tex [8]
+<../figs/data_example.pdf, id=103, 419.5675pt x 271.0125pt>
 File: ../figs/data_example.pdf Graphic file (type pdf)
 
 <use ../figs/data_example.pdf>
@@ -455,131 +476,116 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 9 undefined on input 
-line 78.
+line 69.
 
-<../figs/FigureA3_scatter_three.pdf, id=94, 420.57124pt x 315.1775pt>
+[9] <../figs/FigureA3_scatter_three.pdf, id=107, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_scatter_three.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_scatter_three.pdf>
-<../figs/FigureA3_scatter_three_corrected.pdf, id=95, 420.57124pt x 315.1775pt>
+<../figs/FigureA3_scatter_three_corrected.pdf, id=108, 420.57124pt x 315.1775pt
+>
 File: ../figs/FigureA3_scatter_three_corrected.pdf Graphic file (type pdf)
-<use ../figs/FigureA3_scatter_three_corrected.pdf>
-<../figs/FigureA3_hist_iid.pdf, id=96, 420.57124pt x 313.17pt>
-File: ../figs/FigureA3_hist_iid.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA3_hist_iid.pdf>
-<../figs/FigureA3_hist_mcmc.pdf, id=97, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA3_hist_mcmc.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA3_hist_mcmc.pdf>
-<../figs/FigureA3_hist_orig.pdf, id=98, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA3_hist_orig.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA3_hist_orig.pdf>
+ <use ../figs/FigureA3_scatter_three_corrected.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9] <../figs/FigureA4_scale_bias.pdf, id=102, 420.57124pt x 315.1775pt>
+[10 <../figs/data_example.pdf>]
+<../figs/FigureA4_scale_bias.pdf, id=126, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA4_scale_bias.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10 <../figs/data_example.pdf>] [11 <../figs/FigureA3_scatter_three.pdf> <../fi
-gs/FigureA3_scatter_three_corrected.pdf> <../figs/FigureA3_hist_iid.pdf> <../fi
-gs/FigureA3_hist_mcmc.pdf> <../figs/FigureA3_hist_orig.pdf>]
-<../figs/FigureA5_recvar.pdf, id=148, 420.57124pt x 315.1775pt>
+[11 <../figs/FigureA3_scatter_three.pdf> <../figs/FigureA3_scatter_three_correc
+ted.pdf>] <../figs/FigureA5_recvar.pdf, id=140, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA5_recvar.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA5_recvar.pdf>
-<../figs/FigureA6_recvar_SNR.pdf, id=149, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA6_recvar_SNR.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA7_recvar_NT.pdf, id=150, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA7_recvar_NT.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12 <../figs/FigureA4_scale_bias.pdf> <../figs/FigureA5_recvar.pdf>]
-<../figs/Figure7b_raster_weak.pdf, id=162, 420.57124pt x 315.1775pt>
-File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=163, 420.57124pt x 315.1775pt>
-File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=164, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=165, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_strong_corr.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13 <../figs/FigureA6_recvar_SNR.pdf> <../figs/FigureA7_recvar_NT.pdf>]
-<../figs/FigureA9_all_same_sol.pdf, id=178, 420.57124pt x 313.17pt>
+<../figs/FigureA9_all_same_sol.pdf, id=141, 420.57124pt x 313.17pt>
 File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_all_same_sol.pdf>
-<../figs/FigureA9_variable_25.pdf, id=179, 420.57124pt x 315.1775pt>
+<../figs/FigureA9_variable_25.pdf, id=142, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_variable_25.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA10_regular_sol.pdf, id=180, 420.57124pt x 315.1775pt>
+<../figs/Figure5a_hist_glm_vanilla.pdf, id=143, 420.57124pt x 313.17pt>
+File: ../figs/Figure5a_hist_glm_vanilla.pdf Graphic file (type pdf)
+
+<use ../figs/Figure5a_hist_glm_vanilla.pdf>
+<../figs/Figure5b_hist_glm_sparse.pdf, id=144, 420.57124pt x 313.17pt>
+File: ../figs/Figure5b_hist_glm_sparse.pdf Graphic file (type pdf)
+
+<use ../figs/Figure5b_hist_glm_sparse.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs/FigureA6_recvar_SNR.pdf, id=145, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA6_recvar_SNR.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs/FigureA7_recvar_NT.pdf, id=146, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA7_recvar_NT.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs/Figure7b_raster_weak.pdf, id=147, 420.57124pt x 315.1775pt>
+File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
+
+<use ../figs/Figure7b_raster_weak.pdf>
+<../figs/Figure7a_raster_strong.pdf, id=148, 420.57124pt x 315.1775pt>
+File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
+
+<use ../figs/Figure7a_raster_strong.pdf>
+<../figs/FigureA8_weak_corr.pdf, id=149, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA8_weak_corr.pdf>
+<../figs/FigureA8_strong_corr.pdf, id=150, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA8_strong_corr.pdf> [12 <../figs/FigureA4_scale_bias.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13 <../figs/FigureA5_recvar.pdf> <../figs/FigureA9_all_same_sol.pdf> <../figs/
+FigureA9_variable_25.pdf>]
+<../figs/FigureA10_regular_sol.pdf, id=176, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_regular_sol.pdf>
-<../figs/FigureA10_sparse_sol.pdf, id=181, 420.57124pt x 315.1775pt>
+<../figs/FigureA10_sparse_sol.pdf, id=177, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_sparse_sol.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <..
-/figs/FigureA8_weak_corr.pdf> <../figs/FigureA8_strong_corr.pdf>]
-<../figs/FigureA11_real_traces.pdf, id=205, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA11_real_traces.pdf Graphic file (type pdf)
+) [14 <../figs/Figure5a_hist_glm_vanilla.pdf> <../figs/Figure5b_hist_glm_sparse
+.pdf> <../figs/FigureA6_recvar_SNR.pdf>] (./discussion.tex
+LaTeX Font Info:    Try loading font information for OMS+bch on input line 4.
 
-<use ../figs/FigureA11_real_traces.pdf>
-<../figs/FigureA11_real_raster.pdf, id=206, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA11_real_raster.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA11_real_raster.pdf>
-<../figs/FigureA11_real_Xcorr.pdf, id=207, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA11_real_Xcorr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA11_real_Xcorr.pdf>
-<../figs/FigureA11_real_glm.pdf, id=208, 420.57124pt x 313.17pt>
-File: ../figs/FigureA11_real_glm.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA11_real_glm.pdf>
-<../figs/FigureA11_real_sparse.pdf, id=209, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA11_real_sparse.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA11_real_sparse.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./discussion.tex [15 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_v
-ariable_25.pdf> <../figs/FigureA10_regular_sol.pdf> <../figs/FigureA10_sparse_s
-ol.pdf>] [16 <../figs/FigureA11_real_traces.pdf> <../figs/FigureA11_real_raster
-.pdf> <../figs/FigureA11_real_Xcorr.pdf> <../figs/FigureA11_real_glm.pdf> <../f
-igs/FigureA11_real_sparse.pdf>]) (./main.bbl [17])
+(/opt/local/share/texmf-dist/tex/latex/psnfss/omsbch.fd
+File: omsbch.fd 
+)
+LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
+) (./main.bbl [15 <../figs/FigureA7_recvar_NT.pdf>] [16 <../figs/Figure7b_raste
+r_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <../figs/FigureA8_weak_corr.pd
+f> <../figs/FigureA8_strong_corr.pdf>] [17 <../figs/FigureA10_regular_sol.pdf> 
+<../figs/FigureA10_sparse_sol.pdf>])
 
 Package natbib Warning: There were undefined citations.
 
@@ -587,19 +593,22 @@ Package natbib Warning: There were undefined citations.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 4477 strings out of 94500
- 56861 string characters out of 1155413
- 124738 words of memory out of 1000000
- 7544 multiletter control sequences out of 10000+50000
+ 4471 strings out of 94500
+ 56335 string characters out of 1155413
+ 124382 words of memory out of 1000000
+ 7540 multiletter control sequences out of 10000+50000
  26028 words of font info for 58 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,10n,26p,2128b,317s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,10n,26p,2624b,317s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 268 PDF objects out of 300000
+ 240 PDF objects out of 300000
  0 named destinations out of 131072
- 116 words of extra memory for PDF output out of 65536
+ 91 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/sha
 re/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/font
 s/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/c
@@ -612,11 +621,11 @@ hare/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/share/texmf-dist/f
 onts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesk
 y/cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmex10.pfb>
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi7.pfb></opt/local/share
-/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/
-type1/bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm
-/cmr10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb>{/opt
+/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></opt/local/share/texmf-dist/font
+s/type1/bluesky/cm/cmr7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm
+/cmr10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb>{/opt
 /local/share/texmf-dist/fonts/enc/dvips/psnfss/8r.enc}</opt/local/share/texmf-d
 ist/fonts/type1/bitstrea/charter/bchri8a.pfb></opt/local/share/texmf-dist/fonts
 /type1/bitstrea/charter/bchr8a.pfb></opt/local/share/texmf-dist/fonts/type1/bit
 strea/charter/bchb8a.pfb>
-Output written on main.pdf (18 pages, 694767 bytes).
+Output written on main.pdf (18 pages, 661544 bytes).

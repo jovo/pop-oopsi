@@ -56,14 +56,14 @@ n_GT=cell(N,1);
 %%%%%%%%%%% CUSTOM INITIALS FOR particle filter parameters
 cP.rate     = rate_b;               % expected rate
 cP.k        = log(cP.rate);         % linear filter
-cP.A        = 150;                  % jump size ($\mu$M)
+cP.A        = 50;                   % jump size ($\mu$M)
 cP.C_0      = 25;                   % baseline [Ca++]
 cP.n        = 1;                    % hill equation exponent
-cP.k_d      = 100^cP.n;              % hill coefficient
+cP.k_d      = 180^cP.n;             % hill coefficient
 cP.alpha    = 1;                    % F_max
 cP.beta     = 0;                    % F_min
-cP.gamma    = 1e-4;                 % scaled variance
-cP.zeta     = 4*cP.gamma;            % constant variance
+cP.gamma    = 0;                    % scaled variance
+cP.zeta     = 4e-4;                 % constant variance
 
 cP.C_init   = cP.C_0;                % initial [Ca++]
 cP.tau_c    = 0.2;

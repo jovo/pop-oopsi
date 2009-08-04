@@ -10,14 +10,13 @@
 \contentsline {subsubsection}{\numberline {1}A cheaper high-SNR approximation of the joint posteriors}{6}{}
 \contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{6}{}
 \contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{6}{}
-\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{6}{}
+\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{7}{}
 \contentsline {subsection}{\numberline {F}Specific implementation notes}{7}{}
-\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{7}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{8}{}
 \contentsline {section}{\numberline {III}Results}{8}{}
 \contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
 \contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{9}{}
-\contentsline {section}{\numberline {IV}Discussion}{16}{}
-\contentsline {paragraph}{\numberline {a}j's outline of discussion}{16}{}
-\contentsline {paragraph}{\numberline {b}y's mini-discussion}{16}{}
-\contentsline {section}{\numberline {}Acknowledgments}{17}{}
-\contentsline {section}{\numberline {}References}{17}{}
+\contentsline {section}{\numberline {IV}Discussion}{15}{}
+\contentsline {paragraph}{\numberline {a}j's outline of discussion}{15}{}
+\contentsline {section}{\numberline {}Acknowledgments}{16}{}
+\contentsline {section}{\numberline {}References}{16}{}

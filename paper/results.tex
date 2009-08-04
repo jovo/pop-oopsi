@@ -1,8 +1,8 @@
 \subsection{Simulating neural activity in a neural population} \label{sec:results:simulations}
 
-To test the described method for inferring functional connectivity from calcium imaging data, we simulated a network of stochastically connected neurons constructed as close as possible to resemble the real cortical microcircuits, based on experimental data available from the literature \cite{Braitenberg1998, Urquijo2000, Lefort2009, Sayer1990}.  We prepared sparse random networks of $N=10-500$ neurons. Each neuron was modeled using Eqs. \eqref{eqn:glm:definition} and \eqref{eqn:h:definition}.
+To test the described method for inferring functional connectivity from calcium imaging data, we simulated a network of stochastically connected neurons constructed as close as possible to resemble the real cortical microcircuits, based on experimental data available from the literature \cite{Braitenberg1998, Urquijo2000, Lefort2009, Sayer1990}.  We prepared sparse random networks of $N=10-500$ neurons. Each neuron was modeled using Eqs. \ref{eqn:glm:definition} and \ref{eqn:h:definition}.
 
-The network was divided into excitatory (80\%) and inhibitory (20\%) neurons \cite{Braitenberg1998, Urquijo2000}, each respecting Dale's law, i.e., all axons for a particular neuron were either excitatory or inhibitory (corresponding to all positive or all negative columns in our functional connection weight matrix, $\bw$). Neurons were randomly connected to each other with probability $0.1$ \cite{Braitenberg1998, Lefort2009}.  Synaptic weights for excitatory connections, as defined by EPSP peak amplitude, were randomly drawn from exponential distribution with the mean of $0.5 \mu V$ \cite{Lefort2009, Sayer1990}. These were then converted to GLM weights: while synaptic weights physiologically were measured in $\mu V$, in GLM functional connectivity weights were measured in log-rate units of Eq. \eqref{eqn:glm:definition}). GLM weights described the change in the probability of the neuron $i$ to fire given neuron $j$ had fired before, as opposed to physiologically measured injected currents or changes in membrane potential. By utilizing this definition, synaptic weights were converted into GLM weights assuming that each EPSP corresponded to added probability of neuron spiking in given time bin of $\Delta P = V_E/V_{b}$, where $v_E$ is peak EPSP amplitude and $V_b$ is the membrane resting potential below threshold (implying that $V_{b}/V_E$ EPSPs would be required to trigger neuron over the threshold),
+The network was divided into excitatory (80\%) and inhibitory (20\%) neurons \cite{Braitenberg1998, Urquijo2000}, each respecting Dale's law, i.e., all axons for a particular neuron were either excitatory or inhibitory (corresponding to all positive or all negative columns in our functional connection weight matrix, $\bw$). Neurons were randomly connected to each other with probability $0.1$ \cite{Braitenberg1998, Lefort2009}.  Synaptic weights for excitatory connections, as defined by EPSP peak amplitude, were randomly drawn from exponential distribution with the mean of $0.5 \mu V$ \cite{Lefort2009, Sayer1990}. These were then converted to GLM weights: while synaptic weights physiologically were measured in $\mu V$, in GLM functional connectivity weights were measured in log-rate units of Eq. \ref{eqn:glm:definition}). GLM weights described the change in the probability of the neuron $i$ to fire given neuron $j$ had fired before, as opposed to physiologically measured injected currents or changes in membrane potential. By utilizing this definition, synaptic weights were converted into GLM weights assuming that each EPSP corresponded to added probability of neuron spiking in given time bin of $\Delta P = V_E/V_{b}$, where $v_E$ is peak EPSP amplitude and $V_b$ is the membrane resting potential below threshold (implying that $V_{b}/V_E$ EPSPs would be required to trigger neuron over the threshold),
 
 \begin{equation}\label{eqn:convert}
 \w_{ij}=\ln(-\ln(e^{-r_i\tau_w}-V_E/V_{b})/r_i\tau_w),
@@ -18,7 +18,7 @@ Inhibitory connections were also drawn from exponential distribution with the ne
 
 The time course of functional connectivity weights $\w_{ij}(t)$ was modeled as the difference of two exponentials with the rise time of 1 msec and decay time of 10 msec for excitatory and 20 msec for inhibitory currents \cite{Sayer1990}. Up to 25\% variation in these time constants could be allowed. We neglected conduction delays, given that the time delay below $\sim 1$ msec expected in local cortical circuit was smaller than the time step of our computer simulation.  Additionally to excitatory and inhibitory currents, each neuron was modeled to have refractory current with the time-course described as an exponential with time constant of 10 ms.
 
-Spike-trains were generated using GLM by simulating network forward in time with the time step of 1 ms.  Given the spike rasters, the fluorescence observations were generated using calcium dynamics model Eq. \eqref{eqn:ca:definition}. Parameters for the model were chosen according to our experience with few actual cells analyzed using algorithm of \cite{Vogelstein2009}, see Table \ref{table:caparm}.  The population of cells was generated with these parameters allowing cell-to-cell variance of at least 30\%. 
+Spike-trains were generated using GLM by simulating network forward in time with the time step of 1 ms.  Given the spike rasters, the fluorescence observations were generated using calcium dynamics model Eq. \ref{eqn:ca:definition}. Parameters for the model were chosen according to our experience with few actual cells analyzed using algorithm of \cite{Vogelstein2009}, see Table \ref{table:caparm}.  The population of cells was generated with these parameters allowing cell-to-cell variance of at least 30\%. 
 More specifically, each parameter was generated from a normal distribution with specified mean and variance at about 30\% of the mean, truncated at the lower bound at about 30\% of the mean value. Fluorescence was obtained for calcium imaging at the frame-rate of 33 Hz or 66Hz.  From 300 sec to 3600 sec of calcium imaging data was simulated.
 
 \begin{table}[h!b!p!]
@@ -45,19 +45,10 @@ $K_d$ & 200 $\mu$M \\
 \end{table}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\hsize]{../figs/data_example.pdf}
-\caption{Option 1:A schematic depicting our data analysis pipeline.  The left panel shows the mean image from an in vivo experiment, with regions-of-interest indicated by white circles, as determined by a custom algorithm (see Methods for details).  By averaging the pixel intensity of all the pixels within a region of interest, we obtain a one-dimensional fluorescence trace for each neuron.  The middle panel shows two such examples, the top showing a trace with relatively high signal-to-noise ratio (SNR), and the bottom showing a trace with a relatively low SNR.  We use these signals to sample likely spike trains (below each trace), and use such joint spike trains to estimate the functional connectivity matrix, as shown in the left panel. Option 2: In calcium imaging a population of neural cells is continuously
-imaged using light microscopy and calcium sensitive fluorescent indicator
-(left panel).
-Whenever a neuron generates an action potential (fire), calcium influx through
-cellular membrane leads to a change in the fluorescence of the dye, thus
-allowing to detect the moments when cell fires (central panels).
-Accurate identification of spike trains from calcium imaging data gives
-access to detailed functional connectivity matrices for populations
-of neurons as large as 1,000 - 10,000 of cells.}
-\label{fig:egfluor}
+\begin{figure}[h] 
+\centering \includegraphics[width=\hsize]{../figs/data_example} 
+\caption{Option 1:A schematic depicting our data analysis pipeline. The left panel shows the mean image from an in vivo experiment, with regions-of-interest indicated by white circles, as determined by a custom algorithm (see Methods for details). By averaging the pixel intensity of all the pixels within a region of interest, we obtain a one-dimensional fluorescence trace for each neuron. The middle panel shows two such examples, the top showing a trace with relatively high signal-to-noise ratio (SNR), and the bottom showing a trace with a relatively low SNR. We use these signals to sample likely spike trains (below each trace), and use such joint spike trains to estimate the functional connectivity matrix, as shown in the left panel. Option 2: In calcium imaging a population of neural cells is continuously imaged using light microscopy and calcium sensitive fluorescent indicator (left panel). Whenever a neuron generates an action potential (fire), calcium influx through cellular membrane leads to a change in the fluorescence of the dye, thus allowing to detect the moments when cell fires (central panels). Accurate identification of spike trains from calcium imaging data gives access to detailed functional connectivity matrices for populations of neurons as large as 1,000 - 10,000 of cells.} 
+\label{fig:egfluor} 
 \end{figure}
 
 
@@ -75,13 +66,13 @@ of neurons as large as 1,000 - 10,000 of cells.}
 
 With neural population activity prepared as described in the previous section,
 we used our Bayesian inference algorithm to reconstruct the functional connectivity matrix from simulated fluorescence data.
-Specifically, we calculated the connectivity matrix by solving the maximum likelihood problem Eq. \eqref{eqn:likelihoodGLM-expl},
+Specifically, we calculated the connectivity matrix by solving the maximum likelihood problem Eq. \ref{eqn:likelihoodGLM-expl},
 \begin{align}
 \label{eqn:likelihoodGLMmoda}&E[\ln P_{\bn}(n_i|{\bf n}_{\i}; W)]=\sum_t \left( n_i(t) \ln J_i(t) - (1-n_i(t)) \exp(J_i(t)) \Delta \right), \\
 \label{eqn:likelihoodGLMmodb}&J_i(t)=b_i+\sum\limits_j \sum\limits_{t'<t} \w_{ij}(t-t')n_{j}(t')=
 b_i+\sum\limits_j w^{ij} h_j(t).
 \end{align}
-The sum in Eqs.\eqref{eqn:likelihoodGLMmoda} and \eqref{eqn:likelihoodGLMmodb} was over the sample of $\{n_i(t)\}$, produced with our spike sampling algorithm, discretized over the time-bins $t'$ with the width corresponding to the calcium imaging frame-rate (i.e. 30 ms for 33 Hz and 15 ms for 66 Hz). In one of the two cases we considered, EPSP time-profiles were assumed to be ``known'' exponential, and the weights were estimated using reduced histories $h_{i}(t)=\sum_{t'<t} \exp(-(t-t')/\tau_h)n_{i}(t')$ with the time constant $\tau_h=10$ ms (i.e. second equation in Eq. \eqref{eqn:likelihoodGLMmodb}). In the second case we considered, the time dependence of $\w_{ij}(t)$ was assumed to be unknown and the first equation in Eq. \eqref{eqn:likelihoodGLMmodb}) was used to correlate $n_i(t)$ with $n_j(t')$ for $t'<t$ up to a given depth $m$.  In this latter case, since each next term in Eq. \eqref{eqn:likelihoodGLMmodb}) was significantly smaller than the previous one, we found that the best results were obtained if we took $m=1$ (i.e. minimizing number of unknown variables given certain amount of data). 
+The sum in Eqs.\ref{eqn:likelihoodGLMmoda} and \ref{eqn:likelihoodGLMmodb} was over the sample of $\{n_i(t)\}$, produced with our spike sampling algorithm, discretized over the time-bins $t'$ with the width corresponding to the calcium imaging frame-rate (i.e. 30 ms for 33 Hz and 15 ms for 66 Hz). In one of the two cases we considered, EPSP time-profiles were assumed to be ``known'' exponential, and the weights were estimated using reduced histories $h_{i}(t)=\sum_{t'<t} \exp(-(t-t')/\tau_h)n_{i}(t')$ with the time constant $\tau_h=10$ ms (i.e. second equation in Eq. \ref{eqn:likelihoodGLMmodb}). In the second case we considered, the time dependence of $\w_{ij}(t)$ was assumed to be unknown and the first equation in Eq. \ref{eqn:likelihoodGLMmodb}) was used to correlate $n_i(t)$ with $n_j(t')$ for $t'<t$ up to a given depth $m$.  In this latter case, since each next term in Eq. \ref{eqn:likelihoodGLMmodb}) was significantly smaller than the previous one, we found that the best results were obtained if we took $m=1$ (i.e. minimizing number of unknown variables given certain amount of data). 
 In either case, we described the connection weight between two neurons by a scalar quantity $w^{ij}_s=\text{sign}(\w_{ij})\max_{t} |\w_{ij}(t)|$, which thereafter was used to compare true and reconstructed connectivity weights in all examples below.
 
 %Fig 3: gibbs, indep, baseline results
@@ -96,21 +87,21 @@ In either case, we described the connection weight between two neurons by a scal
 \begin{minipage}[c]{0.45\hsize}
 \includegraphics[width=\hsize]{../figs/FigureA3_scatter_three_corrected}
 \end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA3_hist_iid}
-\end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA3_hist_mcmc}
-\end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA3_hist_orig}
-\end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA3_hist_iid}
+% \end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA3_hist_mcmc}
+% \end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA3_hist_orig}
+% \end{minipage}
 \caption{Functional connectivity matrix can be reconstructed from calcium imaging data.
 In the upper panels inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using independent approximation algorithm, exact MCMC-Gibbs algorithm, and original spike trains observed at the frame-rate of the calcium imaging. Network of $N=25$ neurons was used, firing at 5 Hz, and imaged for T=600 sec at intermediate SNR (photon budget 10Kph/neuron/frame, see below).
 $r^2=0.47$ for independent approximation algorithm was found, $r^2=0.48$ for MCMC-Gibbs algorithm, and $r^2=0.57$ for the original spike trains. 
 Thus, independent approximation produced results almost as accurate as the exact MCMC-Gibbs algorithm, and almost as accurate as the original spikes.
 Inferred connectivity weights (upper left) were scaled with respect to true connectivity by a constant amount due to time discretization bias (see below); other than scale, inferred connectivity represented the true connectivity matrix very well (upper right).
-Lower panels show the inferred histograms of the connection weights (dotted lines) versus that of the true connectivity matrix (think solid lines). Blue corresponds to negative (inhibitory) connections, red corresponds to positive (excitatory) connections, and black corresponds to zero (absent) connections in the true connectivity matrix.
+% Lower panels show the inferred histograms of the connection weights (dotted lines) versus that of the true connectivity matrix (think solid lines). Blue corresponds to negative (inhibitory) connections, red corresponds to positive (excitatory) connections, and black corresponds to zero (absent) connections in the true connectivity matrix.
 Thus, calcium imaging is sufficient to identify connected pairs of neurons reliably.}
 \label{fig:scatters}
 \end{figure}
@@ -132,7 +123,7 @@ a pair of neurons are delayed by $\Delta$ or more, and so their temporal order c
 \label{fig:bias}
 \end{figure}
 
-Our estimated connectivity matrix was always biased with respect to the true connectivity by a constant factor. The origin of this bias is the coarse time discretization of the spike trains inferred from calcium imaging, $\Delta \approx 15-30$ msec, large on the scale of EPSP/IPSP time scale $\tau_w = 10-20$ ms. Really, if $\Delta$ is large, the first term in the sum Eq. \eqref{eqn:likelihoodGLMmodb} $\w_{ij}(\Delta)\approx w^{ij}_s\exp(-\Delta/\tau_w)$ is substantially smaller than $w^{ij}_s$ and connectivity weights estimated from GLM $w_{ji}(\Delta)$ will be scaled relative to $w_s^{ij}$.
+Our estimated connectivity matrix was always biased with respect to the true connectivity by a constant factor. The origin of this bias is the coarse time discretization of the spike trains inferred from calcium imaging, $\Delta \approx 15-30$ msec, large on the scale of EPSP/IPSP time scale $\tau_w = 10-20$ ms. Really, if $\Delta$ is large, the first term in the sum Eq. \ref{eqn:likelihoodGLMmodb} $\w_{ij}(\Delta)\approx w^{ij}_s\exp(-\Delta/\tau_w)$ is substantially smaller than $w^{ij}_s$ and connectivity weights estimated from GLM $w_{ji}(\Delta)$ will be scaled relative to $w_s^{ij}$.
 To estimate the magnitude of this scaling bias, we consider two neurons coupled by GLM weight $w_{12}$. $w_{12}$ can be inferred by observing the number of spikes from the two neurons in excess of the baseline firing rate $\Delta n_{12} \approx \int dt w_{12} \exp(-t/\tau_w)$ (where we assumed exponential time course for $w_{12}(t)$). Now, assuming spike trains are discretized into bins of size $\Delta \sim \tau_w$, and assuming that we only dismiss all spike pairs occurred in the same time bins as coincident, the number of excess spike pairs observed empirically is $\Delta n'_{12} \approx \langle \exp(-\Delta/\tau_w) \rangle = \int\limits_0^\Delta {dt_1}/{\Delta} \int\limits_{\Delta}^\infty dt_2 \exp(-(t_2-t_1)/\tau_w)$, where the average is understood over all spike pairs from consecutive time-bins. The ratio
 \begin{equation}\label{eqn:bias}
 \Delta n'_{12}/\Delta n_{12}=(1-\exp(-\Delta/\tau_w))/(\Delta/\tau_w)
@@ -162,6 +153,34 @@ For finer time-discretization the amount of data necessary to overcome this nois
 \caption{Accuracy of the inferred connectivity weights as function of the frame rate of calcium imaging. Connectivity matrix here was inferred from the original spike trains observed at corresponding frame-rates, thus establishing the upper performance bound for inference using calcium imaging data. A network of $N=25$ neurons, firing at 5 Hz and imaged for $T=600$ sec was used.}
 \label{fig:recvar}
 \end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/FigureA9_all_same_sol}
+\end{minipage}
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/FigureA9_variable_25}
+\end{minipage}
+\caption{Bayesian inference algorithm is robust to distortions of the
+underlying generative model. One distortion that should be expected is variability of the EPSP time courses from neuron to neuron, and possibly synapse to synapse. 
+With up to 25\% variability allowed in EPSP time scales $\tau_w$ (right panel) our algorithm provided reconstructions of the same quality as when all $\tau_w$ were the same (left panel).}
+\label{fig:vartau}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/Figure5a_hist_glm_vanilla}
+\end{minipage}
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/Figure5b_hist_glm_sparse}
+\end{minipage}
+\caption{histo sparse vs. vanilla}
+\label{fig:vartau}
+\end{figure}
+
+
 
 \begin{figure}[h]
 \centering
@@ -229,19 +248,7 @@ Such neural network showed patterns of activity very different from the weakly c
 %
 %Fig 9: sparse glm improves fit (same format as Fig 8)
 %
-\begin{figure}[h]
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA9_all_same_sol}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA9_variable_25}
-\end{minipage}
-\caption{Bayesian inference algorithm is robust to distortions of the
-underlying generative model. One distortion that should be expected is variability of the EPSP time courses from neuron to neuron, and possibly synapse to synapse. 
-With up to 25\% variability allowed in EPSP time scales $\tau_w$ (right panel) our algorithm provided reconstructions of the same quality as when all $\tau_w$ were the same (left panel).}
-\label{fig:vartau}
-\end{figure}
+
 
 \begin{figure}[h]
 \centering
@@ -263,28 +270,28 @@ However, we found that such added variance to be insignificant in our simulation
 Taking into account simple prior information about the connectivity matrix resulted in dramatic improvement of the inferred connectivity matrix. sparseness prior resulted in dramatic improvements allowing successful reconstruction from as little as 5 min of calcium imaging data, and allowing to achieve for $T\approx 10$ min the same level of accuracy that would otherwise require up to $T\approx 1$ hour of calcium imaging data, Figure \ref{fig:recvar-NT} and \ref{fig:sparse}. Dale's prior only led to ~10\% in the correlation coefficient $r^2$ of the reconstructed connectivity matrix, and was not found significant.
 
 %Fig -: real data
-\begin{figure}[h]
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA11_real_traces}
-\end{minipage}
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA11_real_raster}
-\end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA11_real_Xcorr}
-\end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA11_real_glm}
-\end{minipage}
-\begin{minipage}[c]{0.3\hsize}
-\includegraphics[width=\hsize]{../figs/FigureA11_real_sparse}
-\end{minipage}
-\caption{Functional connectivity matrix inferred from a sample of actual calcium imaging data for $N=72$ cells in [XXX], imaged for $T\approx 260$ sec at 15 Hz. 
-$N=23$ neurons with spikes at sufficient SNR were selected, and functional connectivity reconstructed using independent approximation algorithm. Firing cell of these cells was 0.1-1 Hz and 20-200 spikes were collected for each neuron.
-Upper-left panel shows example of actual fluorescence traces from selected cells, best to worst. Upper-right panel shows a raster of inferred spike trains for first 100 sec of imaging data. Lower panels show left-to-right the time-delayed cross-correlation matrix for selected neurons, simple GLM solution and sparse GLM solution, respectively. A consistent connectivity matrix is obtained here, with sparse solution having sparseness of $\approx 10 \%$, and all neurons automatically respecting Dale's law without explicitly enforcing it. Two clearly excitatory, and three clearly inhibitory neurons can be seen, with remaining neurons not showing significant couplings.}
-\label{fig:real}
-\end{figure}
+% \begin{figure}[h]
+% \centering
+% \begin{minipage}[c]{0.45\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA11_real_traces}
+% \end{minipage}
+% \begin{minipage}[c]{0.45\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA11_real_raster}
+% \end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA11_real_Xcorr}
+% \end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA11_real_glm}
+% \end{minipage}
+% \begin{minipage}[c]{0.3\hsize}
+% \includegraphics[width=\hsize]{../figs/FigureA11_real_sparse}
+% \end{minipage}
+% \caption{Functional connectivity matrix inferred from a sample of actual calcium imaging data for $N=72$ cells in [XXX], imaged for $T\approx 260$ sec at 15 Hz. 
+% $N=23$ neurons with spikes at sufficient SNR were selected, and functional connectivity reconstructed using independent approximation algorithm. Firing cell of these cells was 0.1-1 Hz and 20-200 spikes were collected for each neuron.
+% Upper-left panel shows example of actual fluorescence traces from selected cells, best to worst. Upper-right panel shows a raster of inferred spike trains for first 100 sec of imaging data. Lower panels show left-to-right the time-delayed cross-correlation matrix for selected neurons, simple GLM solution and sparse GLM solution, respectively. A consistent connectivity matrix is obtained here, with sparse solution having sparseness of $\approx 10 \%$, and all neurons automatically respecting Dale's law without explicitly enforcing it. Two clearly excitatory, and three clearly inhibitory neurons can be seen, with remaining neurons not showing significant couplings.}
+% \label{fig:real}
+% \end{figure}
 
 
 We applied our algorithm to a sample of the real calcium imaging data from [XXX], totaling about 5 minutes of imaging for a population of 72 cells in [XXX]. Out of these, about 23 cells had fluorescence traces indicative of spikes, while the other cells were either silent or did not shown SNR sufficient for analysis. These 23 cells were selected for futher processing. 20-200 spikes were found for each cell, corresponding to firing rates from 0.07 Hz to 0.8 Hz.
