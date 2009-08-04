@@ -2,8 +2,27 @@ This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
 The style file: amsplain.bst
 Database file #1: mybib.bib
+Repeated entry---line 35311 of file mybib.bib
+ : @article{Feldmeyer99
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 35320 of file mybib.bib
+ : @article{FeldmeyerSakmann00
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 35328 of file mybib.bib
+ : @article{Gupta00
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 35355 of file mybib.bib
+ : @article{PetersenSakmann00
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 51691 of file mybib.bib
+ : @book{ShumwayStoffer06
+ :                       ,
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "??"
-Warning--I didn't find a database entry for "Tsien89"
 Warning--I didn't find a database entry for "BraitenbergShutz91"
 Warning--I didn't find a database entry for "redshirt"
 Warning--I didn't find a database entry for "VogPan09"
@@ -17,45 +36,45 @@ Warning--missing pages in NG04
 Warning--missing pages in Stevenson08
 Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
-You've used 49 entries,
+You've used 50 entries,
             2213 wiz_defined-function locations,
-            825 strings with 12337 characters,
-and the built_in function-call counts, 16290 in all, are:
-= -- 1410
-> -- 908
+            829 strings with 12414 characters,
+and the built_in function-call counts, 16566 in all, are:
+= -- 1435
+> -- 915
 < -- 0
-+ -- 363
-- -- 307
-* -- 1503
-:= -- 2688
-add.period$ -- 49
-call.type$ -- 49
-change.case$ -- 300
++ -- 366
+- -- 309
+* -- 1527
+:= -- 2732
+add.period$ -- 50
+call.type$ -- 50
+change.case$ -- 304
 chr.to.int$ -- 0
-cite$ -- 59
-duplicate$ -- 557
-empty$ -- 1283
-format.name$ -- 307
-if$ -- 3273
+cite$ -- 60
+duplicate$ -- 568
+empty$ -- 1311
+format.name$ -- 309
+if$ -- 3332
 int.to.chr$ -- 0
-int.to.str$ -- 49
-missing$ -- 102
-newline$ -- 157
-num.names$ -- 99
-pop$ -- 377
+int.to.str$ -- 50
+missing$ -- 104
+newline$ -- 160
+num.names$ -- 101
+pop$ -- 382
 preamble$ -- 1
-purify$ -- 251
+purify$ -- 254
 quote$ -- 0
-skip$ -- 291
+skip$ -- 296
 stack$ -- 0
-substring$ -- 1041
-swap$ -- 67
+substring$ -- 1067
+swap$ -- 68
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 186
+type$ -- 190
 warning$ -- 10
-while$ -- 156
-width$ -- 51
-write$ -- 396
-(There were 15 warnings)
+while$ -- 159
+width$ -- 52
+write$ -- 404
+(There were 5 error messages)
