@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  4 AUG 2009 12:46
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  5 AUG 2009 11:02
 entering extended mode
 **main
 (./main.tex
@@ -224,9 +224,6 @@ Package: amsthm 2004/08/06 v2.20
 
 LaTeX Warning: Label `fig:egfluor' multiply defined.
 
-
-LaTeX Warning: Label `fig:vartau' multiply defined.
-
 )
 \openout1 = `main.aux'.
 
@@ -289,17 +286,37 @@ Overfull \hbox (5.00003pt too wide) detected at line 18
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 19
- \OT1/cmr/m/n/10 15
+ \OT1/cmr/m/n/10 12
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 20
+ \OT1/cmr/m/n/10 13
  []
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 21
- \OT1/cmr/m/n/10 16
+ \OT1/cmr/m/n/10 14
  []
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 22
- \OT1/cmr/m/n/10 16
+ \OT1/cmr/m/n/10 15
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 23
+ \OT1/cmr/m/n/10 15
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 25
+ \OT1/cmr/m/n/10 17
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 26
+ \OT1/cmr/m/n/10 17
  []
 
 )
@@ -317,134 +334,130 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 ) [1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-Package natbib Warning: Citation `VogPan09' on page 2 undefined on input line 5
-.
+Package natbib Warning: Citation `DGL01' on page 2 undefined on input line 5.
 
-) (./methods.tex <../figs/fr_vs_J.pdf, id=32, 433.62pt x 266.9975pt>
+) (./methods.tex <../figs/fr_vs_J.pdf, id=29, 433.62pt x 266.9975pt>
 File: ../figs/fr_vs_J.pdf Graphic file (type pdf)
 
 <use ../figs/fr_vs_J.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3 <../figs/fr_vs_J.pdf>] [4] [5] [6] [7]) (./results.tex [8]
-<../figs/data_example.pdf, id=103, 419.5675pt x 271.0125pt>
-File: ../figs/data_example.pdf Graphic file (type pdf)
+[2] [3 <../figs/fr_vs_J.pdf>] [4] [5] [6]) (./results.tex
 
-<use ../figs/data_example.pdf>
+LaTeX Warning: Reference `fig:fr_vs_J' on page 7 undefined on input line 5.
+
+[7] <../figs/yuri-paper-schematic.pdf, id=85, 794.97pt x 614.295pt>
+File: ../figs/yuri-paper-schematic.pdf Graphic file (type pdf)
+
+<use ../figs/yuri-paper-schematic.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 9 undefined on input 
+LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 8 undefined on input 
 line 69.
 
-[9] [10 <../figs/data_example.pdf>]
-<../figs/FigureA3_scatter_three.pdf, id=124, 420.57124pt x 315.1775pt>
+[8] <../figs/FigureA3_scatter_three.pdf, id=101, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_scatter_three.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_scatter_three.pdf>
-<../figs/FigureA3_scatter_three_corrected.pdf, id=125, 420.57124pt x 315.1775pt
+<../figs/FigureA3_scatter_three_corrected.pdf, id=102, 420.57124pt x 315.1775pt
 >
 File: ../figs/FigureA3_scatter_three_corrected.pdf Graphic file (type pdf)
  <use ../figs/FigureA3_scatter_three_corrected.pdf>
-<../figs/FigureA4_scale_bias.pdf, id=126, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA4_scale_bias.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <../figs/FigureA3_scatter_three.pdf> <../figs/FigureA3_scatter_three_correc
-ted.pdf>] <../figs/FigureA5_recvar.pdf, id=140, 420.57124pt x 315.1775pt>
+[9] [10 <../figs/yuri-paper-schematic.pdf>]
+<../figs/FigureA4_scale_bias.pdf, id=164, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA4_scale_bias.pdf> [11 <../figs/FigureA3_scatter_three.pdf> 
+<../figs/FigureA3_scatter_three_corrected.pdf> <../figs/FigureA4_scale_bias.pdf
+>] <../figs/FigureA5_recvar.pdf, id=183, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA5_recvar.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA5_recvar.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA9_all_same_sol.pdf, id=141, 420.57124pt x 313.17pt>
-File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA9_all_same_sol.pdf>
-<../figs/FigureA9_variable_25.pdf, id=142, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA9_variable_25.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/Figure5a_hist_glm_vanilla.pdf, id=143, 420.57124pt x 313.17pt>
-File: ../figs/Figure5a_hist_glm_vanilla.pdf Graphic file (type pdf)
-
-<use ../figs/Figure5a_hist_glm_vanilla.pdf>
-<../figs/Figure5b_hist_glm_sparse.pdf, id=144, 420.57124pt x 313.17pt>
-File: ../figs/Figure5b_hist_glm_sparse.pdf Graphic file (type pdf)
-
-<use ../figs/Figure5b_hist_glm_sparse.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA6_recvar_SNR.pdf, id=145, 420.57124pt x 315.1775pt>
+<../figs/FigureA6_recvar_SNR.pdf, id=184, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA6_recvar_SNR.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA7_recvar_NT.pdf, id=146, 420.57124pt x 315.1775pt>
+<../figs/FigureA7_recvar_NT.pdf, id=185, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA7_recvar_NT.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <../figs/FigureA4_scale_bias.pdf>]
-<../figs/Figure7b_raster_weak.pdf, id=154, 420.57124pt x 315.1775pt>
-File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=155, 420.57124pt x 315.1775pt>
-File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=156, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=157, 420.57124pt x 315.1775pt>
-File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_strong_corr.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13 <../figs/FigureA5_recvar.pdf> <../figs/FigureA9_all_same_sol.pdf> <../figs/
-FigureA9_variable_25.pdf>]
-<../figs/FigureA10_regular_sol.pdf, id=176, 420.57124pt x 315.1775pt>
+[12 <../figs/FigureA5_recvar.pdf>] [13 <../figs/FigureA6_recvar_SNR.pdf> <../fi
+gs/FigureA7_recvar_NT.pdf>]
+<../figs/FigureA10_regular_sol.pdf, id=206, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_regular_sol.pdf>
-<../figs/FigureA10_sparse_sol.pdf, id=177, 420.57124pt x 315.1775pt>
+<../figs/FigureA10_sparse_sol.pdf, id=207, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_sparse_sol.pdf>
+<../figs/FigureA3_hist_glm200.pdf, id=208, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA3_hist_glm200.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA3_hist_glm200.pdf>
+<../figs/FigureA3_hist_spa200.pdf, id=209, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA3_hist_spa200.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA3_hist_spa200.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [14 <../figs/Figure5a_hist_glm_vanilla.pdf> <../figs/Figure5b_hist_glm_sparse
-.pdf> <../figs/FigureA6_recvar_SNR.pdf>] (./discussion.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
+<../figs/Figure7b_raster_weak.pdf, id=210, 420.57124pt x 313.17pt>
+File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
-(/opt/local/share/texmf-dist/tex/latex/base/omscmr.fd
+<use ../figs/Figure7b_raster_weak.pdf>
+<../figs/Figure7a_raster_strong.pdf, id=211, 420.57124pt x 312.16624pt>
+File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
+
+<use ../figs/Figure7a_raster_strong.pdf>
+<../figs/FigureA8_weak_corr.pdf, id=212, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA8_weak_corr.pdf>
+<../figs/FigureA8_strong_corr.pdf, id=213, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA8_strong_corr.pdf> [14 <../figs/FigureA10_regular_sol.pdf> 
+<../figs/FigureA10_sparse_sol.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs/FigureA9_all_same_sol.pdf, id=227, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA9_all_same_sol.pdf>
+<../figs/FigureA9_variable_25.pdf, id=228, 420.57124pt x 315.1775pt>
+File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
+
+<use ../figs/FigureA9_variable_25.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./discussion.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
+ (/opt/local/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
-) (./main.bbl [15 <../figs/FigureA7_recvar_NT.pdf>] [16 <../figs/Figure7b_raste
-r_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <../figs/FigureA8_weak_corr.pd
-f> <../figs/FigureA8_strong_corr.pdf>] [17 <../figs/FigureA10_regular_sol.pdf> 
-<../figs/FigureA10_sparse_sol.pdf>] [18])
+
+[15 <../figs/FigureA3_hist_glm200.pdf> <../figs/FigureA3_hist_spa200.pdf>])
+[16 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <..
+/figs/FigureA8_weak_corr.pdf> <../figs/FigureA8_strong_corr.pdf>] (./main.bbl
+[17 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_variable_25.pdf>]
+[18])
 
 Package natbib Warning: There were undefined citations.
 
@@ -458,25 +471,25 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  4202 strings out of 94500
- 53800 string characters out of 1155413
- 121862 words of memory out of 1000000
+ 53793 string characters out of 1155413
+ 121398 words of memory out of 1000000
  7293 multiletter control sequences out of 10000+50000
  11293 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,10n,26p,2671b,370s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,10n,26p,2255b,344s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 244 PDF objects out of 300000
+ 290 PDF objects out of 300000
  0 named destinations out of 131072
  91 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/sha
-re/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fon
-ts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
-cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt
-/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/share/texm
-f-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-dist/fonts/type
-1/bluesky/cm/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr5
-.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy7.pfb></opt/local/
-share/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/share/texmf-dist/
+re/texmf-dist/fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fon
+ts/type1/bluesky/cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
+cm/cmr6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt
+/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/share/texm
+f-dist/fonts/type1/bluesky/cm/cmmi5.pfb></opt/local/share/texmf-dist/fonts/type
+1/bluesky/cm/cmr5.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy7
+.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx7.pfb></opt/local/
+share/texmf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/
 fonts/type1/bluesky/cm/cmex10.pfb></opt/local/share/texmf-dist/fonts/type1/blue
 sky/cm/cmmi7.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb
 ></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr7.pfb></opt/local/share
@@ -486,4 +499,4 @@ cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></o
 pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/tex
 mf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/typ
 e1/bluesky/cm/cmbx12.pfb>
-Output written on main.pdf (19 pages, 687128 bytes).
+Output written on main.pdf (19 pages, 2193612 bytes).

@@ -1,7 +1,7 @@
 \tocdepth@munge 
 \contentsline {section}{\numberline {}Contents}{1}{}
 \tocdepth@restore 
-\contentsline {section}{\numberline {I}Motivation}{1}{}
+\contentsline {section}{\numberline {I}Introduction}{1}{}
 \contentsline {section}{\numberline {II}Methods}{2}{}
 \contentsline {subsection}{\numberline {A}Model}{2}{}
 \contentsline {subsection}{\numberline {B}Goal and general strategy}{4}{}
@@ -12,11 +12,15 @@
 \contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{7}{}
 \contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{7}{}
 \contentsline {subsection}{\numberline {F}Specific implementation notes}{7}{}
-\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{7}{}
-\contentsline {section}{\numberline {III}Results}{8}{}
-\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{8}{}
-\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
+\contentsline {section}{\numberline {III}Results}{7}{}
+\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{7}{}
+\contentsline {subsection}{\numberline {B}Inferring functional connectivity from the simulated calcium imaging data}{9}{}
+\contentsline {subsection}{\numberline {C}Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}{10}{}
+\contentsline {subsection}{\numberline {D}Impact of different imaging frame rates, durations, and noise levels on the inference}{12}{}
+\contentsline {subsection}{\numberline {E}Accuracy of the estimates and Fisher information matrix}{13}{}
+\contentsline {subsection}{\numberline {F}Impact of using priors on the inference}{14}{}
+\contentsline {subsection}{\numberline {G}Impact of strong correlations and deviations from generative model on the inference}{15}{}
 \contentsline {section}{\numberline {IV}Discussion}{15}{}
 \contentsline {paragraph}{\numberline {a}j's outline of discussion}{15}{}
-\contentsline {section}{\numberline {}Acknowledgements}{16}{}
-\contentsline {section}{\numberline {}References}{16}{}
+\contentsline {section}{\numberline {}Acknowledgements}{17}{}
+\contentsline {section}{\numberline {}References}{17}{}

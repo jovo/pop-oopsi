@@ -22,7 +22,7 @@ Repeated entry---line 22006 of file mybib.bib
  : @book{ShumwayStoffer06
  :                       ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "VogPan09"
+Warning--I didn't find a database entry for "DGL01"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in Escola07
@@ -33,48 +33,45 @@ Warning--missing pages in NG04
 Warning--missing pages in Stevenson08
 Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
-Warning--can't use both volume and number if series info is missing
-in BibTeX entry type `book'
-Warning--missing publisher in WainwrightJordan08
-You've used 67 entries,
+You've used 64 entries,
             2213 wiz_defined-function locations,
-            937 strings with 15417 characters,
-and the built_in function-call counts, 22638 in all, are:
-= -- 1950
-> -- 1304
-< -- 1
-+ -- 519
-- -- 445
-* -- 2109
-:= -- 3754
-add.period$ -- 67
-call.type$ -- 67
-change.case$ -- 422
+            920 strings with 15024 characters,
+and the built_in function-call counts, 21799 in all, are:
+= -- 1893
+> -- 1250
+< -- 0
++ -- 498
+- -- 427
+* -- 2042
+:= -- 3610
+add.period$ -- 64
+call.type$ -- 64
+change.case$ -- 404
 chr.to.int$ -- 0
-cite$ -- 78
-duplicate$ -- 760
-empty$ -- 1757
-format.name$ -- 445
-if$ -- 4538
+cite$ -- 74
+duplicate$ -- 723
+empty$ -- 1685
+format.name$ -- 427
+if$ -- 4367
 int.to.chr$ -- 0
-int.to.str$ -- 67
-missing$ -- 141
-newline$ -- 211
-num.names$ -- 135
-pop$ -- 522
+int.to.str$ -- 64
+missing$ -- 132
+newline$ -- 202
+num.names$ -- 129
+pop$ -- 493
 preamble$ -- 1
-purify$ -- 355
+purify$ -- 340
 quote$ -- 0
-skip$ -- 392
+skip$ -- 372
 stack$ -- 0
-substring$ -- 1417
-swap$ -- 87
-text.length$ -- 1
+substring$ -- 1406
+swap$ -- 82
+text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 1
-type$ -- 251
-warning$ -- 12
-while$ -- 212
-width$ -- 69
-write$ -- 548
+top$ -- 0
+type$ -- 244
+warning$ -- 10
+while$ -- 207
+width$ -- 66
+write$ -- 523
 (There were 5 error messages)

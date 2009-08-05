@@ -19,7 +19,7 @@ To ensure computational tractability, we must impose some reasonable constraints
 \begin{figure}[h]
 \centering
 \includegraphics[width=3in]{../figs/fr_vs_J}
-\caption{ass}
+\caption{Expected firing vs. input to the neuron.  Given our model, Eq. \ref{eqn:glm:definition}, the relationship between firing rate and the magnitude of the input to a neuron is highly nonlinear.  Note that firing rate saturates at $1/\Delta$, because of our Bernoulli assumption.}
 \label{fig:egfluor}
 \end{figure}
 
@@ -29,7 +29,7 @@ Second, because the algorithms we develop below assume Markovian dynamics, we mo
 	
 where $\tau_h$ is the decay time constant for spike history terms, $\sigma_h$ is a standard deviation parameter, $\sqrt{\Delta}$ ensures that the statistics of this Markov process have a proper Ornstein-Uhlenbeck limit as $\Delta \to 0$, and throughout this paper, $\epsilon$ denotes an independent standard normal random variable. Note that this model generalizes (via a simple augmentation of the state variable $h_j(t)$) to allow each neuron to have several spike history terms, each with a unique time constant, which when weighted and summed allow us to model a wide variety of possible post-synaptic effects, including bursting, facilitating, and depressing synapses; see \cite{Vogelstein2009} for further details. In this paper, for simplicity, we assume that $\tau_h$ and $\sigma_h$ are known synaptic parameters, and therefore our model spiking parameters $\bth^n$ are given by $\{\bth^n_i\}_{i=1}^N$, where $\bth^n_i=\{\bw_i,k_i,b_i\}$, with $\bw_i=(\w_{i1},\ldots, \w_{iN})$.
 
-The problem of estimating the connectivity parameters $\bw_i$ in this type of GLM, given a fully-observed ensemble of neural spike train $\{n_i(t)\}$, has recently received a great deal of attention; see the references above for a partial list. In the calcium fluorescent imaging setting, however, we do not directly observe spike trains; $\{n_i(t)\}$ must be considered a hidden variable here. Instead, each spike in a given neuron leads to a rapid increase in the intracellular calcium concentration, which then decays slowly due to various cellular buffering and extrusion mechanisms. We in turn make only noisy, indirect, and subsampled observations of this intracellular calcium concentration, via fluorescent imaging techniques XXX ADD SOME BIOPHYSICAL CITES HERE XXX. To perform statistical inference in this setting, \cite{Vogelstein2009} proposed a simple conditional first-order hidden Markov model (HMM) for the intracellular calcium concentration $C_i(t)$ in cell $i$ at time $t$, along with the observed fluorescence $F_i(t)$: \begin{align} \label{eqn:ca:definition} C_i(t) &= C_i(t-\Delta) + (C_i^b-C_i(t-\Delta)) \Delta/\tau^c_i + A_i n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\ F_i(t) &= \alpha_i S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i} \epsilon^F_i(t). \label{eqn:F:definition} \end{align} This model can be interpreted as a simple driven autoregressive process: under nonspiking conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$, driven by normally-distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$. Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium variable $C_i(t)$ to jump by a fixed amount $A_i$, and subsequently decay with time constant $\tau^c_i$. The fluorescence signal $F_i(t)$ corresponds to the count of photons collected at the detector per neuron per imaging frame. This photon count may be modeled with normal statistics, with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}. Because the parameter $K_d$ effectively acts as a simple scale factor, and is a property of the fluorescent indicator, we assume throughout this work that it is known.
+The problem of estimating the connectivity parameters $\bw_i$ in this type of GLM, given a fully-observed ensemble of neural spike train $\{n_i(t)\}$, has recently received a great deal of attention; see the references above for a partial list. In the calcium fluorescent imaging setting, however, we do not directly observe spike trains; $\{n_i(t)\}$ must be considered a hidden variable here. Instead, each spike in a given neuron leads to a rapid increase in the intracellular calcium concentration, which then decays slowly due to various cellular buffering and extrusion mechanisms. We in turn make only noisy, indirect, and subsampled observations of this intracellular calcium concentration, via fluorescent imaging techniques \cite{ImagingManual}. To perform statistical inference in this setting, \cite{Vogelstein2009} proposed a simple conditional first-order hidden Markov model (HMM) for the intracellular calcium concentration $C_i(t)$ in cell $i$ at time $t$, along with the observed fluorescence $F_i(t)$: \begin{align} \label{eqn:ca:definition} C_i(t) &= C_i(t-\Delta) + (C_i^b-C_i(t-\Delta)) \Delta/\tau^c_i + A_i n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\ F_i(t) &= \alpha_i S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i} \epsilon^F_i(t). \label{eqn:F:definition} \end{align} This model can be interpreted as a simple driven autoregressive process: under nonspiking conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$, driven by normally-distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$. Whenever the neuron fires a spike, $n_i(t)=1$, causing the calcium variable $C_i(t)$ to jump by a fixed amount $A_i$, and subsequently decay with time constant $\tau^c_i$. The fluorescence signal $F_i(t)$ corresponds to the count of photons collected at the detector per neuron per imaging frame. This photon count may be modeled with normal statistics, with the mean and variance given by generalized Hill functions, where $S(C)=C/(C+K_d)$ \cite{Yasuda2004}. Because the parameter $K_d$ effectively acts as a simple scale factor, and is a property of the fluorescent indicator, we assume throughout this work that it is known.
 
 To summarize, Eqs. \ref{eqn:glm:definition} -- \ref{eqn:F:definition} define a coupled HMM: the underlying spike trains $n_i(t)$ and spike history terms $h_i(t)$ evolve in a Markovian manner, driving the intracellular calcium concentrations $C_i(t)$, which are themselves Markovian, but evolving at a slower timescale $\tau_i^c$. Finally, we observe only the fluorescence signals $\{F_i(t)\}$, which are related in a simple Markovian fashion to the calcium variables $C_i(t)$.
 
@@ -377,50 +377,6 @@ parameters $\theta \backslash \bw$, (ii) approximating the posteriors
 using the independent SMC method, and (iii) estimating the functional
 connectivity matrix, $\bw$.  The hybrid MCMC-Gibbs sampler was
 substantially slower, up to an hour per neuron per Gibbs pass, with
-the Gibbs sampler dominating the computation time.  XXX IS THIS RIGHT?
-ONE HOUR PER NEURON?  WHY IS EACH GIBBS SWEEP SO SLOW RELATIVE TO A
-PARTICLE FILTER SWEEP? XXX
+the Gibbs sampler dominating the computation time (because the Gibbs process requires 5 Gibbs loops, each requiring about 5 MCMC forward-backward passes).
 
 
-\subsection{Accuracy of the estimates and Fisher information matrix} \label{sec:methods:accuracy_Fisher}
-
-XXX THIS SHOULD PROBABLY BE REDUCED A BIT AND MOVED TO THE RESULTS;
-BETTER TO EXPLAIN THE RESULTS AFTER WE ACTUALLY SHOW THEM XXX
-
-To determine the necessary amount of data for accurate estimation of
-the functional connectivity matrix, we calculate Fisher information
-for $P[\bw| \bX]$. Assuming for simplicity perfect knowledge of spike
-trains (i.e. such not corrupted by inference errors from calcium
-imaging) and single time-bin coupling, i.e. $h_{j}(t)\neq 0$ only for
-time-delay $t=1$, we write the Fisher information matrix as:
-
-\begin{equation}
-\begin{array}{rl}
-C^{-1}=\frac{\partial (-\ln P)}{\partial \w_{ij}\partial \w_{i'j'}}
-=-&\delta_{ii'}\sum\limits_t\left[
-n_i(t)n_{j}(t-1)n_{j'}(t-1)\left(-\frac{f'(J_i(t))^2}{f(J_i(t))^2} +
-\frac{f''(J_i(t))}{f(J_i(t))}\right) \right. \\
-&\left.-\Delta (1-n_i(t))n_{j}(t-1)n_{j'}(t-1)f''(J_i(t))\right].
-\end{array}
-\end{equation}
-
- where $f'$ and $f''$ correspond to the first and second derivatives of our linking function (c.f Eq. \ref{eqn:glm:definition}), and $\delta_{ii'}$ is XXX ? XXX.  When $f(J)=\exp(J)$ XXX Y: we don't use an exponential here.  is it worth modifying this accordingly? XXX, and coupling between spikes is week, this may be rewritten as:
-
-\begin{equation}\label{eqn:fisher}
-\begin{array}{rl}
-C^{-1}
-&=\delta_{ii'} (T\Delta) P[n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1] \\
-&\sim (T\Delta)\left[(r \tau_w)\delta_{ii'}\delta_{jj'}+O((r \tau_w)^2)\right]r.
-\end{array}
-\end{equation}
-
-Here $(T\Delta)$ is the total observation time, $ \tau_w$ is ``the coincidence time'' --- the typical EPSP/IPSP time-scale over which the spike of one neuron affects the spike probability of the other neuron --- and $r \approx E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]$ is the typical firing rate.  For successful determination of the functional connectivity matrix $\bw$, the variance $C$ should be smaller than the typical scale $\langle \bw^2\rangle$, i.e.
-
-\begin{equation}
-(T\Delta) \sim (\bw^2 r^2  \tau_w)^{-1}.
-\end{equation}
-
-For typical values of $\bw^2\approx 0.1$, $r\approx 5$  Hz and $ \tau_w \approx 10$ msec, 
-with this order of magnitude estimate we obtain $T$ of the order of hundred seconds. This theoretical estimate of the necessary amount of fluorescent data is in good agreement with our simulations below.
-
-Note also that necessary recording time does not depend on the number of neurons in the imaged network $N$. This unexpected result is the direct consequence of the special form of $C^{-1}$ in Eq. \ref{eqn:fisher}. In particular, when $r \tau_w <<1$, this matrix is dominated by the diagonal term $(T\Delta)(r^2  \tau_w)$, and so the Fisher information matrix is predominantly diagonal with the scale $(r^2 \tau_w T\Delta)^{-1}$, independent of the number of neurons $N$. This theoretical result is also directly confirmed in our simulations below.

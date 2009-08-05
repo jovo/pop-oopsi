@@ -102,10 +102,6 @@ D.~Feldmeyer and B.~Sakmann, \emph{Synaptic efficacy and reliability of
   and output layer (layer 5) of the neocortex}, J Physiol \textbf{525} (2000),
   31--9.
 
-\bibitem{Gelman03}
-A.~Gelman, J.~Carlin, H.~Stern, and D.~Rubin, \emph{Bayesian data analysis},
-  CRC Press, 2003.
-
 \bibitem{GDW04}
 S.J. Godsill, A.~Doucet, and M.~West, \emph{Monte {C}arlo smoothing for
   non-linear time series}, Journal of the American Statistical Association
@@ -146,14 +142,14 @@ J.~Livet, T.~Weissman, H.~Kang, R.~Draft, J.~Lu, R.~Bennis, J.~Sanes, and
   fluorescent proteins in the nervous system.}, Nature \textbf{450} (2007),
   56--62.
 
-\bibitem{LuLichtman09}
-Ju~Lu, John~C. Fiala, and Jeff~W. Lichtman, \emph{Semi-automated reconstruction
-  of neural processes from large numbers of fluorescence images}, PLoS ONE
-  \textbf{4} (2009), no.~5, e5655.
-
 \bibitem{McLachlanKrishnan96}
 G.~McLachlan and T.~Krishnan, \emph{The em algorithm and extensions},
   Wiley-Interscience, 1996.
+
+\bibitem{MichevaSmith07}
+K.~Micheva and S.~Smith, \emph{Array tomography: A new tool for imaging the
+  molecular architecture and ultrastructure of neural circuits}, Neuron
+  \textbf{55} (2007), 25--36.
 
 \bibitem{Mishchenko2009}
 Y.~Mishchenko, \emph{Strategies for identifying exact structure of neural
@@ -238,10 +234,6 @@ F.~Rigat, M.~de~Gunst, and J.~van Pelt, \emph{Bayesian modelling and analysis
   of spatio-temporal neuronal networks}, Bayesian Analysis \textbf{1} (2006),
   733--764.
 
-\bibitem{RC05}
-C.~Robert and G.~Casella, \emph{Monte {C}arlo statistical methods}, Springer,
-  2005.
-
 \bibitem{SalomeBourdieu06}
 R~Salome, Y~Kremer, S~Dieudonne, J-F Leger, O~Krichevsky, C~Wyart, D~Chatenay,
   and L~Bourdieu, \emph{Ultrafast random-access scanning in two-photon
@@ -311,10 +303,6 @@ M.~Vidne, J.~Kulkarni, Y.~Ahmadian, J.~Pillow, J.~Shlens, E.~Chichilnisky,
 J.~T. Vogelstein, B.~O. Watson, A.~M. Packer, R.~Yuste, B.~Jedynak, and
   L.~Paninski, \emph{Spike inference from calcium imaging using sequential
   monte carlo methods}, Preprint (2009).
-
-\bibitem{WainwrightJordan08}
-M.J. Wainwright and M.I. Jordan, \emph{{Graphical Models, Exponential Families,
-  and Variational Inference.}}, vol.~1, 2008.
 
 \bibitem{WallaceHasan08}
 D.J. Wallace, S.M. zum Alten~Borgloh, S.~Astori, Y.~Yang, M.~Bausen,
