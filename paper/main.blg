@@ -23,6 +23,7 @@ Repeated entry---line 22006 of file mybib.bib
  :                       ,
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "DGL01"
+Warning--I didn't find a database entry for "VogPan09"
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in Escola07
@@ -35,7 +36,7 @@ Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
 You've used 64 entries,
             2213 wiz_defined-function locations,
-            920 strings with 15024 characters,
+            922 strings with 15040 characters,
 and the built_in function-call counts, 21799 in all, are:
 = -- 1893
 > -- 1250

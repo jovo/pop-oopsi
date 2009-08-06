@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  5 AUG 2009 11:02
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  6 AUG 2009 14:40
 entering extended mode
 **main
 (./main.tex
@@ -220,11 +220,7 @@ Package: amsthm 2004/08/06 v2.20
 \thm@postskip=\skip52
 \thm@headsep=\skip53
 \dth@everypar=\toks31
-) (./main.aux
-
-LaTeX Warning: Label `fig:egfluor' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -242,7 +238,8 @@ LaTeX Font Info:    ... okay on input line 43.
 Class revtex4 Info: Patching LaTeX tabular. on input line 43.
 Class revtex4 Info: cite was not loaded (OK!) on input line 43.
 Class revtex4 Info: multicol was not loaded (OK!) on input line 43.
- (/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
+
+(/opt/local/share/texmf-dist/tex/context/base/supp-pdf.tex
 (/opt/local/share/texmf-dist/tex/context/base/supp-mis.tex
 loading : Context Support Macros / Miscellaneous (2004.10.26)
 \protectiondepth=\count115
@@ -280,11 +277,6 @@ loading : Context Support Macros / PDF (2004.03.26)
 Class revtex4 Warning: Assuming \noaffiliation for us.
 
 (./main.toc
-Overfull \hbox (5.00003pt too wide) detected at line 18
- \OT1/cmr/m/n/10 10
- []
-
-
 Overfull \hbox (5.00003pt too wide) detected at line 19
  \OT1/cmr/m/n/10 12
  []
@@ -306,16 +298,16 @@ Overfull \hbox (5.00003pt too wide) detected at line 22
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 23
- \OT1/cmr/m/n/10 15
- []
-
-
-Overfull \hbox (5.00003pt too wide) detected at line 25
- \OT1/cmr/m/n/10 17
+ \OT1/cmr/m/n/10 16
  []
 
 
 Overfull \hbox (5.00003pt too wide) detected at line 26
+ \OT1/cmr/m/n/10 17
+ []
+
+
+Overfull \hbox (5.00003pt too wide) detected at line 27
  \OT1/cmr/m/n/10 17
  []
 
@@ -343,109 +335,108 @@ File: ../figs/fr_vs_J.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3 <../figs/fr_vs_J.pdf>] [4] [5] [6]) (./results.tex
-
-LaTeX Warning: Reference `fig:fr_vs_J' on page 7 undefined on input line 5.
-
-[7] <../figs/yuri-paper-schematic.pdf, id=85, 794.97pt x 614.295pt>
+[2] [3 <../figs/fr_vs_J.pdf>] [4] [5] [6]
+<../figs/yuri-paper-schematic.pdf, id=81, 794.97pt x 614.295pt>
 File: ../figs/yuri-paper-schematic.pdf Graphic file (type pdf)
 
 <use ../figs/yuri-paper-schematic.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+) (./results.tex [7] [8]
+<../figs/example_traces.pdf, id=101, 505.89pt x 216.81pt>
+File: ../figs/example_traces.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `eqn:likelihoodGLM-expl' on page 8 undefined on input 
-line 69.
+<use ../figs/example_traces.pdf>
 
-[8] <../figs/FigureA3_scatter_three.pdf, id=101, 420.57124pt x 315.1775pt>
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs/FigureA3_scatter_three.pdf, id=102, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_scatter_three.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_scatter_three.pdf>
-<../figs/FigureA3_scatter_three_corrected.pdf, id=102, 420.57124pt x 315.1775pt
+<../figs/FigureA3_scatter_three_corrected.pdf, id=103, 420.57124pt x 315.1775pt
 >
 File: ../figs/FigureA3_scatter_three_corrected.pdf Graphic file (type pdf)
  <use ../figs/FigureA3_scatter_three_corrected.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9] [10 <../figs/yuri-paper-schematic.pdf>]
-<../figs/FigureA4_scale_bias.pdf, id=164, 420.57124pt x 315.1775pt>
+[9 <../figs/yuri-paper-schematic.pdf>] [10 <../figs/example_traces.pdf>]
+
+Package natbib Warning: Citation `VogPan09' on page 11 undefined on input line 
+93.
+
+<../figs/FigureA4_scale_bias.pdf, id=174, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
 
-<use ../figs/FigureA4_scale_bias.pdf> [11 <../figs/FigureA3_scatter_three.pdf> 
-<../figs/FigureA3_scatter_three_corrected.pdf> <../figs/FigureA4_scale_bias.pdf
->] <../figs/FigureA5_recvar.pdf, id=183, 420.57124pt x 315.1775pt>
+<use ../figs/FigureA4_scale_bias.pdf>
+<../figs/FigureA5_recvar.pdf, id=175, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA5_recvar.pdf Graphic file (type pdf)
 
-<use ../figs/FigureA5_recvar.pdf>
-<../figs/FigureA6_recvar_SNR.pdf, id=184, 420.57124pt x 315.1775pt>
+<use ../figs/FigureA5_recvar.pdf> [11 <../figs/FigureA3_scatter_three.pdf> <../
+figs/FigureA3_scatter_three_corrected.pdf> <../figs/FigureA4_scale_bias.pdf>]
+<../figs/FigureA6_recvar_SNR.pdf, id=194, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA6_recvar_SNR.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA7_recvar_NT.pdf, id=185, 420.57124pt x 315.1775pt>
+<../figs/FigureA7_recvar_NT.pdf, id=195, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA7_recvar_NT.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12 <../figs/FigureA5_recvar.pdf>] [13 <../figs/FigureA6_recvar_SNR.pdf> <../fi
+[12 <../figs/FigureA5_recvar.pdf> <../figs/FigureA6_recvar_SNR.pdf>] [13 <../fi
 gs/FigureA7_recvar_NT.pdf>]
-<../figs/FigureA10_regular_sol.pdf, id=206, 420.57124pt x 315.1775pt>
+<../figs/FigureA10_regular_sol.pdf, id=219, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_regular_sol.pdf>
-<../figs/FigureA10_sparse_sol.pdf, id=207, 420.57124pt x 315.1775pt>
+<../figs/FigureA10_sparse_sol.pdf, id=220, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_sparse_sol.pdf>
-<../figs/FigureA3_hist_glm200.pdf, id=208, 420.57124pt x 315.1775pt>
+<../figs/FigureA3_hist_glm200.pdf, id=221, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_hist_glm200.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_hist_glm200.pdf>
-<../figs/FigureA3_hist_spa200.pdf, id=209, 420.57124pt x 315.1775pt>
+<../figs/FigureA3_hist_spa200.pdf, id=222, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA3_hist_spa200.pdf Graphic file (type pdf)
 
-<use ../figs/FigureA3_hist_spa200.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/Figure7b_raster_weak.pdf, id=210, 420.57124pt x 313.17pt>
+<use ../figs/FigureA3_hist_spa200.pdf> [14 <../figs/FigureA10_regular_sol.pdf> 
+<../figs/FigureA10_sparse_sol.pdf> <../figs/FigureA3_hist_glm200.pdf> <../figs/
+FigureA3_hist_spa200.pdf>]
+<../figs/Figure7b_raster_weak.pdf, id=246, 420.57124pt x 313.17pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=211, 420.57124pt x 312.16624pt>
+<../figs/Figure7a_raster_strong.pdf, id=247, 420.57124pt x 312.16624pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=212, 420.57124pt x 315.1775pt>
+<../figs/FigureA8_weak_corr.pdf, id=248, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=213, 420.57124pt x 315.1775pt>
+<../figs/FigureA8_strong_corr.pdf, id=249, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
 
-<use ../figs/FigureA8_strong_corr.pdf> [14 <../figs/FigureA10_regular_sol.pdf> 
-<../figs/FigureA10_sparse_sol.pdf>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA9_all_same_sol.pdf, id=227, 420.57124pt x 315.1775pt>
+<use ../figs/FigureA8_strong_corr.pdf>
+<../figs/FigureA9_all_same_sol.pdf, id=250, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_all_same_sol.pdf>
-<../figs/FigureA9_variable_25.pdf, id=228, 420.57124pt x 315.1775pt>
+<../figs/FigureA9_variable_25.pdf, id=251, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_variable_25.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./discussion.tex
+[15 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <..
+/figs/FigureA8_weak_corr.pdf> <../figs/FigureA8_strong_corr.pdf>])
+(./discussion.tex
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
  (/opt/local/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -453,11 +444,12 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 
-[15 <../figs/FigureA3_hist_glm200.pdf> <../figs/FigureA3_hist_spa200.pdf>])
-[16 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <..
-/figs/FigureA8_weak_corr.pdf> <../figs/FigureA8_strong_corr.pdf>] (./main.bbl
-[17 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_variable_25.pdf>]
-[18])
+[16 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_variable_25.pdf>]
+
+LaTeX Warning: Reference `eqn:likelihoodGLMmodb' on page 17 undefined on input 
+line 25.
+
+) (./main.bbl [17] [18])
 
 Package natbib Warning: There were undefined citations.
 
@@ -465,22 +457,19 @@ Package natbib Warning: There were undefined citations.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4202 strings out of 94500
- 53793 string characters out of 1155413
- 121398 words of memory out of 1000000
- 7293 multiletter control sequences out of 10000+50000
+ 4204 strings out of 94500
+ 53894 string characters out of 1155413
+ 120676 words of memory out of 1000000
+ 7294 multiletter control sequences out of 10000+50000
  11293 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 32i,10n,26p,2255b,344s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 32i,10n,26p,2226b,340s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 290 PDF objects out of 300000
+ 303 PDF objects out of 300000
  0 named destinations out of 131072
- 91 words of extra memory for PDF output out of 65536
+ 96 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/sha
 re/texmf-dist/fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fon
 ts/type1/bluesky/cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
@@ -499,4 +488,4 @@ cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></o
 pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/tex
 mf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/typ
 e1/bluesky/cm/cmbx12.pfb>
-Output written on main.pdf (19 pages, 2193612 bytes).
+Output written on main.pdf (19 pages, 2232406 bytes).
