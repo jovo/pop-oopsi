@@ -45,6 +45,12 @@ axis([0 80 0 0.7])
 legend1 = legend(axes1,'show');
 set(legend1,'Location','NorthWest');
 
+%%
+hold on
+plot(2651.7/1000*ones(100,1),linspace(0,100,100),'k')
+plot(18973/1000*ones(100,1),linspace(0,100,100),'k')
+%%
+
 ax2 = axes('Position',get(gca,'Position'),...
     'XAxisLocation','top',...
     'YAxisLocation','right',...
@@ -57,12 +63,6 @@ ax2 = axes('Position',get(gca,'Position'),...
     'fontsize',fs); %,...
 
 xlabel(ax2,'Effective Signal to Noise Ratio','color','r','fontsize',fs)
-
-%%
-hold on
-plot(2651.7*ones(100,1),linspace(0,1,1),'k')
-plot(linspace(0,1,1),18973*ones(100,1),'k')
-%%
 
 wh=[11 8];
 set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');

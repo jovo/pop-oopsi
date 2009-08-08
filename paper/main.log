@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  7 AUG 2009 19:03
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  8 AUG 2009 09:55
 entering extended mode
 **main
 (./main.tex
@@ -381,7 +381,7 @@ File: ../figs/FigureA5_recvar.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA6_recvar_SNR.pdf, id=176, 420.57124pt x 316.18124pt>
+<../figs/FigureA6_recvar_SNR.pdf, id=176, 794.97pt x 578.16pt>
 File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA6_recvar_SNR.pdf>
@@ -398,49 +398,49 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [11 <../figs/FigureA3_scatter_three.pdf> <../figs/FigureA3_scatter_three_correc
 ted.pdf>] [12 <../figs/FigureA4_scale_bias.pdf> <../figs/FigureA5_recvar.pdf>]
 [13 <../figs/FigureA6_recvar_SNR.pdf> <../figs/FigureA7_recvar_NT.pdf>]
-<../figs/FigureA10_regular_sol.pdf, id=217, 420.57124pt x 316.18124pt>
+<../figs/FigureA10_regular_sol.pdf, id=224, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_regular_sol.pdf>
-<../figs/FigureA10_sparse_sol.pdf, id=218, 420.57124pt x 316.18124pt>
+<../figs/FigureA10_sparse_sol.pdf, id=225, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA10_sparse_sol.pdf>
-<../figs/FigureA3_hist_glm200.pdf, id=219, 420.57124pt x 316.18124pt>
+<../figs/FigureA3_hist_glm200.pdf, id=226, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA3_hist_glm200.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_hist_glm200.pdf>
-<../figs/FigureA3_hist_spa200.pdf, id=220, 420.57124pt x 316.18124pt>
+<../figs/FigureA3_hist_spa200.pdf, id=227, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA3_hist_spa200.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_hist_spa200.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/Figure7b_raster_weak.pdf, id=221, 420.57124pt x 313.17pt>
+<../figs/Figure7b_raster_weak.pdf, id=228, 420.57124pt x 313.17pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=222, 420.57124pt x 294.09875pt>
+<../figs/Figure7a_raster_strong.pdf, id=229, 420.57124pt x 294.09875pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
 
 <use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=223, 420.57124pt x 316.18124pt>
+<../figs/FigureA8_weak_corr.pdf, id=230, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=224, 420.57124pt x 316.18124pt>
+<../figs/FigureA8_strong_corr.pdf, id=231, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA8_strong_corr.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA9_all_same_sol.pdf, id=225, 420.57124pt x 316.18124pt>
+<../figs/FigureA9_all_same_sol.pdf, id=232, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_all_same_sol.pdf>
-<../figs/FigureA9_variable_25.pdf, id=226, 420.57124pt x 316.18124pt>
+<../figs/FigureA9_variable_25.pdf, id=233, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA9_variable_25.pdf>
@@ -476,13 +476,13 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4206 strings out of 94500
  53915 string characters out of 1155413
- 121463 words of memory out of 1000000
+ 121457 words of memory out of 1000000
  7296 multiletter control sequences out of 10000+50000
  11293 words of font info for 43 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
  32i,10n,26p,2226b,330s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 301 PDF objects out of 300000
+ 308 PDF objects out of 300000
  0 named destinations out of 131072
  96 words of extra memory for PDF output out of 65536
 </opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy5.pfb></opt/local/sha
@@ -503,4 +503,4 @@ cm/cmbx10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></o
 pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/tex
 mf-dist/fonts/type1/bluesky/cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/typ
 e1/bluesky/cm/cmbx12.pfb>
-Output written on main.pdf (19 pages, 2207483 bytes).
+Output written on main.pdf (19 pages, 2212143 bytes).
