@@ -92,7 +92,7 @@ for k=nrange{id_proc}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     warning off
     Ft=repmat(F{k}(:)',[Sim.freq 1]); Ft=Ft(:);
-    %   Sim.FastInit=0;
+%     Sim.FastInit=0;
     Sim.b_est=1;
     [I.M I.P]   = GOOPSI_main_v1_0(Ft(1:Sim.T),P,Sim);
     I.P.FQ=Sim.freq;
@@ -101,7 +101,7 @@ for k=nrange{id_proc}
     warning on
 end
 
-% save(['../', fname],'M');
+save(fname,'M');
 
 %clean the mess
 clear N_spk rate T rf P Sim I

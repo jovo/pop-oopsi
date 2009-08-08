@@ -1,5 +1,31 @@
 clear, clc
 load('~/Research/oopsi/meta-oopsi/data/tom/20081126_13_05_43_orientation_Bruno_reg1_ori1_135umdepth.mat')
+
+G{1}=Im.F(3,:); 
+G{2}=Im.F(4,:); 
+
+% F{1}=detrend(double(G{1})); 
+% F{2}=detrend(double(G{2})); 
+% 
+% F{1}=F{1}-min(F{1})+mean(G{1});
+% F{2}=F{2}-min(F{2})+mean(G{1});
+F=G;
+
+save('~/Research/oopsi/meta-oopsi/data/tom/example_traces','F','G')
+%%
+fname='~/Research/oopsi/meta-oopsi/data/tom/example_traces';
+run_datafit(fname);
+
+%%
+load('~/Research/oopsi/meta-oopsi/data/tom/example_trace1','I')
+E{1}=I;
+
+load('~/Research/oopsi/meta-oopsi/data/tom/example_trace2','I')
+E{2}=I;
+I=E;
+clear E
+
+
 %%
 nrows=2;
 ncols=2;
@@ -18,8 +44,8 @@ a=Im.MeanFrame;
 % colormap(gray)
 % title('Mean Frame','FontSize',fs)
 
-tvec=1000:2800;
-xtick=[0:900:tvec(end)];
+tvec=[1000:1900]+1000;
+xtick=[0:300:tvec(end)];
 fs=12;
 xticklabel=xtick/30;
 subplot(nrows,ncols,1)
@@ -39,23 +65,25 @@ set(gca,'YTick',[])
 set(gca,'XTick',xtick,'XTickLabel',[])
 
 subplot(nrows,ncols,3)
-plot(z1(detrend(double(Im.F(3,tvec)))),'k')
+plot(I{1}.M.nbar(tvec),'k')
 axis([0 max(tvec)-min(tvec) 0 1])
 set(gca,'XTick',xtick,'XTickLabel',[])
 set(gca,'YTick',[])
 ylab=ylabel([{'$\widehat{\mathbf{n}}$'}],'FontSize',fs,'Interpreter','latex');
 set(ylab,'Rotation',0,'HorizontalAlignment','right','verticalalignment','middle')
 set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
+xlabel('Time (sec)')
 
 subplot(nrows,ncols,4)
-plot(z1(detrend(double(Im.F(4,tvec)))),'k')
+plot(I{2}.M.nbar(tvec),'k')
 axis([0 max(tvec)-min(tvec) 0 1])
 set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
 set(gca,'YTick',[])
+xlabel('Time (sec)')
 
 %%
 
-wh=[4 4];
+wh=[7 3];
 set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');
 FigName = '~/Research/oopsi/pop-oopsi/figs/example_traces';
 print('-depsc',FigName)
