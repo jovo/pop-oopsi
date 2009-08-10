@@ -43,13 +43,12 @@ axis([0 80 0 0.7])
 
 % Create legend
 legend1 = legend(axes1,'show');
-set(legend1,'Location','NorthWest');
+set(legend1,'Location','EastOutside');
+set(gca,'OuterPosition',[0 0 1 1])
 
-%%
 hold on
 plot(2651.7/1000*ones(100,1),linspace(0,100,100),'k')
 plot(18973/1000*ones(100,1),linspace(0,100,100),'k')
-%%
 
 ax2 = axes('Position',get(gca,'Position'),...
     'XAxisLocation','top',...
@@ -63,8 +62,16 @@ ax2 = axes('Position',get(gca,'Position'),...
     'fontsize',fs); %,...
 
 xlabel(ax2,'Effective Signal to Noise Ratio','color','r','fontsize',fs)
+%%
 
-wh=[11 8];
+h=get(gcf,'Children');
+outerposition=[0 0 .9 1];
+set(h(1),'OuterPosition',[0 0 .9 1])
+% set(h(2),'OuterPosition',[0 0 1 1])
+set(h(3),'OuterPosition',[0 0 .8 1])
+
+%%
+wh=[6 4]*1.4;
 set(gcf,'PaperSize',wh,'PaperPosition',[0 0 wh],'Color','w');
 FigName = '~/Research/oopsi/pop-oopsi/figs/FigureA6_recvar_SNR';
 print('-depsc',FigName)

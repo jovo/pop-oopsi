@@ -1,5 +1,9 @@
 This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
+White space in argument---line 185 of file main.aux
+ : \citation{Duane
+ :                 1 and 2}
+I'm skipping whatever remains of this command
 The style file: amsplain.bst
 Database file #1: mybib.bib
 Repeated entry---line 6935 of file mybib.bib
@@ -24,6 +28,12 @@ Repeated entry---line 22006 of file mybib.bib
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "DGL01"
 Warning--I didn't find a database entry for "VogPan09"
+Warning--I didn't find a database entry for "Chlovksii"
+Warning--I didn't find a database entry for "emory"
+Warning--I didn't find a database entry for "liam"
+Warning--I didn't find a database entry for "Garofalo"
+Warning--I didn't find a database entry for "Vakorina"
+Warning--I didn't find a database entry for "etc."
 Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
 Warning--missing pages in Escola07
@@ -36,7 +46,7 @@ Warning--missing pages in Vidne08
 Warning--missing pages in Vogelstein2009
 You've used 64 entries,
             2213 wiz_defined-function locations,
-            922 strings with 15040 characters,
+            931 strings with 15103 characters,
 and the built_in function-call counts, 21799 in all, are:
 = -- 1893
 > -- 1250
@@ -75,4 +85,4 @@ warning$ -- 10
 while$ -- 207
 width$ -- 66
 write$ -- 523
-(There were 5 error messages)
+(There were 6 error messages)

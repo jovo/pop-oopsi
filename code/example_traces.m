@@ -17,6 +17,8 @@ fname='~/Research/oopsi/meta-oopsi/data/tom/example_traces';
 run_datafit(fname);
 
 %%
+load('~/Research/oopsi/meta-oopsi/data/tom/example_traces')
+
 load('~/Research/oopsi/meta-oopsi/data/tom/example_trace1','I')
 E{1}=I;
 
@@ -28,7 +30,7 @@ clear E
 
 %%
 nrows=2;
-ncols=2;
+ncols=1;
 fs=12;
 figure(1), clf
 
@@ -56,6 +58,8 @@ set(gca,'XTick',xtick,'XTickLabel',[])
 set(gca,'YTick',[])
 ylab=ylabel([{'$\mathbf{F}$'}],'FontSize',fs,'Interpreter','latex');
 set(ylab,'Rotation',0,'HorizontalAlignment','right','verticalalignment','middle')
+% set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
+% xlabel('Time (sec)')
 
 subplot(nrows,ncols,2)
 plot(z1(detrend(double(Im.F(4,tvec)))),'k')
@@ -63,23 +67,25 @@ axis([0 max(tvec)-min(tvec) 0 1])
 title('Low SNR','FontSize',fs)
 set(gca,'YTick',[])
 set(gca,'XTick',xtick,'XTickLabel',[])
-
-subplot(nrows,ncols,3)
-plot(I{1}.M.nbar(tvec),'k')
-axis([0 max(tvec)-min(tvec) 0 1])
-set(gca,'XTick',xtick,'XTickLabel',[])
-set(gca,'YTick',[])
-ylab=ylabel([{'$\widehat{\mathbf{n}}$'}],'FontSize',fs,'Interpreter','latex');
+set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
+xlabel('Time (sec)')
+ylab=ylabel([{'$\mathbf{F}$'}],'FontSize',fs,'Interpreter','latex');
 set(ylab,'Rotation',0,'HorizontalAlignment','right','verticalalignment','middle')
-set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
-xlabel('Time (sec)')
 
-subplot(nrows,ncols,4)
-plot(I{2}.M.nbar(tvec),'k')
-axis([0 max(tvec)-min(tvec) 0 1])
-set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
-set(gca,'YTick',[])
-xlabel('Time (sec)')
+% subplot(nrows,ncols,3)
+% plot(I{1}.M.nbar(tvec),'k')
+% axis([0 max(tvec)-min(tvec) 0 1])
+% set(gca,'XTick',xtick,'XTickLabel',[])
+% set(gca,'YTick',[])
+% ylab=ylabel([{'$\widehat{\mathbf{n}}$'}],'FontSize',fs,'Interpreter','latex');
+% set(ylab,'Rotation',0,'HorizontalAlignment','right','verticalalignment','middle')
+% 
+% subplot(nrows,ncols,4)
+% plot(I{2}.M.nbar(tvec),'k')
+% axis([0 max(tvec)-min(tvec) 0 1])
+% set(gca,'XTick',xtick,'XTickLabel',xticklabel,'FontSize',fs)
+% set(gca,'YTick',[])
+% xlabel('Time (sec)')
 
 %%
 
