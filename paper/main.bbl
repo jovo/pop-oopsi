@@ -1,322 +1,368 @@
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\begin{thebibliography}{10}
+\begin{thebibliography}{}
 
-\bibitem{Abeles91}
-M.~Abeles, \emph{Corticonics}, Cambridge University Press, 1991.
+\bibitem[Abeles, 1991]{Abeles91}
+Abeles, M. (1991).
+\newblock {\em Corticonics}.
+\newblock Cambridge University Press.
 
-\bibitem{Andrieu2007}
-C.~Andrieu, A.~Doucet, and A.~Holenstein, \emph{Particle markov chain monte
-  carlo}, Working paper (2007).
+\bibitem[Andrieu et~al., 2007]{Andrieu2007}
+Andrieu, C., Doucet, A., and Holenstein, A. (2007).
+\newblock Particle markov chain monte carlo.
+\newblock {\em Working paper}.
 
-\bibitem{BickelBengtsson08}
-Peter Bickel, Bo~Li, and Thomas Bengtsson, \emph{Sharp failure rates for the
-  bootstrap particle filter in high dimensions}, Pushing the Limits of
-  Contemporary Statistics: Contributions in Honor of Jayanta K. Ghosh (Bertrand
-  Clarke and Subhashis Ghosal, eds.), IMS, 2008, pp.~318--329.
+\bibitem[Bickel et~al., 2008]{BickelBengtsson08}
+Bickel, P., Li, B., and Bengtsson, T. (2008).
+\newblock Sharp failure rates for the bootstrap particle filter in high
+  dimensions.
+\newblock In Clarke, B. and Ghosal, S., editors, {\em Pushing the Limits of
+  Contemporary Statistics: Contributions in Honor of Jayanta K. Ghosh}, pages
+  318--329. IMS.
 
-\bibitem{Binzegger04}
-Tom Binzegger, Rodney~J. Douglas, and Kevan A.~C. Martin, \emph{{A Quantitative
-  Map of the Circuit of Cat Primary Visual Cortex}}, J. Neurosci. \textbf{24}
-  (2004), no.~39, 8441--8453.
+\bibitem[Binzegger et~al., 2004]{Binzegger04}
+Binzegger, T., Douglas, R.~J., and Martin, K. A.~C. (2004).
+\newblock {A Quantitative Map of the Circuit of Cat Primary Visual Cortex}.
+\newblock {\em J. Neurosci.}, 24(39):8441--8453.
 
-\bibitem{CONV04}
-S.~Boyd and L.~Vandenberghe, \emph{Convex optimization}, Oxford University
-  Press, 2004.
+\bibitem[Boyd and Vandenberghe, 2004]{CONV04}
+Boyd, S. and Vandenberghe, L. (2004).
+\newblock {\em Convex Optimization}.
+\newblock Oxford University Press.
 
-\bibitem{Braitenberg1998}
-V.~Braitenberg and A.~Schuz, \emph{Cortex: statistics and geometry of neuronal
-  connectivity.}, Springer, Berlin, 1998.
+\bibitem[Braitenberg and Schuz, 1998]{Braitenberg1998}
+Braitenberg, V. and Schuz, A. (1998).
+\newblock {\em Cortex: statistics and geometry of neuronal connectivity.}
+\newblock Springer, Berlin.
 
-\bibitem{Briggman2006}
-K.~L. Briggman and W.~Denk, \emph{Towards neural circuit reconstruction with
-  volume electron microscopy techniques.}, Current Opinions in Neurobiology
-  \textbf{16} (2006), 562.
+\bibitem[Briggman and Denk, 2006]{Briggman2006}
+Briggman, K.~L. and Denk, W. (2006).
+\newblock Towards neural circuit reconstruction with volume electron microscopy
+  techniques.
+\newblock {\em Current Opinions in Neurobiology}, 16:562.
 
-\bibitem{BRIL88}
-D.~Brillinger, \emph{Maximum likelihood analysis of spike trains of interacting
-  nerve cells}, Biological Cyberkinetics \textbf{59} (1988), 189--200.
+\bibitem[Brillinger, 1988]{BRIL88}
+Brillinger, D. (1988).
+\newblock Maximum likelihood analysis of spike trains of interacting nerve
+  cells.
+\newblock {\em Biological Cyberkinetics}, 59:189--200.
 
-\bibitem{BRIL92}
-\bysame, \emph{Nerve cell spike train data analysis: a progression of
-  technique}, Journal of the American Statistical Association \textbf{87}
-  (1992), 260--271.
+\bibitem[Buhl et~al., 1994]{Buhl94}
+Buhl, E., Halasy, K., and Somogyi, P. (1994).
+\newblock Diverse sources of hippocampal unitary inhibitory postynaptic
+  potentials and the number of synaptic release sites.
+\newblock {\em Nature}, 368:823--828.
 
-\bibitem{Buhl94}
-E.~Buhl, K.~Halasy, and P.~Somogyi, \emph{Diverse sources of hippocampal
-  unitary inhibitory postynaptic potentials and the number of synaptic release
-  sites}, Nature \textbf{368} (1994), 823--828.
+\bibitem[Candes and Romberg, 2005]{Candes2005}
+Candes, E.~J. and Romberg, J. (2005).
+\newblock Practical signal recovery from random projections.
 
-\bibitem{Candes2005}
-E.~J. Candes and J.~Romberg, \emph{Practical signal recovery from random
-  projections.}, 2005.
+\bibitem[Dempster et~al., 1977]{DLR77}
+Dempster, A., Laird, N., and Rubin, D. (1977).
+\newblock Maximum likelihood from incomplete data via the {EM} algorithm.
+\newblock {\em Journal Royal Stat. Soc., Series B}, 39:1--38.
 
-\bibitem{CSK88}
-E.~Chornoboy, L.~Schramm, and A.~Karr, \emph{Maximum likelihood identification
-  of neural point process systems}, Biological Cybernetics \textbf{59} (1988),
-  265--275.
+\bibitem[Djurisic et~al., 2004]{Djurisic04}
+Djurisic, M., Antic, S., Chen, W.~R., and Zecevic, D. (2004).
+\newblock Voltage imaging from dendrites of mitral cells: {EPSP} attenuation
+  and spike trigger zones.
+\newblock {\em J. Neurosci.}, 24(30):6703--6714.
 
-\bibitem{DLR77}
-A.~Dempster, N.~Laird, and D.~Rubin, \emph{Maximum likelihood from incomplete
-  data via the {EM} algorithm}, Journal Royal Stat. Soc., Series B \textbf{39}
-  (1977), 1--38.
+\bibitem[Donoho and Elad, 2003]{DE03}
+Donoho, D. and Elad, M. (2003).
+\newblock Optimally sparse representation in general (nonorthogonal)
+  dictionaries via {L}$^1$ minimization.
+\newblock {\em PNAS}, 100:2197--2202.
 
-\bibitem{Djurisic04}
-Maja Djurisic, Srdjan Antic, Wei~R. Chen, and Dejan Zecevic, \emph{Voltage
-  imaging from dendrites of mitral cells: {EPSP} attenuation and spike trigger
-  zones}, J. Neurosci. \textbf{24} (2004), no.~30, 6703--6714.
+\bibitem[Doucet et~al., 2001]{DFG01}
+Doucet, A., de~Freitas, N., and N., G. (2001).
+\newblock {\em Sequential Monte Carlo in Practice}.
+\newblock Springer.
 
-\bibitem{DE03}
-D.~Donoho and M.~Elad, \emph{Optimally sparse representation in general
-  (nonorthogonal) dictionaries via {L}$^1$ minimization}, PNAS \textbf{100}
-  (2003), 2197--2202.
+\bibitem[Doucet et~al., 2000]{DGA00}
+Doucet, A., Godsill, S., and Andrieu, C. (2000).
+\newblock {On sequential Monte Carlo sampling methods for Bayesian filtering}.
+\newblock {\em Statistics and Computing}, 10:197--208.
 
-\bibitem{DFG01}
-A.~Doucet, N.~de~Freitas, and Gordon N., \emph{Sequential monte carlo in
-  practice}, Springer, 2001.
+\bibitem[Escola and Paninski, 2008]{Escola07}
+Escola, S. and Paninski, L. (2008).
+\newblock Hidden {M}arkov models applied toward the inference of neural states
+  and the improved estimation of linear receptive fields.
+\newblock {\em Under review, Neural Computation}.
 
-\bibitem{DGA00}
-A.~Doucet, S.~Godsill, and C.~Andrieu, \emph{{On sequential Monte Carlo
-  sampling methods for Bayesian filtering}}, Statistics and Computing
-  \textbf{10} (2000), 197--208.
+\bibitem[Feldmeyer et~al., 1999]{Feldmeyer99}
+Feldmeyer, D., Egger, V., Lubke, J., and Sakmann, B. (1999).
+\newblock Reliable synaptic connections between pairs of excitatory layer 4
+  neurones within a single ``barrel" of developing rat somatosensory cortex.
+\newblock {\em J Physiol}, 521 Pt 1:169--90.
 
-\bibitem{Escola07}
-S.~Escola and L.~Paninski, \emph{Hidden {M}arkov models applied toward the
-  inference of neural states and the improved estimation of linear receptive
-  fields}, Under review, Neural Computation (2008).
+\bibitem[Feldmeyer and Sakmann, 2000]{FeldmeyerSakmann00}
+Feldmeyer, D. and Sakmann, B. (2000).
+\newblock Synaptic efficacy and reliability of excitatory connections between
+  the principal neurones of the input (layer 4) and output layer (layer 5) of
+  the neocortex.
+\newblock {\em J Physiol}, 525:31--9.
 
-\bibitem{Feldmeyer99}
-D.~Feldmeyer, V.~Egger, J.~Lubke, and B.~Sakmann, \emph{Reliable synaptic
-  connections between pairs of excitatory layer 4 neurones within a single
-  ``barrel" of developing rat somatosensory cortex}, J Physiol \textbf{521 Pt
-  1} (1999), 169--90.
+\bibitem[Godsill et~al., 2004]{GDW04}
+Godsill, S., Doucet, A., and West, M. (2004).
+\newblock Monte {C}arlo smoothing for non-linear time series.
+\newblock {\em Journal of the American Statistical Association}, 99:156--168.
 
-\bibitem{FeldmeyerSakmann00}
-D.~Feldmeyer and B.~Sakmann, \emph{Synaptic efficacy and reliability of
-  excitatory connections between the principal neurones of the input (layer 4)
-  and output layer (layer 5) of the neocortex}, J Physiol \textbf{525} (2000),
-  31--9.
+\bibitem[Greenberg et~al., 2008]{GreenbergKerr08}
+Greenberg, D.~S., Houweling, A.~R., and Kerr, J. N.~D. (2008).
+\newblock Population imaging of ongoing neuronal activity in the visual cortex
+  of awake rats.
+\newblock {\em Nat Neurosci}.
 
-\bibitem{GDW04}
-S.J. Godsill, A.~Doucet, and M.~West, \emph{Monte {C}arlo smoothing for
-  non-linear time series}, Journal of the American Statistical Association
-  \textbf{99} (2004), 156--168.
+\bibitem[Gupta et~al., 2000]{Gupta00}
+Gupta, A., Wang, Y., and Markram, H. (2000).
+\newblock Organizing principles for a diversity of gabaergic interneurons and
+  synapses in the neocortex.
+\newblock {\em Science}, 287:273--8.
 
-\bibitem{Urquijo2000}
-S.~M. Gomez-Urquijo, C.~Reblet, J.~L. Bueno-Lopez, and I.~Gutierrez-Ibarluzea,
-  \emph{Gabaergic neurons in the rabbit visual cortex: percentage, distribution
-  and cortical projections}, Brain Res \textbf{862} (2000), 171--9.
+\bibitem[Harris et~al., 2003]{HARR03}
+Harris, K., Csicsvari, J., Hirase, H., Dragoi, G., and Buzsaki, G. (2003).
+\newblock Organization of cell assemblies in the hippocampus.
+\newblock {\em Nature}, 424:552--556.
 
-\bibitem{Gupta00}
-A.~Gupta, Y.~Wang, and H.~Markram, \emph{Organizing principles for a diversity
-  of gabaergic interneurons and synapses in the neocortex.}, Science
-  \textbf{287} (2000), 273--8.
+\bibitem[Hatsopoulos et~al., 1998]{HATS98}
+Hatsopoulos, N., Ojakangas, C., Paninski, L., and Donoghue, J. (1998).
+\newblock Information about movement direction obtained by synchronous activity
+  of motor cortical neurons.
+\newblock {\em PNAS}, 95:15706--15711.
 
-\bibitem{Iyer06}
-Vijay Iyer, Tycho~M. Hoogland, and Peter Saggau, \emph{Fast functional imaging
-  of single neurons using random-access multiphoton ({RAMP}) microscopy}, J
-  Neurophysiol \textbf{95} (2006), no.~1, 535--545.
+\bibitem[Lefort et~al., 2009]{Lefort2009}
+Lefort, S., Tomm, C., Floyd~Sarria, J.-C., and Petersen, C. C.~H. (2009).
+\newblock The excitatory neuronal network of the c2 barrel column in mouse
+  primary somatosensory cortex.
+\newblock {\em Neuron}, 61:301--16.
 
-\bibitem{KP06}
-J.~Kulkarni and L.~Paninski, \emph{Common-input models for multiple neural
-  spike-train data}, Network: Computation in Neural Systems \textbf{18} (2007),
-  375--407.
+\bibitem[Li and Duan, 1989]{LD89}
+Li, K. and Duan, N. (1989).
+\newblock Regression analysis under link violation.
+\newblock {\em Annals of Statistics}, 17:1009--1052.
 
-\bibitem{Lefort2009}
-S.~Lefort, C.~Tomm, J.-C. Floyd~Sarria, and C.~C.~H. Petersen, \emph{The
-  excitatory neuronal network of the c2 barrel column in mouse primary
-  somatosensory cortex}, Neuron \textbf{61} (2009), 301--16.
+\bibitem[Litke et~al., 2004]{Litke2004}
+Litke, A., Bezayiff, N., Chichilnisky, E., Cunningham, W., Dabrowski, W.,
+  Grillo, A., Grivich, M., Grybos, P., Hottowy, P., Kachiguine, S., Kalmar, R.,
+  Mathieson, K., Petrusca, D., Rahman, M., and Sher, A. (2004).
+\newblock What does the eye tell the brain? development of a system for the
+  large scale recording of retinal output activity.
+\newblock {\em IEEE Trans Nucl Sci}, pages 1434--1440.
 
-\bibitem{LD89}
-K.~Li and N.~Duan, \emph{Regression analysis under link violation}, Annals of
-  Statistics \textbf{17} (1989), 1009--1052.
+\bibitem[Livet et~al., 2007]{Brainbow07}
+Livet, J., Weissman, T., Kang, H., Draft, R., Lu, J., Bennis, R., Sanes, J.,
+  and Lichtman, J. (2007).
+\newblock Transgenic strategies for combinatorial expression of fluorescent
+  proteins in the nervous system.
+\newblock {\em Nature}, 450:56--62.
 
-\bibitem{Brainbow07}
-J.~Livet, T.~Weissman, H.~Kang, R.~Draft, J.~Lu, R.~Bennis, J.~Sanes, and
-  J.~Lichtman, \emph{Transgenic strategies for combinatorial expression of
-  fluorescent proteins in the nervous system.}, Nature \textbf{450} (2007),
-  56--62.
+\bibitem[Luczak et~al., 2007]{Harris07}
+Luczak, A., Bartho, P., Marguet, S., Buzsaki, G., and Harris, K. (2007).
+\newblock Sequential structure of neocortical spontaneous activity in vivo.
+\newblock {\em PNAS}, 104:347--352.
 
-\bibitem{McLachlanKrishnan96}
-G.~McLachlan and T.~Krishnan, \emph{The em algorithm and extensions},
-  Wiley-Interscience, 1996.
+\bibitem[McLachlan and Krishnan, 1996]{McLachlanKrishnan96}
+McLachlan, G. and Krishnan, T. (1996).
+\newblock {\em The EM Algorithm and Extensions}.
+\newblock Wiley-Interscience.
 
-\bibitem{MichevaSmith07}
-K.~Micheva and S.~Smith, \emph{Array tomography: A new tool for imaging the
-  molecular architecture and ultrastructure of neural circuits}, Neuron
-  \textbf{55} (2007), 25--36.
+\bibitem[Micheva and Smith, 2007]{MichevaSmith07}
+Micheva, K. and Smith, S. (2007).
+\newblock Array tomography: A new tool for imaging the molecular architecture
+  and ultrastructure of neural circuits.
+\newblock {\em Neuron}, 55:25--36.
 
-\bibitem{Mishchenko2009}
-Y.~Mishchenko, \emph{Strategies for identifying exact structure of neural
-  circuits with broad light microscopy connectivity probes}, Preprint:
-  http://precedings.nature.com/documents/2669/version/2 (2009).
+\bibitem[Mishchenko, 2009]{Mishchenko2009}
+Mishchenko, Y. (2009).
+\newblock Strategies for identifying exact structure of neural circuits with
+  broad light microscopy connectivity probes.
+\newblock {\em Preprint:
+  http://precedings.nature.com/documents/2669/version/2}.
 
-\bibitem{Mishchenko2009b}
-Y.~Mishchenko, J.~Spacek, J.~Mendenhall, D.~Chklovskii, and K.~M. Harris,
-  \emph{Reconstruction of hippocampal ca1 neuropil at nanometer resolution
+\bibitem[Mishchenko et~al., 2009]{Mishchenko2009b}
+Mishchenko, Y., Spacek, J., Mendenhall, J., Chklovskii, D., and Harris, K.~M.
+  (2009).
+\newblock Reconstruction of hippocampal ca1 neuropil at nanometer resolution
   reveals disordered packing of processes and dependence of synaptic
-  connectivity on local environment and dendritic caliber.}, Preprint:
-  http://precedings.nature.com/documents/2669/version/2 (2009).
+  connectivity on local environment and dendritic caliber.
+\newblock {\em Preprint:
+  http://precedings.nature.com/documents/2669/version/2}.
 
-\bibitem{Neal03}
-R.~Neal, \emph{Slice sampling}, Annals of Statistics \textbf{31} (2003),
-  705--767.
+\bibitem[Neal et~al., 2003]{NBR03}
+Neal, R., Beal, M., and Roweis, S. (2003).
+\newblock Inferring state sequences for non-linear systems with embedded hidden
+  {M}arkov models.
+\newblock {\em NIPS}, 16.
 
-\bibitem{NBR03}
-R.~Neal, M.~Beal, and S.~Roweis, \emph{Inferring state sequences for non-linear
-  systems with embedded hidden {M}arkov models}, NIPS \textbf{16} (2003).
+\bibitem[Ng, 2004]{NG04}
+Ng, A. (2004).
+\newblock Feature selection, {L}$_1$ vs. {L}$_2$ regularization, and rotational
+  invariance.
+\newblock {\em ICML}, 21.
 
-\bibitem{NG04}
-A.~Ng, \emph{Feature selection, {L}$_1$ vs. {L}$_2$ regularization, and
-  rotational invariance}, ICML \textbf{21} (2004).
+\bibitem[Nguyen et~al., 2001]{NguyenParker01}
+Nguyen, Q.~T., Callamaras, N., Hsieh, C., and Parker, I. (2001).
+\newblock Construction of a two-photon microscope for video-rate {Ca}$^{2+}$
+  imaging.
+\newblock {\em Cell Calcium}, 30(6):383--393.
 
-\bibitem{NguyenParker01}
-Q.~T. Nguyen, N.~Callamaras, C.~Hsieh, and I.~Parker, \emph{Construction of a
-  two-photon microscope for video-rate {Ca}$^{2+}$ imaging.}, Cell Calcium
-  \textbf{30} (2001), no.~6, 383--393.
+\bibitem[Paninski, 2004]{PAN04c}
+Paninski, L. (2004).
+\newblock Maximum likelihood estimation of cascade point-process neural
+  encoding models.
+\newblock {\em Network: Computation in Neural Systems}, 15:243--262.
 
-\bibitem{NYK06}
-D.~Nykamp, \emph{A mathematical framework for inferring connectivity in
-  probabilistic neuronal networks}, Mathematical Biosciences \textbf{205}
-  (2007), 204--251.
+\bibitem[Petersen and Sakmann, 2000]{PetersenSakmann00}
+Petersen, C.~C. and Sakmann, B. (2000).
+\newblock The excitatory neuronal network of rat layer 4 barrel cortex.
+\newblock {\em J Neurosci}, 20(20):7579--86.
 
-\bibitem{PAN04c}
-L.~Paninski, \emph{Maximum likelihood estimation of cascade point-process
-  neural encoding models}, Network: Computation in Neural Systems \textbf{15}
-  (2004), 243--262.
+\bibitem[Petrusca et~al., 2007]{Petrusca07}
+Petrusca, D., Grivich, M.~I., Sher, A., Field, G.~D., Gauthier, J.~L.,
+  Greschner, M., Shlens, J., Chichilnisky, E.~J., and Litke, A.~M. (2007).
+\newblock Identification and characterization of a {Y}-like primate retinal
+  ganglion cell type.
+\newblock {\em J. Neurosci.}, 27(41):11019--11027.
 
-\bibitem{PAN03d}
-L.~Paninski, M.~Fellows, S.~Shoham, N.~Hatsopoulos, and J.~Donoghue,
-  \emph{Superlinear population encoding of dynamic hand trajectory in primary
-  motor cortex}, J. Neurosci. \textbf{24} (2004), 8551--8561.
+\bibitem[Pillow et~al., 2008]{PILL07}
+Pillow, J., Shlens, J., Paninski, L., Sher, A., Litke, A., Chichilnisky, E.,
+  and Simoncelli, E. (2008).
+\newblock Spatiotemporal correlations and visual signaling in a complete
+  neuronal population.
+\newblock {\em Nature}, 454:995--999.
 
-\bibitem{PetersenSakmann00}
-C.~C. Petersen and B.~Sakmann, \emph{The excitatory neuronal network of rat
-  layer 4 barrel cortex}, J Neurosci \textbf{20} (2000), no.~20, 7579--86.
+\bibitem[Rabiner, 1989]{RAB89}
+Rabiner, L. (1989).
+\newblock A tutorial on hidden {M}arkov models and selected applications in
+  speech recognition.
+\newblock {\em Proceedings of the IEEE}, 77:257--286.
 
-\bibitem{PILL07}
-J.~Pillow, J.~Shlens, L.~Paninski, A.~Sher, A.~Litke, E.J. Chichilnisky, and
-  E.~Simoncelli, \emph{Spatiotemporal correlations and visual signaling in a
-  complete neuronal population}, Nature \textbf{454} (2008), 995--999.
+\bibitem[Ramon~y Cajal, 1904]{RamonyCajal04}
+Ramon~y Cajal, S. (1904).
+\newblock {\em La Textura del Sistema Nerviosa del Hombre y los Vertebrados}.
+\newblock Moya.
 
-\bibitem{PG00}
-H.~Plesser and W.~Gerstner, \emph{Noise in integrate-and-fire neurons: From
-  stochastic input to escape rates}, Neural Computation \textbf{12} (2000),
-  367--384.
+\bibitem[Ramon~y Cajal, 1923]{RamonyCajal23}
+Ramon~y Cajal, S. (1923).
+\newblock {\em Recuerdos de mi vida: Historia de mi labor cientifica}.
+\newblock Alianza Editorial.
 
-\bibitem{RAB89}
-L.~Rabiner, \emph{A tutorial on hidden {M}arkov models and selected
-  applications in speech recognition}, Proceedings of the IEEE \textbf{77}
-  (1989), 257--286.
+\bibitem[Reddy and Saggau, 2005]{ReddySaggau05}
+Reddy, G.~D. and Saggau, P. (2005).
+\newblock Fast three-dimensional laser scanning scheme using acousto-optic
+  deflectors.
+\newblock {\em J Biomed Opt}, 10(6):064038.
 
-\bibitem{ReddySaggau05}
-Gaddum~Duemani Reddy and Peter Saggau, \emph{Fast three-dimensional laser
-  scanning scheme using acousto-optic deflectors}, J Biomed Opt \textbf{10}
-  (2005), no.~6, 064038.
+\bibitem[Reyes et~al., 1998]{Reyes98}
+Reyes, A., Lujan, R., Rozov, A., Burnashev, N., Somogyi, P., and Sakmann, B.
+  (1998).
+\newblock Target-cell-specific facilitation and depression in neocortical
+  circuits.
+\newblock {\em Nat Neurosci}, 1:279--285.
 
-\bibitem{ReddySaggau08}
-G.D. Reddy, K.~Kelleher, R.~Fink, and P.~Saggau, \emph{{Three-dimensional
-  random access multiphoton microscopy for functional imaging of neuronal
-  activity}}, Nature Neuroscience \textbf{11} (2008), no.~6, 713--720.
+\bibitem[Rigat et~al., 2006]{Rigat06}
+Rigat, F., de~Gunst, M., and van Pelt, J. (2006).
+\newblock Bayesian modelling and analysis of spatio-temporal neuronal networks.
+\newblock {\em Bayesian Analysis}, 1:733--764.
 
-\bibitem{Reyes98}
-A.~Reyes, R.~Lujan, A.~Rozov, N.~Burnashev, P.~Somogyi, and B.~Sakmann,
-  \emph{Target-cell-specific facilitation and depression in neocortical
-  circuits}, Nat Neurosci \textbf{1} (1998), 279--285.
+\bibitem[Santhanam et~al., 2006]{Santhanam06}
+Santhanam, G., Ryu, S.~I., Yu, B.~M., Afshar, A., and Shenoy, K.~V. (2006).
+\newblock A high-performance brain-computer interface.
+\newblock {\em Nature}, 442:195--198.
 
-\bibitem{Rigat06}
-F.~Rigat, M.~de~Gunst, and J.~van Pelt, \emph{Bayesian modelling and analysis
-  of spatio-temporal neuronal networks}, Bayesian Analysis \textbf{1} (2006),
-  733--764.
+\bibitem[Sayer et~al., 1990]{Sayer1990}
+Sayer, R.~J., Friedlander, M.~J., and Redman, S.~J. (1990).
+\newblock The time course and amplitude of epsps evoked at synapses between
+  pairs of ca3/ca1 neurons in the hippocampal slice.
+\newblock {\em J. Neurosci.}, 10:826--36.
 
-\bibitem{SalomeBourdieu06}
-R~Salome, Y~Kremer, S~Dieudonne, J-F Leger, O~Krichevsky, C~Wyart, D~Chatenay,
-  and L~Bourdieu, \emph{Ultrafast random-access scanning in two-photon
-  microscopy using acousto-optic deflectors}, Journal of Neuroscience Methods
-  \textbf{154} (2006), no.~1-2, 161--174.
+\bibitem[Segev et~al., 2004]{Berry2004}
+Segev, R., Goodhouse, J., Puchalla, J., and Berry, M. (2004).
+\newblock Recording spikes from a large fraction of the ganglion cells in a
+  retinal patch.
+\newblock {\em Nature Neuroscience}, 7:1154--1161.
 
-\bibitem{Sayer1990}
-R.~J. Sayer, M.~J. Friedlander, and S.~J. Redman, \emph{The time course and
-  amplitude of epsps evoked at synapses between pairs of ca3/ca1 neurons in the
-  hippocampal slice}, J. Neurosci. \textbf{10} (1990), 826--36.
+\bibitem[Shumway and Stoffer, 2006]{ShumwayStoffer06}
+Shumway, R. and Stoffer, D. (2006).
+\newblock {\em Time Series Analysis and Its Applications}.
+\newblock Springer.
 
-\bibitem{ShumwayStoffer06}
-R.~Shumway and D.~Stoffer, \emph{Time series analysis and its applications},
-  Springer, 2006.
+\bibitem[Song et~al., 2005]{Song2005}
+Song, S., Sjostrom, P.~J., Reiql, M., Nelson, S., and Chklovskii, D.~B. (2005).
+\newblock Highly nonrandom features of synaptic connectivity in local cortical
+  circuits.
+\newblock {\em PLoS Biology}, 3:e68.
 
-\bibitem{Song2005}
-S.~Song, P.~J. Sjostrom, M.~Reiql, S.~Nelson, and D.~B. Chklovskii,
-  \emph{Highly nonrandom features of synaptic connectivity in local cortical
-  circuits.}, PLoS Biology \textbf{3} (2005), e68.
+\bibitem[Stein et~al., 2004]{Stein04}
+Stein, R.~B., Weber, D.~J., Aoyagi, Y., Prochazka, A., Wagenaar, J. B.~M.,
+  Shoham, S., and Normann, R.~A. (2004).
+\newblock {Coding of position by simultaneously recorded sensory neurones in
+  the cat dorsal root ganglion}.
+\newblock {\em J Physiol (Lond)}, 560(3):883--896.
 
-\bibitem{Stevenson08}
-I.~Stevenson, J.~Rebesco, N.~Hatsopoulos, Z.~Haga, L.~Miller, and K.~Koerding,
-  \emph{Inferring network structure from spikes}, Statistical Analysis of
-  Neural Data meeting (2008).
+\bibitem[Stevenson et~al., 2008]{Stevenson08}
+Stevenson, I., Rebesco, J., Hatsopoulos, N., Haga, Z., Miller, L., and
+  Koerding, K. (2008).
+\newblock Inferring network structure from spikes.
+\newblock {\em Statistical Analysis of Neural Data meeting}.
 
-\bibitem{Stevenson2009}
-I.~H. Stevenson, J.~M. Rebesco, N.~G. Hatsopoulos, Z.~Haga, L.~E. Miller, and
-  K.~P. Kording, \emph{Bayesian inference of functional connectivity and
-  network structure from spikes}, IEEE Trans. Neural Systems and Rehab.
-  \textbf{17} (2009), 203--13.
+\bibitem[Stosiek et~al., 2003]{StosiekKonnerth03}
+Stosiek, C., Garaschuk, O., Holthoff, K., and Konnerth, A. (2003).
+\newblock In vivo two-photon calcium imaging of neuronal networks.
+\newblock {\em Proceedings of The National Academy Of Sciences Of The United
+  States Of America}, 100(12):7319--7324.
 
-\bibitem{StosiekKonnerth03}
-Christoph Stosiek, Olga Garaschuk, Knut Holthoff, and Arthur Konnerth, \emph{In
-  vivo two-photon calcium imaging of neuronal networks}, Proceedings of The
-  National Academy Of Sciences Of The United States Of America \textbf{100}
-  (2003), no.~12, 7319--7324.
+\bibitem[Thompson et~al., 1988]{Thompson88}
+Thompson, A., Girdlestone, D., and West, D. (1988).
+\newblock Voltage-dependent currents prolong single-axon postsynaptic
+  potentials in layer {III} pyramidal neurons in rat neocortical slices.
+\newblock {\em J Neurophysiol}, 60:1896--1907.
 
-\bibitem{Thompson88}
-A.~Thompson, D.~Girdlestone, and D.~West, \emph{Voltage-dependent currents
-  prolong single-axon postsynaptic potentials in layer {III} pyramidal neurons
-  in rat neocortical slices}, J Neurophysiol \textbf{60} (1988), 1896--1907.
+\bibitem[Tibshirani, 1996]{Tibs96}
+Tibshirani, R. (1996).
+\newblock Regression shrinkage and selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society. Series B},
+  58:267--288.
 
-\bibitem{Tibs96}
-R.~Tibshirani, \emph{Regression shrinkage and selection via the lasso}, Journal
-  of the Royal Statistical Society. Series B \textbf{58} (1996), 267--288.
+\bibitem[Tipping, 2001]{TIP01}
+Tipping, M. (2001).
+\newblock Sparse {B}ayesian learning and the relevance vector machine.
+\newblock {\em Journal of Machine Learning Research}, 1:211--244.
 
-\bibitem{TIP01}
-M.~Tipping, \emph{Sparse {B}ayesian learning and the relevance vector machine},
-  Journal of Machine Learning Research \textbf{1} (2001), 211--244.
+\bibitem[Tsien, 1989]{Tsien89}
+Tsien, R.~Y. (1989).
+\newblock Fluorescent probes of cell signaling.
+\newblock {\em Ann. Rev. Neurosci.}, 12:227--253.
 
-\bibitem{TRUC05}
-W.~Truccolo, U.~Eden, M.~Fellows, J.~Donoghue, and E.~Brown, \emph{A point
-  process framework for relating neural spiking activity to spiking history,
-  neural ensemble and extrinsic covariate effects}, Journal of Neurophysiology
-  \textbf{93} (2005), 1074--1089.
+\bibitem[Vogelstein et~al., 2009]{Vogelstein2009}
+Vogelstein, J.~T., Watson, B.~O., Packer, A.~M., Yuste, R., Jedynak, B., and
+  Paninski, L. (2009).
+\newblock Spike inference from calcium imaging using sequential monte carlo
+  methods.
+\newblock {\em Preprint}.
 
-\bibitem{Tsien89}
-Roger~Y. Tsien, \emph{Fluorescent probes of cell signaling}, Ann. Rev.
-  Neurosci. \textbf{12} (1989), 227--253.
+\bibitem[Wallace et~al., 2008]{WallaceHasan08}
+Wallace, D., zum Alten~Borgloh, S., Astori, S., Yang, Y., Bausen, M.,
+  K{\\"u}gler, S., Palmer, A., Tsien, R., Sprengel, R., Kerr, J., Denk, W., and
+  Hasan, M. (2008).
+\newblock {Single-spike detection in vitro and in vivo with a genetic Ca2+
+  sensor}.
+\newblock {\em Nature methods}, 5(9):797--804.
 
-\bibitem{Vidne08}
-M.~Vidne, J.~Kulkarni, Y.~Ahmadian, J.~Pillow, J.~Shlens, E.~Chichilnisky,
-  E.~Simoncelli, and L.~Paninski, \emph{Inferring functional connectivity in an
-  ensemble of retinal ganglion cells sharing a common input}, COSYNE (2009).
+\bibitem[Yaksi and Friedrich, 2006]{YaksiFriedrich06}
+Yaksi, E. and Friedrich, R.~W. (2006).
+\newblock Reconstruction of firing rate changes across neuronal populations by
+  temporally deconvolved {Ca$^{2+}$} imaging.
+\newblock {\em Nature Methods}, 3(5):377--383.
 
-\bibitem{Vogelstein2009}
-J.~T. Vogelstein, B.~O. Watson, A.~M. Packer, R.~Yuste, B.~Jedynak, and
-  L.~Paninski, \emph{Spike inference from calcium imaging using sequential
-  monte carlo methods}, Preprint (2009).
+\bibitem[Yasuda et~al., 2004]{Yasuda2004}
+Yasuda, R., Nimchinsky, E.~A., Scheuss, V., Pologruto, T.~A., Oertner, T.~G.,
+  Sabatini, B.~L., and Svoboda, K. (2004).
+\newblock Imaging calcium concentration dynamics in small neuronal
+  compartments.
+\newblock {\em Sci STKE}, 219:p15.
 
-\bibitem{WallaceHasan08}
-D.J. Wallace, S.M. zum Alten~Borgloh, S.~Astori, Y.~Yang, M.~Bausen,
-  S.~K{\\"u}gler, A.E. Palmer, R.Y. Tsien, R.~Sprengel, J.N.D. Kerr, W.~Denk,
-  and M.T. Hasan, \emph{{Single-spike detection in vitro and in vivo with a
-  genetic Ca2+ sensor}}, Nature methods \textbf{5} (2008), no.~9, 797--804.
-
-\bibitem{Yasuda2004}
-R.~Yasuda, E.~A. Nimchinsky, V.~Scheuss, T.~A. Pologruto, T.~G. Oertner, B.~L.
-  Sabatini, and K.~Svoboda, \emph{Imaging calcium concentration dynamics in
-  small neuronal compartments}, Sci STKE \textbf{219} (2004), p15.
-
-\bibitem{ImagingManual}
-R.~Yuste, A.~Konnerth, B.R. Masters, et~al., \emph{{Imaging in Neuroscience and
-  Development, A Laboratory Manual}}, 2006.
+\bibitem[Yuste et~al., 2006]{ImagingManual}
+Yuste, R., Konnerth, A., Masters, B., et~al. (2006).
+\newblock {\em {Imaging in Neuroscience and Development, A Laboratory Manual}}.
 
 \end{thebibliography}

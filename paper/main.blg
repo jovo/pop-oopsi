@@ -1,10 +1,46 @@
 This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
-White space in argument---line 185 of file main.aux
- : \citation{Duane
- :                 1 and 2}
+White space in argument---line 9 of file main.aux
+ : \citation{Abeles91,
+ :                     Braitenberg1998}
 I'm skipping whatever remains of this command
-The style file: amsplain.bst
+White space in argument---line 14 of file main.aux
+ : \citation{ReddySaggau05,
+ :                          Iyer06, SalomeBourdieu06, ReddySaggau08}
+I'm skipping whatever remains of this command
+White space in argument---line 20 of file main.aux
+ : \citation{BRIL88,
+ :                   CSK88, BRIL92, PG00, PILL07, PAN03d, PAN04c, Rigat06, TRUC05,NYK06,KP06,Vidne08,Stevenson2009}
+I'm skipping whatever remains of this command
+White space in argument---line 80 of file main.aux
+ : \citation{Braitenberg1998,
+ :                            Urquijo2000, Lefort2009, Sayer1990}
+I'm skipping whatever remains of this command
+White space in argument---line 81 of file main.aux
+ : \citation{Braitenberg1998,
+ :                            Urquijo2000}
+I'm skipping whatever remains of this command
+White space in argument---line 82 of file main.aux
+ : \citation{Braitenberg1998,
+ :                            Lefort2009}
+I'm skipping whatever remains of this command
+White space in argument---line 83 of file main.aux
+ : \citation{Lefort2009,
+ :                       Sayer1990}
+I'm skipping whatever remains of this command
+White space in argument---line 106 of file main.aux
+ : \citation{NguyenParker01,
+ :                           ReddySaggau05, Iyer06, SalomeBourdieu06, ReddySaggau08}
+I'm skipping whatever remains of this command
+White space in argument---line 125 of file main.aux
+ : \citation{emory,
+ :                  liam, Garofalo, Vakorina, etc.}
+I'm skipping whatever remains of this command
+White space in argument---line 130 of file main.aux
+ : \citation{Duane
+ :                 1 and 2, liam}
+I'm skipping whatever remains of this command
+The style file: apalike.bst
 Database file #1: mybib.bib
 Repeated entry---line 6935 of file mybib.bib
  : @article{Feldmeyer99
@@ -26,63 +62,49 @@ Repeated entry---line 22006 of file mybib.bib
  : @book{ShumwayStoffer06
  :                       ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "DGL01"
 Warning--I didn't find a database entry for "VogPan09"
 Warning--I didn't find a database entry for "Chlovksii"
 Warning--I didn't find a database entry for "emory"
-Warning--I didn't find a database entry for "liam"
-Warning--I didn't find a database entry for "Garofalo"
-Warning--I didn't find a database entry for "Vakorina"
-Warning--I didn't find a database entry for "etc."
-Warning--missing pages in Andrieu2007
 Warning--can't use both author and editor fields in DFG01
-Warning--missing pages in Escola07
-Warning--missing pages in Mishchenko2009
-Warning--missing pages in Mishchenko2009b
-Warning--missing pages in NBR03
-Warning--missing pages in NG04
-Warning--missing pages in Stevenson08
-Warning--missing pages in Vidne08
-Warning--missing pages in Vogelstein2009
-You've used 64 entries,
-            2213 wiz_defined-function locations,
-            931 strings with 15103 characters,
-and the built_in function-call counts, 21799 in all, are:
-= -- 1893
-> -- 1250
-< -- 0
-+ -- 498
-- -- 427
-* -- 2042
-:= -- 3610
-add.period$ -- 64
-call.type$ -- 64
-change.case$ -- 404
-chr.to.int$ -- 0
-cite$ -- 74
-duplicate$ -- 723
-empty$ -- 1685
-format.name$ -- 427
-if$ -- 4367
-int.to.chr$ -- 0
-int.to.str$ -- 64
-missing$ -- 132
-newline$ -- 202
-num.names$ -- 129
-pop$ -- 493
+You've used 62 entries,
+            1935 wiz_defined-function locations,
+            878 strings with 14775 characters,
+and the built_in function-call counts, 25952 in all, are:
+= -- 2483
+> -- 1288
+< -- 27
++ -- 456
+- -- 444
+* -- 2288
+:= -- 4610
+add.period$ -- 185
+call.type$ -- 62
+change.case$ -- 521
+chr.to.int$ -- 62
+cite$ -- 63
+duplicate$ -- 878
+empty$ -- 1678
+format.name$ -- 534
+if$ -- 4954
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 68
+newline$ -- 311
+num.names$ -- 188
+pop$ -- 444
 preamble$ -- 1
-purify$ -- 340
+purify$ -- 530
 quote$ -- 0
-skip$ -- 372
+skip$ -- 666
 stack$ -- 0
-substring$ -- 1406
-swap$ -- 82
-text.length$ -- 0
+substring$ -- 1781
+swap$ -- 83
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 244
-warning$ -- 10
-while$ -- 207
-width$ -- 66
-write$ -- 523
-(There were 6 error messages)
+type$ -- 356
+warning$ -- 1
+while$ -- 198
+width$ -- 0
+write$ -- 789
+(There were 15 error messages)

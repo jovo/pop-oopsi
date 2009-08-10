@@ -1,6 +1,6 @@
 \subsection{Simulating neural activity in a neural population} \label{sec:results:simulations}
 
-To test the described method for inferring functional connectivity from calcium imaging data, we simulated networks (according to our model, Eqs. \ref{eqn:glm:definition} -- \ref{eqn:F:definition}) of stochastically connected neurons.  Although simulations ran at $1$ msec time discretization, imaging rate was assumed to be much slower. Simulations lasted anywhere between 5 minutes and 1 hours (of simulated time).  Model parameters were chosen based on experimental data available from the literature \cite{Braitenberg1998, Urquijo2000, Lefort2009, Sayer1990}.
+To test the described method for inferring functional connectivity from calcium imaging data, we simulated networks (according to our model, Eqs. \ref{eqn:glm:definition} -- \ref{eqn:F:definition}) of stochastically connected neurons.  Although simulations ran at $1$ msec time discretization, imaging rate was assumed to be much slower. Simulations lasted anywhere between 5 minutes and 1 hours (of simulated time).  Model parameters were chosen based on experimental data available from the literature \cite{Braitenberg1998, Urquijo2000, Lefort2009, Sayer1990}.  
 
 More specifically, the network was divided into excitatory (80\%) and inhibitory (20\%) neurons \cite{Braitenberg1998, Urquijo2000}, each respecting Dale's law, i.e., each neurons was either excitatory or inhibitory (corresponding to all positive or all negative columns in our functional connection weight matrix, $\bw$). Neurons were randomly connected to each other with probability $0.1$ \cite{Braitenberg1998, Lefort2009}.  Synaptic weights for excitatory connections, as defined by EPSP peak amplitude, were randomly drawn from exponential distribution with the mean of $0.5 \mu V$ \cite{Lefort2009, Sayer1990}. To convert these into functional connectivity weights, we note that $w_{ij}=1$ corresponds to a jump in $J_i=1$, immediately following a spike from neuron $j$.  Defining $V_\delta$ as the difference between threshold and rest for a neuron, and $V_E$ as the peak amplitude of an EPSP (and similarly for IPSP's), we can say the change in probability after a spike is $\Delta P=V_E/V_\delta$. Because Eq. \ref{eqn:glm:definition} provides the same quantity in our model parameter, $w_{ij}$, we have:
 
@@ -8,14 +8,14 @@ More specifically, the network was divided into excitatory (80\%) and inhibitory
 \w_{ij}=\ln(-\ln(e^{-r_i\tau_w}-V_E/V_{\delta})/r_i\tau_w),
 \end{equation}
 
-\noindent where $r_i=\exp(b_i)$ is the base firing rate of neuron $i$ and $\tau_w=10$ msec was the typical EPSP/IPSP scale over which single EPSP affects the firing probability of the neuron $i$. Inhibitory connections were also drawn from exponential distribution; their strengths chosen so as to balance excitatory and inhibitory currents in the network, and achieve an average firing rate of  $\approx 5 $ Hz. Practically, the mean strength of inhibitory connections was about 10 times larger than that of the excitatory connections. PSP shapes were modeled as the difference of two exponentials, corresponding to a sharp rise and relatively slow decay \cite{Sayer1990}.
-%The time course of functional connectivity weights $\w_{ij}(t)$ was modeled as the difference of two exponentials, resulting in a rise time of $\tau_r=1$ msec and decay time of $\tau_{E_d}=10$ msec for excitatory and $\tau_{I_d}=20$ msec for inhibitory currents . In practice, we sampled time constants from uniform distributions with means as stated above and support of $\pm 25 \%$ of the means.
+\noindent where $r_i=\exp(b_i)$ is the base firing rate of neuron $i$ and $\tau_w=10$ msec was the typical EPSP/IPSP scale over which single EPSP affects the firing probability of the neuron $i$. Inhibitory connections were also drawn from exponential distribution; their strengths chosen so as to balance excitatory and inhibitory currents in the network, and achieve an average firing rate of  $\approx 5 $ Hz. Practically, the mean strength of inhibitory connections was about 10 times larger than that of the excitatory connections. PSP shapes were modeled as the difference of two exponentials, corresponding to a sharp rise and relatively slow decay \cite{Sayer1990}. 
+%The time course of functional connectivity weights $\w_{ij}(t)$ was modeled as the difference of two exponentials, resulting in a rise time of $\tau_r=1$ msec and decay time of $\tau_{E_d}=10$ msec for excitatory and $\tau_{I_d}=20$ msec for inhibitory currents . In practice, we sampled time constants from uniform distributions with means as stated above and support of $\pm 25 \%$ of the means. 
 We neglected conduction delays, given that the time delay below $\sim 1$ msec expected in local cortical circuit was smaller than the time step of our computer simulation.  Each neuron also had an exponential refractory current with a $10$ msec time constant. XXX Y: did that not get sampled from some distribution? XXX
 
 Parameters for the calcium dynamics and observation statistics were chosen according to our experience with several cells analyzed using algorithm of \cite{Vogelstein2009}. Each parameter was generated from a normal distribution with specified mean and variance at about 30\% of the mean, truncated at the lower bound at about 30\% of the mean value.  Table \ref{table:caparm} provides details for each of the parameters in our model.
 
 \begin{table}[h!b!p!]
-\caption{Table of simulation parameters. $\mathcal{E}(\lambda)$ indicates an exponential distribution with $\lambda$, $\mathcal{U}[a,b]$ indicates a uniform distribution between $a$ and $b$, and $\mathcal{TN}[x]$ indicates a truncated normal with mean $x$ and variance and lower bound of $30 \%$ the mean.  XXX Y: can you fix this to look nice? I think the line for Ca jump is good now, assuming we explain that the gaussian is truncated at 2 std below mean (or something like that) XXX}\label{table:caparm}
+\caption{Table of simulation parameters. $\mathcal{E}(\lambda)$ indicates an exponential distribution with $\lambda$, $\mathcal{U}[a,b]$ indicates a uniform distribution between $a$ and $b$, and $\mathcal{TN}[x]$ indicates a truncated normal with mean $x$ and variance and lower bound of $30 \%$ the mean.}\label{table:caparm}
 \begin{tabular}{ll}
 \hline
 Total neurons & 10-500 \\
@@ -31,7 +31,7 @@ IPSP rise time 		& $\sim \mathcal{U}[0.75, 1.25]$ msec \\
 IPSP decay time 	& $\sim \mathcal{U}[15, 25]$ msec \\
 \hline
 Mean Ca noise $\sigma_c$ & $\sim \mathcal{TN} [28] \mu$M \\
-Calcium jump after spike, $A_c$ &  $\sim \mathcal{N} (80, 20) \mu$M \\
+Mean Ca jump $A_c$ &  $\sim \mathcal{TN} [80] \mu$M \\
 Mean Ca background $C_b$ & $\sim \mathcal{TN} [24] \mu$M \\
 Mean Ca decay time $\tau_c$ & $\sim \mathcal{TN} [0.25]$ sec \\
 Mean photon budget $\alpha_c$ & 1-80 Kph/neuron/frame \\
@@ -43,13 +43,13 @@ $K_d$ & 200 $\mu$M \\
 
 \subsection{Inferring functional connectivity from the simulated calcium imaging data} \label{sec:results:inference}
 
-With neural population activity prepared as described in the previous section, we used our inference algorithms to reconstruct the functional connectivity matrix from simulated fluorescence data. Specifically, we estimated the connectivity matrix by maximizing $E[\ln P[n_i(t)| \bh(t); b_i, \bw_i]]$ with respect to $\{b_i,\bw_i\}$, for each neuron (c.f. Eq. \ref{eqn:loglik:definition-expl}), using both the embedded-chain-within-blockwise-Gibbs approach as well as using factorized approximation, Figure \ref{fig:scatters}.  We found that factorized approximation algorithm was able to provide reconstructions almost as accurate as the exact embedded-chain-within-blockwise-Gibbs approach --- $r^2=0.47$ versus $r^2=0.48$ --- when parameters corresponded to a realistic (but relatively high quality) preparation, given $10$ minutes simulation time, in a population of $N=25$ neurons. Figure \ref{fig:example_traces} depicts a couple different fluorescence traces, of varying SNR.  In practice, we found that for data looking like the left panel, the factorization approach is sufficient, but for data like the right panel, too much information is lost by the factorization.
+With neural population activity prepared as described in the previous section, we used our inference algorithms to reconstruct the functional connectivity matrix from simulated fluorescence data. Specifically, we estimated the connectivity matrix by maximizing $E[\ln P[n_i(t)| \bh(t); b_i, \bw_i]]$ with respect to $\{b_i,\bw_i\}$, for each neuron (c.f. Eq. \ref{eqn:loglik:definition-expl}), using both the embedded-chain-within-blockwise-Gibbs approach as well as using factorized approximation, Figure \ref{fig:scatters}.  We found that factorized approximation algorithm was able to provide reconstructions almost as accurate as the exact embedded-chain-within-blockwise-Gibbs approach --- $r^2=0.47$ versus $r^2=0.48$ --- when parameters corresponded to a realistic (but relatively high quality) preparation, given $10$ minutes simulation time, in a population of $N=25$ neurons. Figure \ref{fig:example_traces} depicts a couple different fluorescence traces, of varying SNR.  In practice, we found that for data looking like the left panel, the factorization approach is sufficient, but for data like the right panel, too much information is lost by the factorization.  
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\hsize]{../figs/example_traces}
-\caption{Two in vivo fluorescence traces (top) and their corresponding inferred spike trains (bottom).  The left panels show a high SNR case, that is sufficient quality for the factorization approximation to work nearly as well as the embedded-chain-within-Gibbs approach.  The right panels show a low SNR case, in which the factorization approach is insufficient.}
-\label{fig:example_traces}
+\caption{Two in vivo fluorescence traces (top) and their corresponding inferred spike trains (bottom).  The left panels show a high SNR case, that is sufficient quality for the factorization approximation to work nearly as well as the embedded-chain-within-Gibbs approach.  The right panels show a low SNR case, in which the factorization approach is insufficient.} 
+\label{fig:example_traces} 
 \end{figure}
 
 To compare the quality of our inferences using only the fluorescence traces, we also estimated the weights using the true spike trains, down-sampled to the frame rates of calcium imaging.  Indeed, the quality of our estimates using the fluorescence traces are worse than those obtained from the down-sampled spike trains; $r^2=0.57$ using the down-sampled spike trains.  Note that $r^2\rightarrow 1$ as $T \rightarrow \infty$, when using the true (i.e., not down-sampled) spike trains, as guaranteed by our model.  Indeed, when using the true spike trains, $r^2=XXX$ for this simulation.  This suggests that as imaging rates increase, we can expect a corresponding increase in accuracy of our functional connectivity weight estimates.
@@ -65,7 +65,7 @@ To compare the quality of our inferences using only the fluorescence traces, we 
 % b_i+\sum\limits_j w_{ij} h_j(t).
 % \end{align}
 
-\comment{The sum in Eqs.\ref{eqn:likelihoodGLMmoda} and \ref{eqn:likelihoodGLMmodb} was over the sample of $\{n_i(t)\}$, produced with our spike sampling algorithm, discretized over the time-bins $t'$ with the width corresponding to the calcium imaging frame rate (i.e. 30 ms for 33 Hz and 15 ms for 66 Hz). In one of the two cases we considered, EPSP time-profiles were assumed to be ``known'' exponential, and the weights were estimated using reduced histories $h_{i}(t)=\sum_{t'<t} \exp(-(t-t')/\tau_h)n_{i}(t')$ with the time constant $\tau_h=10$ ms (i.e. second equation in Eq. \ref{eqn:likelihoodGLMmodb}). In the second case we considered, the time dependence of $\w_{ij}(t)$ was assumed to be unknown and the first equation in Eq. \ref{eqn:likelihoodGLMmodb}) was used to correlate $n_i(t)$ with $n_j(t')$ for $t'<t$ up to a given depth $m$.  In this latter case, since each next term in Eq. \ref{eqn:likelihoodGLMmodb}) was significantly smaller than the previous one, we found that the best results were obtained if we took $m=1$ (i.e. minimizing number of unknown variables given certain amount of data).
+\comment{The sum in Eqs.\ref{eqn:likelihoodGLMmoda} and \ref{eqn:likelihoodGLMmodb} was over the sample of $\{n_i(t)\}$, produced with our spike sampling algorithm, discretized over the time-bins $t'$ with the width corresponding to the calcium imaging frame rate (i.e. 30 msec for 33 Hz and 15 msec for 66 Hz). In one of the two cases we considered, EPSP time-profiles were assumed to be ``known'' exponential, and the weights were estimated using reduced histories $h_{i}(t)=\sum_{t'<t} \exp(-(t-t')/\tau_h)n_{i}(t')$ with the time constant $\tau_h=10$ msec (i.e. second equation in Eq. \ref{eqn:likelihoodGLMmodb}). In the second case we considered, the time dependence of $\w_{ij}(t)$ was assumed to be unknown and the first equation in Eq. \ref{eqn:likelihoodGLMmodb}) was used to correlate $n_i(t)$ with $n_j(t')$ for $t'<t$ up to a given depth $m$.  In this latter case, since each next term in Eq. \ref{eqn:likelihoodGLMmodb}) was significantly smaller than the previous one, we found that the best results were obtained if we took $m=1$ (i.e. minimizing number of unknown variables given certain amount of data).
 In either case, we described the connection weight between two neurons by a scalar quantity $w_{ij}^s=\text{sign}(\w_{ij})\max_{t} |\w_{ij}(t)|$, which thereafter was used to compare true and reconstructed connectivity weights in all examples below.}
 
 \begin{figure}[h]
@@ -80,23 +80,17 @@ In either case, we described the connection weight between two neurons by a scal
 
 \subsection{Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}
 
-That all three approaches considered in Figure \ref{fig:scatters} exhibit a significant scaling bias suggests that down-sampling spike times introduces this bias.  We conjectured that this is caused by the discrepancy between $\Delta \approx 15-30$ msec and the assumed PSP time scale $\approx 10-20$ msec. Properly estimating the magnitude of the connection weights $w_{ij}$ is based on empirically evaluating the spike-triggered probability of neuron $i$ to fire, conditioned on neuron $j$. Note that most triggered spikes of neuron $i$ will occur within $\approx 10-20$ msec from a triggering spike of neuron $j$ (because of our assumed values for $\tau_w$). However, when spike trains are discretized into large time-bins, e.g. $\Delta = 30$ msec, a significant fraction of such triggered spike pairs seem coincident, as opposed to causal (because both the triggering and triggered spikes end up in the same time-bin). Therefore, we empirically observe a smaller number of triggered spikes than occur, causing a scale bias in $w_{ij}$.
+That all three approaches considered in Figure \ref{fig:scatters} exhibit a significant scaling bias suggests that down-sampling spike times introduces this bias.  We conjectured that this scaling bias is caused by the discrepancy between $\Delta \approx 15-30$ msec and the assumed PSP time scale $\approx 10-20$ msec. When $\Delta \gg 1$ msec, $\w_{ij} h_j(t') \approx w_{ij} \exp(-\Delta/\tau_w)$, is substantially smaller than $w_{ij}$, and the estimated weights will be smaller than the true $w_{ij}$.
 
-To quantitatively estimate the magnitude of this scale bias and correct it, consider two neurons coupled with small weight $w_{12}$. Assume that, aside from this coupling, these neurons fire with baseline firing rate of $r=f(b)=\exp(b)$, $b \gg w_{12}$. In order to estimate $w_{12}$ we observe the number of spike pairs such that the first neuron fired after the second neuron over some small period of time $\tau_w \ll t' \ll 1/r$, which is in excess of the baseline firing rate $\Delta n(2\rightarrow 1) = n(2\rightarrow 1) - r t' \approx f'(b) \int  w_{12} \exp(-t/\tau_w)$ dt.
+To estimate the magnitude of this scale bias consider two neurons coupled with weight $w_{12}$. Assume that, aside from this coupling, these neurons fire with baseline firing rate of $r=\exp(b)$, $b \gg w_{12}$. In order to estimate $w_{12}$ we observe the number of spike-pairs such that the first neuron fired after the second neuron over some small period of time $\tau_w \ll t' \ll 1/r$, which is in excess of the baseline firing rate $\Delta n(2\rightarrow 1) = n(2\rightarrow 1) - r t' \approx \int  w_{12} \exp(-t/\tau_w)$ dt  XXX: Y, can you explain more where this equation comes from, and how it relates to the sentence, as i don't see it XXX.
 
-Now, assume that spike trains were additionally discretized into time-bins of size $\Delta$, and only the spikes that occurred in different time-bins $t'<t$ were considered as non-coincidental. In this case, the number of spike pairs such that the spike of the first neuron followed that of the second neuron observed empirically is: 
-
-\begin{equation}
-\Delta n'(2\rightarrow 1) \approx f'(b) \int\limits_0^\Delta \frac{1}{\Delta} \int\limits_{\Delta}^T \exp(-(t_2-t_1)/\tau_w) \text{dt}_1 \text{dt}_2.
-\end{equation} 
-
-The ratio of this empirical count, $\Delta n'(2\rightarrow 1)$, to that expected from our model for given $w_{12}$, $\Delta n(2\rightarrow 1)$, is the theoretical scale bias:
+Now, assume that spike trains were additionally discretized into time-bins of size $\Delta$ and only the spikes that occurred in different time-bins were considered as non-coincidental. In this case, the number of spike pairs such that the spike of the first neuron followed that of the second neuron observed empirically is $\Delta n'(2\rightarrow 1) \approx \int\limits_0^\Delta \frac{1}{\Delta} \int\limits_{\Delta}^{t'} \exp(-(t_2-t_1)/\tau_w)$ dt$_1$ dt$_2$. The ratio of the empirical count, $\Delta n'(2\rightarrow 1)$, to that expected from the model, for a given $w_{12}$, $\Delta n(2\rightarrow 1)$, is theoretical scale bias:
 
 \begin{equation}\label{eqn:bias}
 \Delta n'_{12}/\Delta n_{12}\approx \frac{1-\exp(-\Delta/\tau_w)}{\Delta/\tau_w}.
 \end{equation}
 
-In Figure \ref{fig:bias} we plotted this estimated magnitude versus that empirically observed from our simulations for different values of $\Delta$. As can be seen from Figure \ref{fig:bias}, simple theoretical estimate Eq. \ref{eqn:bias} describes observed scale bias quite well.  This scale bias could potentially be overcome by inferring spike trains using the superresolution feature of \cite{VogPan09}, i.e., sampling spikes with a finer temporal resolution than the image rate.
+In Figure \ref{fig:bias} we plotted this estimated magnitude versus the empirically observed scale bias from our simulations for different values of $\Delta$. As can be seen from Figure \ref{fig:bias}, this simple theoretical estimate Eq. \ref{eqn:bias} describes the observed scale bias quite well.  This scale bias could potentially be overcome by inferring spike trains using the superresolution feature \cite{VogPan09} (i.e., sampling spikes with a temporal resolution greater than the imaging rate), which is an avenue for future exploration.
 
 \begin{figure}[h]
 \centering
@@ -106,7 +100,7 @@ In Figure \ref{fig:bias} we plotted this estimated magnitude versus that empiric
 \end{figure}
 
 
-\subsection{Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}
+\subsection{Impact of different imaging frame rates, noise levels, and durations on estimator accuracy}
 
 \begin{figure}[h]
 \centering
@@ -118,68 +112,71 @@ In Figure \ref{fig:bias} we plotted this estimated magnitude versus that empiric
 \begin{figure}[h]
 \centering
 \includegraphics[width=3in]{../figs/FigureA6_recvar_SNR}
-\caption{Accuracy of inferred connectivity weights as function of the noise amount in the calcium imaging data, as quantified by experimental photon budget per neuron-frame, for frame rates of 15 Hz, 33 Hz and 66 Hz. Photon counts on the order of 20-40 Kph/frame/neuron are required to achieve the upper bound due by the frame rate. Connectivity matrix here was inferred from simulated fluorescence data using factorized approximation algorithm. Simulation conditions are the same as in Figure \ref{fig:recvar}.}
+\caption{Accuracy of inferred connectivity weights as function of the noise amount in the calcium imaging data, as quantified by experimental photon budget per neuron-frame, for frame rates of 15 Hz, 33 Hz and 66 Hz. Photon counts on the order of 20-40 Kph/frame/neuron are required to achieve the upper bound due by the frame rate. Connectivity matrix here was inferred from simulated fluorescence data using factorized approximation algorithm. . Simulation conditions are the same as in Figure \ref{fig:recvar}.}
 \label{fig:recvar-SNR}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=3in]{../figs/FigureA7_recvar_NT}
-\caption{Accuracy of inferred connectivity weights as function of the imaging time and neural population size. Incorporating simple priors such as exponential prior on the connectivity weights allows to boost reconstruction accuracy dramatically (dashed lines). In this latter case, $T=300$ sec is already sufficient to recover 70\% of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). As shown in the methods, reconstruction accuracy does not depend on the neural population size $N$.
+\caption{Accuracy of inferred connectivity weights as function of the imaging time and neural population size.
+Incorporating simple priors such as exponential prior on the connectivity weights allows to boost reconstruction accuracy dramatically (dashed lines). In this latter case, $T=300$ sec is already sufficient to recover 70\% of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). As shown in the methods, reconstruction accuracy does not depend on the neural population size $N$.
 Here, neural population from $N=10$ to $N=200$ were simulated for different $T$, where
-$N=200$ (gray) and $N=100$ (black) are shown. All networks were prepared in similar state by adjusting strength of inhibitory connections to achieve similar mean firing rate $\approx 5$ Hz, although actual firing rate in these networks could vary. In all cases, $T=5$ min - 0.5 hour is sufficient to produce accurate reconstructions.
+$N=200$ (gray) and $N=100$ (black) are shown. All networks were prepared in similar state by adjusting strength of inhibitory connections to achieve similar mean firing rate $\approx 5$ Hz, although actual firing rate in these networks could vary.
+In all cases, $T=5$ min - 0.5 hour is sufficient to produce accurate reconstructions.
 }
 \label{fig:recvar-NT}
 \end{figure}
 
 
-What minimal conditions for the experimental setup should be met to allow for successful reconstruction of the connectivity from calcium imaging data? In Figures \ref{fig:recvar} -- \ref{fig:recvar-NT} we address this question. Figure \ref{fig:recvar} shows the quality of the inferred connectivity matrix as function of the imaging frame rate; imaging frame rates 30-60 Hz are needed to achieve meaningful reconstruction results. These imaging frame rates are feasible for already existing experimental setups \cite{NguyenParker01, ReddySaggau05, Iyer06, SalomeBourdieu06, ReddySaggau08}. Figure \ref{fig:recvar-SNR} shows the quality of the inferred connectivity matrix as function of effective SNR and photon budget. Operationally, we define effective SNR here as $eSNR=$ XXX and photon budget as $1/\gamma$XXX. Note, therefore, that the relationship between $eSNR$ and $1/\gamma$ is XXX. From our experience with the analysis of real cells \cite{Vogelstein2009}, the eSNR in real data was $\sim XXX$ for in vivo data collected at 15  Hz and $\sim XXX$  for in vitro data at the same frame rate. As can be seen from Figure \ref{fig:recvar-SNR}, the effective SNR necessary for accurate reconstructions was $XXX$. For lower photon counts, the amount of noise in calcium imaging data degraded inferred connectivity matrices significantly. Finally, Figure \ref{fig:recvar-NT} shows the quality of the inferred connectivity matrix as function of the experimental duration. The minimal duration for a particular $r^2$ depended substantially on whether prior information about the distribution of connectivity weights was incorporated into the M-step (as described in detail below). In particular, for the M-step lacking a sparse prior, the calcium imaging duration necessary to achieve $r^2=0.5$ for the reconstructed connectivity matrix was $T\approx 10$ min, whereas, for the same data, when incorporating a sparse prior, $r^2>0.5$ was achieved already at $T\sim 5$ min. These numbers appear to be well within limitations of the existing experimental preparations. Furthermore, in agreement with theoretical analysis in Section \ref{sec:methods}, the accuracy of the reconstruction did not depend on the size of imaged neural population, with the same reconstruction quality observed for the same amount of data for $N=50-200$ neurons. In all cases, good reconstructions were obtained  with $T\sim 5--30$ min of calcium imaging data.
+What minimal conditions for the experimental setup should be met to allow successful reconstruction of the connectivity from calcium imaging data? In Figures \ref{fig:recvar}-\ref{fig:recvar-NT} we answer this question. In Figure \ref{fig:recvar}, the quality of the inferred connectivity matrix is shown as function of the imaging frame rate: imaging frame rates 30-60 Hz are needed to achieve meaningful reconstruction results. These imaging frame rates are feasible for already existing experimental setups. In Figure \ref{fig:recvar-SNR} the quality of the inferred connectivity matrix is shown as function of imaging SNR, as quantified by the photon budget of the experimental setup. From our experience with the analysis of real cells \cite{Vogelstein2009}, the photon budget in real data was $\sim 10$ Kph/cell/frame for in-vivo data collected at 15  Hz and $\sim 100$ Kph/cell/frame for in-vitro data at the same frame rate. As can be seen from Figure \ref{fig:recvar-SNR}, the photon budget necessary for accurate reconstructions was 10-40 Kph/neuron/frame. For lower photon counts the amount of noise in calcium imaging data degraded inferred connectivity matrices significantly.
+In Figure \ref{fig:recvar-NT} the quality of the inferred connectivity matrix is shown as function of the calcium imaging data amount from 5 min to 1 hour. The minimal necessary amount of data depended substantially on whether prior information about the distribution of connectivity weights was incorporated into the M-step. In particular, for M-step based on simple GLM, the calcium imaging duration necessary to achieve $r^2$=0.5 for the reconstructed connectivity matrix was $T\sim 10$ min, while for M-step solving sparse-GLM $r^2>0.5$ was achieved already at $T\sim 5$ min (assuming 5 Hz of firing rate).
+These numbers appear to be well within limitations of the existing experimental setups.
+Furthermore, in agreement with theoretical analysis in the Methods, the accuracy of the reconstruction did not depend on the size of imaged neural population, with the same reconstruction quality observed for the same amount of data for $N=50-200$ neurons. In all cases, good reconstructions were obtained already with $T\sim 5-30$ min of calcium imagign data.
 
 
 \subsection{Accuracy of the estimates and Fisher information matrix} \label{sec:methods:accuracy_Fisher}
 
-XXX THIS SHOULD PROBABLY BE REDUCED A BIT XXX
+XXX THIS SHOULD PROBABLY BE REDUCED A BIT AND MOVED TO THE RESULTS;
+BETTER TO EXPLAIN THE RESULTS AFTER WE ACTUALLY SHOW THEM XXX
 
-To determine the necessary amount of data for accurate estimation of the functional connectivity matrix, we calculate Fisher information for $P[\bw| \bX]$. For clarity, we assume here that $\Delta \rightarrow 0$, and so $f(J)\approx e^J\Delta$, and that spike trains are known perfectly, thus there is no corruption due to inference from low-SNR calcium imaging data. We also assume that spikes couple only over a single time bin. Then, we write the Fisher information matrix as:
+To determine the necessary amount of data for accurate estimation of
+the functional connectivity matrix, we calculate Fisher information
+for $P[\bw| \bX]$. Assuming for simplicity perfect knowledge of spike
+trains (i.e. such not corrupted by inference errors from calcium
+imaging) and single time-bin coupling, i.e. $h_{j}(t)\neq 0$ only for
+time-delay $t=1$, we write the Fisher information matrix as:
 
 \begin{equation}
 \begin{array}{rl}
-C^{-1}=\left[\frac{\partial (-\ln P)}{\partial \w_{ij}\partial \w_{i'j'}}\right]
+C^{-1}=\frac{\partial (-\ln P)}{\partial \w_{ij}\partial \w_{i'j'}}
 =-&\delta_{ii'}\sum\limits_t\left[
 n_i(t)n_{j}(t-1)n_{j'}(t-1)\left(-\frac{f'(J_i(t))^2}{f(J_i(t))^2} +
 \frac{f''(J_i(t))}{f(J_i(t))}\right) \right. \\
-&\left.-(1-n_i(t))n_{j}(t-1)n_{j'}(t-1)f''(J_i(t))\right].
+&\left.-\Delta (1-n_i(t))n_{j}(t-1)n_{j'}(t-1)f''(J_i(t))\right].
 \end{array}
 \end{equation}
- where $f'$ and $f''$ correspond to the first and the second derivatives of our linking function (c.f Eq. \ref{eqn:glm:definition}), and $\delta_{ii'}$ is 
- the Kronecker's delta symbol ($\delta_{ii'}=1$ for $i=i'$, and $\delta_{ii'}=0$ otherwise).  Letting $f(J)=e^J\Delta$, this may be rewritten as:
+
+ where $f'$ and $f''$ correspond to the first and second derivatives of our linking function (c.f Eq. \ref{eqn:glm:definition}), and $\delta_{ii'}$ is XXX ? XXX.  When $f(J)=\exp(J)$ XXX Y: we don't use an exponential here.  is it worth modifying this accordingly? XXX, and coupling between spikes is week, this may be rewritten as:
 
 \begin{equation}\label{eqn:fisher}
 \begin{array}{rl}
 C^{-1}
-&=\delta_{ii'} T P[n_i(t)=0, n_j(t-\Delta)=1, n_{j'}(t-\Delta)=1]E[e^{J_i(t)}|n_i(t)=0, n_j(t-\Delta)=1, n_{j'}(t-\Delta)=1] \\
-&= T\left[(r \tau_w)\delta_{ii'}\delta_{jj'}+O((r \tau_w)^2)\right]r.
+&=\delta_{ii'} (T\Delta) P[n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1] \\
+&\sim (T\Delta)\left[(r \tau_w)\delta_{ii'}\delta_{jj'}+O((r \tau_w)^2)\right]r.
 \end{array}
 \end{equation}
 
-\noindent where $ \tau_w$ is ``the coincidence time'' --- the typical EPSP/IPSP time-scale over which the spike of one neuron affects the spike probability of the other neuron --- and $r \approx E[e^{J_i(t)}|n_i(t)=0, n_j(t-\Delta)=1, n_{j'}(t-\Delta)=1]$ is the typical firing rate.  
-As can be seen from Eq. (\ref{eqn:fisher}), Fisher information matrix is nearly diagonal, and thus the covariance matrix $C$, the inverse of the Fisher information, can be computed trivially using:
+Here $(T\Delta)$ is the total observation time, $ \tau_w$ is ``the coincidence time'' --- the typical EPSP/IPSP time-scale over which the spike of one neuron affects the spike probability of the other neuron --- and $r \approx E[f(J_i(t))|n_i(t)=0, n_j(t-1)=1, n_{j'}(t-1)=1]$ is the typical firing rate.  For successful determination of the functional connectivity matrix $\bw$, the variance $C$ should be smaller than the typical scale $\langle \bw^2\rangle$, i.e.
 
 \begin{equation}
-C = \left[(T\Delta)(r^2 \tau_w) I +O((r \tau_w)^2)\right]^{-1} =
-(T\Delta r^2 \tau_w)^{-1} I + O((r \tau_w)^2)
+(T\Delta) \sim (\bw^2 r^2  \tau_w)^{-1}.
 \end{equation}
 
-For successful determination of the functional connectivity matrix $\bw$, the variance $C$ should be made smaller than the typical scale $\langle \bw^2\rangle$, i.e.
+For typical values of $\bw^2\approx 0.1$, $r\approx 5$  Hz and $ \tau_w \approx 10$ msec, 
+with this order of magnitude estimate we obtain $T$ of the order of hundred seconds. This theoretical estimate of the necessary amount of fluorescent data is in good agreement with our simulations below.
 
-\begin{equation}
-(T\Delta) \sim (\langle \bw^2 \rangle r^2  \tau_w)^{-1}.
-\end{equation}
-
-For typical values of $\bw^2\approx 0.1$, $r\approx 5$  Hz and $ \tau_w \approx 10$ msec,
-with this order of magnitude estimate we obtain $T$ of the order of hundred seconds. This theoretical estimate of the necessary amount of fluorescent data is in good agreement with our simulations.
-
-Note also that necessary recording time does not depend on the number of neurons in the imaged network $N$. This unexpected result is the direct consequence of the special form of $C^{-1}$ in Eq. \ref{eqn:fisher}. In particular, when $r \tau_w <<1$, this matrix is dominated by the diagonal term $(T\Delta)(r^2  \tau_w)$, and so the Fisher information matrix is predominantly diagonal with the scale $(r^2 \tau_w T\Delta)^{-1}$, independent of the number of neurons $N$. This theoretical result is also directly confirmed in our simulations.
+Note also that necessary recording time does not depend on the number of neurons in the imaged network $N$. This unexpected result is the direct consequence of the special form of $C^{-1}$ in Eq. \ref{eqn:fisher}. In particular, when $r \tau_w <<1$, this matrix is dominated by the diagonal term $(T\Delta)(r^2  \tau_w)$, and so the Fisher information matrix is predominantly diagonal with the scale $(r^2 \tau_w T\Delta)^{-1}$, independent of the number of neurons $N$. This theoretical result is also directly confirmed in our simulations below.
 
 \subsection{Impact of using priors on the inference}
 
@@ -207,7 +204,7 @@ Note also that necessary recording time does not depend on the number of neurons
 \label{fig:distros}
 \end{figure}
 
-Taking into account simple prior information about the connectivity matrix resulted in dramatic improvement of the inferred connectivity matrix, Figure \ref{fig:sparse} and \ref{fig:distros}. Sparseness prior resulted in dramatic improvements allowing successful reconstruction from as little as 5 min of calcium imaging data, and allowing to achieve for $T\approx 10$ min the same level of accuracy that would otherwise require up to $T\approx 1$ hour of calcium imaging data, Figure \ref{fig:recvar-NT} and \ref{fig:sparse}.
+Taking into account simple prior information about the connectivity matrix resulted in dramatic improvement of the inferred connectivity matrix, Figure \ref{fig:sparse} and \ref{fig:distros}. Sparseness prior resulted in dramatic improvements allowing successful reconstruction from as little as 5 min of calcium imaging data, and allowing to achieve for $T\approx 10$ min the same level of accuracy that would otherwise require up to $T\approx 1$ hour of calcium imaging data, Figure \ref{fig:recvar-NT} and \ref{fig:sparse}. 
 Note, however, that sparse prior resulted in added scale bias into obtained connectivity estimate, thus, effectively destroying information about the scale of connection weights in a population.
 Furthermore, information about connected neural pairs and about inhibitory or excitatory nature of particular neuron could be reliably obtained, Figure \ref{fig:distros}.
 Dale's prior, on the other hand, only led to ~10\% in the correlation coefficient $r^2$ of the reconstructed connectivity matrix, and was not found significant.
