@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {3.3}Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}{15}
 \contentsline {subsection}{\numberline {3.4}Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}{17}
 \contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{18}
-\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{19}
+\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{20}
 \contentsline {subsection}{\numberline {3.7}Impact of strong correlations and deviations from generative model on the inference}{20}
 \contentsline {section}{\numberline {4}Discussion}{22}
 \contentsline {paragraph}{j's outline of discussion}{23}

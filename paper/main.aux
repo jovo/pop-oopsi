@@ -38,11 +38,11 @@
 \citation{Vogelstein2009}
 \citation{Rigat06}
 \citation{DLR77,McLachlanKrishnan96}
-\citation{RAB89}
 \newlabel{eqn:ca:definition}{{4}{6}}
 \newlabel{eqn:F:definition}{{5}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Goal and general strategy}{6}}
 \newlabel{sec:methods:goal}{{2.2}{6}}
+\citation{RAB89}
 \citation{Vogelstein2009}
 \citation{ShumwayStoffer06}
 \citation{DGA00,DFG01,GDW04}
@@ -99,12 +99,12 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Two in vivo fluorescence traces (top) and their corresponding inferred spike trains (bottom). The left panels show a high SNR case, that is sufficient quality for the factorization approximation to work nearly as well as the embedded-chain-within-Gibbs approach. The right panels show a low SNR case, in which the factorization approach is insufficient.}}{15}}
 \newlabel{fig:example_traces}{{4}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}{15}}
-\citation{VogPan09}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Functional connectivity matrix can be reconstructed from calcium imaging data. In the upper panels inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using factorized approximation algorithm, exact embedded-chain-within-blockwise-Gibbs approach, and original spike trains observed at the frame rate of the calcium imaging. Network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for T=600 sec at intermediate SNR (photon budget 10Kph/neuron/frame, see below). $r^2=0.47$ for factorized approximation algorithm was found, $r^2=0.48$ for embedded-chain-within-blockwise-Gibbs approach, and $r^2=0.57$ for the original spike trains. Thus, factorized approximation produced results almost as accurate as the exact embedded-chain-within-blockwise-Gibbs approach, and almost as accurate as the original spikes. Inferred connectivity weights (upper left) were scaled with respect to true connectivity by a constant amount due to time discretization bias (see below); other than scale, inferred connectivity represented the true connectivity matrix very well (upper right). Thus, calcium imaging is sufficient to identify connected pairs of neurons reliably.}}{16}}
 \newlabel{fig:scatters}{{5}{16}}
-\newlabel{eqn:bias}{{17}{16}}
+\citation{VogPan09}
 \citation{NguyenParker01, ReddySaggau05, Iyer06, SalomeBourdieu06, ReddySaggau08}
 \citation{Vogelstein2009}
+\newlabel{eqn:bias}{{17}{17}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces The low-frame rate of calcium imaging can explain the observed scale bias from Figure 5\hbox {}. Our theoretical scale bias is determined by considering what fraction of spikes would fall within a single image frame, which is a function of $\Delta $ (c.f. Eq. 17\hbox {}). The center of each square indicates the mean scale bias of 5 simulations, the extent of each square indicates one standard deviation, and the errorbars indicate the $95$th and $5$th percentiles. XXX Y: can you correct these details? XXX}}{17}}
 \newlabel{fig:bias}{{6}{17}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}{17}}
@@ -112,16 +112,16 @@
 \newlabel{fig:recvar}{{7}{18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{18}}
 \newlabel{sec:methods:accuracy_Fisher}{{3.5}{18}}
-\newlabel{eqn:fisher}{{19}{18}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Accuracy of inferred connectivity weights as function of the noise amount in the calcium imaging data, as quantified by experimental photon budget per neuron-frame, for frame rates of 15 Hz, 33 Hz and 66 Hz. Photon counts on the order of 20-40 Kph/frame/neuron are required to achieve the upper bound due by the frame rate. Connectivity matrix here was inferred from simulated fluorescence data using factorized approximation algorithm. Simulation conditions are the same as in Figure 7\hbox {}.}}{19}}
 \newlabel{fig:recvar-SNR}{{8}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{19}}
+\newlabel{eqn:fisher}{{19}{19}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Accuracy of inferred connectivity weights as function of the imaging time and neural population size. Incorporating simple priors such as exponential prior on the connectivity weights allows to boost reconstruction accuracy dramatically (dashed lines). In this latter case, $T=300$ sec is already sufficient to recover 70\% of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). As shown in the methods, reconstruction accuracy does not depend on the neural population size $N$. Here, neural population from $N=10$ to $N=200$ were simulated for different $T$, where $N=200$ (gray) and $N=100$ (black) are shown. All networks were prepared in similar state by adjusting strength of inhibitory connections to achieve similar mean firing rate $\approx 5$ Hz, although actual firing rate in these networks could vary. In all cases, $T=5$ min - 0.5 hour is sufficient to produce accurate reconstructions. }}{20}}
 \newlabel{fig:recvar-NT}{{9}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{20}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Impact of strong correlations and deviations from generative model on the inference}{20}}
-\citation{Chlovksii}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Incorporating simple priors on the distribution of connectivity weights in the Bayesian inference algorithm, such as exponential sparseness prior, is essential to achieve much more accurate reconstructions than using simple GLM from a smaller amount of calcium imaging data. Here, connection weights reconstructed using simple GLM (left panel) or sparse-prior GLM (right panel) are shown in a scatter plot for a network of $N=50$ neurons firing at $\approx 5$ Hz and imaged for $T=600$ sec. $r^2=0.64$ for simple GLM solution and $r^2=0.85$ for sparse-GLM solution.}}{21}}
 \newlabel{fig:sparse}{{10}{21}}
+\citation{Chlovksii}
 \citation{emory, liam, Garofalo, Vakorina, etc.}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Distribution of inferred connection weights using simple GLM (left) and sparse GLM (right) vs true distributions. When sparse exponential prior on the distribution of connection weights is enacted, dispersion in inferred connection weights is substantially reduced and, in particular, it becomes possible to reliably determine which neural pairs are connected. Distributions are shown for a network of $N=200$ neurons firing at $\approx 5$ Hz and imaged for $T=600$ s was used here.}}{22}}
 \newlabel{fig:distros}{{11}{22}}
@@ -129,8 +129,8 @@
 \newlabel{sec:discussion}{{4}{22}}
 \citation{Duane 1 and 2, liam}
 \bibdata{mybib}
-\bibcite{Abeles91}{Abeles, 1991}
 \@writefile{toc}{\contentsline {paragraph}{j's outline of discussion}{23}}
+\bibcite{Abeles91}{Abeles, 1991}
 \bibcite{Andrieu2007}{Andrieu et\nobreakspace  {}al., 2007}
 \bibcite{BickelBengtsson08}{Bickel et\nobreakspace  {}al., 2008}
 \bibcite{Binzegger04}{Binzegger et\nobreakspace  {}al., 2004}
