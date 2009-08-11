@@ -33,6 +33,12 @@ Braitenberg, V. and Schuz, A. (1998).
 \newblock {\em Cortex: statistics and geometry of neuronal connectivity.}
 \newblock Springer, Berlin.
 
+\bibitem[Brenowitz and Regehr, 2007]{BrenowitzRegehr07}
+Brenowitz, S.~D. and Regehr, W.~G. (2007).
+\newblock Reliability and heterogeneity of calcium signaling at single
+  presynaptic boutons of cerebellar granule cells.
+\newblock {\em J Neurosci}, 27(30):7888--7898.
+
 \bibitem[Briggman and Denk, 2006]{Briggman2006}
 Briggman, K.~L. and Denk, W. (2006).
 \newblock Towards neural circuit reconstruction with volume electron microscopy
@@ -45,6 +51,11 @@ Brillinger, D. (1988).
   cells.
 \newblock {\em Biological Cyberkinetics}, 59:189--200.
 
+\bibitem[Brillinger, 1992]{BRIL92}
+Brillinger, D. (1992).
+\newblock Nerve cell spike train data analysis: a progression of technique.
+\newblock {\em Journal of the American Statistical Association}, 87:260--271.
+
 \bibitem[Buhl et~al., 1994]{Buhl94}
 Buhl, E., Halasy, K., and Somogyi, P. (1994).
 \newblock Diverse sources of hippocampal unitary inhibitory postynaptic
@@ -54,6 +65,11 @@ Buhl, E., Halasy, K., and Somogyi, P. (1994).
 \bibitem[Candes and Romberg, 2005]{Candes2005}
 Candes, E.~J. and Romberg, J. (2005).
 \newblock Practical signal recovery from random projections.
+
+\bibitem[Chornoboy et~al., 1988]{CSK88}
+Chornoboy, E., Schramm, L., and Karr, A. (1988).
+\newblock Maximum likelihood identification of neural point process systems.
+\newblock {\em Biological Cybernetics}, 59:265--275.
 
 \bibitem[Dempster et~al., 1977]{DLR77}
 Dempster, A., Laird, N., and Rubin, D. (1977).
@@ -106,6 +122,13 @@ Godsill, S., Doucet, A., and West, M. (2004).
 \newblock Monte {C}arlo smoothing for non-linear time series.
 \newblock {\em Journal of the American Statistical Association}, 99:156--168.
 
+\bibitem[Gomez-Urquijo et~al., 2000]{Urquijo2000}
+Gomez-Urquijo, S.~M., Reblet, C., Bueno-Lopez, J.~L., and Gutierrez-Ibarluzea,
+  I. (2000).
+\newblock Gabaergic neurons in the rabbit visual cortex: percentage,
+  distribution and cortical projections.
+\newblock {\em Brain Res}, 862:171--9.
+
 \bibitem[Greenberg et~al., 2008]{GreenbergKerr08}
 Greenberg, D.~S., Houweling, A.~R., and Kerr, J. N.~D. (2008).
 \newblock Population imaging of ongoing neuronal activity in the visual cortex
@@ -128,6 +151,28 @@ Hatsopoulos, N., Ojakangas, C., Paninski, L., and Donoghue, J. (1998).
 \newblock Information about movement direction obtained by synchronous activity
   of motor cortical neurons.
 \newblock {\em PNAS}, 95:15706--15711.
+
+\bibitem[Helmchen et~al., 1996]{HelmchenSakmann96}
+Helmchen, F., Imoto, K., and Sakmann, B. (1996).
+\newblock {Ca}$^{2+}$ buffering and action potential-evoked {Ca}$^{2+}$
+  signaling in dendrites of pyramidal neurons.
+\newblock {\em Biophys J}, 70(2):1069--1081.
+
+\bibitem[Iyer et~al., 2006]{Iyer06}
+Iyer, V., Hoogland, T.~M., and Saggau, P. (2006).
+\newblock Fast functional imaging of single neurons using random-access
+  multiphoton ({RAMP}) microscopy.
+\newblock {\em J Neurophysiol}, 95(1):535--545.
+
+\bibitem[Koch, 1999]{Koch99}
+Koch, C. (1999).
+\newblock {\em Biophysics of Computation}.
+\newblock Oxford University Press.
+
+\bibitem[Kulkarni and Paninski, 2007]{KP06}
+Kulkarni, J. and Paninski, L. (2007).
+\newblock Common-input models for multiple neural spike-train data.
+\newblock {\em Network: Computation in Neural Systems}, 18:375--407.
 
 \bibitem[Lefort et~al., 2009]{Lefort2009}
 Lefort, S., Tomm, C., Floyd~Sarria, J.-C., and Petersen, C. C.~H. (2009).
@@ -205,11 +250,24 @@ Nguyen, Q.~T., Callamaras, N., Hsieh, C., and Parker, I. (2001).
   imaging.
 \newblock {\em Cell Calcium}, 30(6):383--393.
 
+\bibitem[Nykamp, 2007]{NYK06}
+Nykamp, D. (2007).
+\newblock A mathematical framework for inferring connectivity in probabilistic
+  neuronal networks.
+\newblock {\em Mathematical Biosciences}, 205:204--251.
+
 \bibitem[Paninski, 2004]{PAN04c}
 Paninski, L. (2004).
 \newblock Maximum likelihood estimation of cascade point-process neural
   encoding models.
 \newblock {\em Network: Computation in Neural Systems}, 15:243--262.
+
+\bibitem[Paninski et~al., 2004]{PAN03d}
+Paninski, L., Fellows, M., Shoham, S., Hatsopoulos, N., and Donoghue, J.
+  (2004).
+\newblock Superlinear population encoding of dynamic hand trajectory in primary
+  motor cortex.
+\newblock {\em J. Neurosci.}, 24:8551--8561.
 
 \bibitem[Petersen and Sakmann, 2000]{PetersenSakmann00}
 Petersen, C.~C. and Sakmann, B. (2000).
@@ -230,6 +288,12 @@ Pillow, J., Shlens, J., Paninski, L., Sher, A., Litke, A., Chichilnisky, E.,
   neuronal population.
 \newblock {\em Nature}, 454:995--999.
 
+\bibitem[Plesser and Gerstner, 2000]{PG00}
+Plesser, H. and Gerstner, W. (2000).
+\newblock Noise in integrate-and-fire neurons: From stochastic input to escape
+  rates.
+\newblock {\em Neural Computation}, 12:367--384.
+
 \bibitem[Rabiner, 1989]{RAB89}
 Rabiner, L. (1989).
 \newblock A tutorial on hidden {M}arkov models and selected applications in
@@ -245,6 +309,12 @@ Ramon~y Cajal, S. (1904).
 Ramon~y Cajal, S. (1923).
 \newblock {\em Recuerdos de mi vida: Historia de mi labor cientifica}.
 \newblock Alianza Editorial.
+
+\bibitem[Reddy et~al., 2008]{ReddySaggau08}
+Reddy, G., Kelleher, K., Fink, R., and Saggau, P. (2008).
+\newblock {Three-dimensional random access multiphoton microscopy for
+  functional imaging of neuronal activity}.
+\newblock {\em Nature Neuroscience}, 11(6):713--720.
 
 \bibitem[Reddy and Saggau, 2005]{ReddySaggau05}
 Reddy, G.~D. and Saggau, P. (2005).
@@ -263,6 +333,18 @@ Reyes, A., Lujan, R., Rozov, A., Burnashev, N., Somogyi, P., and Sakmann, B.
 Rigat, F., de~Gunst, M., and van Pelt, J. (2006).
 \newblock Bayesian modelling and analysis of spatio-temporal neuronal networks.
 \newblock {\em Bayesian Analysis}, 1:733--764.
+
+\bibitem[Robert and Casella, 2005]{RC05}
+Robert, C. and Casella, G. (2005).
+\newblock {\em Monte {C}arlo Statistical Methods}.
+\newblock Springer.
+
+\bibitem[Salome et~al., 2006]{SalomeBourdieu06}
+Salome, R., Kremer, Y., Dieudonne, S., Leger, J.-F., Krichevsky, O., Wyart, C.,
+  Chatenay, D., and Bourdieu, L. (2006).
+\newblock Ultrafast random-access scanning in two-photon microscopy using
+  acousto-optic deflectors.
+\newblock {\em Journal of Neuroscience Methods}, 154(1-2):161--174.
 
 \bibitem[Santhanam et~al., 2006]{Santhanam06}
 Santhanam, G., Ryu, S.~I., Yu, B.~M., Afshar, A., and Shenoy, K.~V. (2006).
@@ -305,6 +387,13 @@ Stevenson, I., Rebesco, J., Hatsopoulos, N., Haga, Z., Miller, L., and
 \newblock Inferring network structure from spikes.
 \newblock {\em Statistical Analysis of Neural Data meeting}.
 
+\bibitem[Stevenson et~al., 2009]{Stevenson2009}
+Stevenson, I.~H., Rebesco, J.~M., Hatsopoulos, N.~G., Haga, Z., Miller, L.~E.,
+  and Kording, K.~P. (2009).
+\newblock Bayesian inference of functional connectivity and network structure
+  from spikes.
+\newblock {\em IEEE Trans. Neural Systems and Rehab.}, 17:203--13.
+
 \bibitem[Stosiek et~al., 2003]{StosiekKonnerth03}
 Stosiek, C., Garaschuk, O., Holthoff, K., and Konnerth, A. (2003).
 \newblock In vivo two-photon calcium imaging of neuronal networks.
@@ -328,10 +417,23 @@ Tipping, M. (2001).
 \newblock Sparse {B}ayesian learning and the relevance vector machine.
 \newblock {\em Journal of Machine Learning Research}, 1:211--244.
 
+\bibitem[Truccolo et~al., 2005]{TRUC05}
+Truccolo, W., Eden, U., Fellows, M., Donoghue, J., and Brown, E. (2005).
+\newblock A point process framework for relating neural spiking activity to
+  spiking history, neural ensemble and extrinsic covariate effects.
+\newblock {\em Journal of Neurophysiology}, 93:1074--1089.
+
 \bibitem[Tsien, 1989]{Tsien89}
 Tsien, R.~Y. (1989).
 \newblock Fluorescent probes of cell signaling.
 \newblock {\em Ann. Rev. Neurosci.}, 12:227--253.
+
+\bibitem[Vidne et~al., 2009]{Vidne08}
+Vidne, M., Kulkarni, J., Ahmadian, Y., Pillow, J., Shlens, J., Chichilnisky,
+  E., Simoncelli, E., and Paninski, L. (2009).
+\newblock Inferring functional connectivity in an ensemble of retinal ganglion
+  cells sharing a common input.
+\newblock {\em COSYNE}.
 
 \bibitem[Vogelstein et~al., 2009]{Vogelstein2009}
 Vogelstein, J.~T., Watson, B.~O., Packer, A.~M., Yuste, R., Jedynak, B., and

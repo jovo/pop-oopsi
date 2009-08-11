@@ -9,19 +9,19 @@ Along with coping with unobserved neurons, we have considered several other pote
 
 
 
-\paragraph{j's outline of discussion}
-
-\begin{itemize}
-\item summary of main point: using sparse prior, we can recover a large fraction of variance of connection weights, assuming reasonable SNR, parameters, and imaging rate.
-\item $h_j$ vs. $h_{ij}$ reduces dimensionality of hidden space to $O(N)$ vs. $O(N^2)$, leading to our approach scaling well as $N \rightarrow$ big
-\item $P(A|BC)\neq P(A|B)P(A|C)$ unless $B$ and $C$ are uncorrelated.  we use this property, correlation coefficient doesn't, cross-correlations, etc., do not.
-\item for the same reason, hidden neurons might be a problem for us.  faster imaging, etc., should help alleviate that.
-\item we can measure uncertainty in estimates, and use photo-stimulation to activate/deactivate small groups of neurons efficiently to help reduce variance in uncertainty.
-\item certainly the issue of common input and unobserved neurons should be addressed a bit more in the discussion.  
-\item we can also talk a bit more about future directions involving fully-bayesian inference of the parameters (ie, MCMC over the parameter space, not just over the hidden variables X) instead of the MAP approach we took here; i tried to set this up a bit in the methods.  
-\item other important future work to mention: real data, faster mcmc sampling methods, dealing with nonstationarities (e.g. bleaching).
-\item comparison with other work (e.g., duane's, Garofalo, Vakorina, transfer entropy, granger causality, etc.)
-\end{itemize}
+% \paragraph{j's outline of discussion}
+% 
+% \begin{itemize}
+% \item summary of main point: using sparse prior, we can recover a large fraction of variance of connection weights, assuming reasonable SNR, parameters, and imaging rate.
+% \item $h_j$ vs. $h_{ij}$ reduces dimensionality of hidden space to $O(N)$ vs. $O(N^2)$, leading to our approach scaling well as $N \rightarrow$ big
+% \item $P(A|BC)\neq P(A|B)P(A|C)$ unless $B$ and $C$ are uncorrelated.  we use this property, correlation coefficient doesn't, cross-correlations, etc., do not.
+% \item for the same reason, hidden neurons might be a problem for us.  faster imaging, etc., should help alleviate that.
+% \item we can measure uncertainty in estimates, and use photo-stimulation to activate/deactivate small groups of neurons efficiently to help reduce variance in uncertainty.
+% \item certainly the issue of common input and unobserved neurons should be addressed a bit more in the discussion.  
+% \item we can also talk a bit more about future directions involving fully-bayesian inference of the parameters (ie, MCMC over the parameter space, not just over the hidden variables X) instead of the MAP approach we took here; i tried to set this up a bit in the methods.  
+% \item other important future work to mention: real data, faster mcmc sampling methods, dealing with nonstationarities (e.g. bleaching).
+% \item comparison with other work (e.g., duane's, Garofalo, Vakorina, transfer entropy, granger causality, etc.)
+% \end{itemize}
 
 % \paragraph{scale bias discussion}
 % 

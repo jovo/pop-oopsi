@@ -1,21 +1,20 @@
 \contentsline {section}{\numberline {1}Introduction}{2}
 \contentsline {section}{\numberline {2}Methods}{3}
 \contentsline {subsection}{\numberline {2.1}Model}{3}
-\contentsline {subsection}{\numberline {2.2}Goal and general strategy}{6}
-\contentsline {subsection}{\numberline {2.3}Initialization of ``internal'' parameters via sequential Monte Carlo methods}{7}
+\contentsline {subsection}{\numberline {2.2}Goal and general strategy}{5}
+\contentsline {subsection}{\numberline {2.3}Initialization of ``intrinsic'' parameters via sequential Monte Carlo methods}{6}
 \contentsline {subsection}{\numberline {2.4}Estimating joint posteriors over weakly coupled neurons}{8}
-\contentsline {subsubsection}{\numberline {2.4.1}A cheaper high-SNR approximation of the joint posteriors}{10}
-\contentsline {subsection}{\numberline {2.5}Estimating the functional connectivity matrix}{10}
-\contentsline {subsubsection}{\numberline {2.5.1}Imposing a sparse prior on the functional connectivity}{11}
-\contentsline {subsubsection}{\numberline {2.5.2}Imposing Dale's law on the functional connectivity}{11}
+\contentsline {subsubsection}{\numberline {2.4.1}A factorized approximation of the joint posteriors}{9}
+\contentsline {subsection}{\numberline {2.5}Estimating the functional connectivity matrix}{9}
+\contentsline {subsubsection}{\numberline {2.5.1}Imposing a sparse prior on the functional connectivity}{10}
+\contentsline {subsubsection}{\numberline {2.5.2}Imposing Dale's law on the functional connectivity}{10}
 \contentsline {subsection}{\numberline {2.6}Specific implementation notes}{11}
-\contentsline {section}{\numberline {3}Results}{12}
-\contentsline {subsection}{\numberline {3.1}Simulating neural activity in a neural population}{12}
-\contentsline {subsection}{\numberline {3.2}Inferring functional connectivity from the simulated calcium imaging data}{14}
-\contentsline {subsection}{\numberline {3.3}Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}{15}
-\contentsline {subsection}{\numberline {3.4}Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}{17}
-\contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{18}
-\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{20}
-\contentsline {subsection}{\numberline {3.7}Impact of strong correlations and deviations from generative model on the inference}{20}
-\contentsline {section}{\numberline {4}Discussion}{22}
-\contentsline {paragraph}{j's outline of discussion}{23}
+\contentsline {section}{\numberline {3}Results}{11}
+\contentsline {subsection}{\numberline {3.1}Simulating neural activity in a neural population}{11}
+\contentsline {subsection}{\numberline {3.2}Inferring functional connectivity from the simulated calcium imaging data}{13}
+\contentsline {subsection}{\numberline {3.3}Scale bias in inferred connection weights due to coarse time discretization of calcium imaging data}{14}
+\contentsline {subsection}{\numberline {3.4}Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}{16}
+\contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{17}
+\contentsline {subsection}{\numberline {3.6}Impact of using priors on the inference}{19}
+\contentsline {subsection}{\numberline {3.7}Impact of strong correlations and deviations from generative model on the inference}{19}
+\contentsline {section}{\numberline {4}Discussion}{25}
