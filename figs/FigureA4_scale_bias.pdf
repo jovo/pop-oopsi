@@ -54,12 +54,12 @@ endobj
 <?adobe-xap-filters esc="CRLF"?>
 <x:xmpmeta xmlns:x='adobe:ns:meta/' x:xmptk='XMP toolkit 2.9.1-13, framework 1.6'>
 <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:iX='http://ns.adobe.com/iX/1.0/'>
-<rdf:Description rdf:about='07f72a6b-c269-11e9-0000-519b18cc5631' xmlns:pdf='http://ns.adobe.com/pdf/1.3/' pdf:Producer='GPL Ghostscript 8.64'/>
-<rdf:Description rdf:about='07f72a6b-c269-11e9-0000-519b18cc5631' xmlns:xmp='http://ns.adobe.com/xap/1.0/'><xmp:ModifyDate>2009-08-16T03:06:36-07:00</xmp:ModifyDate>
-<xmp:CreateDate>2009-08-16T03:06:36-07:00</xmp:CreateDate>
+<rdf:Description rdf:about='8c65b16f-c33a-11e9-0000-519b18cc5631' xmlns:pdf='http://ns.adobe.com/pdf/1.3/' pdf:Producer='GPL Ghostscript 8.64'/>
+<rdf:Description rdf:about='8c65b16f-c33a-11e9-0000-519b18cc5631' xmlns:xmp='http://ns.adobe.com/xap/1.0/'><xmp:ModifyDate>2009-08-17T13:06:23+02:00</xmp:ModifyDate>
+<xmp:CreateDate>2009-08-17T13:06:23+02:00</xmp:CreateDate>
 <xmp:CreatorTool>MATLAB, The Mathworks, Inc.</xmp:CreatorTool></rdf:Description>
-<rdf:Description rdf:about='07f72a6b-c269-11e9-0000-519b18cc5631' xmlns:xapMM='http://ns.adobe.com/xap/1.0/mm/' xapMM:DocumentID='07f72a6b-c269-11e9-0000-519b18cc5631'/>
-<rdf:Description rdf:about='07f72a6b-c269-11e9-0000-519b18cc5631' xmlns:dc='http://purl.org/dc/elements/1.1/' dc:format='application/pdf'><dc:title><rdf:Alt><rdf:li xml:lang='x-default'>C:\\MyDocuments\\Pub\\CUR-Bayesian inference of neural connectivity~\\pop-oopsi\\figs\\FigureA4_scale_bias.eps</rdf:li></rdf:Alt></dc:title></rdf:Description>
+<rdf:Description rdf:about='8c65b16f-c33a-11e9-0000-519b18cc5631' xmlns:xapMM='http://ns.adobe.com/xap/1.0/mm/' xapMM:DocumentID='8c65b16f-c33a-11e9-0000-519b18cc5631'/>
+<rdf:Description rdf:about='8c65b16f-c33a-11e9-0000-519b18cc5631' xmlns:dc='http://purl.org/dc/elements/1.1/' dc:format='application/pdf'><dc:title><rdf:Alt><rdf:li xml:lang='x-default'>C:\\MyDocuments\\Pub\\CUR-Bayesian inference of neural connectivity~\\pop-oopsi\\figs\\FigureA4_scale_bias.eps</rdf:li></rdf:Alt></dc:title></rdf:Description>
 </rdf:RDF>
 </x:xmpmeta>
                                                                         
@@ -69,8 +69,8 @@ endstream
 endobj
 2 0 obj
 <</Producer(GPL Ghostscript 8.64)
-/CreationDate(D:20090816030636-07'00')
-/ModDate(D:20090816030636-07'00')
+/CreationDate(D:20090817130623+02'00')
+/ModDate(D:20090817130623+02'00')
 /Creator(MATLAB, The Mathworks, Inc.)
 /Title(C:\\MyDocuments\\Pub\\CUR-Bayesian inference of neural connectivity~\\pop-oopsi\\figs\\FigureA4_scale_bias.eps)>>endobj
 xref
@@ -89,7 +89,7 @@ xref
 0000001488 00000 n 
 trailer
 << /Size 12 /Root 1 0 R /Info 2 0 R
-/ID [<21EEF393E21BCBF5979B1CC687E29137><21EEF393E21BCBF5979B1CC687E29137>]
+/ID [<5D7D2667DB8579081A8366679EFC442F><5D7D2667DB8579081A8366679EFC442F>]
 >>
 startxref
 3275

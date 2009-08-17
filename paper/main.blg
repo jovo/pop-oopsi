@@ -1,62 +1,61 @@
 This is BibTeX, Version 0.99c (Web2C 7.5.4)
 The top-level auxiliary file: main.aux
-White space in argument---line 143 of file main.aux
+White space in argument---line 163 of file main.aux
  : \citation{emory,
  :                  liam, Garofalo, Vakorina, etc.}
 I'm skipping whatever remains of this command
-White space in argument---line 145 of file main.aux
+White space in argument---line 166 of file main.aux
  : \citation{Duane
  :                 1 and 2, liam}
 I'm skipping whatever remains of this command
 The style file: apalike.bst
 Database file #1: mybib.bib
-Repeated entry---line 351 of file mybib.bib
- : @article{Yashar08
- :                  ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 6980 of file mybib.bib
+Repeated entry---line 6935 of file mybib.bib
  : @article{Feldmeyer99
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7002 of file mybib.bib
+Repeated entry---line 6957 of file mybib.bib
  : @article{FeldmeyerSakmann00
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 8151 of file mybib.bib
- : @article{Gamerman98
- :                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 8161 of file mybib.bib
- : @article{Gamerman97
- :                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 9202 of file mybib.bib
+Repeated entry---line 9157 of file mybib.bib
  : @article{Gupta00
  :                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 11226 of file mybib.bib
- : @article{Ishwaran99
- :                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 18477 of file mybib.bib
+Repeated entry---line 18432 of file mybib.bib
  : @article{PetersenSakmann00
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 20079 of file mybib.bib
- : @article{Rigat06
- :                 ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 22051 of file mybib.bib
+Repeated entry---line 22006 of file mybib.bib
  : @book{ShumwayStoffer06
  :                       ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 27375 of file mybib.bib
+ : @article{Ishwaran99
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 27384 of file mybib.bib
+ : @article{Gamerman97
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 27394 of file mybib.bib
+ : @article{Gamerman98
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 27404 of file mybib.bib
+ : @article{Yashar08
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 27412 of file mybib.bib
+ : @article{Rigat06
+ :                 ,
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Abeles01"
-Warning--I didn't find a database entry for "Chlovksii"
 Warning--I didn't find a database entry for "emory"
 Warning--can't use both author and editor fields in DFG01
 You've used 83 entries,
             1935 wiz_defined-function locations,
-            1000 strings with 18267 characters,
+            998 strings with 18249 characters,
 and the built_in function-call counts, 34647 in all, are:
 = -- 3334
 > -- 1675
