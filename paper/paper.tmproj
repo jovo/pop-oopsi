@@ -3,46 +3,46 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>main.tex</string>
+	<string>methods.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>main.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:31Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2009-08-16T08:31:16Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>abstract.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:28Z</date>
+			<date>2009-08-16T03:23:56Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>intro.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:29Z</date>
+			<date>2009-08-16T08:37:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>methods.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:29Z</date>
+			<date>2009-08-16T08:40:54Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>results.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:30Z</date>
+			<date>2009-08-16T08:40:54Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>discussion.tex</string>
 			<key>lastUsed</key>
-			<date>2009-07-23T05:28:31Z</date>
+			<date>2009-08-16T08:38:53Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -68,70 +68,118 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>162</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>36</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>19</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>160</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>162</integer>
+				<key>line</key>
+				<integer>36</integer>
+			</dict>
 		</dict>
 		<key>intro.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>2308</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>2</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2306</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>2308</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 		<key>main.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>56</integer>
+				<integer>52</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>53</integer>
+			<integer>44</integer>
 		</dict>
 		<key>methods.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>549</integer>
+				<integer>195</integer>
 				<key>line</key>
-				<integer>291</integer>
+				<integer>248</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>203</integer>
+			<integer>236</integer>
 		</dict>
 		<key>results.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>495</integer>
 				<key>line</key>
-				<integer>276</integer>
+				<integer>6</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
-			<integer>571</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>237</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>493</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>495</integer>
+				<key>line</key>
+				<integer>6</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -146,6 +194,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{28, 0}, {915, 878}}</string>
+	<string>{{-2, -12}, {915, 878}}</string>
 </dict>
 </plist>

@@ -1,3 +1,7 @@
-\BOOKMARK [1][-]{section.1}{Motivation}{}
+\BOOKMARK [1][-]{section.1}{Introduction}{}
 \BOOKMARK [1][-]{section.2}{Methods}{}
 \BOOKMARK [2][-]{subsection.2.1}{Model}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Goal and general strategy}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Initialization of intrinsic parameters via sequential Monte Carlo methods}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Estimating joint posteriors over weakly coupled neurons}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.4.1}{A factorized approximation of the joint posteriors}{subsection.2.4}

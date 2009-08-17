@@ -1,8 +1,9 @@
 %\documentclass[amsmath, amssymb]{revtex4}
-% \documentclass[dvips,aoas,preprint]{imsart}
+%\documentclass[dvips,aoas,preprint]{imsart}
+\documentclass[aoas]{imsart}
 % \documentclass{article}
-% \input{/Users/joshyv/Research/misc/latex_paper.tex} 
-\documentclass[11pt]{article}
+% \input{/Users/joshyv/Research/misc/latex_paper.tex}
+%\documentclass[11pt]{article}
 \usepackage{a4wide}
 \usepackage{apalike}
 \usepackage{algorithm}
@@ -42,7 +43,12 @@
 
 
 \begin{document}
-\author{us}
+\author{Y. Mishchenko}
+\author{L. Paninski}
+%\affiliation{
+%Department of Statistics and Center for Theoretical Neuroscience, Columbia University
+%}
+\author{J. Vogelstein}
 %\author{}
 % \altaffiliation[Also at ]{Physics Department, XYZ University.}
 %\author{Second Author}%
@@ -63,12 +69,11 @@
 
 \date{\today}
 
-\title{Bayesian inference of neural connectivity in a population of neurons from 
-calcium imaging data}
+\title{A Bayesian approach to inferring functional connectivity given population calcium imaging}
 
 
 \maketitle
-\tableofcontents
+%\tableofcontents
 
 \begin{abstract}
 \input{abstract.tex}
@@ -87,7 +92,6 @@ calcium imaging data}
 \label{sec:results}
 \input{results.tex}
 
-\clearpage
 \section{Discussion}
 \label{sec:discussion}
 \input{discussion.tex}
@@ -101,4 +105,4 @@ The authors would like to acknowledge Rafael Yuste, Brendon O.\ Watson, Adam Pac
 % \bibliographystyle{amsplain}
 \bibliographystyle{apalike}
 
-\end{document}
+\end{document} 
