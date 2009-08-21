@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  17 AUG 2009 13:06
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2009.4.16)  21 AUG 2009 08:53
 entering extended mode
 **main
 (./main.tex
@@ -211,15 +211,6 @@ Package: amsthm 2004/08/06 v2.20
 \dth@everypar=\toks31
 ) (./main.aux
 
-LaTeX Warning: Label `sec:results:simulations' multiply defined.
-
-
-LaTeX Warning: Label `eqn:convert:leadin-2' multiply defined.
-
-
-LaTeX Warning: Label `table:caparm' multiply defined.
-
-
 LaTeX Warning: Label `eqn:scale:leadin-1' multiply defined.
 
 )
@@ -272,189 +263,238 @@ loading : Context Support Macros / PDF (2004.03.26)
 \everyMPtoPDFconversion=\toks35
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 47.
+(Font)              <10.95> on input line 49.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 47.
+(Font)              <8> on input line 49.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 47.
-LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+(Font)              <6> on input line 49.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
  (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 47.
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
 (/opt/local/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 73.
-
-(./abstract.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 54.
+\@address@1=\toks36
+\@address@2=\toks37
+ (./abstract.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-) (./intro.tex) [1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.ma
-p}
+)
+Overfull \hbox (0.312pt too wide) in paragraph at lines 81--82
+ \OT1/cmr/m/n/9 based op-ti-mal ap-proach for in-fer-ring struc-ture of neu-ral
+ micro-circuits 
+ []
 
-] (./methods.tex [2]
-<../figs/fr_vs_J.pdf, id=47, 393.47pt x 277.035pt>
+
+Overfull \hbox (0.18909pt too wide) in paragraph at lines 81--82
+ \OT1/cmr/m/n/9 con-tain-ing hun-dreds of neu-rons ob-served with cal-cium imag
+-ing. While 
+ []
+
+(./intro.tex [1{/opt/local/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]) [2] (./methods.tex <../figs/fr_vs_J.pdf, id=53, 393.47pt x 277.035pt>
 File: ../figs/fr_vs_J.pdf Graphic file (type pdf)
- <use ../figs/fr_vs_J.pdf>
-[3 <../figs/fr_vs_J.pdf>]
-<../figs/example_traces.pdf, id=76, 418.56375pt x 214.8025pt>
+
+<use ../figs/fr_vs_J.pdf> [3] [4 <../figs/fr_vs_J.pdf>]
+<../figs/example_traces.pdf, id=79, 418.56375pt x 214.8025pt>
 File: ../figs/example_traces.pdf Graphic file (type pdf)
 
 <use ../figs/example_traces.pdf>
 File: ../figs/example_traces.pdf Graphic file (type pdf)
- <use ../figs/example_traces.pdf> [4 <../figs/example_traces.pdf>] [5]
-Overfull \hbox (27.85286pt too wide) in paragraph at lines 112--112
+ <use ../figs/example_traces.pdf> [5 <../figs/example_traces.pdf>]
+Overfull \hbox (27.85286pt too wide) in paragraph at lines 106--106
 [] 
  []
 
-[6] [7]
-Overfull \hbox (6.6322pt too wide) in paragraph at lines 174--175
+[6] [7] [8]
+Overfull \hbox (6.18362pt too wide) in paragraph at lines 155--156
 []\OT1/cmr/m/n/10.95 We can ap-ply this embedded-chain method quite di-rectly h
-ere to sam-ple from $\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 [\OT1/cmr/bx/n/10.
+ere to sam-ple from $\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 [\OML/cmm/m/it/10.
 95 X[]\OMS/cmsy/m/n/10.95 j\OT1/cmr/bx/n/10.95 X[]\OML/cmm/m/it/10.95 ; \OT1/cm
 r/bx/n/10.95 F\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 ^^R\OT1/cmr/m/n/10.95 ]$
 .
  []
 
-[8] [9] <../figs/yuri-paper-schematic.pdf, id=110, 794.97pt x 614.295pt>
+[9] [10] <../figs/yuri-paper-schematic.pdf, id=113, 794.97pt x 614.295pt>
 File: ../figs/yuri-paper-schematic.pdf Graphic file (type pdf)
 
-<use ../figs/yuri-paper-schematic.pdf> [10]
-
-LaTeX Warning: Citation `Abeles01' on page 11 undefined on input line 244.
-
-[11 <../figs/yuri-paper-schematic.pdf>]) (./results.tex [12]
-
-LaTeX Warning: Citation `Abeles01' on page 13 undefined on input line 7.
-
-[13] [14]
-<../figs/FigureA3_scatter_three.pdf, id=170, 420.57124pt x 316.18124pt>
+<use ../figs/yuri-paper-schematic.pdf> [11] [12 <../figs/yuri-paper-schematic.p
+df>]) (./results.tex [13]
+<../figs/FigureA3_scatter_three.pdf, id=164, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA3_scatter_three.pdf Graphic file (type pdf)
 
 <use ../figs/FigureA3_scatter_three.pdf>
-<../figs/FigureA3_scatter_three_corrected.pdf, id=171, 420.57124pt x 316.18124p
+<../figs/FigureA3_scatter_three_corrected.pdf, id=165, 420.57124pt x 316.18124p
 t>
 File: ../figs/FigureA3_scatter_three_corrected.pdf Graphic file (type pdf)
- <use ../figs/FigureA3_scatter_three_corrected.pdf> [15 <../figs/FigureA3_scatt
-er_three.pdf> <../figs/FigureA3_scatter_three_corrected.pdf>] [16]
-<../figs/FigureA4_scale_bias.pdf, id=188, 420.57124pt x 315.1775pt>
+ <use ../figs/FigureA3_scatter_three_corrected.pdf> [14 <../figs/FigureA3_scatt
+er_three.pdf> <../figs/FigureA3_scatter_three_corrected.pdf>]
+! Double superscript.
+<argument> \Delta /\tau ^h^
+                           2
+l.145 ...{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h^2}
+                                                  .
+? q
+OK, entering \batchmode...
+ [15]
+<../figs/FigureA4_scale_bias.pdf, id=182, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA4_scale_bias.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA4_scale_bias.pdf>
-<../figs/FigureA10_regular_sol.pdf, id=189, 420.57124pt x 316.18124pt>
-File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA10_regular_sol.pdf>
-<../figs/FigureA10_sparse_sol.pdf, id=190, 420.57124pt x 316.18124pt>
-File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA10_sparse_sol.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA3_hist_glm200.pdf, id=191, 420.57124pt x 316.18124pt>
+ <use ../figs/FigureA4_scale_bias.pdf>
+<../figs/FigureA3_hist_glm200.pdf, id=183, 420.57124pt x 316.18124pt>
 File: ../figs/FigureA3_hist_glm200.pdf Graphic file (type pdf)
+ <use ../figs/FigureA3_hist_glm200.pdf>
+! Undefined control sequence.
+<argument> 0.45\hsizgureA 
+                          3_hist_spa200
+l.172 ...minipage}[c]{0.45\hsizgureA3_hist_spa200}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-<use ../figs/FigureA3_hist_glm200.pdf>
-<../figs/FigureA3_hist_spa200.pdf, id=192, 420.57124pt x 316.18124pt>
-File: ../figs/FigureA3_hist_spa200.pdf Graphic file (type pdf)
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   _
+l.172 ...minipage}[c]{0.45\hsizgureA3_hist_spa200}
+                                                  
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
 
-<use ../figs/FigureA3_hist_spa200.pdf>
+! Missing $ inserted.
+<inserted text> 
+                $
+l.172 ...minipage}[c]{0.45\hsizgureA3_hist_spa200}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+<argument> 0.45\hsizgureA 
+                          3_hist_spa200
+l.173 \end{minipage}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   _
+l.173 \end{minipage}
+                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.173 \end{minipage}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+<../figs/FigureA10_regular_sol.pdf, id=184, 420.57124pt x 316.18124pt>
+File: ../figs/FigureA10_regular_sol.pdf Graphic file (type pdf)
+ <use ../figs/FigureA10_regular_sol.pdf>
+<../figs/FigureA10_sparse_sol.pdf, id=185, 420.57124pt x 316.18124pt>
+File: ../figs/FigureA10_sparse_sol.pdf Graphic file (type pdf)
+ <use ../figs/FigureA10_sparse_sol.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA5_recvar.pdf, id=193, 420.57124pt x 315.1775pt>
+ [16 <../figs/FigureA4_scale_bias.pdf> <../figs/FigureA3_hist_glm200.pdf>]
+<../figs/FigureA5_recvar.pdf, id=198, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA5_recvar.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA5_recvar.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs/FigureA6_recvar_SNR.pdf, id=194, 420.57124pt x 315.1775pt>
+ <use ../figs/FigureA5_recvar.pdf>
+<../figs/FigureA6_recvar_SNR.pdf, id=199, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA6_recvar_SNR.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA6_recvar_SNR.pdf>
-File: ../figs/example_traces.pdf Graphic file (type pdf)
- <use ../figs/example_traces.pdf>
-File: ../figs/example_traces.pdf Graphic file (type pdf)
-
-<use ../figs/example_traces.pdf>
+ <use ../figs/FigureA6_recvar_SNR.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA7_recvar_NT.pdf, id=195, 420.57124pt x 315.1775pt>
+
+<../figs/FigureA7_recvar_NT.pdf, id=200, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA7_recvar_NT.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA7_recvar_NT.pdf>
+ <use ../figs/FigureA7_recvar_NT.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17 <../figs/FigureA4_scale_bias.pdf>] [18 <../figs/FigureA10_regular_sol.pdf> 
-<../figs/FigureA10_sparse_sol.pdf>] [19 <../figs/FigureA3_hist_glm200.pdf> <../
-figs/FigureA3_hist_spa200.pdf>]
-<../figs/Figure7b_raster_weak.pdf, id=230, 420.57124pt x 313.17pt>
+ [17 <../figs/FigureA10_regular_sol.pdf> <../figs/FigureA10_sparse_sol.pdf> <..
+/figs/FigureA5_recvar.pdf>] [18 <../figs/FigureA6_recvar_SNR.pdf>] [19 <../figs
+/FigureA7_recvar_NT.pdf>]
+<../figs/Figure7b_raster_weak.pdf, id=233, 420.57124pt x 313.17pt>
 File: ../figs/Figure7b_raster_weak.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7b_raster_weak.pdf>
-<../figs/Figure7a_raster_strong.pdf, id=231, 420.57124pt x 294.09875pt>
+ <use ../figs/Figure7b_raster_weak.pdf>
+<../figs/Figure7a_raster_strong.pdf, id=234, 420.57124pt x 294.09875pt>
 File: ../figs/Figure7a_raster_strong.pdf Graphic file (type pdf)
-
-<use ../figs/Figure7a_raster_strong.pdf>
-<../figs/FigureA8_weak_corr.pdf, id=232, 420.57124pt x 315.1775pt>
+ <use ../figs/Figure7a_raster_strong.pdf>
+<../figs/FigureA8_weak_corr.pdf, id=235, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_weak_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_weak_corr.pdf>
-<../figs/FigureA8_strong_corr.pdf, id=233, 420.57124pt x 315.1775pt>
+ <use ../figs/FigureA8_weak_corr.pdf>
+<../figs/FigureA8_strong_corr.pdf, id=236, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA8_strong_corr.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA8_strong_corr.pdf>
+ <use ../figs/FigureA8_strong_corr.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../figs/FigureA9_all_same_sol.pdf, id=234, 420.57124pt x 313.17pt>
+
+<../figs/FigureA9_all_same_sol.pdf, id=237, 420.57124pt x 313.17pt>
 File: ../figs/FigureA9_all_same_sol.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA9_all_same_sol.pdf>
-<../figs/FigureA9_variable_25.pdf, id=235, 420.57124pt x 315.1775pt>
+ <use ../figs/FigureA9_all_same_sol.pdf>
+<../figs/FigureA9_variable_25.pdf, id=238, 420.57124pt x 315.1775pt>
 File: ../figs/FigureA9_variable_25.pdf Graphic file (type pdf)
-
-<use ../figs/FigureA9_variable_25.pdf>
+ <use ../figs/FigureA9_variable_25.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[20 <../figs/FigureA5_recvar.pdf>] [21 <../figs/FigureA6_recvar_SNR.pdf>])
-(./discussion.tex [22 <../figs/FigureA7_recvar_NT.pdf>] [23 <../figs/Figure7b_r
-aster_weak.pdf> <../figs/Figure7a_raster_strong.pdf> <../figs/FigureA8_weak_cor
-r.pdf> <../figs/FigureA8_strong_corr.pdf>]
+ [20] [21 <../figs/Figure7b_raster_weak.pdf> <../figs/Figure7a_raster_strong.pd
+f> <../figs/FigureA8_weak_corr.pdf> <../figs/FigureA8_strong_corr.pdf>]) (./dis
+cussion.tex [22 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_variable_
+25.pdf>]
 
-LaTeX Warning: Citation `emory' on page 24 undefined on input line 19.
-
-
-LaTeX Warning: Citation ` liam' on page 24 undefined on input line 19.
+LaTeX Warning: Citation `emory' on page 23 undefined on input line 19.
 
 
-LaTeX Warning: Citation ` Garofalo' on page 24 undefined on input line 19.
+LaTeX Warning: Citation ` liam' on page 23 undefined on input line 19.
 
 
-LaTeX Warning: Citation ` Vakorina' on page 24 undefined on input line 19.
+LaTeX Warning: Citation ` Garofalo' on page 23 undefined on input line 19.
 
 
-LaTeX Warning: Citation ` etc.' on page 24 undefined on input line 19.
-
-[24 <../figs/FigureA9_all_same_sol.pdf> <../figs/FigureA9_variable_25.pdf>]
-
-LaTeX Warning: Citation `Duane 1 and 2' on page 25 undefined on input line 24.
+LaTeX Warning: Citation ` Vakorina' on page 23 undefined on input line 19.
 
 
-LaTeX Warning: Citation ` liam' on page 25 undefined on input line 24.
+LaTeX Warning: Citation ` etc.' on page 23 undefined on input line 19.
 
-[25]) (./main.bbl [26] [27]
+
+LaTeX Warning: Citation `Duane 1 and 2' on page 23 undefined on input line 24.
+
+
+LaTeX Warning: Citation ` liam' on page 23 undefined on input line 24.
+
+ [23]) (./main.bbl [24] [25]
 Underfull \hbox (badness 10000) in paragraph at lines 243--248
 []\OT1/cmr/m/n/10.95 Mishchenko, Y. (2009).  Strate-gies for iden-ti-fy-ing ex-
 act struc-ture of neu-
@@ -466,41 +506,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 243--248
 robes.  \OT1/cmr/m/it/10.95 Preprint:
  []
 
-[28] [29]) [30] (./main.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+ [26] [27]) [28] [29] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3211 strings out of 94500
- 42201 string characters out of 1155413
- 103632 words of memory out of 1000000
- 6298 multiletter control sequences out of 10000+50000
- 13023 words of font info for 48 fonts, out of 500000 for 2000
+ 3234 strings out of 94500
+ 42340 string characters out of 1155413
+ 96274 words of memory out of 1000000
+ 6323 multiletter control sequences out of 10000+50000
+ 13157 words of font info for 48 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
- 30i,13n,23p,2475b,294s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 34i,13n,31p,2526b,295s stack positions out of 1500i,500n,5000p,200000b,5000s
 PDF statistics:
- 313 PDF objects out of 300000
+ 301 PDF objects out of 300000
  0 named destinations out of 131072
- 96 words of extra memory for PDF output out of 65536
-</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/sha
-re/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></opt/local/share/texmf-dist/fon
+ 91 words of extra memory for PDF output out of 65536
+</opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx9.pfb></opt/local/sha
+re/texmf-dist/fonts/type1/bluesky/cm/cmbx8.pfb></opt/local/share/texmf-dist/fon
 ts/type1/bluesky/cm/cmmi6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
-cm/cmbx8.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy8.pfb></op
-t/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/tex
-mf-dist/fonts/type1/bluesky/cm/cmmi9.pfb></opt/local/share/texmf-dist/fonts/typ
-e1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cme
-x10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi8.pfb></opt/loc
-al/share/texmf-dist/fonts/type1/bluesky/cm/cmtt9.pfb></opt/local/share/texmf-di
-st/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/fonts/type1/blu
-esky/cm/cmr6.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb
-></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr8.pfb></opt/local/share
-/texmf-dist/fonts/type1/bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/font
-s/type1/bluesky/cm/cmti10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
-cm/cmr10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></o
-pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmcsc10.pfb></opt/local/share/
-texmf-dist/fonts/type1/bluesky/cm/cmti7.pfb>
-Output written on main.pdf (30 pages, 2446085 bytes).
+cm/cmex10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmmi8.pfb></o
+pt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></opt/local/share/t
+exmf-dist/fonts/type1/bluesky/cm/cmr8.pfb></opt/local/share/texmf-dist/fonts/ty
+pe1/bluesky/cm/cmmi10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/c
+mmi9.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr6.pfb></opt/loc
+al/share/texmf-dist/fonts/type1/bluesky/cm/cmti9.pfb></opt/local/share/texmf-di
+st/fonts/type1/bluesky/cm/cmsy6.pfb></opt/local/share/texmf-dist/fonts/type1/bl
+uesky/cm/cmti10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmr10.p
+fb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmsy9.pfb></opt/local/sh
+are/texmf-dist/fonts/type1/bluesky/cm/cmr9.pfb></opt/local/share/texmf-dist/fon
+ts/type1/bluesky/cm/cmsy8.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/
+cm/cmcsc10.pfb></opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb><
+/opt/local/share/texmf-dist/fonts/type1/bluesky/cm/cmti7.pfb>
+Output written on main.pdf (29 pages, 2439898 bytes).

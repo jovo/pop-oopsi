@@ -1,6 +1,6 @@
-%\documentclass[amsmath, amssymb]{revtex4}
-%\documentclass[dvips,aoas,preprint]{imsart}
-\documentclass[aoas]{imsart}
+% \documentclass[amsmath, amssymb]{revtex4}
+% \documentclass[dvips,aoas,preprint]{imsart}
+\documentclass[aoas,preprint]{imsart}
 % \documentclass{article}
 % \input{/Users/joshyv/Research/misc/latex_paper.tex}
 %\documentclass[11pt]{article}
@@ -24,7 +24,7 @@
 %\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 % \RequirePackage{hypernat}
 
-%\startlocaldefs
+\startlocaldefs
 \renewcommand{\i}{\backslash i}
 \newcommand{\bth}{\mathbf{\theta}}
 \newcommand{\w}{w}
@@ -40,45 +40,60 @@
 \newcommand{\tbth}{\tilde{\bth}}
 \newcommand{\hbw}{\widehat{\bw}}
 \newcommand{\sumit}{\sum_{\substack{i \in [1,\ldots,N] \\ t \in [1,\ldots, T]}}}
-%\endlocaldefs
+\endlocaldefs
 
 
 \begin{document}
-\author{Y. Mishchenko}
-\author{L. Paninski}
-%\affiliation{
-%Department of Statistics and Center for Theoretical Neuroscience, Columbia University
-%}
-\author{J. Vogelstein}
-%\author{}
-% \altaffiliation[Also at ]{Physics Department, XYZ University.}
-%\author{Second Author}%
-% \email{Second.Author@institution.edu}
-%\affiliation{%
-%Authors' institution and/or address\\
-%This line break forced with \textbackslash\textbackslash
-%}%
-%\author{Charlie Author}
-% \homepage{http://www.Second.institution.edu/~Charlie.Author}
-%\affiliation{
-%Second institution and/or address\\
-%This line break forced% with \\
-%}%
-%\preprint{APS/123-QED}
-%\pacs{Valid PACS appear here}
-%\keywords{Suggested keywords}
-
-\date{\today}
-
+	
+\begin{frontmatter}
 \title{A Bayesian approach to inferring functional connectivity given population calcium imaging}
+\runtitle{Inferring connectivity from calcium imaging}
+% \thankstext{T1}{Footnote to the title with the `thankstext' command.}
 
+\begin{aug}
+\author{\fnms{Yuriy} \snm{Mishchencko} \thanksref{t1}\ead[label=e2]{second@somewhere.com}}
+\author{\fnms{Joshua T.} \snm{Vogelstein}\thanksref{t2}\ead[label=e1]{joshuav@jhu.edu}},
+\and
+\author{\fnms{Liam} \snm{Paninski}\thanksref{t1}
+\ead[label=e3]{liam@stat.columbia.edi}
+\ead[label=u1,url]{http://www.foo.com}}
 
-\maketitle
-%\tableofcontents
+\thankstext{t1}{Department of Statistics and Center for Theoretical Neuroscience, Columbia University}
+\thankstext{t2}{Johns Hopkins University}
+% \thankstext{t3}{Second supporter of the project}
+\runauthor{Y. Mishchenko et al.}
+
+% \affiliation{Some University\thanksmark{m1} and Another University\thanksmark{m2}}
+
+\address{Address of the First and Second authors\\
+usually few lines long\\
+\printead{e1}\\
+\phantom{E-mail:\ }\printead*{e2}}
+
+\address{Address of the Third author\\
+usually few lines long\\
+usually few lines long\\
+\printead{e3}\\
+\printead{u1}}
+\end{aug}
 
 \begin{abstract}
 \input{abstract.tex}
 \end{abstract}
+
+\begin{keyword}[class=AMS]
+\kwd[Primary ]{60K35}
+\kwd{60K35}
+\kwd[; secondary ]{60K35}
+\end{keyword}
+
+\begin{keyword}
+\kwd{sample}
+\kwd{\LaTeXe}
+\end{keyword}
+
+\end{frontmatter}
+	
 
 \section{Introduction}
 \label{intro}
@@ -106,4 +121,4 @@ The authors would like to acknowledge Rafael Yuste, Brendon O.\ Watson, Adam Pac
 % \bibliographystyle{amsplain}
 \bibliographystyle{apalike}
 
-\end{document} 
+\end{document} }

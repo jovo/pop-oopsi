@@ -1,6 +1,6 @@
-\subsection{Inferring functional connectivity from the simulated calcium imaging data} \label{sec:results:inference}
+\subsection{Inferring functional connectivity from simulated calcium imaging data} \label{sec:results:inference}
 
-With neural population activity simulated as described in the previous section, we used our inference algorithms to reconstruct the functional connectivity matrix from simulated fluorescence data. Specifically, we estimated the connectivity matrix using both the embedded-chain-within-blockwise-Gibbs approach as well as factorized approximation. Figure \ref{fig:scatters} shows that factorized approximation was able to provide reconstructions almost as accurately as the exact embedded-chain-within-blockwise-Gibbs approach --- $r^2=0.47$ versus $r^2=0.48$ --- when parameters corresponded to a realistic experiment, given $10$ minutes of simulation data, and a population of $N=25$ neurons. We also estimated the weights using the true spike trains, $r^2=0.7$ (not shown), and the spike trains down-sampled to the frame rates of calcium imaging, $r^2=0.57$. Importantly, the quality of our estimates using the fluorescence traces alone (and no electrophysiological data) approached that using the true down-sampled spike trains.  
+With neural population activity simulated as described in the previous section, we used our inference algorithms to reconstruct the functional connectivity matrix from simulated fluorescence data. Specifically, we estimated the connectivity matrix using both the embedded-chain-within-blockwise-Gibbs approach as well as factorized approximation. Figure \ref{fig:scatters} shows that factorized approximation was able to provide reconstructions almost as accurately as the exact embedded-chain-within-blockwise-Gibbs approach, $r^2=0.47$ versus $r^2=0.48$, when parameters corresponded to a realistic experiment, given $10$ minutes of simulation data, and a population of $N=25$ neurons. We also estimated the weights using the true spike trains, $r^2=0.7$ (not shown), and the spike trains down-sampled to the frame rates of calcium imaging, $r^2=0.57$. Importantly, the quality of our estimates using the fluorescence traces alone (and no electrophysiological data) approached that using the true down-sampled spike trains.  
 
 %was worse than those obtained from the the true down-sampled spike trainsm although for SNR of fluorescence data the $r^2$ values for obtained reconstructions approached that of down-sampled true spike trains, Figure \ref{fig:recvar-SNR}. Example of what we understand by high SNR (can be used for functional connectivity inference) and low SNR (cannot be used for functional connectivity inference) are shown in Figure \ref{fig:recvar-SNR} on two fluorescence traces from real in-vivo data.
 %
@@ -25,15 +25,44 @@ With neural population activity simulated as described in the previous section, 
 \includegraphics[width=\hsize]{../figs/FigureA3_scatter_three_corrected}
 \end{minipage}
 \caption{Functional connectivity matrix can be reconstructed from calcium imaging data.
-Inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using factorized approximation, exact embedded-chain-within-blockwise-Gibbs approach, and spike trains down-sampled to the frame rate of the calcium imaging. A network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for T=600 sec at intermediate SNR (photon budget 10 Kph/neuron/frame; see below). The factorized approximation had an $r^2=0.47$, as compared with the embedded-chain-within-blockwise-Gibbs method's $r^2=0.48$, and $r^2=0.57$ for down-sampled spike trains. The inferred connectivity show a clear scale error (left panel), which we correct using our theoretical scale correction factor (right panel; see Section \ref{sec:scale} for details).} \label{fig:scatters} \end{figure}
+Inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using factorized approximation, exact embedded-chain-within-blockwise-Gibbs approach, and spike trains down-sampled to the frame rate of the calcium imaging. A network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for 10 min at intermediate SNR (photon budget 10 Kph/neuron/frame; see below). The factorized approximation had an $r^2=0.47$, as compared with the embedded-chain-within-blockwise-Gibbs method's $r^2=0.48$, and $r^2=0.57$ for down-sampled spike trains. The inferred connectivity show a clear scale error (left panel), which we correct using our theoretical scale correction factor (right panel; see Section \ref{sec:scale} for details).} \label{fig:scatters} \end{figure}
 
 \subsection{Impact of coarse time discretization of calcium imaging data and scale factor of inferred connection weights} \label{sec:scale}
 
-%Spike trains, necessary to evaluate functional connectivity matrix $\bw$, here were inferred with discretization into time-bins corresponding to the frame-rate of calcium imaging fluorescence data. In principle, one could use super-resolution feature of \cite{Vogelstein2009} to obtain spike trains with arbitrarily small time step $\Delta\rightarrow 0$. However, the problem in that case is that the spikes, inferred from fluorescence data, contain inaccuracy in their temporal position $\approx 1/$frame-rate,  due to the time-discretization of the underlying fluorescence trace.
+As suggested by Figure \ref{fig:scatters}, upon inferring connection weights using down-sampled spike trains (or noisy versions thereof), a scale error is introduced. This is curious because our model was designed to be asymptotically unbiased \cite{PAN03d}. Possible causes of this scale error include (i) insufficient data,  (ii) model misspecification (the simulated model did not conform exactly to our assumed model, due to the shape of PSPs; see Methods for details), or (iii) coarse time discretization.  To investigate what extent of the scale error is caused by the coarse time discretization, we performed the following theoretical analysis.   
 
-% As suggested by Figure \ref{fig:scatters}, upon inferring connection weights using down-sampled spike trains (or noisy versions thereof), a scale error is introduced. This is curious because our model was designed to be asymptotically unbiased \cite{PAN03d}. Possible causes of this scale error include (i) insufficient data,  (ii) model misspecification (the simulated model did not conform exactly to our assumed model, due to the shape of PSPs; see Methods for details), or (iii) coarse time discretization.  To investigate what extent of the scale error is caused by the coarse time discretization, we performed the following theoretical analysis.   
-% 
-% Consider a significantly simplified case of two neurons coupled with a small weight $w_{ij}$, simulated with a time step size of $\Delta_s$, but observations made only every $\Delta_o \gg \Delta_s$ (where the $o$ indicates observation and the $s$ indicates simulation). Further, other than this coupling, these neurons fire with constant baseline firing rate of $r=f(b)=\exp(b)$, $b \gg w_{ij}$. The sufficient statistic for estimating $w_{ij}$ is simply $\{E[n_i(t), n_j(t+\Delta_s) | F_i, F_j]\}_{i,j\leq N, \, t \leq T}$.  Unfortunately, this statistic is unavailable to us, so above, we approximated it:
+Consider a significantly simplified case of two neurons coupled with a small weight $w_{ij}$, simulated with a time step size of $\Delta$, but observations made only every $d$ time bins. Further, other than this coupling, these neurons fire with constant baseline firing rate of $r=f(b)=\exp(b)$, $b \gg w_{ij}$. The sufficient statistic for estimating $w_{ij}$ is simply the expected value of a spike from neuron $i$ at time $t$, given a spike from neuron $j$ $K$ time bins earlier, and none between:
+% \begin{align} \label{eqn:scale:leadin-1}
+% SS=&\sum_{k=1}^{K} E\left[n_i(t) | n_j(t-k\Delta)=1, n_j(t-(k+1)\Delta:t-\Delta)=0\right] &=1-\exp\left(-\text{e}^{b_i+w_{ij}\tilde{h}_{ij}^k(t)}) 
+% \end{align}
+% where 
+% \begin{align}
+% \tilde{h}_{ij}^k(t)=\left((1-\Delta \tau^h)h_{ij}(t-\Delta)+1\right)^k
+% \end{align}
+
+Now, if the spike trains were downsampled by a factor $d$, we can only obtain an approximation to the above sufficient statistics. In particular, we would not know precisely in which time of $d$ time-bins the spike from neuron $j$ occurred.  Thus, the best we could do would be:
+% \begin{align}\label{eqn:scale:leadin-1}
+% SS_d=&\sum_{k=1}^{K} E\left[n_i(t) | n_j(t-k d \Delta)=1, n_j(t-(k+1) d \Delta:t-\Delta)=0\right] &=1-\exp\left(-\text{e}^{b_i+w_{ij}\tilde{h}_{ij}^k(t)}) 
+% \end{align}
+
+The scale error that we expect to obtain from this coarse time discretization is thus: 
+
+\begin{align} \label{eqn:scale}
+	\text{scale factor} = \frac{SS}{SS_d}
+\end{align}
+
+Unfortunately, we cannot evaluate either $SS$ or $SS_d$ exactly, due to the exponential in $\tilde{h}_{ij}^k(t)$.  Assuming that $\tau^h \ll K \ll 1/r$, we can, however, approximate both by XXX:
+% \begin{align}
+% 	SS \approx & r \mathcal{T} + f'(b) \sum^{k=1}^K w_{ij} \exp(-t/\tau^h) \nonumber \\
+% 		\approx & r \mathcal{T} + f'(b) w_{ij}\tau^h, \label{eqn:SS}\\
+% 	SS_d  	\approx& r \mathcal{T} + f'(b) \int\limits_0^\Delta \frac{\text{dt}'}{\Delta} \int\limits_{\Delta}^{\Delta + \mathcal{T}} \text{dt} w_{ij}\exp(-(t-t')/\tau^h) \nonumber \\
+% 		\approx & r \mathcal{T} +  f'(b)w_{ij}\frac{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h^2}. \label{eqn:SS_d}
+% \end{align}
+Solving for $w_{ij}$ in terms of $SS$ and $SS_d$, and plugging the resulting values into Eq.~\ref{eqn:scale} yields:
+% \begin{equation}\label{eqn:bias}
+% w_{ij}\approx \frac{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h} w_{ij}.
+% \end{equation}
+
 % \begin{equation}
 % E[n_i(t), n_j(t+\Delta_s) | F_i,F_j] \approx E[n_i(t), n_j(t+\Delta_o) | F_i,F_j]
 % \end{equation}
@@ -53,7 +82,7 @@ Inferred connection weights are shown in a scatter plot versus real connection w
 % % = \sum_t n_i(t) P[n_i(t) | n_j(t-\mathcal{T})]  
 % % = \sum_t  1-\exp(-\text{e}^{b + w_{ij} h_{ij}(t)} \Delta)
 % %\exp{-t/\tau^h}
-% %\approx r \mathcal{T} + f'(b) \int^{\mathcal{T}}_0  w_{12} \exp(-t/
+% %\approx r \mathcal{T} + f'(b) \int^{\mathcal{T}}_0  w_{ij} \exp(-t/
 % %\tau^h) dt = XXX
 % \end{align} 
 % When we use a coarse time discretization, Eq.~\eqref{eqn:E[h]} changes by replacing each $\Delta_s$ by a $\Delta_o$.  
@@ -63,14 +92,13 @@ Inferred connection weights are shown in a scatter plot versus real connection w
 % E[h_{ij}(t) | n_j(t-\mathcal{T})] &= \left((1-\Delta_o/\tau^h) E[h_{ij}(t-\Delta_s)] + 1\right)^{\mathcal{T}/\Delta_s}
 % \end{align} 
 % 
-% 
 % Similarly, we can compute the number of causal spike-pairs that appear as coincident spike-pairs, given our coarse time discretization:
 % 
-% % In order to estimate $w_{12}$, therefore, we need to empirically observe the number of spike-pairs such that the first neuron fired after the second neuron over some small period of time $\tau^h \ll \mathcal{T} \ll 1/r$. 
+% % In order to estimate $w_{ij}$, therefore, we need to empirically observe the number of spike-pairs such that the first neuron fired after the second neuron over some small period of time $\tau^h \ll \mathcal{T} \ll 1/r$. 
 % % 
-% % With this count, we empirically estimate the spike-triggered spiking probability of the first neuron, conditioned on the firing of the second neuron, and subsequently estimate the connection weight $w_{12}$. Per time period $\mathcal{T}\ll 1/r$, the average number of such spike-pairs corresponding to connection weight $w_{12}$ is:
+% % With this count, we empirically estimate the spike-triggered spiking probability of the first neuron, conditioned on the firing of the second neuron, and subsequently estimate the connection weight $w_{ij}$. Per time period $\mathcal{T}\ll 1/r$, the average number of such spike-pairs corresponding to connection weight $w_{ij}$ is:
 % % \begin{equation}\label{eqn:scale:leadin-1}
-% % n_{12} \approx r \mathcal{T} + f'(b) \int^{\mathcal{T}}  w_{12} \exp(-t/\tau^h) dt.
+% % n_{12} \approx r \mathcal{T} + f'(b) \int^{\mathcal{T}}  w_{ij} \exp(-t/\tau^h) dt.
 % % \end{equation}
 % % 
 % % Now, assume that observed spike trains were additionally down-sampled into time-bins of size $\Delta$. We now only count the spike-pairs such that the spike of the first neuron and the second neuron occurred in different time-bins of size $\Delta$. Per time period $\mathcal{T}$, the average number of such spike-pairs in down-sampled spike trains can be calculated as follows. We consider all spike-pairs such that the spike of the second neuron occurred in one time bin, $t'\in [0,\Delta]$, and the spike of the first neuron occurred in any of the strictly subsequent time bins up to $\mathcal{T}$, $t\in [\Delta,\mathcal{T}]$. Taking into account that position of the first spike, $t'$, is uniformly distributed in $[0,\Delta]$, the average number of such spikes of the first neuron per spike of the second neuron, observed empirically, is:
@@ -79,47 +107,33 @@ Inferred connection weights are shown in a scatter plot versus real connection w
 % = r \mathcal{T} +  f'(b)\frac{1-\exp(-\Delta/\tau^h)}{\Delta/{\tau^h}^2}.
 % \end{equation}
 % Plugging these results into Eq.~\eqref{eqn:bias_correction_factor}, we obtain:
-% %\comment{If we were to naively apply GLM Eq.~\eqref{eqn:scale:leadin-1} in this latter case, we would have underestimated $w_{12}$ by a factor $\approx (n^{\Delta_o}_{12}-r \mathcal{T})/ (n_{12}-r \mathcal{T})$, corresponding to smaller spike-triggered probability observed empirically in down-sampled spike-trains. This ratio is the scaling factor that we observe:}
+% %\comment{If we were to naively apply GLM Eq.~\eqref{eqn:scale:leadin-1} in this latter case, we would have underestimated $w_{ij}$ by a factor $\approx (n^{\Delta_o}_{12}-r \mathcal{T})/ (n_{12}-r \mathcal{T})$, corresponding to smaller spike-triggered probability observed empirically in down-sampled spike-trains. This ratio is the scaling factor that we observe:}
 % \begin{equation}\label{eqn:bias}
 % \xi=\frac{n^{\Delta_o}_{12}-r \mathcal{T}}{n_{12}-r \mathcal{T}}\approx \frac{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h}.
 % \end{equation}
 % %\comment{In Figure \ref{fig:bias} we plotted Eq.~\eqref{eqn:bias} versus scale factor empirically observed from our simulations for different values of $\Delta$. As can be seen from}
 % Figure \ref{fig:bias} shows that this theoretical approximation corresponds well to our empirically measured scale factor.
 
+%% Spike trains, necessary to evaluate functional connectivity matrix $\bw$, here were inferred with discretization into time-bins corresponding to the frame-rate of calcium imaging fluorescence data. In principle, one could use super-resolution feature of \cite{Vogelstein2009} to obtain spike trains with arbitrarily small time step $\Delta\rightarrow 0$. However, the problem in that case is that the spikes, inferred from fluorescence data, contain inaccuracy in their temporal position $\approx 1/$frame-rate,  due to the time-discretization of the underlying fluorescence trace.Thus, when we super-resolve spikes using \cite{Vogelstein2009}, the spike pairs such that a spike of neuron $i$ closely follows a spike of neuron $j$ can be often confused with such where a spike of neuron $j$ closely follows a spike of neuron $i$. It, therefore, becomes impossible to determine which neuron fired first, and which neuron was pre-synaptic or post-synaptic in given pair of neurons $i$, $j$. More specifically,
+%%because we rely on empirically counting close spike pairs in a set of spike trains to estimate the spike-triggered probabilities for spikes of different pairs of neurons, $i$ and $j$, which then allow estimating $w_{ij}$, above disordering of close spike pairs results in dramatic noise component in our estimate for the functional connectivity matrix by not allowing to effectively distinguish $w_{ij}$ and $w_{ji}$.
+%when using $\Delta \rightarrow 0$, we observed large errors in $\bw$, $var[\bw] \propto \bw + \bw^T$ - because of inaccuracies in temporal position of spikesinferred from calcium imaging it became impossible to reliably distinguish which neuron causally preceded which other neuron, and only a-causal connectivity matrix $(\bw + \bw^T)/2$ could be determined.
 
-Spike trains, necessary to evaluate functional connectivity matrix $\bw$, here were inferred with discretization into time-bins corresponding to the frame-rate of calcium imaging fluorescence data. In principle, one could use super-resolution feature of \cite{Vogelstein2009} to obtain spike trains with arbitrarily small time step $\Delta\rightarrow 0$. However, the problem in that case is that the spikes, inferred from fluorescence data, contain inaccuracy in their temporal position $\approx 1/$frame-rate,  due to the time-discretization of the underlying fluorescence trace.
-Thus, when we super-resolve spikes using \cite{Vogelstein2009}, the spike pairs such that a spike of neuron $i$ closely follows a spike of neuron $j$ can be often confused with such where a spike of neuron $j$ closely follows a spike of neuron $i$.
-It, therefore, becomes impossible to determine which neuron fired first, and which neuron
-was pre-synaptic or post-synaptic in given pair of neurons $i$, $j$.
-More specifically, 
-%because we rely on empirically counting close spike pairs in a set of spike trains to estimate the spike-triggered probabilities for spikes of different pairs of neurons, $i$ and $j$, which then allow estimating $w_{ij}$, above disordering of close spike pairs results in dramatic noise component in our estimate for the functional connectivity matrix by not allowing to effectively distinguish $w_{ij}$ and $w_{ji}$.
-when using $\Delta \rightarrow 0$, we observed large errors in $\bw$,
-$var[\bw] \propto \bw + \bw^T$ - because of inaccuracies in temporal position of spikes inferred from calcium imaging it became impossible to reliably distinguish which neuron causally preceded which other neuron, and only a-causal connectivity matrix $(\bw + \bw^T)/2$ could be determined.
+To circumvent this problem, we (down-)sampled the time-axis in bins of size $\Delta=1/$frame-rate, and treated all spike pairs that occurred within the same time-bin as coincidental. This successfully counteracted the above problem and, additionally, allowed to perform calculations substantially faster by using larger $\Delta$. At the same time, this resulted in scale bias that all our inferred  connectivity matrices consistently exhibited, Figure \ref{fig:scatters}. This bias may be successfully understood and corrected from the following time-discretization argument. Specifically, estimating the magnitude of the connection weight $w_{ij}$ is based on empirically evaluating the spike-triggered probability of neuron $i$ to fire, conditioned on neuron $j$. Most significant change in the spiking probability of neuron $i$, conditioned on neuron $j$, occurs within $\tau^h \approx 10-20$ msec from a spike of neuron $j$. 
+%To evaluate the magnitude of weight $w_{ij}$, therefore, we evaluate how many pairs of spikes, comprised of a spike of neuron $i$ following spike of neuron $j$ within $\approx \tau^h$, were empirically observed in a given spike train, and what spike-triggered probability this corresponds to.
+When spike trains are down-sampled into large time-bins, e.g. $\Delta = 30$ msec, a significant fraction of close spike pairs appears coincident and not causal, as both spikes from neuron $i$ and neuron $j$ within $\approx \tau^h$ from each other are often assigned to the same time-bin. As we discussed in the previous paragraphs, such close spike pairs typically introduce a great deal of noise in the estimate of $\bw$. When $\Delta$ is large, however, most of such unreliable spike pairs would be considered coincidental and would not affect $\bw$ estimate. At the same time, all of such close pairs would be lost if we were to empirically evaluate the spike-triggered probabilities, which would have led us to believe in a lower than the actual  $w_{ij}$.
 
-To circumvent this problem, we (down-)sampled the time-axis in bins of size $\Delta=1/$frame-rate, and treated all spike pairs that occurred within the same time-bin as coincidental. This successfully counteracted the above problem and, additionally, allowed to perform calculations substantially faster by using larger $\Delta$. At the same time, this resulted in scale bias that all our inferred  connectivity matrices consistently exhibited, Figure \ref{fig:scatters}. This bias may be successfully understood and corrected from the following time-discretization argument.
-Specifically, estimating the magnitude of the connection weight $w_{ij}$ is based on empirically evaluating the spike-triggered probability of neuron $i$ to fire, conditioned on neuron $j$. Most significant change in the spiking probability of neuron $i$, conditioned on neuron $j$, occurs within $\tau_w \approx 10-20$ msec from a spike of neuron $j$. 
-%To evaluate the magnitude of weight $w_{ij}$, therefore, we evaluate how many pairs of spikes, comprised of a spike of neuron $i$ following spike of neuron $j$ within $\approx \tau_w$, were empirically observed in a given spike train, and what spike-triggered probability this corresponds to.
-When spike trains are down-sampled into large time-bins, e.g. $\Delta = 30$ msec, a significant fraction of close spike pairs appears coincident and not causal, as both spikes from neuron $i$ and neuron $j$ within $\approx \tau_w$ from each other are often assigned to the same time-bin.
-As we discussed in the previous paragraphs, such close spike pairs typically introduce a great deal of noise in the estimate of $\bw$.
-When $\Delta$ is large, however, most of such unreliable spike pairs would be considered coincidental and would not affect $\bw$ estimate. At the same time, all of such close pairs would be lost if we were to empirically evaluate the spike-triggered probabilities, which would have led us to believe in a lower than the actual  $w_{ij}$.
-
-
-%
-% Really, if the number of spikes of one neuron following that of another neuron within $\Delta$ was $n(2\rightarrow 1)$, while such in the reverse order was $n(1\rightarrow 2)$, difference $\delta n_{12} = n(2\rightarrow 1)-n(1\rightarrow 2)$ would correspond to the difference of functional connectivity weights $\delta w_{12}=w_{12}-w_{21}$. However, when such spike pairs had had their order confused with large probability $p\approx 1/2$, the number of spike pairs $n(2\rightarrow 1)$ actually observed would become $(1-p) n(2\rightarrow 1)+p n(1\rightarrow 2)$, and similarly for the reverse. Empirically observed difference $w_{12}-w_{21}$ thus would correspondingly drop to $\delta w'_{12}= (1-2p)\delta w_{12}$, while the variance would remain the same.
-% We observed that the amount of data necessary to overcome this noise due to disordering of closely positioned spike-pairs appeared to be well over $\approx 10$ min of data used for the most of the calculations shown in this section below. Such high-time-resolution samples of spike trains also were substantially more computationally expensive to obtain and work with. For these reasons, we did not pursue this line of research further, although it may be of interest in the future.
-
-To estimate the magnitude of this time-discretization bias quantitatively, we consider a significantly simplified case of two neurons coupled with a small weight $w_{12}$, and firing with baseline firing rate of $r=f(b)=\exp(b)$, $b \gg w_{12}$.
-A sufficient statistics for estimating $w_{12}$ in this case is, e.g.:
+To estimate the magnitude of this time-discretization bias quantitatively, we consider a significantly simplified case of two neurons coupled with a small weight $w_{ij}$, and firing with baseline firing rate of $r=f(b)=\exp(b)$, $b \gg w_{ij}$.
+A sufficient statistics for estimating $w_{ij}$ in this case is, e.g.:
 \begin{equation}\label{eqn:scale:leadin-1}
 \begin{array}{rl}
 S =& E\left[\int\limits_{t'}^{t'+\mathcal{T}} \text{dt} n_1(t) | n_2(t')=\text{spike}, n_2(t)=\text{no spike}\ \forall t'<t<t'+\mathcal{T}\right] \\
-\approx & r \mathcal{T} + f'(b) \int^{\mathcal{T}}  \text{dt} w_{12} \exp(-t/\tau_w) \\
-\approx & r \mathcal{T} + f'(b) w_{12}\tau_w,
+\approx & r \mathcal{T} + f'(b) \int^{\mathcal{T}}  \text{dt} w_{ij} \exp(-t/\tau^h) \\
+\approx & r \mathcal{T} + f'(b) w_{ij}\tau^h,
 \end{array}
 \end{equation}
-where $\tau_w \ll \mathcal{T} \ll 1/r$, and 
+where $\tau^h \ll \mathcal{T} \ll 1/r$, and 
 \begin{equation}\label{eqn:scale:leadin-1}
-w_{12}=(S-r\mathcal{T})/f'(b)\tau_w.
+w_{ij}=(S-r\mathcal{T})/f'(b)\tau^h.
 \end{equation}
 Now, if the spike trains were down-sampled into time-bins of size $\Delta$,
 we estimate statistics $S$ with a discrete sum:
@@ -127,14 +141,14 @@ we estimate statistics $S$ with a discrete sum:
 \begin{array}{rl}
 S^{ds}=&E\left[\sum\limits_{t=t'+\Delta}^{t'+\Delta + \mathcal{T}} n_1(t) | n_2(t')=1, n_2(t)=0\ \forall
 t'<t<t'+\mathcal{T}\right]. \\
-\approx& r \mathcal{T} + f'(b) \int\limits_0^\Delta \frac{\text{dt}'}{\Delta} \int\limits_{\Delta}^{\Delta + \mathcal{T}} \text{dt} w_{12}\exp(-(t-t')/\tau_w) \\
-\approx & r \mathcal{T} +  f'(b)w_{12}\frac{1-\exp(-\Delta/\tau_w)}{\Delta/\tau_w^2}.
+\approx& r \mathcal{T} + f'(b) \int\limits_0^\Delta \frac{\text{dt}'}{\Delta} \int\limits_{\Delta}^{\Delta + \mathcal{T}} \text{dt} w_{ij}\exp(-(t-t')/\tau^h) \\
+\approx & r \mathcal{T} +  f'(b)w_{ij}\frac{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h^2}.
 \end{array}
 \end{equation}
 In the second equality we took into account that the position of the first spike, $n_2(t')$, may be uniformly distributed in some time-bin, $[0,\Delta]$, and discrete sum over $t$ is from $t=\Delta$ to $t=\Delta+\mathcal{T}$, i.e. over all spikes of the first neuron that occurred in any of the strictly subsequent time bins up to $\Delta + \mathcal{T}$.
 If we were to naively apply GLM Eq. \ref{eqn:scale:leadin-1} here using down-sampled estimate $S^{ds}$, we would have obtained
 \begin{equation}\label{eqn:bias}
-w_{12}^{ds}\approx \frac{1-\exp(-\Delta/\tau_w)}{\Delta/\tau_w} w_{12}.
+w_{ij}^{ds}\approx \frac{1-\exp(-\Delta/\tau^h)}{\Delta/\tau^h} w_{ij}.
 \end{equation}
 This is the scale bias that we observe.
 In Figure \ref{fig:bias} we plot the scale bias from Eq. \ref{eqn:bias} versus that empirically deduced from our simulations for different values of $\Delta$. As can be seen in Figure \ref{fig:bias}, Eq. \ref{eqn:bias} describes observed scale bias very well.
