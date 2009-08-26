@@ -34,6 +34,12 @@ Boyd, S. and Vandenberghe, L. (2004).
 \newblock {\em Convex Optimization}.
 \newblock Oxford University Press.
 
+\bibitem[Boyden et~al., 2005]{Deisseroth05}
+Boyden, E.~S., Zhang, F., Bamberg, E., Nagel, G., and Deisseroth, K. (2005).
+\newblock Millisecond-timescale, genetically targeted optical control of neural
+  activity.
+\newblock {\em Nat Neurosci}, 8(9):1263--1268.
+
 \bibitem[Braitenberg and Schuz, 1998]{Braitenberg1998}
 Braitenberg, V. and Schuz, A. (1998).
 \newblock {\em Cortex: statistics and geometry of neuronal connectivity.}
@@ -163,6 +169,12 @@ Harris, K., Csicsvari, J., Hirase, H., Dragoi, G., and Buzsaki, G. (2003).
 \newblock Organization of cell assemblies in the hippocampus.
 \newblock {\em Nature}, 424:552--556.
 
+\bibitem[Harris et~al., 2000]{HarrisBuzsaki00}
+Harris, K.~D., Henze, D.~A., Csicsvari, J., Hirase, H., and Buzsaki, G. (2000).
+\newblock Accuracy of tetrode spike separation as determined by simultaneous
+  intracellular and extracellular measurements.
+\newblock {\em Journal of Neurophysiology}, 81(1):401--414.
+
 \bibitem[Hatsopoulos et~al., 1998]{HATS98}
 Hatsopoulos, N., Ojakangas, C., Paninski, L., and Donoghue, J. (1998).
 \newblock Information about movement direction obtained by synchronous activity
@@ -279,11 +291,27 @@ Nykamp, D. (2007).
   neuronal networks.
 \newblock {\em Mathematical Biosciences}, 205:204--251.
 
+\bibitem[Nykamp, 2005]{Nykamp05}
+Nykamp, D.~Q. (2005).
+\newblock Revealing pairwise coupling in linear-nonlinear networks.
+\newblock {\em SIAM J Applied Mathematics}, 65(6):2005--2032.
+
+\bibitem[Paninski, 2003]{PAN03c}
+Paninski, L. (2003).
+\newblock Convergence properties of some spike-triggered analysis techniques.
+\newblock {\em Network: Computation in Neural Systems}, 14:437--464.
+
 \bibitem[Paninski, 2004]{PAN04c}
 Paninski, L. (2004).
 \newblock Maximum likelihood estimation of cascade point-process neural
   encoding models.
 \newblock {\em Network: Computation in Neural Systems}, 15:243--262.
+
+\bibitem[Paninski et~al., 2009]{Pan08b}
+Paninski, L., Ahmadian, Y., Ferreira, D., Koyama, S., Rahnama, K., Vidne, M.,
+  Vogelstein, J., and Wu, W. (2009).
+\newblock A new look at state-space models for neural data.
+\newblock {\em Submitted}.
 
 \bibitem[Paninski et~al., 2004]{PAN03d}
 Paninski, L., Fellows, M., Shoham, S., Hatsopoulos, N., and Donoghue, J.
@@ -362,6 +390,12 @@ Robert, C. and Casella, G. (2005).
 \newblock {\em Monte {C}arlo Statistical Methods}.
 \newblock Springer.
 
+\bibitem[Roxin et~al., 2008]{Roxin08}
+Roxin, A., Hakim, V., and Brunel, N. (2008).
+\newblock The statistics of repeating patterns of cortical activity can be
+  reproduced by a model network of stochastic binary neurons.
+\newblock {\em J. Neurosci.}, 28(42):10734--10745.
+
 \bibitem[Salome et~al., 2006]{SalomeBourdieu06}
 Salome, R., Kremer, Y., Dieudonne, S., Leger, J.-F., Krichevsky, O., Wyart, C.,
   Chatenay, D., and Bourdieu, L. (2006).
@@ -388,8 +422,8 @@ Segev, R., Goodhouse, J., Puchalla, J., and Berry, M. (2004).
 
 \bibitem[Shumway and Stoffer, 2006]{ShumwayStoffer06}
 Shumway, R. and Stoffer, D. (2006).
-\newblock {\em Time Series Analysis and Its Applications}.
-\newblock Springer.
+\newblock {\em {Time Series Analysis and Its Applications}}.
+\newblock Springer, 2nd edition.
 
 \bibitem[Song et~al., 2005]{Song2005}
 Song, S., Sjostrom, P.~J., Reiql, M., Nelson, S., and Chklovskii, D.~B. (2005).
@@ -422,6 +456,15 @@ Stosiek, C., Garaschuk, O., Holthoff, K., and Konnerth, A. (2003).
 \newblock In vivo two-photon calcium imaging of neuronal networks.
 \newblock {\em Proceedings of The National Academy Of Sciences Of The United
   States Of America}, 100(12):7319--7324.
+
+\bibitem[Szobota et~al., 2007]{SzobotaIsacoff07}
+Szobota, S., Gorostiza, P., Del~Bene, F., Wyart, C., Fortin, D.~L., Kolstad,
+  K.~D., Tulyathan, O., Volgraf, M., Numano, R., Aaron, H.~L., Scott, E.~K.,
+  Kramer, R.~H., Flannery, J., Baier, H., Trauner, D., and Isacoff, E.~Y.
+  (2007).
+\newblock Remote control of neuronal activity with a light-gated glutamate
+  receptor.
+\newblock {\em Neuron}, 54:535--545.
 
 \bibitem[Thompson et~al., 1988]{Thompson88}
 Thompson, A., Girdlestone, D., and West, D. (1988).
@@ -457,6 +500,12 @@ Vidne, M., Kulkarni, J., Ahmadian, Y., Pillow, J., Shlens, J., Chichilnisky,
 \newblock Inferring functional connectivity in an ensemble of retinal ganglion
   cells sharing a common input.
 \newblock {\em COSYNE}.
+
+\bibitem[Vogelstein et~al., 2008]{Vogelstein08}
+Vogelstein, J., Babadi, B., Watson, B., Yuste, R., and Paninski, L. (2008).
+\newblock Fast nonnegative deconvolution via tridiagonal interior-point
+  methods, applied to calcium fluorescence data.
+\newblock {\em Statistical analysis of neural data (SAND) conference}.
 
 \bibitem[Vogelstein et~al., 2009]{Vogelstein2009}
 Vogelstein, J.~T., Watson, B.~O., Packer, A.~M., Yuste, R., Jedynak, B., and

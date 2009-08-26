@@ -51,11 +51,11 @@
 % \thankstext{T1}{Footnote to the title with the `thankstext' command.}
 
 \begin{aug}
-\author{\fnms{Yuriy} \snm{Mishchencko} \thanksref{t1}\ead[label=e2]{second@somewhere.com}}
-\author{\fnms{Joshua T.} \snm{Vogelstein}\thanksref{t2}\ead[label=e1]{joshuav@jhu.edu}},
+\author{\fnms{Yuriy} \snm{Mishchencko}\thanksref{t1}\ead[label=e1]{y@somewhere.com}}
+\author{\fnms{Joshua T.} \snm{Vogelstein}\thanksref{t2}\ead[label=e2]{joshuav@jhu.edu}},
 \and
 \author{\fnms{Liam} \snm{Paninski}\thanksref{t1}
-\ead[label=e3]{liam@stat.columbia.edi}
+\ead[label=e3]{liam@stat.columbia.edu}
 \ead[label=u1,url]{http://www.foo.com}}
 
 \thankstext{t1}{Department of Statistics and Center for Theoretical Neuroscience, Columbia University}
@@ -65,16 +65,26 @@
 
 % \affiliation{Some University\thanksmark{m1} and Another University\thanksmark{m2}}
 
-\address{Address of the First and Second authors\\
-usually few lines long\\
+\address{Yuriy Mishchenko\\
+city street in turkey\\
 \printead{e1}\\
-\phantom{E-mail:\ }\printead*{e2}}
+% \phantom{E-mail:\ }\printead*{e1}
+}
 
-\address{Address of the Third author\\
-usually few lines long\\
+\address{Joshua Vogelstein\\
+Johns Hopkins University\\
+3400 N. Charles St.\\
+Baltimore, MD, 21205 \\
+\printead{e2}\\
+% \printead{u1}
+}
+
+\address{Liam Paninski\\
+address\\
 usually few lines long\\
 \printead{e3}\\
 \printead{u1}}
+
 \end{aug}
 
 \begin{abstract}

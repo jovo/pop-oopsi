@@ -13,9 +13,9 @@
 \citation{Djurisic04}
 \citation{ReddySaggau05,Iyer06,SalomeBourdieu06,ReddySaggau08}
 \citation{NguyenParker01}
-\thanksnewlabel{e2@email}{{second@somewhere.com}{1}}
-\thanksnewlabel{e1@email}{{joshuav@jhu.edu}{1}}
-\thanksnewlabel{e3@email}{{liam@stat.columbia.edi}{1}}
+\thanksnewlabel{e1@email}{{y@somewhere.com}{1}}
+\thanksnewlabel{e2@email}{{joshuav@jhu.edu}{1}}
+\thanksnewlabel{e3@email}{{liam@stat.columbia.edu}{1}}
 \thanksnewlabel{u1@fullurl}{{http://www.foo.com}{1}}
 \thanksnewlabel{t1thanks}{{\ensuremath  {*}}{1}}
 \thanksnewlabel{t2thanks}{{\ensuremath  {\dagger }}{1}}
@@ -45,7 +45,7 @@
 \newlabel{eqn:F:definition}{{5}{4}}
 \citation{Vogelstein2009}
 \citation{Rigat06}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces I'm gonna modify this fig, to show 2 traces with spikes recorded using e-phys as well, show inferred calcium too maybe (superimposed on fluorescence). this seems like the ``right'' thing to do here, to convince the reader that our model is good. I'll explain in the caption how the parameters were estimated (using the true spikes), to get photon budget.}}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Both a low and high noise simulation showing typical relationships between spike trains and observations. Note that both panels have the same underlying spike train. Simulation parameters: $k_i=0.7$, $C_i^b=1$ $\mu $M, $\tau ^c_i=500$ msec, $A_i=50$ $\mu $M, $\sigma ^c_i=0.1$ $\mu $M, $\alpha =2$, $\beta =0$, $\gamma =0.004, \tmspace  +\thinmuskip {.1667em} 0.016$ (left panel, right panel, respectively), $\sigma ^F_i=0$. $\Delta =1/60$ Hz.}}{5}}
 \newlabel{fig:example_traces}{{2}{5}}
 \newlabel{sec:methods:goal}{{2.2}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Goal and general strategy}{5}}
@@ -103,68 +103,76 @@
 \newlabel{fig:data_schematic}{{3}{12}}
 \citation{Vogelstein2009}
 \citation{ImagingManual,HelmchenSakmann96,BrenowitzRegehr07}
+\citation{PAN03d}
 \newlabel{eqn:convert:leadin-2}{{15}{13}}
 \newlabel{eqn:convert:leadin-3}{{17}{13}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of simulation parameters. $\@mathcal {E}(\lambda )$ indicates an exponential distribution with mean $\lambda $, and $\@mathcal {N}_p(\mu ,\sigma ^2)$ indicates a normal distribution with mean $\mu $ and variance $\sigma ^2$, truncated at lower bound $p\mu $. Units (when applicable) are given with respect to mean values (i.e., units are squared for variance).}}{13}}
-\newlabel{table:caparm}{{1}{13}}
 \newlabel{sec:results}{{3}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{13}}
-\citation{PAN03d}
-\newlabel{sec:results:inference}{{3.1}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Inferring functional connectivity from simulated calcium imaging data}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Functional connectivity matrix can be reconstructed from calcium imaging data. Inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using factorized approximation, exact embedded-chain-within-blockwise-Gibbs approach, and spike trains down-sampled to the frame rate of the calcium imaging. A network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for 10 min at intermediate SNR (photon budget 10 Kph/neuron/frame; see below). The factorized approximation had an $r^2=0.47$, as compared with the embedded-chain-within-blockwise-Gibbs method's $r^2=0.48$, and $r^2=0.57$ for down-sampled spike trains. The inferred connectivity show a clear scale error (left panel), which we correct using our theoretical scale correction factor (right panel; see Section 3.2\hbox {} for details).}}{14}}
-\newlabel{fig:scatters}{{4}{14}}
-\newlabel{sec:scale}{{3.2}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Impact of coarse time discretization of calcium imaging data and scale factor of inferred connection weights}{14}}
-\newlabel{eqn:scale:leadin-1}{{19}{15}}
-\newlabel{eqn:scale:leadin-1}{{20}{15}}
-\newlabel{eqn:scale:leadin-2}{{21}{15}}
-\newlabel{eqn:bias}{{22}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The low-frame rate of calcium imaging can explain the scale factor in inferred connectivity weights in Figure 4\hbox {}. Theoretically, scale factor may be evaluated by calculating what fraction of spikes from two neurons would occur within a single time-bin of width $\Delta $ (c.f. Eq.\nobreakspace  {}\textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 23\hbox {}\unskip \@@italiccorr )}}). Plotted such theoretically calculated scale factor (line) vs. that observed empirically from our simulations (box), from a simulation of $N=25$ neurons, $T=10$ min. The error-bars correspond to 95\% confidence intervals for scale factor estimate.}}{16}}
-\newlabel{fig:bias}{{5}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Incorporating simple priors on the distribution of connectivity weights, such as exponential sparseness prior, is essential to achieve much more accurate reconstructions from a smaller amount of calcium imaging data. Shown here is the distribution of inferred connection weights using GLM (left) and sparse GLM (right) vs. true distributions. When sparse exponential prior is enforced, dispersion in inferred connection weights is substantially reduced and, in particular, it becomes possible to reliably determine which neural pairs are connected, and which neurons are excitatory or inhibitory. Distributions are shown for a network of $N=200$ neurons, firing at $\approx 5$ Hz, and imaged for $T=600$ sec.}}{16}}
-\newlabel{fig:distros}{{6}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Impact of using priors on the inference}{16}}
+\newlabel{sec:results:inference}{{3.1}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Inferring functional connectivity from simulated calcium imaging data}{13}}
+\newlabel{sec:scale}{{3.2}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Impact of coarse time discretization of calcium imaging data and scale factor of inferred connection weights}{13}}
+\newlabel{eqn:SS}{{19}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of simulation parameters. $\@mathcal {E}(\lambda )$ indicates an exponential distribution with mean $\lambda $, and $\@mathcal {N}_p(\mu ,\sigma ^2)$ indicates a normal distribution with mean $\mu $ and variance $\sigma ^2$, truncated at lower bound $p\mu $. Units (when applicable) are given with respect to mean values (i.e., units are squared for variance).}}{14}}
+\newlabel{table:caparm}{{1}{14}}
+\citation{Vogelstein2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Functional connectivity matrix can be reconstructed from calcium imaging data. Inferred connection weights are shown in a scatter plot versus real connection weights, with inference performed using factorized approximation, exact embedded-chain-within-blockwise-Gibbs approach, and spike trains down-sampled to the frame rate of the calcium imaging. A network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for 10 min at intermediate SNR (photon budget 10 Kph/neuron/frame; see below). The factorized approximation had an $r^2=0.47$, as compared with the embedded-chain-within-blockwise-Gibbs method's $r^2=0.48$, and $r^2=0.57$ for down-sampled spike trains. The inferred connectivity show a clear scale error (left panel), which we correct using our theoretical scale correction factor (right panel; see Section 3.2\hbox {} for details).}}{15}}
+\newlabel{fig:scatters}{{4}{15}}
+\newlabel{eqn:SS_d}{{20}{15}}
+\newlabel{eqn:bias}{{21}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Impact of using priors on the inference}{15}}
 \citation{NguyenParker01,ReddySaggau05,Iyer06,SalomeBourdieu06,ReddySaggau08}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Connection weights reconstructed using GLM (left panel) or sparse-prior GLM (right panel) are shown in a scatter plot for a network of $N=50$ neurons, firing at $\approx 5$ Hz, and imaged for $T=600$ sec. $r^2=0.64$ for simple GLM and $r^2=0.85$ for sparse-GLM.}}{17}}
-\newlabel{fig:sparse}{{7}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Accuracy of the inferred connectivity as function of the frame rate of calcium imaging. Connectivity matrix here was inferred from the original spike trains observed at corresponding frame rates, thus establishing the upper performance bound on the inference from calcium imaging data. A network of $N=25$ neurons, firing at $\approx 5$ Hz and imaged for $T=600$ sec was to generate this plot.}}{17}}
-\newlabel{fig:recvar}{{8}{17}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Impact of different imaging frame rates, noise levels, and durations on the estimator accuracy}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The low-frame rate of calcium imaging can explain the scale factor in inferred connectivity weights in Figure 4\hbox {}. Theoretically, scale factor may be evaluated by calculating what fraction of spikes from two neurons would occur within a single time-bin of width $\Delta $ (c.f. Eq.\nobreakspace  {}\textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 21\hbox {}\unskip \@@italiccorr )}}). Plotted such theoretically calculated scale factor (line) vs. that observed empirically from our simulations (box), from a simulation of $N=25$ neurons, $T=10$ min. The error-bars correspond to 95\% confidence intervals for scale factor estimate.}}{16}}
+\newlabel{fig:bias}{{5}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Impact of experimental factors on estimator accuracy}{16}}
 \citation{Vogelstein2009}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Accuracy of inferred connectivity as function of the noise amount in the calcium imaging data, as quantified by photon budget, per neuron-frame, for frame rates of 15 Hz, 33 Hz and 66 Hz. Photon counts on the order of 10-20 Kph/frame/neuron are required to achieve the upper bound due by the frame rate. Connectivity matrix here was inferred from simulated fluorescence data using factorized approximation algorithm. Simulation conditions are the same as in Figure 8\hbox {}. Vertical black lines correspond to the two example traces in Figure 2\hbox {}.}}{18}}
-\newlabel{fig:recvar-SNR}{{9}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Accuracy of inferred connectivity as function of the imaging time and neural population size. Incorporating simple priors such as exponential sparseness prior allows to boost dramatically the reconstruction's quality (dashed lines). In this latter case, $T=300$ sec is already sufficient to recover 70\% of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). As shown in the methods, reconstruction accuracy does not depend on the neural population size $N$. Here, neural population from $N=10$ to $N=200$ were simulated for different $T$, where $N=200$ (gray) and $N=100$ (black) are shown. All networks were prepared in similar state by adjusting strength of inhibitory connections to achieve similar mean firing rate $\approx 5$ Hz, although actual firing rate could vary. }}{19}}
-\newlabel{fig:recvar-NT}{{10}{19}}
-\newlabel{sec:methods:accuracy_Fisher}{{3.5}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{19}}
-\newlabel{eqn:fisher-glm}{{24}{19}}
-\newlabel{eqn:fisher-def}{{25}{19}}
-\newlabel{eqn:fisher}{{26}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Impact of strong correlations and deviations from generative model on the inference}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  Diverseness of observed neural activity patterns is required for functional connectivity to give access to the actual ``anatomical'' structure of the neural circuit. Here, 15 sec of simulated spike trains for a weakly coupled network (upper-left) and a network with strongly coupled component (upper-right) are shown. In weakly coupled network spikes are sufficiently uncorrelated to give access to all different neural activity patterns needed to properly estimate true weights ${\bf  w}_i$. In strongly coupled case, many instances of highly synchronous locked firings are evident, thus preventing observation of sufficiently rich ensemble of activity patterns. Accordingly, GLM solution for the strongly coupled neural network (lower-right) does not represent the true connectivity of the circuit, even for the weakly coupled component. This is contrary to the weakly-coupled network (lower-left) where true connectivity is successfully obtained. Networks of $N=50$ neurons firing at $\approx 5$ Hz and imaged for $T=600$ sec were used to produce this figure.}}{21}}
-\newlabel{fig:rasters}{{11}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Connection weights reconstructed using no prior ($r^2=0.64$; left panel) and a sparse prior ($r^2=0.85$; right panel) are shown in a scatter plot for a network of $N=50$ neurons, firing at $\approx 5$ Hz, and imaged for $T=10$ min. Clearly, the sparse prior reduces the relative error, as indicated by comparing the relative distance between the data points (black dots) to the best linear fit (black line), across the two panels. }}{17}}
+\newlabel{fig:sparse}{{6}{17}}
+\newlabel{sec:methods:accuracy_Fisher}{{3.5}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Accuracy of the estimates and Fisher information matrix}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Imposing a sparse prior on the distribution of connectivity weights, facilitates improving the inferred weights given the same amount of data. Shown here is the distribution of inferred connection weights using no prior (left panel) and a sparse prior (right panel) vs. true distributions. When the sparse prior is enforced, the appropriate number of connected pairs is identified (black lines), as well as the correct distribution of excitatory and inhibitory weights (red and blue lines, respectively). Distributions are shown for a network of $N=200$ neurons, firing at $\approx 5$ Hz, and imaged for $T=10$ min.}}{18}}
+\newlabel{fig:distros}{{7}{18}}
+\newlabel{eqn:fisher-glm}{{23}{18}}
+\newlabel{eqn:fisher-def}{{25}{18}}
+\newlabel{eqn:fisher}{{26}{18}}
+\citation{Nykamp05,NYK06}
+\citation{Vidne08}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Accuracy of the inferred connectivity as function of the frame rate of calcium imaging. A network of $N=25$ neurons, firing at $\approx 5$ Hz and imaged for $T=10$ min was simulated, and weights were inferred. At $100$ Hz, $r^2$ using calcium imaging data reached the same level of accuracy as using the true spike trains from this simulation, indicating the further improvement could not be achieved by a further increase in frame rate.}}{19}}
+\newlabel{fig:recvar}{{8}{19}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Impact of strong correlations and deviations from generative model on the inference}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Accuracy of inferred connectivity as function of the noise amount in the calcium imaging data, as quantified by (i) eSNR and (ii) thousands of photons, per frame, per neuron (Kph/frame/neuron), for frame rates of 1, 5, 10, 15, 33, and 66 Hz. Photon counts on the order of $10$--$20$ Kph/frame/neuron are required to achieve the upper bound determined by the frame rate. The connectivity matrix here was inferred from simulated fluorescence data using factorized approximation algorithm and the sparse prior. Simulation conditions are the same as in Figure 8\hbox {}. Vertical black lines correspond to the two example traces in Figure 2\hbox {}.}}{20}}
+\newlabel{fig:recvar-SNR}{{9}{20}}
+\citation{PAN03c, TRUC05}
+\citation{HarrisBuzsaki00, WoodBlack08}
 \citation{Rigat06}
+\citation{Roxin08}
 \citation{Vogelstein2009}
-\citation{Rigat06}
-\citation{Vogelstein2009}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Bayesian inference algorithm is robust to deviations of the data from our generative model. One such deviation, that should be expected in real data, is variability in the EPSP time courses from neuron to neuron, and possibly synapse to synapse. With up to 25\% variability allowed in EPSP time scales $\tau ^h$ (right panel) our algorithm provided reconstructions of almost the same quality as when all $\tau ^h$ were the same (left panel). Simulation conditions are the same as in Figure 8\hbox {}.}}{22}}
-\newlabel{fig:vartau}{{12}{22}}
-\newlabel{sec:discussion}{{4}{22}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{22}}
-\citation{emory, liam, Garofalo, Vakorina, etc.}
-\citation{Duane 1 and 2, liam}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Accuracy of inferred connectivity as function of the imaging time and neural population size. Incorporating a sparse prior dramatically increases the reconstruction's quality (dashed lines), over the no prior assumption (solid lines), given the same experimental duration. When the sparse prior is imposed, $T=5$ min is already sufficient to recover $70\%$ of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). Furthermore, reconstruction accuracy does not depend on the neural population size, $N$. Here, neural population from $N=10$ to $N=200$ were simulated for different $T$, $N=100$ and $200$ are shown (black and gray, respectively). Inhibitory weights for networks of different sizes were chosen to ensure mean firing rate $\approx 5$ Hz, although actual firing rate varied somewhat.}}{21}}
+\newlabel{fig:recvar-NT}{{10}{21}}
+\newlabel{sec:discussion}{{4}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  Diverseness of observed neural activity patterns is required for functional connectivity to give access to the actual ``anatomical'' structure of the neural circuit. Here, 15 sec of simulated spike trains for a weakly coupled network (top left panel) and a network with strongly coupled component (top right panel) are shown. In weakly coupled networks, spikes are sufficiently uncorrelated to give access to enough different neural activity patterns to estimate the weights ${\bf  w}$. In a strongly coupled case, many highly synchronous events are evident (top right panel), thus preventing observation of sufficiently rich ensemble of activity patterns. Accordingly, the connectivity estimates for the strongly coupled neural network (bottom right panel) does not represent the true connectivity of the circuit, even for the weakly coupled component. This is contrary to the weakly-coupled network (bottom left panel) where true connectivity is successfully obtained. Networks of $N=50$ neurons firing at $\approx 5$ Hz and imaged for $T=10$ min were used to produce this figure.}}{22}}
+\newlabel{fig:rasters}{{11}{22}}
+\citation{Vidne08}
+\citation{Vidne08}
+\citation{Deisseroth05,SzobotaIsacoff07}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces  Inference is robust to deviations of the data from our generative model. One such deviation, that should be expected in real data, is variability in the PSP time courses from neuron to neuron, and possibly synapse to synapse. With up to $25\%$ variability allowed in PSP time scales $\tau _h$ (right panel), our algorithm provided reconstructions of almost the same quality as when all $\tau _h$'s were the same (left panel). Simulation conditions were the same as in Figure 8\hbox {}.}}{23}}
+\newlabel{fig:vartau}{{12}{23}}
+\citation{Vogelstein08}
+\citation{Pan08b}
+\citation{Vogelstein08}
 \citation{Ishwaran99,Gamerman97,Gamerman98,Yashar08}
 \bibdata{mybib}
 \bibcite{Abeles91}{Abeles, 1991}
 \bibcite{Yashar08}{Ahmadian et\nobreakspace  {}al., 2009}
 \bibcite{Andrieu2007}{Andrieu et\nobreakspace  {}al., 2007}
 \bibcite{BickelBengtsson08}{Bickel et\nobreakspace  {}al., 2008}
-\@writefile{toc}{\contentsline {section}{Acknowledgements}{24}}
-\@writefile{toc}{\contentsline {section}{References}{24}}
 \bibcite{Binzegger04}{Binzegger et\nobreakspace  {}al., 2004}
 \bibcite{CONV04}{Boyd and Vandenberghe, 2004}
+\bibcite{Deisseroth05}{Boyden et\nobreakspace  {}al., 2005}
 \bibcite{Braitenberg1998}{Braitenberg and Schuz, 1998}
+\@writefile{toc}{\contentsline {section}{Acknowledgements}{24}}
+\@writefile{toc}{\contentsline {section}{References}{24}}
 \bibcite{BrenowitzRegehr07}{Brenowitz and Regehr, 2007}
 \bibcite{Briggman2006}{Briggman and Denk, 2006}
 \bibcite{BRIL88}{Brillinger, 1988}
@@ -187,6 +195,7 @@
 \bibcite{GreenbergKerr08}{Greenberg et\nobreakspace  {}al., 2008}
 \bibcite{Gupta00}{Gupta et\nobreakspace  {}al., 2000}
 \bibcite{HARR03}{Harris et\nobreakspace  {}al., 2003}
+\bibcite{HarrisBuzsaki00}{Harris et\nobreakspace  {}al., 2000}
 \bibcite{HATS98}{Hatsopoulos et\nobreakspace  {}al., 1998}
 \bibcite{HelmchenSakmann96}{Helmchen et\nobreakspace  {}al., 1996}
 \bibcite{Ishwaran99}{Ishwaran, 1999}
@@ -206,7 +215,10 @@
 \bibcite{NG04}{Ng, 2004}
 \bibcite{NguyenParker01}{Nguyen et\nobreakspace  {}al., 2001}
 \bibcite{NYK06}{Nykamp, 2007}
+\bibcite{Nykamp05}{Nykamp, 2005}
+\bibcite{PAN03c}{Paninski, 2003}
 \bibcite{PAN04c}{Paninski, 2004}
+\bibcite{Pan08b}{Paninski et\nobreakspace  {}al., 2009}
 \bibcite{PAN03d}{Paninski et\nobreakspace  {}al., 2004}
 \bibcite{PetersenSakmann00}{Petersen and Sakmann, 2000}
 \bibcite{Petrusca07}{Petrusca et\nobreakspace  {}al., 2007}
@@ -220,6 +232,7 @@
 \bibcite{Reyes98}{Reyes et\nobreakspace  {}al., 1998}
 \bibcite{Rigat06}{Rigat et\nobreakspace  {}al., 2006}
 \bibcite{RC05}{Robert and Casella, 2005}
+\bibcite{Roxin08}{Roxin et\nobreakspace  {}al., 2008}
 \bibcite{SalomeBourdieu06}{Salome et\nobreakspace  {}al., 2006}
 \bibcite{Santhanam06}{Santhanam et\nobreakspace  {}al., 2006}
 \bibcite{Sayer1990}{Sayer et\nobreakspace  {}al., 1990}
@@ -230,12 +243,14 @@
 \bibcite{Stevenson08}{Stevenson et\nobreakspace  {}al., 2008}
 \bibcite{Stevenson2009}{Stevenson et\nobreakspace  {}al., 2009}
 \bibcite{StosiekKonnerth03}{Stosiek et\nobreakspace  {}al., 2003}
+\bibcite{SzobotaIsacoff07}{Szobota et\nobreakspace  {}al., 2007}
 \bibcite{Thompson88}{Thompson et\nobreakspace  {}al., 1988}
 \bibcite{Tibs96}{Tibshirani, 1996}
 \bibcite{TIP01}{Tipping, 2001}
 \bibcite{TRUC05}{Truccolo et\nobreakspace  {}al., 2005}
 \bibcite{Tsien89}{Tsien, 1989}
 \bibcite{Vidne08}{Vidne et\nobreakspace  {}al., 2009}
+\bibcite{Vogelstein08}{Vogelstein et\nobreakspace  {}al., 2008}
 \bibcite{Vogelstein2009}{Vogelstein et\nobreakspace  {}al., 2009}
 \bibcite{WallaceHasan08}{Wallace et\nobreakspace  {}al., 2008}
 \bibcite{YaksiFriedrich06}{Yaksi and Friedrich, 2006}

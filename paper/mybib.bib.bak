@@ -311,6 +311,14 @@
   year = {2009}
 }
 
+@ARTICLE{Yashar08,
+  author = {Ahmadian, Y. and Pillow, J. and Paninski, L.},
+  title = {Efficient {Markov Chain Monte Carlo} methods for decoding population
+	spike trains.},
+  journal = {Under review, Neural Computation},
+  year = {2009}
+}
+
 @ARTICLE{Ahmadian-Cosyne09,
   author = {Ahmadian, Y. and Pillow, J. and Shlens, J. and Chichilnisky, E.J.
 	and Simoncelli, E. and Paninski, L.},
@@ -4557,7 +4565,7 @@
 	of power of two branches equals a power of third branch},
   abstract = {Background: Axon calibers vary widely among different animals, neuron
 	classes, and even within the same neuron. What determines the diameter
-	of axon branches? 
+	of axon branches?
 	
 	Results: We pursue the hypothesis that the axon caliber has evolved
 	to minimize signal propagation delays, while keeping arbor volume
@@ -8113,6 +8121,27 @@
   number = {1}
 }
 
+@ARTICLE{Gamerman98,
+  author = {Gamerman, Dani},
+  title = {Markov Chain Monte Carlo for Dynamic Generalised Linear Models},
+  journal = {Biometrika},
+  year = {1998},
+  volume = {85},
+  pages = {215--227},
+  number = {1}
+}
+
+@ARTICLE{Gamerman97,
+  author = {Gamerman, Dani},
+  title = {Sampling from the posterior distribution in generalized linear mixed
+	models},
+  journal = {Statistics and Computing},
+  year = {1997},
+  volume = {7},
+  pages = {57--68},
+  number = {1}
+}
+
 @ARTICLE{Gamerman97,
   author = {Gamerman, Dani},
   title = {Sampling from the posterior distribution in generalized linear mixed
@@ -9542,6 +9571,20 @@
   year = {2003},
   volume = {424},
   pages = {552--556}
+}
+
+@ARTICLE{HarrisBuzsaki00,
+  author = {Harris,  K. D.  and  Henze,  D. A. and Csicsvari,  J. and Hirase,
+	 H. and  Buzsaki,  G.},
+  title = {Accuracy of tetrode spike  separation as determined by simultaneous
+	intracellular and extracellular measurements},
+  journal = {Journal of Neurophysiology},
+  year = {2000},
+  volume = {81},
+  pages = {401--414},
+  number = {1},
+  owner = {joshyv},
+  timestamp = {2009.08.26}
 }
 
 @MISC{Harris|2007|a,
@@ -11176,6 +11219,16 @@
   pages = {580-623},
   owner = {gmyuriy},
   timestamp = {2009.06.18}
+}
+
+@ARTICLE{Ishwaran99,
+  author = {Hemant Ishwaran},
+  title = {Applications of hybrid {Monte Carlo to Bayesian} generalized linear
+	models: quasicomplete separation and neural networks},
+  journal = {Journal of Computational and Graphical Statistics},
+  year = {1999},
+  volume = {8},
+  pages = {779--799}
 }
 
 @ARTICLE{Ishwaran99,
@@ -13796,7 +13849,7 @@
 	in time, which can be solved efficiently by the algorithm presented
 	here. The rate equations are valid for any network topology under
 	the assumption that the tubes are thin in comparison to their lengths
-	and the radii of the containers, aij â‰ª Ri,Rj , lij . Under these
+	and the radii of the containers, aij â‰ª Ri,Rj , lij Under these
 	assumptions the containers can be considered ideally mixed at all
 	times and transport through the tubes is one-dimensional. These assumptions
 	were verified numerically. The workings of the method have been demonstrated
@@ -20040,6 +20093,15 @@
   pages = {733--764}
 }
 
+@ARTICLE{Rigat06,
+  author = {Rigat, F. and de Gunst, M. and van Pelt, J.},
+  title = {Bayesian modelling and analysis of spatio-temporal neuronal networks},
+  journal = {Bayesian Analysis},
+  year = {2006},
+  volume = {1},
+  pages = {733--764}
+}
+
 @ARTICLE{RinbergGroisman05,
   author = {Rinberg, D. and Simonnet, C. and Groisman, A.},
   title = {Pneumatic capillary gun for ballistic delivery of microparticles},
@@ -21997,13 +22059,6 @@
 }
 
 @BOOK{ShumwayStoffer06,
-  title = {Time Series Analysis and Its Applications},
-  publisher = {Springer},
-  year = {2006},
-  author = {Shumway, R. and Stoffer, D.}
-}
-
-@BOOK{ShumwayStoffer06,
   title = {{Time Series Analysis and Its Applications}},
   publisher = {Springer},
   year = {2006},
@@ -22012,6 +22067,13 @@
   edition = {2nd},
   owner = {joshuav},
   timestamp = {2007.11.02}
+}
+
+@BOOK{ShumwayStoffer06,
+  title = {Time Series Analysis and Its Applications},
+  publisher = {Springer},
+  year = {2006},
+  author = {Shumway, R. and Stoffer, D.}
 }
 
 @ARTICLE{Shuryak|1980|,
@@ -23756,6 +23818,21 @@
   pages = {219--248}
 }
 
+@ARTICLE{SzobotaIsacoff07,
+  author = {Szobota, S. and Gorostiza, P and Del Bene, F. and Wyart, C and Fortin,
+	D. L. and Kolstad, K. D. and Tulyathan, O. and Volgraf, M and Numano,
+	R. and Aaron, H. L. and Scott, E. K. and Kramer, R. H. and Flannery,
+	J. and Baier, H. and Trauner, D. and Isacoff, E. Y.},
+  title = {Remote Control of Neuronal Activity with a Light-Gated Glutamate
+	Receptor},
+  journal = {Neuron},
+  year = {2007},
+  volume = {54},
+  pages = {535--545},
+  owner = {joshyv},
+  timestamp = {2009.08.26}
+}
+
 @ARTICLE{TAL95,
   author = {Talagrand, M.},
   title = {Concentration of measure and isoperimetric inequalities in product
@@ -25259,6 +25336,18 @@
   publisher = {SIAM},
   year = {1990},
   author = {Wahba, G.}
+}
+
+@BOOK{WainwrightJordan08,
+  title = {{Graphical Models, Exponential Families, and Variational Inference.}},
+  year = {2008},
+  author = {Wainwright, M.J. and Jordan, M.I.},
+  volume = {1},
+  number = {1-2},
+  pages = {1-305},
+  journal = {Foundations and Trends in Machine Learning},
+  owner = {joshyv},
+  timestamp = {2009.08.04}
 }
 
 @ARTICLE{WallaceHasan08,

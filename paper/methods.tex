@@ -42,19 +42,12 @@ n_i(t)+\sigma^c_i \sqrt{\Delta} \epsilon^c_i(t), \\ F_i(t) &= \alpha_i
 S(C_i(t)) + \beta_i + \sqrt{\gamma_i S(C_i(t)) + \sigma^F_i}
 \epsilon^F_i(t). \label{eqn:F:definition}
 \end{align}
-This model can be interpreted as a simple driven autoregressive process: under nonspiking conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$, driven by normally-distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$. Whenever the neuron fires a spike, $n_i(t)=1$, the calcium variable $C_i(t)$ jumps by a fixed amount $A_i$, and subsequently decays with time constant $\tau^c_i$. The fluorescence signal $F_i(t)$ corresponds to the count of photons collected at the detector per neuron per imaging frame. This photon count may be modeled with normal statistics, with the mean given by a scaled and shifted Hill function $S(C)=C/(C+K_d)$ \cite{Yasuda2004} and the variance proportional to the mean (which follows from assuming the Poisson statistics of the photon counts are well approximated with Normal distribution; see \cite{Vogelstein2009} for further discussion. Because the parameter $K_d$ effectively acts as a simple scale factor, and is a property of the fluorescent indicator, we assume throughout this work that it is known. Figure \ref{fig:example_traces} shows that this calcium-observation model, Eqs.~\eqref{eqn:ca:definition} -- \eqref{eqn:F:definition}, captures the statistics of calcium imaging well.
-
+This model can be interpreted as a simple driven autoregressive process: under nonspiking conditions, $C_i(t)$ fluctuates around the baseline level of $C_i^b$, driven by normally-distributed noise $\epsilon^c_i(t)$ with standard deviation $\sigma^c_i \sqrt{\Delta}$. Whenever the neuron fires a spike, $n_i(t)=1$, the calcium variable $C_i(t)$ jumps by a fixed amount $A_i$, and subsequently decays with time constant $\tau^c_i$. The fluorescence signal $F_i(t)$ corresponds to the count of photons collected at the detector per neuron per imaging frame. This photon count may be modeled with normal statistics, with the mean given by a scaled and shifted Hill function $S(C)=C/(C+K_d)$ \cite{Yasuda2004} and the variance proportional to the mean (which follows from assuming the Poisson statistics of the photon counts are well approximated with Normal distribution; see \cite{Vogelstein2009} for further discussion. Because the parameter $K_d$ effectively acts as a simple scale factor, and is a property of the fluorescent indicator, we assume throughout this work that it is known. Figure \ref{fig:example_traces} shows a couple examples depicting the relationship between spike trains and observations.
 
 \begin{figure}
 \centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/example_traces}
-\end{minipage}
-\centering
-\begin{minipage}[c]{0.45\hsize}
-\includegraphics[width=\hsize]{../figs/example_traces}
-\end{minipage}
-\caption{I'm gonna modify this fig, to show 2 traces with spikes recorded using e-phys as well, show inferred calcium too maybe (superimposed on fluorescence).  this seems like the ``right'' thing to do here, to convince the reader that our model is good. I'll explain in the caption how the parameters were estimated (using the true spikes), to get photon budget.}
+\includegraphics[width=\hsize]{../figs/sim_examples}
+\caption{Both a low and high noise simulation showing typical relationships between spike trains and observations. Note that both panels have the same underlying spike train. Simulation parameters: $k_i=0.7$, $C_i^b=1$ $\mu$M, $\tau^c_i=500$ msec, $A_i=50$ $\mu$M, $\sigma^c_i=0.1$ $\mu$M,  $\alpha=2$, $\beta=0$, $\gamma=0.004, \, 0.016$ (left panel, right panel, respectively), $\sigma^F_i=0$.  $\Delta=1/60$ Hz.}
 \label{fig:example_traces}
 \end{figure}
 
@@ -221,18 +214,18 @@ As emphasized above, the parallel nature of these EM steps is essential for maki
 
 \subsection{Simulating a neural population} \label{sec:results:simulations}
 
-To test the described method for inferring functional connectivity from calcium imaging data, we simulated networks (according to our model, Eqs.~\eqref{eqn:glm:definition} -- \eqref{eqn:F:definition}) of spontaneously firing randomly connected neurons. Although simulations ran at $1$ msec time discretization, imaging rate was assumed to be much slower: $5$ -- $200$ Hz. Simulations lasted anywhere between 5 minutes and 1 hours (of simulated time). 
+To test the described method for inferring functional connectivity from calcium imaging data, we simulated networks (according to our model, Eqs.~\eqref{eqn:glm:definition} -- \eqref{eqn:F:definition}) of spontaneously firing randomly connected neurons. Although simulations ran at $1$ msec time discretization, imaging rate was assumed to be much slower: $5$--$200$ Hz. Simulations lasted anywhere between 5 minutes and 1 hours (of simulated time). 
 
 Model parameters were chosen based on experimental data available in the literature for cortical neural networks \cite{Braitenberg1998,Urquijo2000,Lefort2009,Sayer1990}. More specifically, the network contained 80\% of excitatory and 20\% inhibitory neurons \cite{Braitenberg1998,Urquijo2000}, each respecting Dale's law. Neurons were randomly connected to each other with probability $0.1$ \cite{Braitenberg1998,Lefort2009}. Synaptic weights for excitatory connections, as defined by EPSP peak amplitude, were randomly drawn from exponential distribution with the mean of $0.5 \mu V$ \cite{Lefort2009,Sayer1990}. Inhibitory connections were also drawn from exponential distribution; their strengths chosen so as to balance excitatory and inhibitory currents in the network, and achieve an average firing rate of $\approx 5 $ Hz \cite{Abeles91}. Practically, this meant that the mean strength of inhibitory connections was about 10 times larger than that of the excitatory connections. PSP shapes were modeled as an alpha function \cite{Koch99}, by differencing two exponentials, corresponding to a sharp rise and relatively slow decay \cite{Sayer1990}. We neglected conduction delays, given that the time delay below $\sim 1$ msec expected in local cortical circuit was smaller than the time step of our computer simulation. Each neuron also had an exponential refractory current \cite{Koch99}.
 
-Note that EPSP peak amplitudes cannot be used directly in Eq.~\eqref{eqn:glm:definition}, as synaptic weightw in our model --- $\{w_{ij}\}_{i,j \leq N}$ in Eq.~\eqref{eqn:glm:definition} --- is a dimensionless quantity representing the change in the spiking probability of neuron $i$ given neuron $j$ fired; whereas EPSP peak amplitude describes physiologically measured change in the membrane voltage of a neuron due to synaptic currents triggered by spike in neuron $j$. We must therefore find a way to relate the two.
+Note that EPSP peak amplitudes cannot be used directly in Eq.~\eqref{eqn:glm:definition}, as a synaptic weight in our model --- $w_{ij}$ in Eq.~\eqref{eqn:glm:definition} --- is a dimensionless quantity representing the change in the spiking probability of neuron $i$ given neuron $j$ fired; whereas EPSP peak amplitude describes physiologically measured change in the membrane voltage of a neuron due to synaptic currents triggered by spike in neuron $j$. We must therefore find a way to relate the two.
 
 Consider the above model for spiking, Eqs.~\eqref{eqn:glm:definition} -- \eqref{eqn:h:definition}.  Let $\delta P$ be the difference between the probability of neuron $i$ spiking given that neuron $j$ spiked in the previous time bin, $P[n_i(t)=1 | n_j(t-\Delta)=1]$, and the probability of neuron $i$ spiking given that neuron $j$ did \emph{not} spike in the previous time bin, $P[n_i(t) | n_j(t-\Delta)=0]$:
 \begin{align}\label{eqn:convert:leadin-2}
 \delta P &= P[n_i(t)=1 | n_j(t-\Delta)=1] - P[n_i(t)=1 | n_j(t-\Delta)=0] \nonumber
-\\ &= \exp[-e^{b_i+w_{ij}}\Delta]-\exp[-e^{b_i}\Delta]
+\\ &= \exp[-e^{b_i+w_{ij}\tau_w}\Delta]-\exp[-e^{b_i}\Delta]
 \end{align}
-Now consider a simple, stochastic, integrate-and-fire neuron, with baseline voltage zero, spiking threshold one, EPSP amplitude $V_E$, and variance $\sigma_v^2$:
+\noindent where $\tau_w$ accounts for the decay time constant of the spike history term.   Now consider a simple, stochastic, integrate-and-fire neuron, with baseline voltage zero, spiking threshold one, EPSP amplitude $V_E$, and variance $\sigma_v^2$:
 \begin{align}
 	V_i(t) &= V_i(t-\Delta) + V_E \delta(n_j(t-\Delta)) + \sigma_v \sqrt{\Delta} \varepsilon_i(t), \qquad &\text{if } V_i(t)<1 \nonumber
 \\	V_i(t) &= 0 &\text{if } V_i(t)\geq 1 
@@ -244,9 +237,9 @@ In such a model, we again write $\delta P$:
 \end{align}
 A little algebra yields:
 \begin{align}
-	w_{ij}= \ln \left[ -\frac{1}{\Delta} \ln \left[g(V_E)+ \exp\left(-\text{e}^{b_i}\Delta\right)\right]\right]-b_i
+	w_{ij}= \frac{1}{\tau_w}\left(\ln \left[ -\frac{1}{\Delta} \ln \left[g(V_E)+ \exp\left(-\text{e}^{b_i}\Delta\right)\right]\right]-b_i\right)
 \end{align}
-which we used to obtain $\bw$. 
+which we used to obtain $\bw$ from the above mentioned parameters. 
 % So, writing $w_{ij}$ as a function of our integrate and fire model, and plugging it back into Eq.~\eqref{eqn:glm:definition}, we say:
 % \begin{equation}\label{eqn:convert}
 % \w_{ij}\approx\ln(-\ln(e^{-r_i\tau^h}-V_E/V_b)/r_i\tau^h).
@@ -279,8 +272,11 @@ Calcium std. $\sigma_c$ & $\sim \mathcal{N}_{0.4}(28,10)$ & $\mu$M\\
 Calcium jump after spike, $A_c$ &  $\sim \mathcal{N}_{0.4}(80,20)$ & $\mu$M\\
 Calcium baseline, $C_b$ & $\sim \mathcal{N}_{0.4}(24,8)$ & $\mu$M\\
 Calcium decay time, $\tau_c$ & $\sim \mathcal{N}_{0.4}(200,60)$ & msec\\
-Mean photon budget $\alpha_c$ & $1$--$80$ & Kph/neuron/frame \\
 Dissociation constant, $K_d$ & $200$ & $\mu$M \\
 \hline
+Mean photon budget, $\alpha$ & $1$--$80$ & Kph \\
+Baseline fluorescence, $\beta$ & $XXX$ & XXX \\
+Signal-dependent noise, $\gamma$ & $XXX$ & XXX \\
+Signal-independent noise, $\sigma^F$ & $XXX$ & XXX \\
 \end{tabular}
 \end{table}
