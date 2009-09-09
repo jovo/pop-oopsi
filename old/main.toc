@@ -1,0 +1,22 @@
+\tocdepth@munge 
+\contentsline {section}{\numberline {}Contents}{1}{}
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}Motivation}{1}{}
+\contentsline {section}{\numberline {II}Methods}{2}{}
+\contentsline {subsection}{\numberline {A}Model}{2}{}
+\contentsline {subsection}{\numberline {B}Goal and general strategy}{3}{}
+\contentsline {subsection}{\numberline {C}Estimating marginal posteriors over independent neurons using SMC, and learning their parameters}{4}{}
+\contentsline {subsection}{\numberline {D}Estimating joint posteriors over weakly coupled neurons}{5}{}
+\contentsline {subsubsection}{\numberline {1}Independent assumption for approximating the joint posteriors}{5}{}
+\contentsline {subsubsection}{\numberline {2}An exact sampling procedure to estimate the joint posteriors}{5}{}
+\contentsline {subsection}{\numberline {E}Estimating the functional connectivity matrix}{7}{}
+\contentsline {subsubsection}{\numberline {1}Imposing a sparse prior on the functional connectivity}{7}{}
+\contentsline {subsubsection}{\numberline {2}Imposing Dale's law on the functional connectivity}{8}{}
+\contentsline {subsection}{\numberline {F}Specific implementation notes}{8}{}
+\contentsline {subsection}{\numberline {G}Accuracy of the estimates and Fisher information matrix}{9}{}
+\contentsline {section}{\numberline {III}Results}{9}{}
+\contentsline {subsection}{\numberline {A}Simulating neural activity in a neural population}{9}{}
+\contentsline {subsection}{\numberline {B}Inference of the functional connectivity from the simulated calcium imaging data}{10}{}
+\contentsline {section}{\numberline {IV}Discussion}{13}{}
+\contentsline {section}{\numberline {}Acknowledgments}{14}{}
+\contentsline {section}{\numberline {}References}{14}{}

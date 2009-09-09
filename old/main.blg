@@ -1,0 +1,95 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.4)
+The top-level auxiliary file: main.aux
+White space in argument---line 145 of file main.aux
+ : \citation{PAN03c,
+ :                   TRUC05}
+I'm skipping whatever remains of this command
+White space in argument---line 146 of file main.aux
+ : \citation{HarrisBuzsaki00,
+ :                            WoodBlack08}
+I'm skipping whatever remains of this command
+The style file: apalike.bst
+Database file #1: mybib.bib
+Repeated entry---line 314 of file mybib.bib
+ : @article{Yashar08
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 6942 of file mybib.bib
+ : @article{Feldmeyer99
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 6964 of file mybib.bib
+ : @article{FeldmeyerSakmann00
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 8123 of file mybib.bib
+ : @article{Gamerman98
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 8144 of file mybib.bib
+ : @article{Gamerman97
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 9185 of file mybib.bib
+ : @article{Gupta00
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 11233 of file mybib.bib
+ : @article{Ishwaran99
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 18484 of file mybib.bib
+ : @article{PetersenSakmann00
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 20095 of file mybib.bib
+ : @article{Rigat06
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 22071 of file mybib.bib
+ : @book{ShumwayStoffer06
+ :                       ,
+I'm skipping whatever remains of this entry
+Warning--can't use both author and editor fields in DFG01
+You've used 91 entries,
+            1935 wiz_defined-function locations,
+            1043 strings with 19911 characters,
+and the built_in function-call counts, 38563 in all, are:
+= -- 3696
+> -- 1917
+< -- 39
++ -- 684
+- -- 664
+* -- 3441
+:= -- 6839
+add.period$ -- 272
+call.type$ -- 91
+change.case$ -- 775
+chr.to.int$ -- 91
+cite$ -- 92
+duplicate$ -- 1280
+empty$ -- 2493
+format.name$ -- 791
+if$ -- 7345
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 99
+newline$ -- 456
+num.names$ -- 275
+pop$ -- 646
+preamble$ -- 1
+purify$ -- 785
+quote$ -- 0
+skip$ -- 966
+stack$ -- 0
+substring$ -- 2725
+swap$ -- 112
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 526
+warning$ -- 1
+while$ -- 297
+width$ -- 0
+write$ -- 1161
+(There were 12 error messages)
