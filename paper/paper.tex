@@ -1366,80 +1366,22 @@ panel). Simulation conditions were the same as in Figure
 
 \section{Discussion}
 \label{sec:discussion}
-In this paper we develop a Bayesian approach for inferring
-connectivity in a network of spiking neurons observed using calcium
-fluorescent imaging.  A number of previous authors have addressed the
-problem of inferring neuronal connectivity given a fully-observed set
-of spike trains in a network
-\cite{BRIL88,CSK88,BRIL92,PAN03d,PAN04c,TRUC05,Rigat06,NYK06,KP06,Vidne08,Stevenson2009,Garofalo09},
-but the main challenge in the present work is the indirect nature of
-the calcium imaging data, which provides only noisy, low-pass
-filtered, temporally sub-sampled observations of spikes of individual
-neurons.  To solve this problem, we develop a specialized
-blockwise-Gibbs sampler that makes use of an embedded Markov chain
-method due to \cite{NBR03}.  The connectivity matrix is then inferred
-in an EM framework; the M-step parallelizes quite efficiently and
-allows for the easy incorporation of prior sparseness information,
-which significantly reduces data requirements in this context.  We
-have found that these methods can effectively infer the connectivity
-in simulated neuronal networks, given reasonable lengths of data,
-computation time, and assumptions on the biophysical network
-parameters.
+In this paper we develop a Bayesian approach for inferring connectivity in a network of spiking neurons observed using calcium fluorescent imaging. A number of previous authors have addressed the problem of inferring neuronal connectivity given a fully-observed set of spike trains in a network \cite{BRIL88,CSK88,BRIL92,PAN03d,PAN04c,TRUC05,Rigat06,NYK06,KP06,Vidne08,Stevenson2009,Garofalo09}, but the main challenge in the present work is the indirect nature of the calcium imaging data, which provides only noisy, low-pass filtered, temporally sub-sampled observations of spikes of individual neurons. To solve this problem, we develop a specialized blockwise-Gibbs sampler that makes use of an embedded Markov chain method due to \cite{NBR03}. The connectivity matrix is then inferred in an EM framework; the M-step parallelizes quite efficiently and allows for the easy incorporation of prior sparseness information, which significantly reduces data requirements in this context. We have found that these methods can effectively infer the connectivity in simulated neuronal networks, given reasonable lengths of data, computation time, and assumptions on the biophysical network parameters.
 
-To our knowledge, we are the first address this problem using the
-statistical deconvolution methods and EM formulation described here
-(though see also \cite{Roxin08}, who fit simplified, low temporal
-resolution transition-based models to the 10 Hz calcium data obtained
-by \cite{IkegayaYuste04}).  However, we should note that
-\cite{Rigat06} developed a closely related approach to infer
-connectivity from low-SNR electrical recordings involving
-possibly-misclassified spikes (in contrast to the slow,
-lowpass-filtered calcium signals we discuss here).  In particular,
-these authors employed a very similar Bernoulli GLM and developed a
-Metropolis-within-Gibbs sampler to approximate the necessary
-sufficient statistics for their model.  In addition, \cite{Rigat06}
-develop a more intricate hierarchical prior for the connectivity
-parameter $\bw$; while we found that a simple L$_1$ penalization was
-quite effective here, it will be worthwhile to explore more
-informative priors in future work.
+To our knowledge, we are the first address this problem using the statistical deconvolution methods and EM formulation described here (though see also \cite{Roxin08}, who fit simplified, low temporal resolution transition-based models to the 10 Hz calcium data obtained by \cite{IkegayaYuste04}). However, we should note that \cite{Rigat06} developed a closely related approach to infer connectivity from low-SNR electrical recordings involving possibly-misclassified spikes (in contrast to the slow, lowpass-filtered calcium signals we discuss here). In particular, these authors employed a very similar Bernoulli GLM and developed a Metropolis-within-Gibbs sampler to approximate the necessary sufficient statistics for their model. In addition, \cite{Rigat06} develop a more intricate hierarchical prior for the connectivity parameter $\bw$; while we found that a simple L$_1$ penalization was quite effective here, it will be worthwhile to explore more informative priors in future work.
 
-A number of possible improvements of our method are available. One of the biggest challenges for inferring neural connectivity from functional data is the presence of so called hidden inputs from unobserved neurons \cite{Nykamp05,NYK06,KP06,Vidne08,Vakorin09}. It is typically impossible to observe the activity of all neurons in a given circuit, and correlations in the unobserved (``hidden'') inputs can mimic connections among different observed neurons, thus presenting a substantial challenge for estimating neural connectivity. Developing methods to cope with such hidden inputs is currently an area of active research, and should certainly be incorporated in the methods we have developed here. 
+A number of possible improvements to this are available. First, improvements of the algorithms for faster implementation are under development. Specifically, fast non-negative optimization-based deconvolution methods may be a promising alternative \cite{Vogelstein08,Pan08b} to the SMC approach used here.  \tr{Furthermore, improvements to the computational cost of the embedded Gibbs sampler are currently underway.}
+
+Second, one of the biggest challenges for inferring neural connectivity from functional data is the presence of so called hidden inputs from unobserved neurons \cite{Nykamp05,NYK06,KP06,Vidne08,Vakorin09}. It is typically impossible to observe the activity of all neurons in a given circuit, and correlations in the unobserved (``hidden'') inputs can mimic connections among different observed neurons, thus presenting a substantial challenge for estimating neural connectivity. Developing methods to cope with such hidden inputs is currently an area of active research, and should certainly be incorporated in the methods we have developed here.  \tr{As incorporating hidden units into the model adds dimensionality to the hidden state space, Gibbs sampling becomes more attractive over particle filtering, which does not scale well with dimensionality.}
 
 \tr{A related issue not addressed by this work is the presence of polysynaptic (``indirect'') connections. For instance, disambiguating between a monosynaptic connection and a polysynaptic connection can be difficult given only spontaneous observations, especially at the time resolution available currently for imaging experiments. Recently-developed photo-stimulation methods for activating or deactivating individual neurons or sub-populations \cite{Deisseroth05,SzobotaIsacoff07,Nikolenko08} may be useful to increase statistical power in such cases. In particular, by utilizing external stimulation, we can in principle choose a sufficiently rich experimental design (i.e., a sample of input activity patterns) to overcome this problem, as well as the multicollinearity problems discussed in the context of Fig.~\ref{fig:rasters}.}
 
-Several other important directions for future work are worth noting.
-First, improvements of the algorithms for faster implementation are
-under development.  Specifically, fast non-negative optimization-based
-deconvolution methods may be a promising alternative
-\cite{Vogelstein08,Pan08b} to the SMC approach used here.  In
-addition, modifications of our generative model to incorporate
-non-stationarities in the fluorescent signal (e.g., due to dye
-bleaching and drift) are fairly straightforward.
+\tr{Another model modification that potentially improves are results, would be the inclusion of priors on all the parameters.}  A fully Bayesian algorithm for estimating the posterior distributions of all the parameters (instead of just the MAP estimate) would be of significant interest. Such a fully-Bayesian extension is conceptually simple: we just need to extend our Gibbs sampler to additionally sample from the parameter $\bth$ given the sampled spike trains $\bX$. Since we already have a method for drawing $\bX$ given $\bth$ and $\bF$, with such an additional sampler we may obtain samples from $P(\bX,\bth | \bF)$ simply by sampling from $\bX \sim P(\bX|\theta,\bF)$ and $\bth \sim P(\bth |\bX)$, via blockwise-Gibbs. Sampling from the posteriors $P(\bth|\bX)$ in the GLM setting is quite tractable using hybrid Monte Carlo methods, since all of the necessary posteriors are log-concave \cite{Ishwaran99,Gamerman97,Gamerman98,Yashar08}.
 
-Second, a fully Bayesian algorithm for estimating the posterior
-distributions of all the parameters (instead of just the MAP estimate)
-would be of significant interest.  Such a fully-Bayesian extension is
-conceptually simple: we just need to extend our Gibbs sampler to
-additionally sample from the parameter $\bth$ given the sampled spike
-trains $\bX$. Since we already have a method for drawing $\bX$ given
-$\bth$ and $\bF$, with such an additional sampler we may obtain
-samples from $P(\bX,\bth | \bF)$ simply by sampling from $\bX \sim
-P(\bX|\theta,\bF)$ and $\bth \sim P(\bth |\bX)$, via blockwise-Gibbs.
-Sampling from the posteriors $P(\bth|\bX)$ in the GLM setting is quite
-tractable using hybrid Monte Carlo methods, since all of the necessary
-posteriors are log-concave
-\cite{Ishwaran99,Gamerman97,Gamerman98,Yashar08}.
+\tr{This fully Bayesian approach may only be realized using the embedded Gibbs sampler, as the particle filter merely estimates the mean and covariance of the hidden states, not the whole distributions (and the particle filter's estimates have a discretization bias, unlike the Gibbs approach, which is exact).  Furthermore, the embedded Gibbs approach can be generalized to include higher-order Markov terms, which is difficult with the particle filter.}
 
-Finally, most importantly, we are currently applying these algorithms
-in preliminary experiments on real data.  Checking the accuracy of our
-estimates is of course more challenging in the context of
-non-simulated data, but a number of methods for partial validation are
-available, including multiple-patch recordings \cite{Song2005},
-photostimulation techniques \cite{Vovan07}, and fluorescent anatomical
-markers which can distinguish between different cell types
-\cite{Meyer02} (i.e., inhibitory vs.\ excitatory cells; c.f.\
-Fig.~\ref{fig:distros}).  We hope to present our results in the near
-future.
+Finally, most importantly, we are currently applying these algorithms in preliminary experiments on real data. \tr{Real data requires performing a few additional pre-processing steps, such as extracting fluorescence traces from the movies, and correcting non-stationarities in the fluorescent signal (e.g., due to dye bleaching and drift).} Further, checking the accuracy of our estimates is of course more challenging in the context of non-simulated data, but a number of methods for partial validation are available, including multiple-patch recordings \cite{Song2005}, photostimulation techniques \cite{Vovan07}, and fluorescent anatomical markers which can distinguish between different cell types \cite{Meyer02} (i.e., inhibitory vs.\ excitatory cells; c.f.\ Fig.~\ref{fig:distros}). We hope to present our results in the near future.
+
 
 % \begin{acknowledgments}
 \section*{Acknowledgements}
