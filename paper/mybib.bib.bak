@@ -4342,6 +4342,17 @@
   pages = {213--222}
 }
 
+@ARTICLE{ChanraudMartinot09,
+  author = {Chanraud, S. and Leroy, C. and Martelli, C. and Kostogianni, N. and
+	Delain, F. and Aubin, H.J. and Reynaud, M. and Martinot, J.L.},
+  title = {{Episodic Memory in Detoxified Alcoholics: Contribution of Grey Matter
+	Microstructure Alteration}},
+  year = {2009},
+  owner = {joshyv},
+  publisher = {Public Library of Science},
+  timestamp = {2009.09.24}
+}
+
 @ARTICLE{ChaseYoung06,
   author = {Chase, Steven M and Young, Eric D},
   title = {Spike-timing codes enhance the representation of multiple simultaneous
@@ -26704,6 +26715,55 @@
   journal = {Neural Networks for Signal Processing, 2003},
   year = {2003},
   pages = { 219-228}
+}
+
+@ARTICLE{MartinLundervold09,
+  author = {Ystad, Martin and Lundervold, Astri and Wehling, Eike and Espeseth,
+	Thomas and Rootwelt, Helge and Westlye, Lars and Andersson, Martin
+	and Adolfsdottir, Steinunn and Geitung, Jonn and Fjell, Anders and
+	Reinvang, Ivar and Lundervold, Arvid},
+  title = {Hippocampal volumes are important predictors for memory function
+	in elderly women},
+  journal = {BMC Medical Imaging},
+  year = {2009},
+  volume = {9},
+  pages = {17},
+  number = {1},
+  abstract = {BACKGROUND:Normal aging involves a decline in cognitive function that
+	has been shown to correlate with volumetric change in the hippocampus,
+	and with genetic variability in the APOE-gene. In the present study
+	we utilize 3D MR imaging, genetic analysis and assessment of verbal
+	memory function to investigate relationships between these factors
+	in a sample of 170 healthy volunteers (age range 46-77 years).METHODS:Brain
+	morphometric analysis was performed with the automated segmentation
+	work-flow implemented in FreeSurfer. Genetic analysis of the APOE
+	genotype was determined with polymerase chain reaction (PCR) on DNA
+	from whole-blood. All individuals were subjected to extensive neuropsychological
+	testing, including the California Verbal Learning Test-II (CVLT).
+	To obtain robust and easily interpretable relationships between explanatory
+	variables and verbal memory function we applied the recent method
+	of conditional inference trees in addition to scatterplot matrices
+	and simple pairwise linear least-squares regression analysis.RESULTS:APOE
+	genotype had no significant impact on the CVLT results (scores on
+	long delay free recall, CVLT-LD) or the ICV-normalized hippocampal
+	volumes. Hippocampal volumes were found to decrease with age and
+	a right-larger-than-left hippocampal asymmetry was also found. These
+	findings are in accordance with previous studies. CVLT-LD score was
+	shown to correlate with hippocampal volume. Multivariate conditional
+	inference analysis showed that gender and left hippocampal volume
+	largely dominated predictive values for CVLT-LD scores in our sample.
+	Left hippocampal volume dominated predictive values for females but
+	not for males. APOE genotype did not alter the model significantly,
+	and age was only partly influencing the results.CONCLUSION:Gender
+	and left hippocampal volumes are main predictors for verbal memory
+	function in normal aging. APOE genotype did not affect the results
+	in any part of our analysis.},
+  doi = {10.1186/1471-2342-9-17},
+  issn = {1471-2342},
+  owner = {joshyv},
+  pubmedid = {19698138},
+  timestamp = {2009.09.24},
+  url = {http://www.biomedcentral.com/1471-2342/9/17}
 }
 
 @ARTICLE{YuSahani06,
