@@ -1,0 +1,277 @@
+\relax 
+\citation{RamonyCajal04,RamonyCajal23}
+\citation{MichevaSmith07}
+\citation{Brainbow07}
+\citation{Briggman2006}
+\citation{HATS98,HARR03,Stein04,Santhanam06,Harris07}
+\citation{Berry2004,Litke2004,Petrusca07,PILL07}
+\citation{Shepard08}
+\citation{Abeles91,Braitenberg1998}
+\citation{Tsien89,ImagingManual,CAR03,OHKI05}
+\citation{ImagingManual}
+\citation{StosiekKonnerth03}
+\citation{WallaceHasan08}
+\citation{Djurisic04}
+\citation{Iyer06,SalomeBourdieu06,ReddySaggau08}
+\citation{NguyenParker01}
+\thanksnewlabel{e1@email}{{yuriy.mishchenko@gmail.com}{1}}
+\thanksnewlabel{e2@email}{{joshuav@jhu.edu}{1}}
+\thanksnewlabel{e3@email}{{liam@stat.columbia.edu}{1}}
+\thanksnewlabel{u1@fullurl}{{http://www.stat.columbia.edu/$\sim $liam}{1}}
+\thanksnewlabel{t1thanks}{{\ensuremath  {*}}{1}}
+\thanksnewlabel{t2thanks}{{\ensuremath  {\dagger }}{1}}
+\gdef\author@num{3}
+\newlabel{intro}{{1}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\citation{ImagingManual,Roxin08}
+\citation{YaksiFriedrich06,GreenbergKerr08,Vogelstein2009}
+\citation{Vogelstein2009}
+\citation{CAR03,DombeckTank07}
+\citation{CAR03,DombeckTank07}
+\newlabel{sec:methods}{{2}{2}}
+\citation{BRIL88,CSK88,BRIL92,PG00,PAN03d,PAN04c,Rigat06,TRUC05,NYK06,KP06,PILL07,Vidne08,Stevenson2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Schematic overview. The raw observed data is a large-scale calcium fluorescence movie, which is pre-processed to correct for movement artifacts and find regions-of-interest, i.e., putative neurons. (Note that we have omitted details of these important preprocessing steps in this paper; see, e.g., \cite  {CAR03,DombeckTank07} for further details.) Given the fluorescence traces $F_i(t)$ from each neuron, we estimate the underlying spike trains (i.e., the time series of neural activity) using statistical deconvolution methods. Then we estimate the parameters of a network model given the observed data. Our major goal is to obtain an accurate estimate of the network connectivity matrix, which summarizes the information we are able to infer about the local neuronal microcircuit. (We emphasize that this illustration is strictly schematic, and does not correspond directly to any of the results described below.) This figure adapted from personal communications with R.\ Yuste, B.\ Watson, and A.\ Packer.}}{3}}
+\newlabel{fig:data_schematic}{{1}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{3}}
+\newlabel{sec:methods:markov-setup}{{2.1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Model}{3}}
+\citation{PAN04c,Escola07}
+\citation{Escola07}
+\citation{LD89,PAN04c}
+\citation{Vogelstein2009}
+\citation{Lefort2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A plot of the firing rate nonlinearity $f(J)$ used in our simulations. Note that the firing rate saturates at $1/\Delta $, because of our Bernoulli assumption (i.e., the spike count per bin is at most one). Here the binwidth $\Delta = (60$ Hz$)^{-1}$. The horizontal gray line indicates 5 Hz, the baseline firing rate for most of the simulations discussed in the Results section.}}{4}}
+\newlabel{fig:egfluor}{{2}{4}}
+\newlabel{eqn:glm:definition}{{1}{4}}
+\newlabel{eqn:h:definition}{{3}{4}}
+\citation{ImagingManual}
+\citation{Vogelstein2009}
+\citation{Yasuda2004}
+\citation{Vogelstein2009}
+\newlabel{eqn:ca:definition}{{4}{5}}
+\newlabel{eqn:F:definition}{{5}{5}}
+\newlabel{eq:eSNR}{{6}{5}}
+\citation{Vogelstein2009}
+\citation{Vogelstein2009}
+\citation{Rigat06}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Two example traces of simulated fluorescence data, at different SNR levels, demonstrating the relationship between spike trains and observed fluorescence in our model. Note that both panels have the same underlying spike train. Simulation parameters: $k_i=0.7$, $C_i^b=1$ $\mu $M, $\tau ^c_i=500$ msec, $A_i=50$ $\mu $M, $\sigma ^c_i=0.1$ $\mu $M. $\gamma _i=0.004$ (effective SNR $\approx 9$, as defined in Eq.\nobreakspace  {}(6\hbox {}); see also Figure 9\hbox {} below) in the left panel and $\gamma _i=0.016$ (eSNR $\approx 3$) in the right panel, and $\sigma ^F_i=0$, $\Delta =(60$ Hz$)^{-1}$.}}{6}}
+\newlabel{fig:example_traces}{{3}{6}}
+\newlabel{sec:methods:goal}{{2.2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Goal and general strategy}{6}}
+\citation{DLR77,McLachlanKrishnan96}
+\citation{RAB89}
+\citation{Vogelstein2009}
+\citation{Vogelstein2009}
+\citation{ShumwayStoffer06}
+\newlabel{eqn:loglik:definition-expl}{{7}{7}}
+\newlabel{sec:methods:indep}{{2.3}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Initialization of intrinsic parameters via sequential Monte Carlo methods}{7}}
+\citation{DGA00,DFG01,GDW04}
+\citation{DGA00,Vogelstein2009}
+\citation{DCM05}
+\citation{Vogelstein2009}
+\newlabel{eqn:forward}{{8}{8}}
+\newlabel{eqn:backward}{{9}{8}}
+\newlabel{eqn:forward2}{{10}{8}}
+\newlabel{eq:forward-particle}{{11}{8}}
+\newlabel{eqn:backward2}{{13}{8}}
+\newlabel{eqn:particle-fb}{{14}{8}}
+\citation{BickelBengtsson08}
+\citation{RC05}
+\newlabel{eqn:bw}{{15}{9}}
+\newlabel{sec:methods:joint}{{2.4}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Estimating joint posteriors over weakly coupled neurons}{9}}
+\citation{Andrieu2007}
+\citation{NBR03}
+\citation{NBR03}
+\citation{NBR03}
+\citation{NBR03}
+\citation{Vogelstein2009}
+\newlabel{sec:cheaper-high-snr}{{2.4.1}{10}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}A factorized approximation of the joint posteriors}{10}}
+\newlabel{eqn:indep_approx}{{18}{10}}
+\citation{Buhl94,Thompson88,Reyes98,Feldmeyer99,Gupta00,FeldmeyerSakmann00,PetersenSakmann00,Binzegger04,Song2005,Mishchenko2009b}
+\citation{PAN04c,Rigat06,PILL07,Stevenson08}
+\citation{Tibs96,TIP01,DE03,NG04,Candes2008,Mishchenko2009}
+\citation{CONV04}
+\newlabel{sec:methods:parameters HMM}{{2.5}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Estimating the connectivity matrix}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.1}Imposing a sparse prior on the connectivity}{11}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.2}Imposing Dale's law on the connectivity}{11}}
+\citation{Vogelstein2009}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Pseudocode for estimating connectivity from calcium imaging data using EM; $\eta _1$ and $\eta _2$ are user-defined convergence tolerance parameters.}}{12}}
+\newlabel{eqn:pseudocode}{{1}{12}}
+\newlabel{sec:methods:specific_implementation}{{2.6}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Specific implementation notes}{12}}
+\newlabel{sec:results:simulations}{{2.7}{12}}
+\citation{Sayer1990,Braitenberg1998,Urquijo2000,Lefort2009}
+\citation{Braitenberg1998,Urquijo2000}
+\citation{Braitenberg1998,Lefort2009}
+\citation{Lefort2009,Sayer1990}
+\citation{Abeles91}
+\citation{Koch99}
+\citation{Sayer1990}
+\citation{Song2005}
+\citation{Vogelstein2009}
+\citation{ImagingManual,HelmchenSakmann96,BrenowitzRegehr07}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Simulating a neural population}{13}}
+\newlabel{eqn:convert:leadin-1}{{20}{13}}
+\newlabel{eqn:convert:leadin-2}{{21}{13}}
+\citation{Vogelstein2009}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Table of simulation parameters. $\@mathcal {E}(\lambda )$ indicates an exponential distribution with mean $\lambda $, and $\@mathcal {N}_p(\mu ,\sigma ^2)$ indicates a normal distribution with mean $\mu $ and variance $\sigma ^2$, truncated at lower bound $p\mu $. Units (when applicable) are given with respect to mean values (i.e., units are squared for variance).}}{14}}
+\newlabel{table:caparm}{{1}{14}}
+\newlabel{sec:results}{{3}{14}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{14}}
+\newlabel{sec:scale}{{3.1}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Impact of coarse time discretization of calcium imaging data and scale factor of inferred connection weights}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Quality of the connectivity matrix estimated from simulated calcium imaging data. Inferred connection weights $\mathaccentV {hat}05Ew_{ij}$ are shown in a scatter plot versus real connection weights $w_{ij}$, with inference performed using the factorized approximation, exact embedded-chain-within-blockwise-Gibbs approach, and true spike trains down-sampled to the frame rate of the calcium imaging. A network of $N=25$ neurons was used, firing at $\approx 5$ Hz, and imaged for $T=10$ min at $60$ Hz with intermediate eSNR $\approx 6$ (see Eq.\nobreakspace  {}(6\hbox {}) and Figure 9\hbox {} below). The squared correlation coefficient between the connection weights calculated using the factorized approximation and true connection weights was $r^2=0.47$, compared with the embedded-chain-within-blockwise-Gibbs method's $r^2=0.48$. For connection weights calculated directly from the true spike train down-sampled to the calcium imaging frame rate we obtained $r^2=0.57$. (For comparison, $r^2=0.71$ for the connectivity matrix calculated using the full spike trains with 1 ms precision; data not shown.) Here and in the following figures the gray dashed line indicates unity, $y=x$. The inferred connectivity in the left panel shows a clear scale bias, which can be corrected by dividing by the scale correction factor calculated in section 3.1\hbox {} below (right panel). The vertical lines apparent at zero in both subplots are due to the fact that the connection probability in the true network was significantly less than one: i.e., many of the true weights $w_{ij}$ are exactly zero.}}{15}}
+\newlabel{fig:scatters}{{4}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The low frame rate of calcium imaging explains the scale error observed in the inferred connectivity weights shown in Figure 4\hbox {}. A correction scale factor may be calculated analytically (thick line) as discussed in the main text (Eq.\nobreakspace  {}25\hbox {}). The scale error observed empirically (thin line) matches well with this theoretical estimate. In the latter case, the scale error was calculated from the fits obtained directly from the true spike trains, down sampled to different $\Delta $, for a network of $N=25$ neurons firing at $\approx 5$ Hz and observed for $T=10$ min. The error-bars indicate 95\% confidence intervals for scale error at each $\Delta $.}}{15}}
+\newlabel{fig:bias}{{5}{15}}
+\newlabel{eqn:scale:leadin-1}{{22}{16}}
+\newlabel{eqn:scale:leadin-2}{{23}{16}}
+\newlabel{eqn:scale:leadin-3}{{24}{16}}
+\citation{NguyenParker01,Iyer06,SalomeBourdieu06,ReddySaggau08}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Imposing a sparse prior on connectivity improves our estimates. Scatter plots indicate the connection weights $w_{ij}$ reconstructed using no prior ($r^2=0.64$; left panel) and a sparse prior ($r^2=0.85$; right panel) vs.\nobreakspace  {}the true connection weights in each case. These plots were based on a simulation of $N=50$ neurons firing at $\approx 5$ Hz, imaged for $T=10$ min at $60$ Hz, with eSNR $\approx 10$. Clearly, the sparse prior reduces the relative error, as indicated by comparing the relative distance between the data points (black dots) to the best linear fit (gray dash-dotted line), at the expense of some additional soft-threshold bias, as is usual in the L$_1$ setting.}}{17}}
+\newlabel{fig:sparse}{{6}{17}}
+\newlabel{eqn:bias}{{25}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Impact of prior information on the inference}{17}}
+\newlabel{sec:results-parm}{{3.3}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Impact of experimental factors on estimator accuracy}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The distributions of inferred connection weights using no prior (left panel) and a sparse prior (right panel) vs. true distributions. When the sparse prior is enforced, zero weights are recovered with substantially higher frequency (black lines), thus allowing better identification of connected neural pairs. Likewise, excitatory and inhibitory weights are better recognized (red and blue lines, respectively), thus allowing accurate classification of neurons as excitatory or inhibitory. The normalized Hamming distance between the inferred and true connectivity matrix here (defined as $H({\bf  w}, \mathaccentV {hat}05E{\bf  w}) = [N (N-1)]^{-1} \DOTSB \sum@ \slimits@ _{ij} |\text  {sign} (w_{ij}) - \text  {sign} (\mathaccentV {hat}05Ew_{ij})|$, with the convention $\text  {sign}(0)=0$) was $0.06$. Distributions are shown for a simulated population of $N=200$ neurons firing at $\approx 5$ Hz and imaged for $T=10$ min at $60$ Hz, with eSNR $\approx 10$. Note that the peak at zero in the true distributions (black dashed trace) corresponds to the vertical line visible at zero in Figs.\nobreakspace  {}4\hbox {} and 6\hbox {}.}}{18}}
+\newlabel{fig:distros}{{7}{18}}
+\newlabel{sec:impact-strong-corr}{{3.4}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Impact of strong correlations and deviations from generative model on the inference}{18}}
+\citation{MACLEAN05}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Accuracy of the inferred connectivity as a function of the frame rate of calcium imaging. A population of $N=25$ neurons firing at $\approx 5$ Hz and imaged for $T=10$ min was simulated here, with eSNR $\approx 10$. At $100$ Hz, $r^2$ saturated at the level $r^2\approx 0.7$ achieved with $\Delta \rightarrow 0$.}}{19}}
+\newlabel{fig:recvar}{{8}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Accuracy of inferred connectivity as a function of effective imaging SNR (eSNR, defined in Eq.\nobreakspace  {}6\hbox {}), for frame rates of 15, 33, and 66 Hz. Neural population simulation was the same as in Figure 8\hbox {}. Vertical black lines correspond to the eSNR values of the two example traces in Figure 3\hbox {}, for comparison.}}{19}}
+\newlabel{fig:recvar-SNR}{{9}{19}}
+\citation{Vogels05}
+\citation{BRIL88,CSK88,BRIL92,PAN03d,PAN04c,TRUC05,Rigat06,NYK06,KP06,Vidne08,Stevenson2009,Garofalo09,Cocco09}
+\citation{NBR03}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Accuracy of inferred connectivity as a function of the imaging time and neural population size. Incorporating a sparse prior dramatically increases the reconstruction quality (dashed lines). When the sparse prior is imposed, $T=5$ min is sufficient to recover $70\%$ of the variance in the connection weights. Incorporating Dale's prior leads to only marginal improvement (dotted line). Furthermore, reconstruction accuracy does not strongly depend on the neural population size, $N$. Here, neural populations of size $N=100$ and $200$ are shown (black and gray, respectively), with eSNR $\approx 10$ and $60$ Hz imaging rate in each case.}}{20}}
+\newlabel{fig:recvar-NT}{{10}{20}}
+\newlabel{sec:discussion}{{4}{20}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{20}}
+\citation{Roxin08}
+\citation{IkegayaYuste04}
+\citation{Rigat06}
+\citation{Rigat06}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Diversity of observed neural activity patterns is required for accurate circuit inference. Here, 15 sec of simulated spike trains for a weakly coupled network (top left panel) and a network with strongly coupled component (top right panel) are shown. In weakly coupled networks, spikes are sufficiently uncorrelated to give access to enough different neural activity patterns to estimate the weights ${\bf  w}$. In a strongly coupled case, many highly synchronous events are evident (top right panel), thus preventing observation of a sufficiently rich ensemble of activity patterns. Accordingly, the connectivity estimates for the strongly coupled neural network (bottom right panel) does not represent the true connectivity of the circuit, even for the weakly coupled component. This is contrary to the weakly-coupled network (bottom left panel) where true connectivity is successfully obtained. Networks of $N=50$ neurons firing at $\approx 5$ Hz and imaged for $T=10$ min at $60$ Hz were used to produce this figure; eSNR $\approx 10$.}}{21}}
+\newlabel{fig:rasters}{{11}{21}}
+\citation{Nykamp05,NYK06,KP06,Vidne08,Vakorin09}
+\citation{Deisseroth05,SzobotaIsacoff07,Nikolenko08}
+\citation{Vogelstein08,Pan08b}
+\citation{Ishwaran99,Gamerman97,Gamerman98,Yashar08}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Inference is robust to deviations of the data from our generative model. With up to $25\%$ variability allowed in PSP time scales $\tau _h$ (right panel), our algorithm provided reconstructions of almost the same quality as when all $\tau _h$'s were the same (left panel). Simulation conditions were the same as in Figure 8\hbox {}, at $60$ Hz imaging rate.}}{22}}
+\newlabel{fig:vartau}{{12}{22}}
+\citation{Song2005}
+\citation{Vovan07}
+\citation{Meyer02}
+\bibdata{mybib}
+\bibcite{Abeles91}{Abeles, 1991}
+\bibcite{Yashar08}{Ahmadian et\nobreakspace  {}al., 2009}
+\bibcite{Andrieu2007}{Andrieu et\nobreakspace  {}al., 2007}
+\bibcite{BickelBengtsson08}{Bickel et\nobreakspace  {}al., 2008}
+\bibcite{Binzegger04}{Binzegger et\nobreakspace  {}al., 2004}
+\bibcite{CONV04}{Boyd and Vandenberghe, 2004}
+\bibcite{Deisseroth05}{Boyden et\nobreakspace  {}al., 2005}
+\bibcite{Braitenberg1998}{Braitenberg and Schuz, 1998}
+\bibcite{BrenowitzRegehr07}{Brenowitz and Regehr, 2007}
+\bibcite{Briggman2006}{Briggman and Denk, 2006}
+\bibcite{BRIL88}{Brillinger, 1988}
+\bibcite{BRIL92}{Brillinger, 1992}
+\@writefile{toc}{\contentsline {section}{Acknowledgements}{23}}
+\@writefile{toc}{\contentsline {section}{References}{23}}
+\bibcite{Buhl94}{Buhl et\nobreakspace  {}al., 1994}
+\bibcite{Candes2008}{Candes and Wakin, 2008}
+\bibcite{CSK88}{Chornoboy et\nobreakspace  {}al., 1988}
+\bibcite{Cocco09}{Cocco et\nobreakspace  {}al., 2009}
+\bibcite{CAR03}{Cossart et\nobreakspace  {}al., 2003}
+\bibcite{DLR77}{Dempster et\nobreakspace  {}al., 1977}
+\bibcite{Djurisic04}{Djurisic et\nobreakspace  {}al., 2004}
+\bibcite{DombeckTank07}{Dombeck et\nobreakspace  {}al., 2007}
+\bibcite{DE03}{Donoho and Elad, 2003}
+\bibcite{DCM05}{Douc et\nobreakspace  {}al., 2005}
+\bibcite{DFG01}{Doucet et\nobreakspace  {}al., 2001}
+\bibcite{DGA00}{Doucet et\nobreakspace  {}al., 2000}
+\bibcite{Escola07}{Escola and Paninski, 2008}
+\bibcite{Feldmeyer99}{Feldmeyer et\nobreakspace  {}al., 1999}
+\bibcite{FeldmeyerSakmann00}{Feldmeyer and Sakmann, 2000}
+\bibcite{Gamerman97}{Gamerman, 1997}
+\bibcite{Gamerman98}{Gamerman, 1998}
+\bibcite{Garofalo09}{Garofalo et\nobreakspace  {}al., 2009}
+\bibcite{GDW04}{Godsill et\nobreakspace  {}al., 2004}
+\bibcite{Urquijo2000}{Gomez-Urquijo et\nobreakspace  {}al., 2000}
+\bibcite{GreenbergKerr08}{Greenberg et\nobreakspace  {}al., 2008}
+\bibcite{Gupta00}{Gupta et\nobreakspace  {}al., 2000}
+\bibcite{HARR03}{Harris et\nobreakspace  {}al., 2003}
+\bibcite{HATS98}{Hatsopoulos et\nobreakspace  {}al., 1998}
+\bibcite{HelmchenSakmann96}{Helmchen et\nobreakspace  {}al., 1996}
+\bibcite{IkegayaYuste04}{Ikegaya et\nobreakspace  {}al., 2004}
+\bibcite{Ishwaran99}{Ishwaran, 1999}
+\bibcite{Iyer06}{Iyer et\nobreakspace  {}al., 2006}
+\bibcite{Koch99}{Koch, 1999}
+\bibcite{KP06}{Kulkarni and Paninski, 2007}
+\bibcite{Lefort2009}{Lefort et\nobreakspace  {}al., 2009}
+\bibcite{Shepard08}{Lei et\nobreakspace  {}al., 2008}
+\bibcite{LD89}{Li and Duan, 1989}
+\bibcite{Litke2004}{Litke et\nobreakspace  {}al., 2004}
+\bibcite{Brainbow07}{Livet et\nobreakspace  {}al., 2007}
+\bibcite{Harris07}{Luczak et\nobreakspace  {}al., 2007}
+\bibcite{MACLEAN05}{MacLean et\nobreakspace  {}al., 2005}
+\bibcite{McLachlanKrishnan96}{McLachlan and Krishnan, 1996}
+\bibcite{Meyer02}{Meyer et\nobreakspace  {}al., 2002}
+\bibcite{MichevaSmith07}{Micheva and Smith, 2007}
+\bibcite{Mishchenko2009}{Mishchenko, 2009}
+\bibcite{Mishchenko2009b}{Mishchenko et\nobreakspace  {}al., 2009}
+\bibcite{NBR03}{Neal et\nobreakspace  {}al., 2003}
+\bibcite{NG04}{Ng, 2004}
+\bibcite{NguyenParker01}{Nguyen et\nobreakspace  {}al., 2001}
+\bibcite{Vovan07}{Nikolenko et\nobreakspace  {}al., 2007}
+\bibcite{Nikolenko08}{Nikolenko et\nobreakspace  {}al., 2008}
+\bibcite{NYK06}{Nykamp, 2007}
+\bibcite{Nykamp05}{Nykamp, 2005}
+\bibcite{OHKI05}{Ohki et\nobreakspace  {}al., 2005}
+\bibcite{PAN04c}{Paninski, 2004}
+\bibcite{Pan08b}{Paninski et\nobreakspace  {}al., 2009}
+\bibcite{PAN03d}{Paninski et\nobreakspace  {}al., 2004}
+\bibcite{PetersenSakmann00}{Petersen and Sakmann, 2000}
+\bibcite{Petrusca07}{Petrusca et\nobreakspace  {}al., 2007}
+\bibcite{PILL07}{Pillow et\nobreakspace  {}al., 2008}
+\bibcite{PG00}{Plesser and Gerstner, 2000}
+\bibcite{RAB89}{Rabiner, 1989}
+\bibcite{RamonyCajal04}{Ramon\nobreakspace  {}y Cajal, 1904}
+\bibcite{RamonyCajal23}{Ramon\nobreakspace  {}y Cajal, 1923}
+\bibcite{ReddySaggau08}{Reddy et\nobreakspace  {}al., 2008}
+\bibcite{Reyes98}{Reyes et\nobreakspace  {}al., 1998}
+\bibcite{Rigat06}{Rigat et\nobreakspace  {}al., 2006}
+\bibcite{RC05}{Robert and Casella, 2005}
+\bibcite{Roxin08}{Roxin et\nobreakspace  {}al., 2008}
+\bibcite{SalomeBourdieu06}{Salome et\nobreakspace  {}al., 2006}
+\bibcite{Santhanam06}{Santhanam et\nobreakspace  {}al., 2006}
+\bibcite{Sayer1990}{Sayer et\nobreakspace  {}al., 1990}
+\bibcite{Berry2004}{Segev et\nobreakspace  {}al., 2004}
+\bibcite{ShumwayStoffer06}{Shumway and Stoffer, 2006}
+\bibcite{Song2005}{Song et\nobreakspace  {}al., 2005}
+\bibcite{Stein04}{Stein et\nobreakspace  {}al., 2004}
+\bibcite{Stevenson08}{Stevenson et\nobreakspace  {}al., 2008}
+\bibcite{Stevenson2009}{Stevenson et\nobreakspace  {}al., 2009}
+\bibcite{StosiekKonnerth03}{Stosiek et\nobreakspace  {}al., 2003}
+\bibcite{SzobotaIsacoff07}{Szobota et\nobreakspace  {}al., 2007}
+\bibcite{Thompson88}{Thompson et\nobreakspace  {}al., 1988}
+\bibcite{Tibs96}{Tibshirani, 1996}
+\bibcite{TIP01}{Tipping, 2001}
+\bibcite{TRUC05}{Truccolo et\nobreakspace  {}al., 2005}
+\bibcite{Tsien89}{Tsien, 1989}
+\bibcite{Vakorin09}{Vakorin et\nobreakspace  {}al., 2009}
+\bibcite{Vidne08}{Vidne et\nobreakspace  {}al., 2009}
+\bibcite{Vogels05}{Vogels and Abbott, 2005}
+\bibcite{Vogelstein08}{Vogelstein et\nobreakspace  {}al., 2008}
+\bibcite{Vogelstein2009}{Vogelstein et\nobreakspace  {}al., 2009}
+\bibcite{WallaceHasan08}{Wallace et\nobreakspace  {}al., 2008}
+\bibcite{YaksiFriedrich06}{Yaksi and Friedrich, 2006}
+\bibcite{Yasuda2004}{Yasuda et\nobreakspace  {}al., 2004}
+\bibcite{ImagingManual}{Yuste et\nobreakspace  {}al., 2006}
+\bibstyle{apalike}

@@ -14,6 +14,7 @@
 \usepackage{amsthm}
 \usepackage{color}
 \providecommand{\tr}[1]{\textcolor{red}{#1}}
+\providecommand{\tg}[1]{\textcolor{green}{#1}}
 
 % \usepackage{charter}
 % \usepackage{afterpage}
@@ -219,9 +220,15 @@ Given these experimental advances in functional neural imaging, our goal is to d
 	network model given the observed data.  Our major goal is to
 	obtain an accurate estimate of the network connectivity
 	matrix, which summarizes the information we are able to infer
-	about the local neuronal microcircuit. This figure adapted
+	about the local neuronal microcircuit. 
+    \tg{An illustration of such connectivity matrix, and corresponding
+    connectivity diagram, is given in the lower two panels.
+    (Note that we show here only an example of such diagrams,
+    which does not correspond to any of the actual calculations below.)}
+    This figure adapted
 	from personal communications with R.\ Yuste, B.\ Watson, and
 	A.\ Packer.}
+
 	\label{fig:data_schematic}
 \end{figure}
 
@@ -426,12 +433,12 @@ where $\bX$ denotes the set of all hidden variables $\{ C_i(t), n_i(t), h_{ij}(t
 
 Now, our major challenge is to evaluate the auxiliary function $Q(\bth,\bth^{(l)})$ in the E-step. Our model is a coupled HMM, as discussed in the previous section; therefore, as usual in the HMM setting \cite{RAB89}, \tr{the integrand of} $Q$ may be broken up into a sum of simpler terms:
 \tr{\begin{eqnarray}
-P[\bX | \bF; \bth^{(l)}] \ln P \left[ \bF, \bX | \bth \right] 
+P[\bX | \bF; \bth^{(l)}] \ln P \left[ \bF, \bX | \bth \right]
 &=& \sum_{it} P[C_i(t) | F_i; \tbth_i^{(l)}] \times \ln
 P[F_i(t)|C_i(t); \alpha_i, \beta_i, \gamma_i, \sigma^F_i] \nonumber \\
 &+& \sum_{it} P[C_i(t), C_i(t-\Delta) | F_i; \tbth_i^{(l)}] \times \ln
 P[C_i(t)|C_i(t-\Delta), n_i(t); C^b_i, \tau^c_i, A_i, \sigma^c_i]
-\nonumber 
+\nonumber
 \\ &+& \sum_{it} P[n_i(t), \bh_i(t) | \bF; \bth_i^{(l)}] \times \ln
 P[n_i(t)| \bh_i(t); b_i, \bw_i]
 \label{eqn:loglik:definition-expl}
@@ -506,7 +513,7 @@ P[X_i(t) | F_i(0:t)] &\approx \sum_{m=1}^M p_f^{(m)}(t)] \delta \big[X_i(t)-X_i^
 \begin{align}
 r^{(m,m')}(t,t-\Delta) &= p_b^{(m)}(t)
 \frac{P\big[X_i^{(m)}(t) | X_i^{(m')} (t-\Delta)\big] p_f^{(m)}(t)} {\sum_{m'} P\big[X_i^{(m)}(t) | X_i^{(m')}(t-\Delta)\big] p_f^{(m')}(t)} \\
-p_b^{(m')}(t-\Delta) &= \sum_{j=1}^M r^{(m,m')}(t-\Delta) | F_i\big] 
+p_b^{(m')}(t-\Delta) &= \sum_{j=1}^M r^{(m,m')}(t-\Delta) | F_i\big]
 \label{eqn:backward2}
 \end{align}
 \noindent where $\{p_b^{(m)}(t)\}_{m\leq M}$ comprise the marginal posteriors, $P[X_i(t)|F_i(0:T)]$, and $\{r^{(j,j')}(t,t-\Delta)\}_{m,m'\leq M}$ comprise $P[X_i(t), X_i(t-\Delta) | F_i(0:T)]$. For more details, see
@@ -904,7 +911,10 @@ approximation and true connection weights was $r^2=0.47$, compared
 with the embedded-chain-within-blockwise-Gibbs method's
 $r^2=0.48$. For connection weights calculated directly from the true
 spike train down-sampled to the calcium imaging frame rate we obtained
-$r^2=0.57$.  Here and in the following figures the gray dashed line
+$r^2=0.57$.
+\tg{For comparison, $r^2=0.71$ for the connectivity matrix calculated using
+the full spike trains with 1 ms precision.}
+Here and in the following figures the gray dashed line
 indicates unity, $y=x$.  The inferred connectivity in the left panel
 shows a clear scale bias, which can be corrected by dividing by the
 scale correction factor calculated in section \ref{sec:scale} below
@@ -1059,13 +1069,27 @@ below.  Furthermore, the weights estimated using the sparse prior more
 reliably provide the sign (i.e., exicitatory or inhibitory) of each
 presynaptic neuron in the network (Figure \ref{fig:distros}); the
 right panel of Figure \ref{fig:distros} illustrates that our method
-infers the sign of presynaptic neurons with high accuracy.
+allows to infers the sign of presynaptic neurons with high accuracy.
 
 Incorporation of Dale's law, on the other hand, only leads to an
 $\approx 10\%$ change in the estimation $r^2$ in the absence of an
 L$_1$ penalty, and no significant improvement at all in the presence
 of an L$_1$ penalty (data not shown).  Thus Dale's prior was not
 pursued further here.
+
+\tg{To characterize the dis-similarity of the sign-structure of true and inferred
+connectivity matrix, we can compute an analog of the Hamming distance
+for two connectivity matrices, 
+$H({\bf w},\hat {\bf w})=\sum_{ij}|\text{sign}(w_{ij})-\text{sign}(\hat w_{ij})|$, 
+where we consider each weight to be either -1 (inhibitory), 0 (no connection), 
+or +1 (excitatory), i.e. $\text{sign}(w_{ij})$.
+(In case of $\hat {\bf w}$, suitable thresholds may be introduced to
+categorize connections into inhibitory and excitatory).
+For the example in Figure \ref{fig:sparse} and \ref{fig:distros}, such ``Hamming''
+distance was $H\approx 2.5K$ out of the maximal value of $\approx 44K$;
+the bulk of the measure caused by mis-categorization of nonzero connections
+$\text{sign}(w_{ij})\neq 0$ into $\text{sign}(\hat w_{ij})=0$.}
+
 
 \begin{figure}[t!]
 \centering
@@ -1104,7 +1128,14 @@ recovered with substantially higher frequency (black lines), thus
 allowing better identification of connected neural pairs. Likewise,
 excitatory and inhibitory weights are better recognized (red and blue
 lines, respectively), thus allowing accurate classification of neurons
-as excitatory or inhibitory. Distributions are shown for a simulated
+as excitatory or inhibitory. 
+\tg{
+The Hamming distance between inferred and true connectivity matrix here is 
+$H\approx 2.5K$ out of the maximal value of $\approx 44K$.
+This indicates that, for optimal categorization threshold on $\hat w_{ij}$, 
+about 2000 out of 4000 connections in this example are mis-categorized, 
+most frequently as $\text{sign}(\hat w_{ij})=0$.}
+Distributions are shown for a simulated
 population of $N=200$ neurons firing at $\approx 5$ Hz and imaged for
 $T=10$ min, with eSNR $\approx 10$.  Note that the peak at zero in the
 true distributions (black dashed trace) corresponds to the vertical
@@ -1114,7 +1145,7 @@ line visible at zero in Figs.~\ref{fig:scatters} and
 \end{figure}
 
 
-\subsection{Impact of experimental factors on estimator accuracy}
+\subsection{Impact of experimental factors on estimator accuracy}\label{sec:results-parm}
 
 Next we sought to quantify the minimal experimental conditions
 necessary for accurate estimation of the connectivity matrix.  Figure
@@ -1197,7 +1228,7 @@ case.}
 \comment{
 
 \subsection{Accuracy of the estimates and Fisher information matrix}
-\label{sec:methods:accuracy_Fisher} 
+\label{sec:methods:accuracy_Fisher}
 
 Here we calculate theoretically the amount of spike trains data
 necessary to accurately estimate the connectivity matrix,
@@ -1256,7 +1287,7 @@ Finally, because $COV^{-1}$ is diagonal, this scale of $COV$ does not depend on 
 
 
 \subsection{Impact of strong correlations and deviations from
-  generative model on the inference} 
+  generative model on the inference}
 
 Estimation of network connectivity is fundamentally rooted in
 observing changes in the spike rate conditioned on the state of the
@@ -1340,11 +1371,39 @@ the same in our inference algorithm as well as in the simulations,
 i.e., $\{\tau^h_{ij}\}_{i,j\leq N}=\tau_h$. In Figure \ref{fig:vartau}
 we introduce additional variability in $\tau_h$ from one neuron to
 another. Variability in $\tau_h$ results in added variance in the
-estimates of the connectivity weights $w_{ij}$, through the
+estimates of the connectivity weights, $w_{ij}$, through the
 $\tau_h$-dependence of the scaling factor Eq.~\eqref{eqn:bias}.
 However, we found that this additional variance was relatively
 insignificant in cases where $\tau_h$ varied up to $25\%$ from neuron
-to neuron.
+to neuron. 
+\tg{Inference was also robust to changes in the
+sparseness of the underlying connectivity matrix. 
+We simulated neural populations
+of the size $N=25$ and $N=50$ neurons, as above, with connection sparseness
+varying from 5\% (very sparse) to 100\% (all-to-all). 
+In all cases the performance of our algorithm remained unchanged, with $r^2\approx 0.9$ for 
+the estimate of the connected weights, $w_{ij}\neq 0$, at all times.
+This result is also consistent with a Fisher information analysis 
+that we performed for Section \ref{sec:results-parm}.}
+
+\tg{Our algorithm also was able to successfully infer connectivity matrix
+in the settings where neurons' spiking was produced by a more complex, physiological model.
+We simulated a network of $N=50$ single-compartment, 
+conductance based Integrate and Fire (IAF) neurons, 
+where each neuron was driven by an independent Poison noise
+as well as synaptic inputs from connected neurons, injected into
+the excitatory and inhibitory conductances. 
+The strength of the Poison noise, and the strength of the synaptic inputs, was 
+chosen in such a way as to obtain a network spontaneously firing at $\approx 4-5\ Hz$. 
+Our algorithm could successfully estimate
+the connectivity matrix for such IAF neurons from $T\approx 10\ min$ of data,
+Figure \ref{fig:iaf}. 
+Note that GLM estimator, $\hat {\bf w}^{GLM}$, in this case 
+acquires additional scaling bias relative to ${\bf w}^{IAF}$.
+That should be expected given different nature of these two quantities - 
+$w^{IAF}_{ij}$ measuring conductance injected into neuron $i$ upon
+a spike in neuron $j$, and $w^{GLM}_{ij}$ measuring the change in
+probability of neuron $i$ firing given a spike in neuron $j$.}
 
 \begin{figure}[t!]
 \centering
@@ -1354,13 +1413,34 @@ to neuron.
 \begin{minipage}[c]{0.45\hsize}
 \includegraphics[width=\hsize]{../figs/FigureA9_variable_25}
 \end{minipage}
-\caption{ Inference is robust to deviations of the data from our
+\caption{Inference is robust to deviations of the data from our
 generative model. With up to $25\%$ variability allowed in PSP time
 scales $\tau_h$ (right panel), our algorithm provided reconstructions
 of almost the same quality as when all $\tau_h$'s were the same (left
 panel). Simulation conditions were the same as in Figure
 \ref{fig:recvar}.}
 \label{fig:vartau}
+\end{figure}
+
+\begin{figure}[t!]
+\centering
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/FigureA12_glm}
+\end{minipage}
+\begin{minipage}[c]{0.45\hsize}
+\includegraphics[width=\hsize]{../figs/FigureA12_iaf}
+\end{minipage}
+\caption{\tg{Our algorithm can infer connectivity matrix
+for single compartment Integrate and Fire (IAF) neurons.
+For a network of $N=50$ IAF neurons, firing at $\approx 5\ Hz$ and observed for $T=10\ min$,
+our algorithm was able to estimate the correct connectivity
+matrix (right). Left panel shows the estimate of the connectivity matrix
+for data produced under similar setting using the 
+correct GLM model, Eq. \ref{eqn:glm:definition},
+for comparison.
+Dash-dotted line indicates the best linear fit between $w_{ij}$ and
+$\hat w_{ij}$, in both cases.}}
+\label{fig:iaf}
 \end{figure}
 
 
@@ -1372,7 +1452,9 @@ To our knowledge, we are the first address this problem using the statistical de
 
 A number of possible improvements to this are available. First, improvements of the algorithms for faster implementation are under development. Specifically, fast non-negative optimization-based deconvolution methods may be a promising alternative \cite{Vogelstein08,Pan08b} to the SMC approach used here.  \tr{Furthermore, improvements to the computational cost of the embedded Gibbs sampler are currently underway.}
 
-Second, one of the biggest challenges for inferring neural connectivity from functional data is the presence of so called hidden inputs from unobserved neurons \cite{Nykamp05,NYK06,KP06,Vidne08,Vakorin09}. It is typically impossible to observe the activity of all neurons in a given circuit, and correlations in the unobserved (``hidden'') inputs can mimic connections among different observed neurons, thus presenting a substantial challenge for estimating neural connectivity. Developing methods to cope with such hidden inputs is currently an area of active research, and should certainly be incorporated in the methods we have developed here.  \tr{As incorporating hidden units into the model adds dimensionality to the hidden state space, Gibbs sampling becomes more attractive over particle filtering, which does not scale well with dimensionality.}
+Second, one of the biggest challenges for inferring neural connectivity from functional data is the presence of so called hidden inputs from unobserved neurons \cite{Nykamp05,NYK06,KP06,Vidne08,Vakorin09}.
+However, it is typically impossible to observe the activity of all neurons in a given circuit, and correlations in the unobserved (``hidden'') inputs can mimic connections among different observed neurons, thus presenting a substantial challenge for estimating neural connectivity. Developing methods to cope with such hidden inputs is currently an area of active research, and should certainly be incorporated in the methods we have developed here.
+\tr{As incorporating hidden units into the model adds dimensionality to the hidden state space, Gibbs sampling becomes more attractive over particle filtering, which does not scale well with dimensionality.}
 
 \tr{A related issue not addressed by this work is the presence of polysynaptic (``indirect'') connections. For instance, disambiguating between a monosynaptic connection and a polysynaptic connection can be difficult given only spontaneous observations, especially at the time resolution available currently for imaging experiments. Recently-developed photo-stimulation methods for activating or deactivating individual neurons or sub-populations \cite{Deisseroth05,SzobotaIsacoff07,Nikolenko08} may be useful to increase statistical power in such cases. In particular, by utilizing external stimulation, we can in principle choose a sufficiently rich experimental design (i.e., a sample of input activity patterns) to overcome this problem, as well as the multicollinearity problems discussed in the context of Fig.~\ref{fig:rasters}.}
 

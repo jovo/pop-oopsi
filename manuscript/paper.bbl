@@ -1,0 +1,611 @@
+\begin{thebibliography}{}
+
+\bibitem[Abeles, 1991]{Abeles91}
+Abeles, M. (1991).
+\newblock {\em Corticonics}.
+\newblock Cambridge University Press.
+
+\bibitem[Ahmadian et~al., 2009]{Yashar08}
+Ahmadian, Y., Pillow, J., and Paninski, L. (2009).
+\newblock Efficient {Markov Chain Monte Carlo} methods for decoding population
+  spike trains.
+\newblock {\em Under review, Neural Computation}.
+
+\bibitem[Andrieu et~al., 2007]{Andrieu2007}
+Andrieu, C., Doucet, A., and Holenstein, A. (2007).
+\newblock {Particle Markov chain Monte Carlo}.
+\newblock {\em Working paper}.
+
+\bibitem[Bickel et~al., 2008]{BickelBengtsson08}
+Bickel, P., Li, B., and Bengtsson, T. (2008).
+\newblock Sharp failure rates for the bootstrap particle filter in high
+  dimensions.
+\newblock In Clarke, B. and Ghosal, S., editors, {\em Pushing the Limits of
+  Contemporary Statistics: Contributions in Honor of Jayanta K. Ghosh}, pages
+  318--329. IMS.
+
+\bibitem[Binzegger et~al., 2004]{Binzegger04}
+Binzegger, T., Douglas, R.~J., and Martin, K. A.~C. (2004).
+\newblock {A Quantitative Map of the Circuit of Cat Primary Visual Cortex}.
+\newblock {\em J. Neurosci.}, 24(39):8441--8453.
+
+\bibitem[Boyd and Vandenberghe, 2004]{CONV04}
+Boyd, S. and Vandenberghe, L. (2004).
+\newblock {\em Convex Optimization}.
+\newblock Oxford University Press.
+
+\bibitem[Boyden et~al., 2005]{Deisseroth05}
+Boyden, E.~S., Zhang, F., Bamberg, E., Nagel, G., and Deisseroth, K. (2005).
+\newblock Millisecond-timescale, genetically targeted optical control of neural
+  activity.
+\newblock {\em Nat Neurosci}, 8(9):1263--1268.
+
+\bibitem[Braitenberg and Schuz, 1998]{Braitenberg1998}
+Braitenberg, V. and Schuz, A. (1998).
+\newblock {\em Cortex: statistics and geometry of neuronal connectivity.}
+\newblock Springer, Berlin.
+
+\bibitem[Brenowitz and Regehr, 2007]{BrenowitzRegehr07}
+Brenowitz, S.~D. and Regehr, W.~G. (2007).
+\newblock Reliability and heterogeneity of calcium signaling at single
+  presynaptic boutons of cerebellar granule cells.
+\newblock {\em J Neurosci}, 27(30):7888--7898.
+
+\bibitem[Briggman and Denk, 2006]{Briggman2006}
+Briggman, K.~L. and Denk, W. (2006).
+\newblock Towards neural circuit reconstruction with volume electron microscopy
+  techniques.
+\newblock {\em Current Opinions in Neurobiology}, 16:562.
+
+\bibitem[Brillinger, 1988]{BRIL88}
+Brillinger, D. (1988).
+\newblock Maximum likelihood analysis of spike trains of interacting nerve
+  cells.
+\newblock {\em Biological Cyberkinetics}, 59:189--200.
+
+\bibitem[Brillinger, 1992]{BRIL92}
+Brillinger, D. (1992).
+\newblock Nerve cell spike train data analysis: a progression of technique.
+\newblock {\em Journal of the American Statistical Association}, 87:260--271.
+
+\bibitem[Buhl et~al., 1994]{Buhl94}
+Buhl, E., Halasy, K., and Somogyi, P. (1994).
+\newblock Diverse sources of hippocampal unitary inhibitory postynaptic
+  potentials and the number of synaptic release sites.
+\newblock {\em Nature}, 368:823--828.
+
+\bibitem[Candes and Wakin, 2008]{Candes2008}
+Candes, E.~J. and Wakin, M. (2008).
+\newblock An introduction to compressive sampling.
+\newblock {\em IEEE Signal Processing Magazine}, 25(2):21--30.
+
+\bibitem[Chornoboy et~al., 1988]{CSK88}
+Chornoboy, E., Schramm, L., and Karr, A. (1988).
+\newblock Maximum likelihood identification of neural point process systems.
+\newblock {\em Biological Cybernetics}, 59:265--275.
+
+\bibitem[Cocco et~al., 2009]{Cocco09}
+Cocco, S., Leibler, S., and Monasson, R. (2009).
+\newblock {Neuronal couplings between retinal ganglion cells inferred by
+  efficient inverse statistical physics methods}.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  106(33):14058--14062.
+
+\bibitem[Cossart et~al., 2003]{CAR03}
+Cossart, R., Aronov, D., and Yuste, R. (2003).
+\newblock Attractor dynamics of network up states in the neocortex.
+\newblock {\em Nature}, 423:283--288.
+
+\bibitem[Dempster et~al., 1977]{DLR77}
+Dempster, A., Laird, N., and Rubin, D. (1977).
+\newblock Maximum likelihood from incomplete data via the {EM} algorithm.
+\newblock {\em Journal Royal Stat. Soc., Series B}, 39:1--38.
+
+\bibitem[Djurisic et~al., 2004]{Djurisic04}
+Djurisic, M., Antic, S., Chen, W.~R., and Zecevic, D. (2004).
+\newblock Voltage imaging from dendrites of mitral cells: {EPSP} attenuation
+  and spike trigger zones.
+\newblock {\em J. Neurosci.}, 24(30):6703--6714.
+
+\bibitem[Dombeck et~al., 2007]{DombeckTank07}
+Dombeck, D.~A., Khabbaz, A.~N., Collman, F., Adelman, T.~L., and Tank, D.~W.
+  (2007).
+\newblock Imaging large-scale neural activity with cellular resolution in
+  awake, mobile mice.
+\newblock {\em Neuron}, 56(1):43--57.
+
+\bibitem[Donoho and Elad, 2003]{DE03}
+Donoho, D. and Elad, M. (2003).
+\newblock Optimally sparse representation in general (nonorthogonal)
+  dictionaries via {L}$^1$ minimization.
+\newblock {\em PNAS}, 100:2197--2202.
+
+\bibitem[Douc et~al., 2005]{DCM05}
+Douc, R., Cappe, O., and Moulines, E. (2005).
+\newblock Comparison of resampling schemes for particle filtering.
+\newblock {\em Proc. 4th Int. Symp. Image and Signal Processing and Analyis}.
+
+\bibitem[Doucet et~al., 2001]{DFG01}
+Doucet, A., de~Freitas, N., and Gordon, N., editors (2001).
+\newblock {\em Sequential Monte Carlo in Practice}.
+\newblock Springer.
+
+\bibitem[Doucet et~al., 2000]{DGA00}
+Doucet, A., Godsill, S., and Andrieu, C. (2000).
+\newblock {On sequential Monte Carlo sampling methods for Bayesian filtering}.
+\newblock {\em Statistics and Computing}, 10:197--208.
+
+\bibitem[Escola and Paninski, 2008]{Escola07}
+Escola, S. and Paninski, L. (2008).
+\newblock Hidden {M}arkov models applied toward the inference of neural states
+  and the improved estimation of linear receptive fields.
+\newblock {\em Under review, Neural Computation}.
+
+\bibitem[Feldmeyer et~al., 1999]{Feldmeyer99}
+Feldmeyer, D., Egger, V., Lubke, J., and Sakmann, B. (1999).
+\newblock Reliable synaptic connections between pairs of excitatory layer 4
+  neurones within a single ``barrel" of developing rat somatosensory cortex.
+\newblock {\em J Physiol}, 521 Pt 1:169--90.
+
+\bibitem[Feldmeyer and Sakmann, 2000]{FeldmeyerSakmann00}
+Feldmeyer, D. and Sakmann, B. (2000).
+\newblock Synaptic efficacy and reliability of excitatory connections between
+  the principal neurones of the input (layer 4) and output layer (layer 5) of
+  the neocortex.
+\newblock {\em J Physiol}, 525:31--9.
+
+\bibitem[Gamerman, 1997]{Gamerman97}
+Gamerman, D. (1997).
+\newblock Sampling from the posterior distribution in generalized linear mixed
+  models.
+\newblock {\em Statistics and Computing}, 7(1):57--68.
+
+\bibitem[Gamerman, 1998]{Gamerman98}
+Gamerman, D. (1998).
+\newblock Markov chain monte carlo for dynamic generalised linear models.
+\newblock {\em Biometrika}, 85(1):215--227.
+
+\bibitem[Garofalo et~al., 2009]{Garofalo09}
+Garofalo, M., Nieus, T., Massobrio, P., and Martinoia, S. (2009).
+\newblock Evaluation of the performance of information theory-based methods and
+  cross-correlation to estimate the functional connectivity in cortical
+  networks.
+\newblock {\em PLoS ONE}, 4:e6482.
+
+\bibitem[Godsill et~al., 2004]{GDW04}
+Godsill, S., Doucet, A., and West, M. (2004).
+\newblock Monte {C}arlo smoothing for non-linear time series.
+\newblock {\em Journal of the American Statistical Association}, 99:156--168.
+
+\bibitem[Gomez-Urquijo et~al., 2000]{Urquijo2000}
+Gomez-Urquijo, S.~M., Reblet, C., Bueno-Lopez, J.~L., and Gutierrez-Ibarluzea,
+  I. (2000).
+\newblock Gabaergic neurons in the rabbit visual cortex: percentage,
+  distribution and cortical projections.
+\newblock {\em Brain Res}, 862:171--9.
+
+\bibitem[Greenberg et~al., 2008]{GreenbergKerr08}
+Greenberg, D.~S., Houweling, A.~R., and Kerr, J. N.~D. (2008).
+\newblock Population imaging of ongoing neuronal activity in the visual cortex
+  of awake rats.
+\newblock {\em Nat Neurosci}.
+
+\bibitem[Gupta et~al., 2000]{Gupta00}
+Gupta, A., Wang, Y., and Markram, H. (2000).
+\newblock Organizing principles for a diversity of gabaergic interneurons and
+  synapses in the neocortex.
+\newblock {\em Science}, 287:273--8.
+
+\bibitem[Harris et~al., 2003]{HARR03}
+Harris, K., Csicsvari, J., Hirase, H., Dragoi, G., and Buzsaki, G. (2003).
+\newblock Organization of cell assemblies in the hippocampus.
+\newblock {\em Nature}, 424:552--556.
+
+\bibitem[Hatsopoulos et~al., 1998]{HATS98}
+Hatsopoulos, N., Ojakangas, C., Paninski, L., and Donoghue, J. (1998).
+\newblock Information about movement direction obtained by synchronous activity
+  of motor cortical neurons.
+\newblock {\em PNAS}, 95:15706--15711.
+
+\bibitem[Helmchen et~al., 1996]{HelmchenSakmann96}
+Helmchen, F., Imoto, K., and Sakmann, B. (1996).
+\newblock {Ca}$^{2+}$ buffering and action potential-evoked {Ca}$^{2+}$
+  signaling in dendrites of pyramidal neurons.
+\newblock {\em Biophys J}, 70(2):1069--1081.
+
+\bibitem[Ikegaya et~al., 2004]{IkegayaYuste04}
+Ikegaya, Y., Aaron, G., Cossart, R., Aronov, D., Lampl, I., Ferster, D., and
+  Yuste, R. (2004).
+\newblock Synfire chains and cortical songs: temporal modules of cortical
+  activity.
+\newblock {\em Science}, 304(5670):559--564.
+
+\bibitem[Ishwaran, 1999]{Ishwaran99}
+Ishwaran, H. (1999).
+\newblock Applications of hybrid {Monte Carlo to Bayesian} generalized linear
+  models: quasicomplete separation and neural networks.
+\newblock {\em Journal of Computational and Graphical Statistics}, 8:779--799.
+
+\bibitem[Iyer et~al., 2006]{Iyer06}
+Iyer, V., Hoogland, T.~M., and Saggau, P. (2006).
+\newblock Fast functional imaging of single neurons using random-access
+  multiphoton ({RAMP}) microscopy.
+\newblock {\em J Neurophysiol}, 95(1):535--545.
+
+\bibitem[Koch, 1999]{Koch99}
+Koch, C. (1999).
+\newblock {\em Biophysics of Computation}.
+\newblock Oxford University Press.
+
+\bibitem[Kulkarni and Paninski, 2007]{KP06}
+Kulkarni, J. and Paninski, L. (2007).
+\newblock Common-input models for multiple neural spike-train data.
+\newblock {\em Network: Computation in Neural Systems}, 18:375--407.
+
+\bibitem[Lefort et~al., 2009]{Lefort2009}
+Lefort, S., Tomm, C., Floyd~Sarria, J.-C., and Petersen, C. C.~H. (2009).
+\newblock The excitatory neuronal network of the c2 barrel column in mouse
+  primary somatosensory cortex.
+\newblock {\em Neuron}, 61:301--16.
+
+\bibitem[Lei et~al., 2008]{Shepard08}
+Lei, N., Watson, B., MacLean, J., Yuste, R., and Shepard, K. (2008).
+\newblock A 256-by-256 cmos microelectrode array for extracellular stimulation
+  of acute brain slices.
+\newblock {\em Proceedings to the International Solid-State Circuits
+  Conference}.
+
+\bibitem[Li and Duan, 1989]{LD89}
+Li, K. and Duan, N. (1989).
+\newblock Regression analysis under link violation.
+\newblock {\em Annals of Statistics}, 17:1009--1052.
+
+\bibitem[Litke et~al., 2004]{Litke2004}
+Litke, A., Bezayiff, N., Chichilnisky, E., Cunningham, W., Dabrowski, W.,
+  Grillo, A., Grivich, M., Grybos, P., Hottowy, P., Kachiguine, S., Kalmar, R.,
+  Mathieson, K., Petrusca, D., Rahman, M., and Sher, A. (2004).
+\newblock What does the eye tell the brain? development of a system for the
+  large scale recording of retinal output activity.
+\newblock {\em IEEE Trans Nucl Sci}, pages 1434--1440.
+
+\bibitem[Livet et~al., 2007]{Brainbow07}
+Livet, J., Weissman, T., Kang, H., Draft, R., Lu, J., Bennis, R., Sanes, J.,
+  and Lichtman, J. (2007).
+\newblock Transgenic strategies for combinatorial expression of fluorescent
+  proteins in the nervous system.
+\newblock {\em Nature}, 450:56--62.
+
+\bibitem[Luczak et~al., 2007]{Harris07}
+Luczak, A., Bartho, P., Marguet, S., Buzsaki, G., and Harris, K. (2007).
+\newblock Sequential structure of neocortical spontaneous activity in vivo.
+\newblock {\em PNAS}, 104:347--352.
+
+\bibitem[MacLean et~al., 2005]{MACLEAN05}
+MacLean, J., Watson, B., Aaron, G., and Yuste, R. (2005).
+\newblock Internal dynamics determine the cortical response to thalamic
+  stimulation.
+\newblock {\em Neuron}, 48:811--823.
+
+\bibitem[McLachlan and Krishnan, 1996]{McLachlanKrishnan96}
+McLachlan, G. and Krishnan, T. (1996).
+\newblock {\em The EM Algorithm and Extensions}.
+\newblock Wiley-Interscience.
+
+\bibitem[Meyer et~al., 2002]{Meyer02}
+Meyer, A.~H., Katona, I., Blatow, M., Rozov, A., and Monyer, H. (2002).
+\newblock {In Vivo Labeling of Parvalbumin-Positive Interneurons and Analysis
+  of Electrical Coupling in Identified Neurons}.
+\newblock {\em J. Neurosci.}, 22:7055--7064.
+
+\bibitem[Micheva and Smith, 2007]{MichevaSmith07}
+Micheva, K. and Smith, S. (2007).
+\newblock Array tomography: A new tool for imaging the molecular architecture
+  and ultrastructure of neural circuits.
+\newblock {\em Neuron}, 55:25--36.
+
+\bibitem[Mishchenko, 2009]{Mishchenko2009}
+Mishchenko, Y. (2009).
+\newblock Strategies for identifying exact structure of neural circuits with
+  broad light microscopy connectivity probes.
+\newblock {\em Preprint:
+  http://precedings.nature.com/documents/2669/version/2}.
+
+\bibitem[Mishchenko et~al., 2009]{Mishchenko2009b}
+Mishchenko, Y., Spacek, J., Mendenhall, J., Chklovskii, D., and Harris, K.~M.
+  (2009).
+\newblock Reconstruction of hippocampal {CA1} neuropil at nanometer resolution
+  reveals disordered packing of processes and dependence of synaptic
+  connectivity on local environment and dendritic caliber.
+\newblock {\em Submitted}.
+
+\bibitem[Neal et~al., 2003]{NBR03}
+Neal, R., Beal, M., and Roweis, S. (2003).
+\newblock Inferring state sequences for non-linear systems with embedded hidden
+  {M}arkov models.
+\newblock {\em NIPS}, 16.
+
+\bibitem[Ng, 2004]{NG04}
+Ng, A. (2004).
+\newblock Feature selection, {L}$_1$ vs. {L}$_2$ regularization, and rotational
+  invariance.
+\newblock {\em ICML}, 21.
+
+\bibitem[Nguyen et~al., 2001]{NguyenParker01}
+Nguyen, Q.~T., Callamaras, N., Hsieh, C., and Parker, I. (2001).
+\newblock Construction of a two-photon microscope for video-rate {Ca}$^{2+}$
+  imaging.
+\newblock {\em Cell Calcium}, 30(6):383--393.
+
+\bibitem[Nikolenko et~al., 2007]{Vovan07}
+Nikolenko, V., Poskanzer, K., and Yuste, R. (2007).
+\newblock Two-photon photostimulation and imaging of neural circuits.
+\newblock {\em Nature Methods}, 4:943--950.
+
+\bibitem[Nikolenko et~al., 2008]{Nikolenko08}
+Nikolenko, V., Watson, B., Araya, R., Woodruff, A., Peterka, D., and Yuste, R.
+  (2008).
+\newblock {SLM} microscopy: Scanless two-photon imaging and photostimulation
+  using spatial light modulators.
+\newblock {\em Frontiers in Neural Circuits}, In press.
+
+\bibitem[Nykamp, 2007]{NYK06}
+Nykamp, D. (2007).
+\newblock A mathematical framework for inferring connectivity in probabilistic
+  neuronal networks.
+\newblock {\em Mathematical Biosciences}, 205:204--251.
+
+\bibitem[Nykamp, 2005]{Nykamp05}
+Nykamp, D.~Q. (2005).
+\newblock Revealing pairwise coupling in linear-nonlinear networks.
+\newblock {\em SIAM J Applied Mathematics}, 65(6):2005--2032.
+
+\bibitem[Ohki et~al., 2005]{OHKI05}
+Ohki, K., Chung, S., Ch'ng, Y., Kara, P., and Reid, C. (2005).
+\newblock Functional imaging with cellular resolution reveals precise
+  micro-architecture in visual cortex.
+\newblock {\em Nature}, 433:597--603.
+
+\bibitem[Paninski, 2004]{PAN04c}
+Paninski, L. (2004).
+\newblock Maximum likelihood estimation of cascade point-process neural
+  encoding models.
+\newblock {\em Network: Computation in Neural Systems}, 15:243--262.
+
+\bibitem[Paninski et~al., 2009]{Pan08b}
+Paninski, L., Ahmadian, Y., Ferreira, D., Koyama, S., Rahnama, K., Vidne, M.,
+  Vogelstein, J., and Wu, W. (2009).
+\newblock A new look at state-space models for neural data.
+\newblock {\em Journal of Computational Neuroscience}, In press.
+
+\bibitem[Paninski et~al., 2004]{PAN03d}
+Paninski, L., Fellows, M., Shoham, S., Hatsopoulos, N., and Donoghue, J.
+  (2004).
+\newblock Superlinear population encoding of dynamic hand trajectory in primary
+  motor cortex.
+\newblock {\em J. Neurosci.}, 24:8551--8561.
+
+\bibitem[Petersen and Sakmann, 2000]{PetersenSakmann00}
+Petersen, C.~C. and Sakmann, B. (2000).
+\newblock The excitatory neuronal network of rat layer 4 barrel cortex.
+\newblock {\em J Neurosci}, 20(20):7579--86.
+
+\bibitem[Petrusca et~al., 2007]{Petrusca07}
+Petrusca, D., Grivich, M.~I., Sher, A., Field, G.~D., Gauthier, J.~L.,
+  Greschner, M., Shlens, J., Chichilnisky, E.~J., and Litke, A.~M. (2007).
+\newblock Identification and characterization of a {Y}-like primate retinal
+  ganglion cell type.
+\newblock {\em J. Neurosci.}, 27(41):11019--11027.
+
+\bibitem[Pillow et~al., 2008]{PILL07}
+Pillow, J., Shlens, J., Paninski, L., Sher, A., Litke, A., Chichilnisky, E.,
+  and Simoncelli, E. (2008).
+\newblock Spatiotemporal correlations and visual signaling in a complete
+  neuronal population.
+\newblock {\em Nature}, 454:995--999.
+
+\bibitem[Plesser and Gerstner, 2000]{PG00}
+Plesser, H. and Gerstner, W. (2000).
+\newblock Noise in integrate-and-fire neurons: From stochastic input to escape
+  rates.
+\newblock {\em Neural Computation}, 12:367--384.
+
+\bibitem[Rabiner, 1989]{RAB89}
+Rabiner, L. (1989).
+\newblock A tutorial on hidden {M}arkov models and selected applications in
+  speech recognition.
+\newblock {\em Proceedings of the IEEE}, 77:257--286.
+
+\bibitem[Ramon~y Cajal, 1904]{RamonyCajal04}
+Ramon~y Cajal, S. (1904).
+\newblock {\em La Textura del Sistema Nerviosa del Hombre y los Vertebrados}.
+\newblock Moya.
+
+\bibitem[Ramon~y Cajal, 1923]{RamonyCajal23}
+Ramon~y Cajal, S. (1923).
+\newblock {\em Recuerdos de mi vida: Historia de mi labor cientifica}.
+\newblock Alianza Editorial.
+
+\bibitem[Reddy et~al., 2008]{ReddySaggau08}
+Reddy, G., Kelleher, K., Fink, R., and Saggau, P. (2008).
+\newblock {Three-dimensional random access multiphoton microscopy for
+  functional imaging of neuronal activity}.
+\newblock {\em Nature Neuroscience}, 11(6):713--720.
+
+\bibitem[Reyes et~al., 1998]{Reyes98}
+Reyes, A., Lujan, R., Rozov, A., Burnashev, N., Somogyi, P., and Sakmann, B.
+  (1998).
+\newblock Target-cell-specific facilitation and depression in neocortical
+  circuits.
+\newblock {\em Nat Neurosci}, 1:279--285.
+
+\bibitem[Rigat et~al., 2006]{Rigat06}
+Rigat, F., de~Gunst, M., and van Pelt, J. (2006).
+\newblock Bayesian modelling and analysis of spatio-temporal neuronal networks.
+\newblock {\em Bayesian Analysis}, 1:733--764.
+
+\bibitem[Robert and Casella, 2005]{RC05}
+Robert, C. and Casella, G. (2005).
+\newblock {\em Monte {C}arlo Statistical Methods}.
+\newblock Springer.
+
+\bibitem[Roxin et~al., 2008]{Roxin08}
+Roxin, A., Hakim, V., and Brunel, N. (2008).
+\newblock The statistics of repeating patterns of cortical activity can be
+  reproduced by a model network of stochastic binary neurons.
+\newblock {\em J. Neurosci.}, 28(42):10734--10745.
+
+\bibitem[Salome et~al., 2006]{SalomeBourdieu06}
+Salome, R., Kremer, Y., Dieudonne, S., Leger, J.-F., Krichevsky, O., Wyart, C.,
+  Chatenay, D., and Bourdieu, L. (2006).
+\newblock Ultrafast random-access scanning in two-photon microscopy using
+  acousto-optic deflectors.
+\newblock {\em Journal of Neuroscience Methods}, 154(1-2):161--174.
+
+\bibitem[Santhanam et~al., 2006]{Santhanam06}
+Santhanam, G., Ryu, S.~I., Yu, B.~M., Afshar, A., and Shenoy, K.~V. (2006).
+\newblock A high-performance brain-computer interface.
+\newblock {\em Nature}, 442:195--198.
+
+\bibitem[Sayer et~al., 1990]{Sayer1990}
+Sayer, R.~J., Friedlander, M.~J., and Redman, S.~J. (1990).
+\newblock The time course and amplitude of epsps evoked at synapses between
+  pairs of {CA3/CA1} neurons in the hippocampal slice.
+\newblock {\em J. Neurosci.}, 10:826--36.
+
+\bibitem[Segev et~al., 2004]{Berry2004}
+Segev, R., Goodhouse, J., Puchalla, J., and Berry, M. (2004).
+\newblock Recording spikes from a large fraction of the ganglion cells in a
+  retinal patch.
+\newblock {\em Nature Neuroscience}, 7:1154--1161.
+
+\bibitem[Shumway and Stoffer, 2006]{ShumwayStoffer06}
+Shumway, R. and Stoffer, D. (2006).
+\newblock {\em Time Series Analysis and Its Applications}.
+\newblock Springer.
+
+\bibitem[Song et~al., 2005]{Song2005}
+Song, S., Sjostrom, P.~J., Reiql, M., Nelson, S., and Chklovskii, D.~B. (2005).
+\newblock Highly nonrandom features of synaptic connectivity in local cortical
+  circuits.
+\newblock {\em PLoS Biology}, 3:e68.
+
+\bibitem[Stein et~al., 2004]{Stein04}
+Stein, R.~B., Weber, D.~J., Aoyagi, Y., Prochazka, A., Wagenaar, J. B.~M.,
+  Shoham, S., and Normann, R.~A. (2004).
+\newblock {Coding of position by simultaneously recorded sensory neurones in
+  the cat dorsal root ganglion}.
+\newblock {\em J Physiol (Lond)}, 560(3):883--896.
+
+\bibitem[Stevenson et~al., 2008]{Stevenson08}
+Stevenson, I., Rebesco, J., Hatsopoulos, N., Haga, Z., Miller, L., and
+  Koerding, K. (2008).
+\newblock Inferring network structure from spikes.
+\newblock {\em Statistical Analysis of Neural Data meeting}.
+
+\bibitem[Stevenson et~al., 2009]{Stevenson2009}
+Stevenson, I.~H., Rebesco, J.~M., Hatsopoulos, N.~G., Haga, Z., Miller, L.~E.,
+  and Kording, K.~P. (2009).
+\newblock Bayesian inference of functional connectivity and network structure
+  from spikes.
+\newblock {\em IEEE Trans. Neural Systems and Rehab.}, 17:203--13.
+
+\bibitem[Stosiek et~al., 2003]{StosiekKonnerth03}
+Stosiek, C., Garaschuk, O., Holthoff, K., and Konnerth, A. (2003).
+\newblock In vivo two-photon calcium imaging of neuronal networks.
+\newblock {\em Proceedings of The National Academy Of Sciences Of The United
+  States Of America}, 100(12):7319--7324.
+
+\bibitem[Szobota et~al., 2007]{SzobotaIsacoff07}
+Szobota, S., Gorostiza, P., Del~Bene, F., Wyart, C., Fortin, D.~L., Kolstad,
+  K.~D., Tulyathan, O., Volgraf, M., Numano, R., Aaron, H.~L., Scott, E.~K.,
+  Kramer, R.~H., Flannery, J., Baier, H., Trauner, D., and Isacoff, E.~Y.
+  (2007).
+\newblock Remote control of neuronal activity with a light-gated glutamate
+  receptor.
+\newblock {\em Neuron}, 54:535--545.
+
+\bibitem[Thompson et~al., 1988]{Thompson88}
+Thompson, A., Girdlestone, D., and West, D. (1988).
+\newblock Voltage-dependent currents prolong single-axon postsynaptic
+  potentials in layer {III} pyramidal neurons in rat neocortical slices.
+\newblock {\em J Neurophysiol}, 60:1896--1907.
+
+\bibitem[Tibshirani, 1996]{Tibs96}
+Tibshirani, R. (1996).
+\newblock Regression shrinkage and selection via the lasso.
+\newblock {\em Journal of the Royal Statistical Society. Series B},
+  58:267--288.
+
+\bibitem[Tipping, 2001]{TIP01}
+Tipping, M. (2001).
+\newblock Sparse {B}ayesian learning and the relevance vector machine.
+\newblock {\em Journal of Machine Learning Research}, 1:211--244.
+
+\bibitem[Truccolo et~al., 2005]{TRUC05}
+Truccolo, W., Eden, U., Fellows, M., Donoghue, J., and Brown, E. (2005).
+\newblock A point process framework for relating neural spiking activity to
+  spiking history, neural ensemble and extrinsic covariate effects.
+\newblock {\em Journal of Neurophysiology}, 93:1074--1089.
+
+\bibitem[Tsien, 1989]{Tsien89}
+Tsien, R.~Y. (1989).
+\newblock Fluorescent probes of cell signaling.
+\newblock {\em Ann. Rev. Neurosci.}, 12:227--253.
+
+\bibitem[Vakorin et~al., 2009]{Vakorin09}
+Vakorin, V.~A., Krakovska, O.~A., and Mcintosh, A.~R. (2009).
+\newblock Confounding effects of indirect connections on causality estimation.
+\newblock {\em Journal of Neuroscience Methods}, In press.
+
+\bibitem[Vidne et~al., 2009]{Vidne08}
+Vidne, M., Kulkarni, J., Ahmadian, Y., Pillow, J., Shlens, J., Chichilnisky,
+  E., Simoncelli, E., and Paninski, L. (2009).
+\newblock Inferring functional connectivity in an ensemble of retinal ganglion
+  cells sharing a common input.
+\newblock {\em COSYNE}.
+
+\bibitem[Vogels and Abbott, 2005]{Vogels05}
+Vogels, T. and Abbott, L.~F. (2005).
+\newblock {Signal Propagation and Logic Gating in Networks of
+  Integrate-and-Fire Neurons}.
+\newblock {\em J. Neurosci.}, 25(46):10786--10795.
+
+\bibitem[Vogelstein et~al., 2008]{Vogelstein08}
+Vogelstein, J., Babadi, B., Watson, B., Yuste, R., and Paninski, L. (2008).
+\newblock Fast nonnegative deconvolution via tridiagonal interior-point
+  methods, applied to calcium fluorescence data.
+\newblock {\em Statistical analysis of neural data (SAND) conference}.
+
+\bibitem[Vogelstein et~al., 2009]{Vogelstein2009}
+Vogelstein, J., Watson, B., Packer, A., Jedynak, B., Yuste, R., and Paninski,
+  L. (2009).
+\newblock Spike inference from calcium imaging using sequential monte carlo
+  methods.
+\newblock {\em Biophysical Journal}, In press.
+
+\bibitem[Wallace et~al., 2008]{WallaceHasan08}
+Wallace, D., zum Alten~Borgloh, S., Astori, S., Yang, Y., Bausen, M., Kugler,
+  S., Palmer, A., Tsien, R., Sprengel, R., Kerr, J., Denk, W., and Hasan, M.
+  (2008).
+\newblock {Single-spike detection in vitro and in vivo with a genetic Ca2+
+  sensor}.
+\newblock {\em Nature methods}, 5(9):797--804.
+
+\bibitem[Yaksi and Friedrich, 2006]{YaksiFriedrich06}
+Yaksi, E. and Friedrich, R.~W. (2006).
+\newblock Reconstruction of firing rate changes across neuronal populations by
+  temporally deconvolved {Ca$^{2+}$} imaging.
+\newblock {\em Nature Methods}, 3(5):377--383.
+
+\bibitem[Yasuda et~al., 2004]{Yasuda2004}
+Yasuda, R., Nimchinsky, E.~A., Scheuss, V., Pologruto, T.~A., Oertner, T.~G.,
+  Sabatini, B.~L., and Svoboda, K. (2004).
+\newblock Imaging calcium concentration dynamics in small neuronal
+  compartments.
+\newblock {\em Sci STKE}, 219:p15.
+
+\bibitem[Yuste et~al., 2006]{ImagingManual}
+Yuste, R., Konnerth, A., Masters, B., et~al. (2006).
+\newblock {\em {Imaging in Neuroscience and Development, A Laboratory Manual}}.
+
+\end{thebibliography}
