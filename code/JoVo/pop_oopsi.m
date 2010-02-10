@@ -22,7 +22,14 @@ if use_smc
         if cheat
             PP=Cell{i}.P;
             PP.omega= PP.omega(i,i);
-            smc{i}  = run_oopsi(Cell{i}.F(1:Tmax),VV,PP);
+%             smc{i}  = run_oopsi(Cell{i}.F(1:Tmax),VV,PP);
+            smc{i}.E.nbar=Cell{i}.n;
+            smc{i}.E.w = 1/VV.Nparticles*ones(VV.Nparticles,VV.T);
+            smc{i}.E.h=repmat(Cell{i}.h,VV.Nparticles,1);
+            smc{i}.E.n=repmat(Cell{i}.h,VV.Nparticles,1);
+            smc{i}.P = Cell{i}.P;
+            smc{i}.P.omega=Cell{i}.P.omega(i,i);
+            smc{i}.P.lik=1000;
         else
             smc{i}  = run_oopsi(Cell{i}.F(1:Tmax),VV);
         end
@@ -53,12 +60,13 @@ for i=1:V0.Ncells                               % for each cell
     for j=Pre                                   % loop thru all presynaptic neurons
         k=k+1;                                  % generate input to neuron based on posterior mean spike train from neuron j
         if ~use_smc
-            h(k,:) = filter(1,[1 -(1-V0.dt/Phat{i}.tau_h)],nhat{i});
+            h(k,:) = filter(1,[1 -(1-V0.dt/Phat{j}.tau_h)],nhat{j});
         else
-            h(k,:) = sum(smc{i}.E.h.*smc{i}.E.w);
+            h(k,:) = sum(smc{j}.E.h.*smc{j}.E.w);
         end
     end
-    VV.x = [V0.x; [zeros(V0.Ncells-1,1) h(:,1:end-1)]];              % append input from other neurons onto external stimulus
+%     VV.x = [V0.x; [zeros(V0.Ncells-1,1) h(:,1:end-1)]];              % append input from other neurons onto external stimulus
+    VV.x = [V0.x; h];              % append input from other neurons onto external stimulus
 
     % set other variables for smc_oopsi_m_step
     VV.est_c = 0;
@@ -68,10 +76,21 @@ for i=1:V0.Ncells                               % for each cell
     VV.smc_plot=0;
     VV.StimDim = VV.Ncells;
 
-    smc{i}.P.k = zeros(V0.Ncells+V0.StimDim-1,1);
-    smc{i}.P.k(1:V0.StimDim) = Phat{i}.k;
+    smc{i}.P.k  = Phat{i}.k*ones(V0.Ncells,1); %zeros(V0.Ncells+V0.StimDim-1,1);
+    smc{i}.P.omega = Cell{i}.P.omega(i,i);
     smc{i}.E.w_b=smc{i}.E.w;
-    smc{i}.P  = smc_oopsi_m_step(VV,smc{i}.E,0,smc{i}.P,Cell{i}.F);
+    
+%     VV.n_params=1;
+%     VV.h_params=1;
+%     VV.C_params=0;
+%     VV.F_params=0;
+%     VV.N=VV.Nparticles;
+%     VV.M=VV.Nspikehist;
+% %     I{i}.P  = GOOPSI_Mstep_v1_0(Tim,I{i}.S,0,II{i}.P,D(i).F);
+%     I{i}.P  = GOOPSI_Mstep_v1_0(VV,smc{i}.E,0,smc{i}.P,Cell{i}.F);
+
+            
+    smc{i}.P    = smc_oopsi_m_step(VV,smc{i}.E,0,smc{i}.P,Cell{i}.F);
 end
 
 if use_smc

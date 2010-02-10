@@ -1,6 +1,7 @@
 % run_poopsi
 cd ~/Research/oopsi/pop-oopsi/code/JoVo/
 clear
+clc
 
 if 0
     load('../../data/JoVo/sim1_data.mat')   % load data

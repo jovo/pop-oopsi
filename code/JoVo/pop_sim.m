@@ -1,8 +1,8 @@
-clear, clc
+% clear, clc
 
 %% 1) set simulation metadata
 
-V.T       = 1000;               % # of time steps
+V.T       = 500;               % # of time steps
 V.dt      = 1/30;               % time step size
 V.StimDim = 1;                  % # dimensions of external stimulus
 V.x       = ones(V.StimDim,V.T);% stimulus
