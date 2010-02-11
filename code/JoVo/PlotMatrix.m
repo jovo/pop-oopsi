@@ -45,7 +45,9 @@ title('Matrix from fluorescence')
 % print fig
 wh=[7 5];   %width and height
 set(fig,'PaperPosition',[0 11-wh(2) wh]);
-print('-depsc','VConnector')
-print('-dpdf','VConnector')
+figname=['../../figs/JoVo' V.name];
+print('-depsc',figname)
+print('-dpdf',figname)
+saveas(gcf,figname)
 
 end

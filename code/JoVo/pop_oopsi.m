@@ -1,135 +1,97 @@
-function output = pop_oopsi(Cell,V0)
+clear, clc
+%% simulat or load data
+% (see pop_sim to know which fields of V must be set here)
 
+V.name='sim1';
 
-%% init nhat and Phat assuming each cell is independent
+pop_sim
 
-VV=V0;
-Tmax            = V0.T; %min(500,length(Cell(1).F));
-VV.T            = Tmax;
-VV.Nspikehist   = 1;
-VV.fast_iter_max= 0;
-VV.smc_iter_max = 0;
-VV.Ncells       = 1;
-VV.Nparticles   = 50;
+%% set up variables
 
-use_smc = 1;
-cheat   = 1; % use true parameters
-if use_smc
-    VV.fast_do      = 0;
-    VV.smc_do       = 1;
-    for i=1:V0.Ncells
-        VV.n    = Cell{i}.n;
-        if cheat
-            PP=Cell{i}.P;
-            PP.omega= PP.omega(i,i);
-%             smc{i}  = run_oopsi(Cell{i}.F(1:Tmax),VV,PP);
-            smc{i}.E.nbar=Cell{i}.n;
-            smc{i}.E.w = 1/VV.Nparticles*ones(VV.Nparticles,VV.T);
-            smc{i}.E.h=repmat(Cell{i}.h,VV.Nparticles,1);
-            smc{i}.E.n=repmat(Cell{i}.h,VV.Nparticles,1);
-            smc{i}.P = Cell{i}.P;
-            smc{i}.P.omega=Cell{i}.P.omega(i,i);
-            smc{i}.P.lik=1000;
-        else
-            smc{i}  = run_oopsi(Cell{i}.F(1:Tmax),VV);
+V.est_n=1;          % estimate spiking parameters
+V.est_h=1;          % estimate spike history parameters
+V.est_F=0;          % do NOT estimate fluorescence parameters
+V.est_c=0;          % do NOT estimate calcium parameters
+V.Nspikehist=1;     % assume 1 spike history terms
+V.Nparticles=50;    % # of monte carlo samples
+V.smc_plot=0;       % do not plot smc
+V.smc_iter_max=1;   % number of iterations
+V.fast_do=0;        % do not do fast-oopsi
+V.smc_do=1;         % do not do smc-oopsi
+
+%% estimate connection matrix directly from spikes
+
+use_spikes=1;
+if use_spikes
+    Phat{1}.omega = GetWSpikes(Cell,V,P);
+end
+
+%% pop pf preparation
+
+% initialize stuff for each cell
+V.StimDim   = V.Ncells;                 % set external stim dimesions to # cells
+Tim         = V;                        % copy V structure for input to Mstep function
+E           = P;
+E.omega     = E.omega(i,i);             % initialize self-coupling term
+E.k         = E.k*ones(V.StimDim,1);    % initialize external stim and cross-coupling terms
+for i=1:V.Ncells,
+    I{i}.M.nbar = zeros(1,V.T);         % initialize spike trains
+    I{i}.P      = E;                    % initialize parameters
+    smc{i}.P    = E;
+end
+
+for tr=1:1                                  % iterate trials
+
+    % infer spikes for each neuron
+    for i=1:V.Ncells,                       
+        
+        % append external stimulus for neuron 'i' with spike histories from other cells
+        h = zeros(V.Ncells-1,V.T);          % we append this to x to generate input into neuron from other neurons
+        Pre=1:V.Ncells;                     % generate list of presynaptic neurons
+        Pre(Pre==i)=[];                     % remove self
+        k=0;                                % counter of dimension
+        for j=Pre                           % loop thru all presynaptic neurons
+            k=k+1;                          % generate input to neuron based on posterior mean spike train from neuron j
+            h(k,:) = filter(1,[1 -(1-V.dt/P.tau_h)],I{j}.M.nbar);
         end
-        Phat{i} = smc{i}.P;
-        nhat{i} = smc{i}.E.nbar;
+        Tim.x = [V.x; h];                   % append input from other neurons onto external stimulus
+
+        % infer spike train for neuron 'i'
+        fprintf('\nNeuron # %g\n',i)
+        smc{i}          = run_oopsi(Cell{i}.F,Tim,smc{i}.P);
+        II{i}.P         = smc{i}.P;
+        II{i}.S.n       = smc{i}.E.n;
+        II{i}.S.h       = smc{i}.E.h;
+        II{i}.S.w_b     = smc{i}.E.w;
+        II{i}.M.nbar    = smc{i}.E.nbar;
     end
-else
-    VV.smc_do   = 0;
-    VV.fast_do  = 1;
-    for i=1:V0.Ncells
-        fast{i} = run_oopsi(Cell{i}.F(1:Tmax),VV);
-        Phat{i} = fast{i}.P;
-        nhat{i} = fast{i}.n;
+
+    % set inference for each neuron to the newly updated inference
+    for i=1:V.Ncells,
+        I{i}.S = II{i}.S;
+        I{i}.M = II{i}.M;
     end
-end
 
-%% pop em pseudo-gibbs iteration
+    % estimate connectivity
+    for i=1:V.Ncells
 
-for i=1:V0.Ncells                               % for each cell
-
-    fprintf('\nNeuron # %g\n',i)                % estimate weights
-
-    % append external stimulus for neuron 'i' with spike histories from other cells
-    h = zeros(V0.Ncells-1,V0.T);                % we append this to x to generate input into neuron from other neurons
-    Pre=1:V0.Ncells;                            % generate list of presynaptic neurons
-    Pre(Pre==i)=[];                             % remove self
-    k=0;                                        % counter of dimension
-    for j=Pre                                   % loop thru all presynaptic neurons
-        k=k+1;                                  % generate input to neuron based on posterior mean spike train from neuron j
-        if ~use_smc
-            h(k,:) = filter(1,[1 -(1-V0.dt/Phat{j}.tau_h)],nhat{j});
-        else
-            h(k,:) = sum(smc{j}.E.h.*smc{j}.E.w);
+        % append external stimulus for neuron 'i' with spike histories from other cells
+        h = zeros(V.Ncells-1,V.T);          % we append this to x to generate input into neuron from other neurons
+        Pre=1:V.Ncells;                     % generate list of presynaptic neurons
+        Pre(Pre==i)=[];                     % remove self
+        k=0;                                % counter of dimension
+        for j=Pre                           % loop thru all presynaptic neurons
+            k=k+1;                          % generate input to neuron based on posterior mean spike train from neuron j
+            h(k,:) = filter(1,[1 -(1-V.dt/P.tau_h)],I{j}.M.nbar);
         end
+        Tim.x = [V.x; h];                   % append input from other neurons onto external stimulus
+
+        fprintf('\nNeuron # %g\n',i)
+        I{i}.P = smc_oopsi_m_step(Tim,I{i}.S,0,II{i}.P,Cell{i}.F);
+        EE{i}    = I{i}.P;
     end
-%     VV.x = [V0.x; [zeros(V0.Ncells-1,1) h(:,1:end-1)]];              % append input from other neurons onto external stimulus
-    VV.x = [V0.x; h];              % append input from other neurons onto external stimulus
-
-    % set other variables for smc_oopsi_m_step
-    VV.est_c = 0;
-    VV.est_F = 0;
-    VV.est_n = 1;
-    VV.est_h = 1;
-    VV.smc_plot=0;
-    VV.StimDim = VV.Ncells;
-
-    smc{i}.P.k  = Phat{i}.k*ones(V0.Ncells,1); %zeros(V0.Ncells+V0.StimDim-1,1);
-    smc{i}.P.omega = Cell{i}.P.omega(i,i);
-    smc{i}.E.w_b=smc{i}.E.w;
-    
-%     VV.n_params=1;
-%     VV.h_params=1;
-%     VV.C_params=0;
-%     VV.F_params=0;
-%     VV.N=VV.Nparticles;
-%     VV.M=VV.Nspikehist;
-% %     I{i}.P  = GOOPSI_Mstep_v1_0(Tim,I{i}.S,0,II{i}.P,D(i).F);
-%     I{i}.P  = GOOPSI_Mstep_v1_0(VV,smc{i}.E,0,smc{i}.P,Cell{i}.F);
-
-            
-    smc{i}.P    = smc_oopsi_m_step(VV,smc{i}.E,0,smc{i}.P,Cell{i}.F);
+    Phat{tr+1}.omega = GetMatrix(V.Ncells,EE);
 end
-
-if use_smc
-    output = smc;
-else
-    output = fast;
-end
-
-save('../../data/JoVo/sim1_inference','smc')
-
-% if we have do the above recursively, then we will uncomment out this
-% stuff, and put this whole section within an EM loop
-%
-% % for each neuron, infer spike train conditioned on previous EM
-% % iterations spike history terms
-% for i=1:V0.Ncells,                                 % infer spikes for each neuron
-%
-%     % append external stimulus for neuron 'i' with spike histories from other cells
-%     h = zeros(V0.Ncells-1,V0.T);                  % we append this to x to generate input into neuron from other neurons
-%     Pre=1:V0.Ncells;                               % generate list of presynaptic neurons
-%     Pre(Pre==i)=[];                             % remove self
-%     k=0;                                        % counter of dimension
-%     for j=Pre                                   % loop thru all presynaptic neurons
-%         k=k+1;                                  % generate input to neuron based on posterior mean spike train from neuron j
-%         h(k,:) = filter(1,[1 -(1-V0.dt/Phat{i}.tau_h)],nhat{j});
-%     end
-%     VV.x = [V0.x; h];                         % append input from other neurons onto external stimulus
-%
-%     % infer spike train for neuron 'i'
-%     fprintf('\nNeuron # %g\n',i)
-%     if use_smc
-%         [smc{i}] = run_oopsi(Cell{i}.F,VV,Phat{i});
-% %         II{i}.S.n       = smc{i}.E.n;
-% %         II{i}.S.h       = smc{i}.E.h;
-% %         II{i}.S.w_b     = smc{i}.E.w;
-% %         II{i}.M.nbar    = smc{i}.E.nbar;
-%     end
-% end
-
-% set inference for each neuron to the newly updated inference
-% for i=1:V0.Ncells, I{i}.S = II{i}.S; I{i}.M = II{i}.M; end
-
+PlotMatrix(Cell,V,P,Phat)
+save(['../../data/' V.name] ,'Phat','Cell','V','P')
+Fs=1024; ts=0:1/Fs:1; sound(sin(2*pi*ts*200)),
