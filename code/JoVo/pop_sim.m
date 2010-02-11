@@ -2,8 +2,8 @@
 
 %% 1) set simulation metadata
 
-V.T       = 500;               % # of time steps
-V.dt      = 1/30;               % time step size
+V.T       = 2000;               % # of time steps
+V.dt      = 1/60;               % time step size
 V.StimDim = 1;                  % # dimensions of external stimulus
 V.x       = ones(V.StimDim,V.T);% stimulus
 V.Ncells  = 3;                  % # of cells
@@ -17,7 +17,7 @@ P.k         = P.k*ones(V.StimDim,1);        % initialize k to the right number o
 P.tau_c     = 0.5;                          % calcium decay time constant (sec)
 P.A         = 20;                           % jumps size (\mu M)
 P.C_0       = 20;                           % baseline [Ca++] (\mu M)
-P.C_init    = 100;                          % initial [Ca++] (\mu M)
+P.C_init    = P.C_0;                          % initial [Ca++] (\mu M)
 P.sigma_c   = 1;                            % noise on
 P.n         = 1.0;                          % hill equation exponent
 P.k_d       = 200;                          % hill coefficient
@@ -94,4 +94,4 @@ if V.plot==1
 %     for i=1:V.Ncells, disp(sum(Cell{i}.n)); end
 end
 
-save('../../data/JoVo/sim1_data','Cell','V')
+save('../../data/sim1_data','Cell','V')

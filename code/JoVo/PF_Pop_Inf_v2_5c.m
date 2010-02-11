@@ -1,17 +1,14 @@
-% function PF_Pop_Inf_v2_5b(T,pl)
+function PF_Pop_Inf_v2_5c(T,pl)
 
 %% simulate or load data
 
 pop_sim
 
-%% get W from spikes directly
-
 use_spikes=1;
 if use_spikes
     Phat{1}.omega = GetWSpikes(Cell,V,P);
 end
-
-%% set up structures for infering stuff
+%% set up structures
 
 V.Nspikehist=1;
 V.smc_plot=0;
@@ -65,10 +62,10 @@ for i=1:V.Ncells                    % infer spikes for each neuron
     smc{i}.E.w_b    = smc{i}.E.w;
 end
 
-set inference for each neuron to the newly updated inference
-for i=1:V.Ncells, 
-    I{i}.S = II{i}.S; 
-    I{i}.M = II{i}.M; 
+% set inference for each neuron to the newly updated inference
+for i=1:V.Ncells,
+    I{i}.S = II{i}.S;
+    I{i}.M = II{i}.M;
 end
 
 %% infer connectivity given inferred spikes
@@ -87,7 +84,7 @@ for i=1:V.Ncells
     Tim.x = [V.x; h];               % append input from other neurons onto external stimulus
 
     fprintf('\nNeuron # %g\n',i)
-    II{i}.P.k= smc{i}.P.k*ones(V.Ncells,1);
+    II{i}.P.k=smc{i}.P.k*ones(V.Ncells,1);
     smc{i}.P = smc_oopsi_m_step(Tim,smc{i}.E,0,II{i}.P,Cell{i}.F);
     EE{i}    = smc{i}.P;
 end
@@ -95,3 +92,54 @@ Phat{2}.omega = GetMatrix(V.Ncells,EE);
 PlotMatrix(Cell,V,P,Phat)
 save(['../../data/VConnector', num2str(V.T), '_', num2str(V.Ncells)],'Phat','Cell','V','P','smc','II','I','E')
 Fs=1024; ts=0:1/Fs:1; sound(sin(2*pi*ts*200)),
+
+end
+
+
+
+function PlotMatrix(Cell,V,P,Phat)
+
+fig=figure(5); clf,
+col = [1 0 0; 0 0 1; 0 0.5 0; 1 0.5 0; 1 0 1];          % define colors for mean
+
+tstart=2/V.dt;
+tdt=1/V.dt;
+tend = min(tstart+8*tdt,V.T);
+subplot(2,3,[1 2 3]), hold on
+for i=1:2
+    plot(((Cell{i}.F(tstart:tend))./max(Cell{i}.F(tstart:tend)))+i,'Color',col(i,:));
+end
+axis('tight'),
+xticks  = tstart:tdt:tend;               % XTick positions
+set(gca,'YTick',[],'YTickLabel',[])
+set(gca,'XTick',xticks,'XTickLabel',xticks*V.dt)
+ylabel('Fluorescence')
+xlabel('Time (sec)')
+
+clims(1)=min([P.omega(:)' Phat{1}.omega(:)' Phat{2}.omega(:)']);
+clims(2)=max([P.omega(:)' Phat{1}.omega(:)' Phat{2}.omega(:)']);
+% clims(1)=min([P.omega(:)' Phat{2}.omega(:)']); %Phat{2}.omega(:)']);
+% clims(2)=max([P.omega(:)' Phat{2}.omega(:)']);% Phat{2}.omega(:)']);
+subplot(234), imagesc(P.omega,clims), colormap(gray),
+set(gca,'XTick',[1:V.Ncells],'YTick',[1:V.Ncells]) %colorbar
+title('True matrix')
+ylabel('Presynaptic'), xlabel('Postsynaptic')
+
+subplot(235),
+imagesc(Phat{1}.omega,clims), %colorbar
+set(gca,'XTick',[1:V.Ncells],'YTick',[1:V.Ncells]) %colorbar
+title('Matrix from spikes')
+% ylabel('Presynaptic'), xlabel('Postsynaptic')
+
+subplot(236), imagesc(Phat{2}.omega,clims), %colorbar
+set(gca,'XTick',[1:V.Ncells],'YTick',[1:V.Ncells]) %colorbar
+title('Matrix from fluorescence')
+% ylabel('Presynaptic'), xlabel('Postsynaptic')
+
+% print fig
+wh=[7 5];   %width and height
+set(fig,'PaperPosition',[0 11-wh(2) wh]);
+print('-depsc','VConnector')
+print('-dpdf','VConnector')
+
+end
