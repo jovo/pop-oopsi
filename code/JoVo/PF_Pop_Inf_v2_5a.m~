@@ -26,8 +26,24 @@ end
 
 %% pop pf preparation
 
+% V.M       = 1;                                    % # spike history terms per neuron (fixed at one for this version of code)
+% V.n_params= 1;                                    % if 1, estimate k
+% V.h_params= 1;                                    % if 1, estimate omega (self-coupling)
+% V.F_params= 0;                                    % if 1, estimate observation parameters
+% V.C_params= 0;                                    % whether to compute
+% V.Ncells      = V.Ncells;
+V.StimDim = V.Ncells;                               % set external stim dimesions to # cells
+
+% V.N       = 50;                                   % # of particles
+% V.Mstep   = 1;                                    % whether to estimate parameters
+% V.pf      = 1;                                    % if 1, then conditional sampler, if 0, then prior sampler
+% V.freq    = 1;                                    % # time steps per observation (d in BJ08)
+% V.T_o     = V.T/V.freq;                       % # of observable time steps
+% V.M       = 1;                                    % # of spike history terms per neuron
+% V.Mstep   = 0;                                    % whether to estimate parameters
+% V.ptiles  = 1;                                    % generate percentiles
+
 % initialize stuff for each cell
-V.StimDim   = V.Ncells;                               % set external stim dimesions to # cells
 Tim         = V;                                  % copy V structure for input to Mstep function
 E           = P;
 E.omega     = E.omega(i,i);                         % initialize self-coupling term
@@ -40,6 +56,9 @@ end
 
 %% infer spikes assuming independent neurons
 
+
+% for each neuron, infer spike train conditioned on previous EM
+% iterations spike history terms
 for i=1:V.Ncells,                                 % infer spikes for each neuron
 
     % append external stimulus for neuron 'i' with spike histories from other cells
@@ -88,7 +107,9 @@ for i=1:V.Ncells
     I{i}.P = smc_oopsi_m_step(Tim,I{i}.S,0,II{i}.P,Cell{i}.F);
     EE{i}    = I{i}.P;
 end
-Phat{2}.omega = GetMatrix(V.Ncells,EE);
-PlotMatrix(Cell,V,P,Phat)
+Phat{2}.omega = GetMatrix2(V.Ncells,EE);
+PlotMatrix2(Cell,V,P,Phat)
 save(['../../data/SimConnector', num2str(V.T), '_', num2str(V.Ncells)],'Phat','Cell','V','P')
 Fs=1024; ts=0:1/Fs:1; sound(sin(2*pi*ts*200)),
+
+

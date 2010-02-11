@@ -1,15 +1,7 @@
 function omega = GetWSpikes(Cell,V,P)
 % estimate connection matrix directly from spikes
 
-V.est_n=1;
-V.est_h=1;
-V.est_F=0;
-V.est_c=0;
-V.Nspikehist=1;
 V.Nparticles=1;
-V.smc_plot=0;
-V.smc_iter_max=1;
-
 
 P.lik       = 0;
 Tim         = V;                                  % Tim is V for this estimation
