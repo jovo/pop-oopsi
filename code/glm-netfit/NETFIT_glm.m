@@ -55,7 +55,7 @@ elseif(par.lambda==0)                 % DALE PRIOR ALONE
     d=zeros(1,N-1);                     % initialize constrained-min problem
     d(find(par.signs<0))=1;             % dale's w<0 sub  w<0
     d(find(par.signs>0))=-1;            % dale's w>0 sub -w<0
-    d=[-1,d];                           % rate>0
+    %d=[-1,d];                           % rate>0 (incorrect constraint)
     A=sparse(diag(d));
     a=max(abs(A),[],2);
     A=A(a>0,:);                         % only keep constrained vars
@@ -74,8 +74,8 @@ else                                  % L1 PRIOR + DALE PRIOR
     d=[zeros(N-1,1),d];                 % rate is not regularized, w(1)
 
     A=[[d,-d0];[-d,-d1]];               % matrix of constraints
-    A=[zeros(1,2*N-1);A];               % constrain the rate to be positive
-    A(1,1)=-1;                          % -w(1)<0 i.e. -rate<0
+    %A=[zeros(1,2*N-1);A];               % constrain the rate to be positive
+    %A(1,1)=-1;                          % -w(1)<0 i.e. -rate<0 (incorrect constraint)
 
     b=zeros(2*N-1,1);                   % constraints RHS
 
